@@ -19,7 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\CPanel\Controllers\PurchaseOrders\" />
     <Folder Include="wwwroot\Images\CarType\" />
     <Folder Include="wwwroot\Images\Offer\" />
     <Folder Include="wwwroot\Images\User\" />
