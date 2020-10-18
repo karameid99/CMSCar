@@ -1,0 +1,51 @@
+﻿@model CMSCar.Areas.CPanel.Models.Contact.CallUs
+
+@{
+    ViewData["Title"] = "تفاصيل طلب التواصل";
+    Layout = null;
+}
+
+<h1>تفاصيل طلب التواصل</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            إسم المرسل:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            رقم الهاتف:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+        <dt class="col-sm-2">
+            البريد الالكتروني
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2">
+            عنوان الرسالة
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            الرسالة:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Massege)
+        </dd>
+      
+        <dt class="col-sm-2">
+            تاريخ الارسال
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CreatedAt)
+        </dd>
+    </dl>
+</div>

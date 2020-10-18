@@ -1,0 +1,69 @@
+﻿@model OfferDTO
+@{
+    ViewData["Title"] = "انشاء عرض جديد";
+    Layout = null;
+}
+
+<form asp-action="Create" method="post" class="ajaxForm" tname="#dataTableId" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="NameAr"></label>
+                <input asp-for="NameAr" class="form-control" />
+                <span asp-validation-for="NameAr" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="NameEn"></label>
+                <input asp-for="NameEn" class="form-control" />
+                <span asp-validation-for="NameEn" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="DescriptionAr"></label>
+                <textarea rows="4" asp-for="DescriptionAr" class="form-control" ></textarea>
+                <span asp-validation-for="DescriptionAr" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="DescriptionEn"></label>
+                <textarea  rows="4" asp-for="DescriptionEn" class="form-control"></textarea>
+                <span asp-validation-for="DescriptionEn" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="OfferCarIds" class="control-label"></label>
+                <select asp-items="ViewBag.Cars" name="OfferCarIds" multiple title="--- إختار  السيارات المشمولة بالعرض ---" class="selectpicker dataLive" data-width="100%" data-live-search="true" >
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Image"></label>
+                <input type="file" name="Image" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="form-group">
+        <input type="submit" value="اضافة" class="btn btn-primary" />
+        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">الغاء</button>
+    </div>
+</form>
+<script>
+    PageLoadActions();
+</script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+<script>
+    $('.dataLive').selectpicker();
+</script>

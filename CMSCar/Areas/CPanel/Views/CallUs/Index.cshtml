@@ -1,0 +1,166 @@
+﻿@{
+    ViewData["Title"] = "طلبات التواصل";
+}
+
+@section Css{
+    <style>
+        td {
+            padding: 8px 1px 8px 1px !important;
+            font-size: 14px !important;
+            font-weight: normal;
+        }
+
+        th {
+            font-weight: bold;
+            font-size: medium;
+        }
+
+        td a {
+            margin-left: 5px !important;
+        }
+
+        .m-portlet__body {
+            padding-top: 0px !important;
+        }
+
+        .dt-buttons {
+            margin-top: 12px
+        }
+
+        div.m-input-icon.m-input-icon--left {
+            border: 1px solid #bebebe
+        }
+    </style>
+}
+
+<div class="m-portlet m-portlet--mobile">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                    <span style="color: #ebebeb"></span>فهرس طلبات التواصل في النظام<small style="color : gray">عرض بيانات طلبات التواصل </small>
+                </h3>
+            </div>
+        </div>
+        <div class="m-portlet__head-tools">
+            <ul class="m-portlet__nav">
+            </ul>
+        </div>
+    </div>
+    <div class="m-portlet__body">
+        <form class="DTForm">
+            <br />
+            <div class="m-form m-form--label-align-right m--margin-bottom-0">
+                <div class="row align-items-center">
+                    <div class="col-xl-8 order-2 order-xl-1">
+                        <div class="form-group m-form__group row align-items-center">
+                            <div class="col-md-6">
+                                <div class="m-input-icon m-input-icon--left">
+                                    <input type="text" name="SearchKey" class="form-control m-input m-input--solid" placeholder="ابحث...">
+                                    <span class="m-input-icon__icon m-input-icon__icon--left">
+                                        <span>
+                                            <i class="la la-search"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="SearchBtn btn btn-outline-success m-btn m-btn--icon m-btn--md m-btn--icon-only m-btn--custom m-btn--outline-1x  m-btn--air">
+                                    <i class="fa fa-search"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+        <div class="table-responsive">
+            <table class="table m-table table-bordered table-striped m-table--head-separator-success" id="dataTableId">
+                <thead align="center">
+                    <tr>
+                        <th>الأسم</th>
+                        <th>رقم الهاتف</th>
+                        <th>البريد الالكتروني</th>
+                        <th>عنوان الطلب</th>
+                        <th>تاريخ الاضافة</th>
+                        <th width="20%">العمليات</th>
+                    </tr>
+                </thead>
+                <tbody align="center"></tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts{
+    <script>
+        $(function () {
+            $(".DTForm").submit(function () {
+                BindDataTable();
+                return false;
+            });
+            BindDataTable();
+        });
+
+        $(document).on("click", ".SearchBtn", function () {
+            BindDataTable();
+        });
+
+        BindDataTable();
+
+        function BindDataTable() {
+            oTable = $('#dataTableId').dataTable(
+                {
+                    language: {
+                        aria: {
+                            sortAscending: ": فعال لترتيب العمود تصاعديا", sortDescending: ": فعال لترتيب العمود تنازليا"
+                        }
+                        , emptyTable: "لا يوجد بيانات لعرضها", info: "عرض _START_ الى _END_ من _TOTAL_ صف", infoEmpty: "لا يوجد نتائج لعرضها", infoFiltered: "(filtered1 من _MAX_ اجمالي صفوف)", lengthMenu: "_MENU_", search: "بحث", zeroRecords: "لا يوجد نتائج لعرضها",
+                        paginate: { sFirst: "الاول", sLast: "الاخير", sNext: "التالي", sPrevious: "السابق" }
+                    },
+
+                    "dom":
+                        "<'row'<'col-sm-12'tr>>" +
+                        "<'row'<'col-sm-4'i><'col-sm-4 text-center'l><'col-sm-4'p>>",
+                    "iDisplayLength": 8,
+                    "sPaginationType": "full_numbers",
+                    "bFilter": false,
+                    "bDestroy": true,
+                    "bSort": false,
+                    "bStateSave": true,
+                    "bLengthChange": true,
+                    "columnDefs": [{
+                        "orderable": false
+                    }],
+                    //"bSort": false,
+                    serverSide: true,
+                    columns: [
+                        { data: 'name', name: 'name' },
+                        { data: 'phone', name: 'phone' },
+                        { data: 'email', name: 'email' },
+                        { data: 'title', name: 'title' },
+                        { data: 'createAt', name: 'createAt' },
+                        {
+                            name: 'buttons', "render": function (data, type, row) {
+                                return ""
+                                    + "<a title='تفاصيل  طلب التواصل' href='/CPanel/CallUs/Details/" + row["id"] + "' class='PopUp btn btn-outline-primary btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='fa fa-server'></i></a>"
+                                    + "<a title='حذف طلب التواصل' tname='#dataTableId' href='/CPanel/CallUs/Delete/" + row["id"] + "' class='Confirm  btn btn-outline-danger btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='flaticon-delete-1'></i></a>"
+                            }
+                        }
+                    ],
+                    ajax: {
+                        type: "POST",
+                        contentType: "application/json",
+                        url: '/CPanel/CallUs/AjaxData',
+                        data: function (d) {
+                            d.SearchKey = ($("[name=SearchKey]").val());
+                            return JSON.stringify(d);
+                        }
+                    }
+                });
+        }
+    </script>
+
+}

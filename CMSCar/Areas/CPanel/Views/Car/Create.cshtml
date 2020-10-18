@@ -1,0 +1,289 @@
+﻿@model CarDTO
+@{
+    ViewData["Title"] = "إضافة سيارة جديدة ";
+}
+@section Css{
+    <style>
+        td {
+            padding: 8px 1px 8px 1px !important;
+            font-size: 14px !important;
+        }
+
+        th {
+            font-weight: bold;
+            font-size: medium;
+        }
+
+        td a {
+            margin-left: 5px !important;
+        }
+
+        .m-portlet__body {
+            padding-top: 0px !important;
+        }
+
+        .dt-buttons {
+            margin-top: 12px
+        }
+    </style>
+}
+<div class="m-portlet m-portlet--mobile">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                    <span style="color: #ebebeb"></span> إضافة سيارة جديدة
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="m-portlet__body">
+        <br />
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="NameAr" class="control-label"></label>
+                        <input asp-for="NameAr" class="form-control">
+                        <span asp-validation-for="NameAr" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="NameEn" class="control-label"></label>
+                        <input asp-for="NameEn" class="form-control">
+                        <span asp-validation-for="NameEn" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="PriceBeforeDiscount" class="control-label"></label>
+                        <input type="number" asp-for="PriceBeforeDiscount" class="form-control">
+                        <span asp-validation-for="PriceBeforeDiscount" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="PriceAfterDiscount" class="control-label"></label>
+                        <input type="number" asp-for="PriceAfterDiscount" class="form-control">
+                        <span asp-validation-for="PriceAfterDiscount" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>نوع السيارة</label>
+                        <select id="CarType" asp-items="ViewBag.TypeCar" name="OfferCarIds" title="--- إختار  النوع الرئيسي ---" class="selectpicker dataLive" data-width="100%" data-live-search="true">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="SubCarTypeId"></label>
+                        <select id="select" asp-for="SubCarTypeId" title="--- إختار  النوع الفرعي ---" class="custom-select" data-width="100%">
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="MainImage" class="control-label"></label>
+                        <input type="file" asp-for="MainImage" class="form-control">
+                        <span asp-validation-for="MainImage" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="ShowImage" class="control-label"></label>
+                        <input type="file" asp-for="ShowImage" class="form-control">
+                        <span asp-validation-for="ShowImage" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="InsidImages" class="control-label"></label>
+                        <input type="file" asp-for="InsidImages" multiple class="form-control">
+                        <span asp-validation-for="InsidImages" class="text-danger"></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="m-portlet m-portlet--mobile">
+                <div class="m-portlet__body">
+                    <div class="table-responsive">
+                        <table class="table m-table table-bordered table-striped m-table--head-separator-success" id="dataColorId">
+                            <thead align="center">
+                                <tr>
+                                    <th>الاسم بالعربية</th>
+                                    <th>الاسم بالانجليزية</th>
+                                    <th>تاريخ الاضافة</th>
+                                    <th width="20%">العمليات</th>
+                                </tr>
+                            </thead>
+                            <tbody align="center"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <br />
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="p-3 mb-2 text-white" style="background-color:crimson">
+                        وصف السيارة بالعربية
+                    </div>
+                    <span asp-validation-for="DescriptionAr" class="text-danger"></span>
+                    <textarea class="summernote" asp-for="DescriptionAr"></textarea>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 mb-2 text-white" style="background-color:crimson">
+                        وصف السيارة بالإنجليزية
+                    </div>
+                    <span asp-validation-for="DescriptionEn" class="text-danger"></span>
+                    <textarea class="summernoteEN" asp-for="DescriptionEn"></textarea>
+
+                </div>
+
+            </div>
+            <hr />
+            <div class="form-group">
+                <input type="submit" value="اضافة" class="btn btn-primary" />
+                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">الغاء</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $(".DTForm").submit(function () {
+            BindDataTable();
+            return false;
+        });
+        BindDataTable();
+    });
+
+    $(document).on("click", ".SearchBtn", function () {
+        BindDataTable();
+    });
+
+    BindDataTable();
+
+    function BindDataTable() {
+        oTable = $('#dataColorId').dataTable(
+            {
+                language: {
+                    aria: {
+                        sortAscending: ": فعال لترتيب العمود تصاعديا", sortDescending: ": فعال لترتيب العمود تنازليا"
+                    }
+                    , emptyTable: "لا يوجد بيانات لعرضها", info: "عرض _START_ الى _END_ من _TOTAL_ صف", infoEmpty: "لا يوجد نتائج لعرضها", infoFiltered: "(filtered1 من _MAX_ اجمالي صفوف)", lengthMenu: "_MENU_", search: "بحث", zeroRecords: "لا يوجد نتائج لعرضها",
+                    paginate: { sFirst: "الاول", sLast: "الاخير", sNext: "التالي", sPrevious: "السابق" }
+                },
+
+                "dom":
+                    "<'row'<'col-sm-12'tr>>" +
+                    "<'row'<'col-sm-4'i><'col-sm-4 text-center'l><'col-sm-4'p>>",
+                "iDisplayLength": 8,
+                "sPaginationType": "full_numbers",
+                "bFilter": false,
+                "bDestroy": true,
+                "bSort": false,
+                "bStateSave": true,
+                "bLengthChange": true,
+                "columnDefs": [{
+                    "orderable": false
+                }],
+                //"bSort": false,
+                serverSide: true,
+                columns: [
+                    {
+                        "render": function (data, type, row) {
+                            return '<a href="/CPanel/Branch/Index/' + row["id"] + '"><b>' + row["cityAr"] + '</b></a>';
+                        }
+                    },
+                    { data: 'cityEn', name: 'cityEn' },
+                    { data: 'createAt', name: 'createAt' },
+                    {
+                        name: 'buttons', "render": function (data, type, row) {
+                            return ""
+                                + "<a title='تعديل المدينة' href='/CPanel/City/Edit/" + row["id"] + "' class='PopUp btn btn-outline-primary btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='fa fa-edit'></i></a>"
+                                + "<a title='حذف المدينة' tname='#dataTableId' href='/CPanel/City/Delete/" + row["id"] + "' class='Confirm  btn btn-outline-danger btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='flaticon-delete-1'></i></a>"
+                        }
+                    }
+                ],
+                ajax: {
+                    type: "POST",
+                    contentType: "application/json",
+                    url: '/CPanel/City/AjaxData',
+                    data: function (d) {
+                        d.SearchKey = ($("[name=SearchKey]").val());
+                        return JSON.stringify(d);
+                    }
+                }
+            });
+    }
+</script>
+
+
+
+
+
+@section Scripts{
+    <script>
+        $('.summernote').summernote({
+            placeholder: 'ادخل المحتوى  ...',
+            tabsize: 1,
+            height: 150
+        });
+    </script>
+    <script>
+        $('.summernoteEN').summernote({
+            placeholder: 'ادخل المحتوى باللغة الانجليزية  ...',
+            tabsize: 1,
+            height: 150
+        });
+    </script>
+    <script>
+        $('.dataLive').selectpicker();
+    </script>
+    <script>
+        //$(".selectpicker").change(function () {
+        //    alert("Handler for .change() called.");
+        //});
+
+
+        $(function () {
+            $(".selectpicker").change(function () {
+                var id = $(this).children("option:selected").val();
+                var _path = "GetSubTypeCar";
+                $.ajax({
+                    url: _path,
+                    data: { id: id },
+                    type: "Get",
+                    success: function (data) {
+                        var myOpts = document.getElementById('select').options;
+
+                        $('#select')
+                            .find('option')
+                            .remove()
+                            .end();
+                        jQuery.each(data, function (i, v) {
+                            $('#select').append(`<option value="${v.id}"> ${v.nameAr}  </option>`);
+                        });
+                    }
+                });
+            });
+        });
+
+    </script>
+}

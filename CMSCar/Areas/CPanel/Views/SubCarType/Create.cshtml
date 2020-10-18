@@ -1,0 +1,35 @@
+﻿@model SubCarTypeDTO
+@{
+    ViewData["Title"] = "انشاء نوع جديد";
+    Layout = null;
+}
+
+<form asp-action="Create" method="post" class="ajaxForm" tname="#dataTableId">
+    <input asp-for="CarTypeId" value="@ViewBag.id" type="hidden" />
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="NameAr"></label>
+                <input asp-for="NameAr" class="form-control" />
+                <span asp-validation-for="NameAr" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="NameEn"></label>
+                <input asp-for="NameEn" class="form-control" />
+                <span asp-validation-for="NameEn" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="form-group">
+        <input type="submit" value="اضافة" class="btn btn-primary" />
+        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">الغاء</button>
+    </div>
+</form>
+<script>
+    PageLoadActions();
+</script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
