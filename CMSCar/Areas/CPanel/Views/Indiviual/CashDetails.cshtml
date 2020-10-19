@@ -1,11 +1,11 @@
-﻿@model CMSCar.Areas.CPanel.Models.Contact.CallUs
+﻿@model CMSCar.Areas.CPanel.Models.PurchaseOrders.IndividualCash
 
 @{
-    ViewData["Title"] = "تفاصيل طلب التواصل";
+    ViewData["Title"] = "تفاصيل طلب الشراء";
     Layout = null;
 }
 
-<h1>تفاصيل طلب التواصل</h1>
+<h1>تفاصيل طلب الشراء</h1>
 
 <div>
     <hr />
@@ -23,22 +23,16 @@
             @Html.DisplayFor(model => model.Phone)
         </dd>
         <dt class="col-sm-2">
-            البريد الالكتروني
+            اسم السيارة
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Email)
+            @Html.DisplayFor(model => model.CarName)
         </dd>
         <dt class="col-sm-2">
-            عنوان الرسالة
+            السعر
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class="col-sm-2">
-            الرسالة:
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Massege)
+            @Html.DisplayFor(model => model.Price)
         </dd>
       
         <dt class="col-sm-2">

@@ -2,6 +2,7 @@
 using CMSCar.Areas.CPanel.DTOs;
 using CMSCar.Areas.CPanel.Models.Cars;
 using CMSCar.Areas.CPanel.Models.Contact;
+using CMSCar.Areas.CPanel.Models.PurchaseOrders;
 using CMSCar.Areas.CPanel.Models.SpecialOffers;
 using CMSCar.Areas.CPanel.Models.User;
 using CMSCar.Areas.CPanel.ViewModels;
@@ -41,6 +42,8 @@ namespace CMSCar.Helper
             CreateMap<BranchUpdateDTO, Branch>().ReverseMap();
             CreateMap <Car, CarVM>().ForMember(x => x.CreateAt, p =>
             p.MapFrom(m => m.CreatedAt.ToString("dd/MM/yyyy")));
+            CreateMap<IndividualCash, IndividualCashVM>().ForMember(x => x.CreateAt, p =>
+          p.MapFrom(m => m.CreatedAt.ToString("dd/MM/yyyy")));
         }
     }
 }
