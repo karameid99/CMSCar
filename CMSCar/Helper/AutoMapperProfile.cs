@@ -3,6 +3,8 @@ using CMSCar.Areas.CPanel.DTOs;
 using CMSCar.Areas.CPanel.Models.Cars;
 using CMSCar.Areas.CPanel.Models.Contact;
 using CMSCar.Areas.CPanel.Models.PurchaseOrders;
+using CMSCar.Areas.CPanel.Models.Questions;
+using CMSCar.Areas.CPanel.Models.Services;
 using CMSCar.Areas.CPanel.Models.SpecialOffers;
 using CMSCar.Areas.CPanel.Models.User;
 using CMSCar.Areas.CPanel.ViewModels;
@@ -40,10 +42,24 @@ namespace CMSCar.Helper
             p.MapFrom(m => m.CreatedAt.ToString("dd/MM/yyyy")));
             CreateMap<BranchDTO, Branch>();
             CreateMap<BranchUpdateDTO, Branch>().ReverseMap();
-            CreateMap <Car, CarVM>().ForMember(x => x.CreateAt, p =>
-            p.MapFrom(m => m.CreatedAt.ToString("dd/MM/yyyy")));
+            CreateMap<Car, CarVM>().ForMember(x => x.CreateAt, p =>
+           p.MapFrom(m => m.CreatedAt.ToString("dd/MM/yyyy")));
             CreateMap<IndividualCash, IndividualCashVM>().ForMember(x => x.CreateAt, p =>
+            p.MapFrom(m => m.CreatedAt.ToString("dd/MM/yyyy")));
+            CreateMap<CompanyCash, CashCompanyVM>().ForMember(x => x.CreateAt, p =>
+           p.MapFrom(m => m.CreatedAt.ToString("dd/MM/yyyy")));
+            CreateMap<IndividualFinance, IndividualFinanceVM>().ForMember(x => x.CreateAt, p =>
+           p.MapFrom(m => m.CreatedAt.ToString("dd/MM/yyyy")));
+            CreateMap<CompanyFinance, CompanyFinanceVM>().ForMember(x => x.CreateAt, p =>
           p.MapFrom(m => m.CreatedAt.ToString("dd/MM/yyyy")));
+
+            CreateMap<Question, QuestionVM>().ForMember(x => x.CreateAt, p =>
+           p.MapFrom(m => m.CreatedAt.ToString("dd/MM/yyyy")));
+            CreateMap<QuestionDTO, Question>().ReverseMap();
+
+            CreateMap<Service, ServiceVM>().ForMember(x => x.CreateAt, p =>
+          p.MapFrom(m => m.CreatedAt.ToString("dd/MM/yyyy")));
+            CreateMap<ServiceDTO, Service>().ReverseMap();
         }
     }
 }

@@ -1,0 +1,88 @@
+﻿@model CMSCar.Areas.CPanel.Models.PurchaseOrders.CompanyFinance
+
+@{
+    ViewData["Title"] = "تفاصيل طلب الشراء";
+    Layout = null;
+}
+
+<h1>تفاصيل طلب الشراء</h1>
+
+<div>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <dl class="row">
+                <dt class="col-sm-4">
+                    إسم الشركة
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.NameCompany)
+                </dd>
+                <dt class="col-sm-4">
+                    رقم الهاتف
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Phone)
+                </dd>
+                <dt class="col-sm-4">
+                     البريد الالكتروني
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+                <dt class="col-sm-4">
+                     اسم الشخص المسؤول بالشركة
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.NamePerson)
+                </dd>
+
+                <dt class="col-sm-4">
+                    تاريخ الارسال 
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.CreatedAt)
+                </dd>
+            </dl>
+        </div>
+        <div class="col-md-6">
+            <dl class="row">
+                <dt class="col-sm-4">
+                    المدينة
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.City)
+                </dd>
+                <dt class="col-sm-4">
+                    نشاط الشركة
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.CompanyActivity)
+                </dd>
+                <dt class="col-sm-4">
+                    عمر الشركة
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.CompanyAge)
+                </dd>
+                <dt class="col-sm-4">
+                    البنك
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Bank)
+                </dd>
+                <dt class="col-sm-4">
+                    السيارات المطلوبة
+                </dt>
+                <dd class="col-sm-8">
+
+                    @foreach (var item in Model.carOrders)
+                    {
+                        <p> السيارة  @item.NameCar || العدد  @item.Count</p>
+                    }
+
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+﻿@model QuestionDTO
+@{
+    ViewData["Title"] = "تعديل سؤال ";
+    Layout = null;
+}
+
+<form asp-action="Edit" method="post" class="ajaxForm" tname="#dataTableId">
+    <input asp-for="Id" type="hidden" class="form-control" />
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="QuestionAr"></label>
+                <input asp-for="QuestionAr" class="form-control" />
+                <span asp-validation-for="QuestionAr" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="QuestionEn"></label>
+                <input asp-for="QuestionEn" class="form-control" />
+                <span asp-validation-for="QuestionEn" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="p-3 mb-2 text-white" style="background-color:crimson">
+                الإجابة بالعربية
+            </div>
+            <span asp-validation-for="AnswerAr" class="text-danger"></span>
+            <textarea class="summernote" asp-for="AnswerAr"></textarea>
+        </div>
+        <div class="col-md-6">
+            <div class="p-3 mb-2 text-white" style="background-color:crimson">
+                الإجابة بالانجليزية
+            </div>
+            <span asp-validation-for="AnswerEn" class="text-danger"></span>
+            <textarea class="summernoteEN" asp-for="AnswerEn"></textarea>
+
+        </div>
+
+    </div>
+
+    <hr />
+    <div class="form-group">
+        <input type="submit" value="حفظ" class="btn btn-primary" />
+        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">الغاء</button>
+    </div>
+</form>
+<script>
+    PageLoadActions();
+</script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+<script>
+    $('.summernote').summernote({
+        placeholder: 'ادخل المحتوى  ...',
+        tabsize: 1,
+        height: 150
+    });
+</script>
+<script>
+    $('.summernoteEN').summernote({
+        placeholder: 'ادخل المحتوى باللغة الانجليزية  ...',
+        tabsize: 1,
+        height: 150
+    });
+</script>

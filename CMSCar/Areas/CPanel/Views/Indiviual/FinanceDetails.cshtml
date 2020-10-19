@@ -1,0 +1,114 @@
+﻿@model CMSCar.Areas.CPanel.Models.PurchaseOrders.IndividualFinance
+
+@{
+    ViewData["Title"] = "تفاصيل طلب الشراء";
+    Layout = null;
+}
+
+<h1>تفاصيل طلب الشراء</h1>
+
+<div>
+    <hr />
+        <div class="row">
+        <div class="col-md-6">
+            <dl class="row">
+                <dt class="col-sm-4">
+                    إسم المرسل:
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt class="col-sm-4">
+                    رقم الهاتف:
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Phone)
+                </dd>
+                <dt class="col-sm-4">
+                    اسم السيارة
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.CarName)
+                </dd>
+                <dt class="col-sm-4">
+                    السعر
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
+                <dt class="col-sm-4">
+                    الراتب في الصراف:
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Salary)
+                </dd>
+                <dt class="col-sm-4">
+                    اجمالي التزامات :
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Commitment)
+                </dd>
+                <dt class="col-sm-4">
+                    هل يوجد قرض عقاري؟
+                </dt>
+                <dd class="col-sm-8">
+                    @if (Model.Loan)
+                    {
+                        <button type="button" disabled class="btn btn-success rounded">يوجد</button>
+                    }
+                    else
+                    {
+                        <button type="button" disabled class="btn btn-danger rounded">لا يوجد</button>
+                    }
+                </dd>        
+                </dl>
+        </div>
+        <div class="col-md-6">
+            <dl class="row">
+                <dt class="col-sm-4">
+                    الدفعة الاولى :
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.FirstPay)
+                </dd>
+                <dt class="col-sm-4">
+                    الدفعة الاخيرة
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.LastPay)
+                </dd>
+                <dt class="col-sm-4">
+                    المدينة :
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.City)
+                </dd>
+                <dt class="col-sm-4">
+                    قطاع العمل :
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.WorkSector)
+                </dd>
+                <dt class="col-sm-4">
+                    الراتب على اي بنك :
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Bank)
+                </dd>
+                <dt class="col-sm-4">
+                    حالة رخصة القيادة :
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.licenseStatus)
+                </dd>
+                <dt class="col-sm-4">
+                    تاريخ الارسال
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.CreatedAt)
+                </dd>
+            </dl>
+        </div>
+        </div>
+</div>
