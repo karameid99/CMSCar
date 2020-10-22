@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using CMSCar.Areas.CPanel.Models.Cars;
 using CMSCar.Areas.CPanel.Models.Contact;
+using CMSCar.Areas.CPanel.Models.FundingBodies;
 using CMSCar.Areas.CPanel.Models.Home;
+using CMSCar.Areas.CPanel.Models.Mails;
 using CMSCar.Areas.CPanel.Models.PurchaseOrders;
 using CMSCar.Areas.CPanel.Models.Questions;
 using CMSCar.Areas.CPanel.Models.Services;
@@ -57,6 +59,7 @@ namespace CMSCar.Data
         #endregion
         #region Services
         public DbSet<Service> Service { get; set; }
+        public DbSet<ServiceRecipient> ServiceRecipient { get; set; }
         #endregion
         #region Settings
         public DbSet<Information> Information { get; set; }
@@ -70,6 +73,11 @@ namespace CMSCar.Data
         #region Home
         public DbSet<FininceSide> FininceSide { get; set; }
         #endregion
-
+        #region Mail
+        public DbSet<Mail> Mail { get; set; }
+        #endregion
+        #region WhyUs
+        public DbSet<WhyUs> WhyUs { get; set; }
+        #endregion
     }
 }

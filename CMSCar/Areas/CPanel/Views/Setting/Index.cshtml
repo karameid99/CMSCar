@@ -1,0 +1,166 @@
+﻿@model CMSCar.Areas.CPanel.Models.Settings.Information
+@{
+    ViewData["Title"] = "معلومات اساسية";
+}
+
+@section Css{
+    <style>
+        td {
+            padding: 8px 1px 8px 1px !important;
+            font-size: 14px !important;
+        }
+
+        th {
+            font-weight: bold;
+            font-size: medium;
+        }
+
+        td a {
+            margin-left: 5px !important;
+        }
+
+        .m-portlet__body {
+            padding-top: 0px !important;
+        }
+
+        .dt-buttons {
+            margin-top: 12px
+        }
+    </style>
+}
+
+@if (ViewBag.EditStatus != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" style="background-color:#68dc39;border:none" role="alert">
+        <strong style="font-size:15px">@ViewBag.EditStatus</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"><i class="fa fa-user"></i></span>
+        </button>
+    </div>
+}
+<div class="m-portlet m-portlet--mobile">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                    <span style="color: #ebebeb"></span>معلومات عامة عن الموقع
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="m-portlet__body">
+        <br />
+        <form asp-action="Index" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="control-label">رابط الفيسبوك</label>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-facebook"></i></span>
+                        </div>
+                        <input class="form-control" asp-for="FacebookUrl" autocomplete="on">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label class="control-label">رابط تويتر</label>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-twitter"></i></span>
+                        </div>
+                        <input class="form-control" asp-for="TwitterUrl" autocomplete="on">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="control-label">رابط اليوتيوب</label>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-youtube"></i></span>
+                        </div>
+                        <input class="form-control" asp-for="YoutubeUrl" autocomplete="on">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label class="control-label">رابط الانستقرام</label>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-instagram"></i></span>
+                        </div>
+                        <input class="form-control" asp-for="InstagramUrl" autocomplete="on">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="control-label">رابط ليندك ان</label>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-linkedin"></i></span>
+                        </div>
+                        <input class="form-control" asp-for="LinkedInUrl" autocomplete="on">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label class="control-label">رابط سناب شات</label>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-snapchat"></i></span>
+                        </div>
+                        <input class="form-control" asp-for="SnapchatUrl" autocomplete="on">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="control-label">رقم الهاتف</label>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                        </div>
+                        <input class="form-control" asp-for="PhoneNumber" autocomplete="on">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label class="control-label">رقم الواتساب</label>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-whatsapp"></i></span>
+                        </div>
+                        <input class="form-control" asp-for="WhatsappNumber" autocomplete="on">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="control-label">شعار الموقع</label>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-images"></i></span>
+                        </div>
+                        <input type="file" class="form-control" name="Image" autocomplete="on">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label class="control-label">الشعار المصغر</label>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-image"></i></span>
+                        </div>
+                        <input  type="file" class="form-control" name="SmallImage" autocomplete="on">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">حفظ</button>
+                <a href="/" class="btn btn-default waves-effect">رجوع</a>
+            </div>
+        </form>
+
+    </div>
+</div>
+@section Scripts{
+}

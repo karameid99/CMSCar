@@ -1,0 +1,130 @@
+﻿@model CMSCar.Areas.CPanel.Models.Settings.Titles
+@{
+    ViewData["Title"] = "عناوين اساسية";
+}
+
+@section Css{
+    <style>
+        td {
+            padding: 8px 1px 8px 1px !important;
+            font-size: 14px !important;
+        }
+
+        th {
+            font-weight: bold;
+            font-size: medium;
+        }
+
+        td a {
+            margin-left: 5px !important;
+        }
+
+        .m-portlet__body {
+            padding-top: 0px !important;
+        }
+
+        .dt-buttons {
+            margin-top: 12px
+        }
+    </style>
+}
+
+@if (ViewBag.EditStatus != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" style="background-color:#68dc39;border:none" role="alert">
+        <strong style="font-size:15px">@ViewBag.EditStatus</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"><i class="fa fa-user"></i></span>
+        </button>
+    </div>
+}
+<div class="m-portlet m-portlet--mobile">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                    <span style="color: #ebebeb"></span>عناوين داخل  الموقع
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="m-portlet__body">
+        <br />
+        <form asp-action="TitlesIndex" method="post">
+            <input type="hidden" asp-for="Id" />
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="p-3 mb-2 text-white" style="background-color:crimson">
+                        لماذا نحن بالعربية
+                    </div>
+                    <span asp-validation-for="WhyUSAr" class="text-danger"></span>
+                    <textarea class="summernote" asp-for="WhyUSAr"></textarea>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 mb-2 text-white" style="background-color:crimson">
+                        لماذا نحن بالانجليزية
+                    </div>
+                    <span asp-validation-for="WhyUSEn" class="text-danger"></span>
+                    <textarea class="summernoteEN" asp-for="WhyUSEn"></textarea>
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="p-3 mb-2 text-white" style="background-color:crimson">
+                        نبذة عن طلبات الشراء بالعربية
+                    </div>
+                    <span asp-validation-for="OrderAr" class="text-danger"></span>
+                    <textarea class="summernote" asp-for="OrderAr"></textarea>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 mb-2 text-white" style="background-color:crimson">
+                        نبذة عن طلبات الشراء بالانجليزية
+                    </div>
+                    <span asp-validation-for="OrderEn" class="text-danger"></span>
+                    <textarea class="summernoteEN" asp-for="OrderEn"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="p-3 mb-2 text-white" style="background-color:crimson">
+                        نبذة عن جهات التمويل بالعربية
+                    </div>
+                    <span asp-validation-for="OurPrice" class="text-danger"></span>
+                    <textarea class="summernote" asp-for="OurPrice"></textarea>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 mb-2 text-white" style="background-color:crimson">
+                        نبذة عن جهات التمويل بالانجليزية
+                    </div>
+                    <span asp-validation-for="OurSponsers" class="text-danger"></span>
+                    <textarea class="summernoteEN" asp-for="OurSponsers"></textarea>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">حفظ</button>
+                <a href="/" class="btn btn-default waves-effect">رجوع</a>
+            </div>
+        </form>
+
+    </div>
+</div>
+@section Scripts{
+    <script>
+    $('.summernote').summernote({
+        placeholder: 'ادخل المحتوى  ...',
+        tabsize: 1,
+        height: 150
+    });
+    </script>
+    <script>
+    $('.summernoteEN').summernote({
+        placeholder: 'ادخل المحتوى باللغة الانجليزية  ...',
+        tabsize: 1,
+        height: 150
+    });
+    </script>
+}

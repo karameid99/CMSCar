@@ -8,6 +8,11 @@ namespace CMSCar.Helper
 {
     public static class ResultMessage
     {
+        public static string SendSuccessResult()
+        {
+            return JsonConvert.SerializeObject(new { status = 1, msg = "s: تمت عملية الارسال بنجاح", close = 1 });
+        }
+
         public static string AddSuccessResult()
         {
             return JsonConvert.SerializeObject(new { status = 1, msg = "s: تمت الاضافة بنجاح", close = 1 });

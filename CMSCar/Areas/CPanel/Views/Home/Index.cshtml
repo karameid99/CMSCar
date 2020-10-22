@@ -1,5 +1,165 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model HomeVM
 @{
+    ViewData["Title"] = "احصائيات النظام";
+    Layout = "~/Areas/CPanel/Views/Shared/_Layout.cshtml";
+}
+
+
+@section Css{
+    <style>
+        #m-body:hover {
+            background-color: #f6f6f6;
+            cursor: pointer;
+        }
+
+        a:link, a:visited {
+            background-color: none;
+            color: #2d2d2d;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        a:hover, a:active {
+            color: #2726a3;
+        }
+    </style>
+}
+
+<div class="p-3 mb-2 bg-primary text-white" style="font-size: 20px; background-color: #271919 ">احصائيات عامة للنظام</div>
+<br />
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <!--begin::Portlet-->
+        <div class="m-portlet">
+            <div class="card text-center">
+                <a class="m-nav__link" href="/CPanel/Car/Index">
+                    <div class="card-header" id="m-body">
+                        <span class="m-portlet__head-icon">
+                            <i class="fa fa-user"></i>
+                        </span>
+                        <b>السيارات</b>
+                    </div>
+                </a>
+                <div class="card-body" style="height:100px">
+                    <h1 class="card-title text-success"><b>@Model.CarCount</b></h1>
+                    <p class="card-subtitle" style="font-size:12px"></p>
+                    <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-4">
+                            <h4 class="card-title text-success"><b></b></h4>
+                            <p class="card-subtitle" style="font-size:12px"></p>
+                        </div>
+                        <div class="col-md-4">
+                            <h4 class="card-title text-warning"><b></b></h4>
+                            <p class="card-subtitle" style="font-size:12px"></p>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <!--begin::Portlet-->
+        <div class="m-portlet">
+            <div class="card text-center">
+                <a class="m-nav__link" href="/CPanel/User/Index">
+                    <div class="card-header" id="m-body">
+                        <span class="m-portlet__head-icon">
+                            <i class="fa fa-users"></i>
+                        </span>
+                        <b>المستخدمين</b>
+                    </div>
+                </a>
+                <div class="card-body" style="height:100px">
+                    <h1 class="card-title text-dark"><b>@Model.UserCount</b></h1>
+                    <p class="card-subtitle" style="font-size:12px"></p>
+                    <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-4">
+                            <h4 class="card-title text-success"><b></b></h4>
+                            <p class="card-subtitle" style="font-size:12px"></p>
+                        </div>
+                        <div class="col-md-4">
+                            <h4 class="card-title text-warning"><b></b></h4>
+                            <p class="card-subtitle" style="font-size:12px"></p>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <!--begin::Portlet-->
+        <div class="m-portlet">
+            <div class="card text-center">
+                <a class="m-nav__link" href="/CPanel/CallUs/Index">
+                    <div class="card-header" id="m-body">
+                        <span class="m-portlet__head-icon">
+                            <i class="fa fa-calendar-alt"></i>
+                        </span>
+                        <b>طلبات التواصل</b>
+                    </div>
+                </a>
+                <div class="card-body" style="height:100px">
+                    <h1 class="card-title text-dark"><b>@Model.CallUsCount</b></h1>
+                    <p class="card-subtitle" style="font-size:12px"></p>
+                    <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-4">
+                            <h4 class="card-title text-success"><b></b></h4>
+                            <p class="card-subtitle" style="font-size:12px"></p>
+                        </div>
+                        <div class="col-md-4">
+                            <h4 class="card-title text-warning"><b></b></h4>
+                            <p class="card-subtitle" style="font-size:12px"></p>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <!--begin::Portlet-->
+        <div class="m-portlet">
+            <div class="card text-center">
+                <a class="m-nav__link" href="/CPanel/Order/Index">
+                    <div class="card-header" id="m-body">
+                        <span class="m-portlet__head-icon">
+                            <i class="fa fa-user"></i>
+                        </span>
+                        <b>طلبات الشراء</b>
+                    </div>
+                </a>
+                <div class="card-body" style="height:100px">
+                    <h1 class="card-title text-dark"><b>@Model.OrderCount</b></h1>
+                    <p class="card-subtitle" style="font-size:12px"></p>
+                    <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-4">
+                            <h4 class="card-title text-success"><b></b></h4>
+                            <p class="card-subtitle" style="font-size:12px"></p>
+                        </div>
+                        <div class="col-md-4">
+                            <h4 class="card-title text-warning"><b></b></h4>
+                            <p class="card-subtitle" style="font-size:12px"></p>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
 }

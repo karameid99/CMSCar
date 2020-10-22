@@ -1,0 +1,27 @@
+﻿@model CMSCar.Areas.CPanel.Models.Mails.Mail
+
+@{
+    ViewData["Title"] = "تعديل بريد ";
+    Layout = null;
+}
+
+<form asp-action="Create" method="post" class="ajaxForm" tname="#dataTableId">
+    <div class="col-md-12">
+        <div class="form-group">
+            <label asp-for="Email">البريد الالكتروني</label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+    <hr />
+    <div class="form-group">
+        <input type="submit" value="اضافة" class="btn btn-primary" />
+        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">الغاء</button>
+    </div>
+</form>
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+<script>
+    PageLoadActions();
+</script>

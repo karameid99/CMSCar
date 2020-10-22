@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "الخدمات";
+    ViewData["Title"] = "لماذا نحن ";
 }
 
 @section Css{
@@ -38,14 +38,14 @@
         <div class="m-portlet__head-caption">
             <div class="m-portlet__head-title">
                 <h3 class="m-portlet__head-text">
-                    <span style="color: #ebebeb"></span>فهرس الخدمات في النظام<small style="color : gray">عرض وتعديل بيانات الخدمات </small>
+                    <span style="color: #ebebeb"></span>فهرس وصف الخدمات في النظام<small style="color : gray">عرض وتعديل بيانات وصف الخدمات </small>
                 </h3>
             </div>
         </div>
         <div class="m-portlet__head-tools">
             <ul class="m-portlet__nav">
                 <li class="m-portlet__nav-item">
-                    <a href="~/CPanel/Service/Create" title="اضافة خدمة جديدة" class="PopUp m-btn--sm btn btn-success m-btn m-btn--custom m-btn--icon m-btn--pill">
+                    <a href="~/CPanel/WhyUs/Create" title="اضافة وصف جديد" class="PopUp m-btn--sm btn btn-success m-btn m-btn--custom m-btn--icon m-btn--pill">
                         <span>
                             <i class="fa fa-plus-square"></i>
                             <span style="font-size:14px">اضافة</span>
@@ -87,10 +87,10 @@
             <table class="table m-table table-bordered table-striped m-table--head-separator-success" id="dataTableId">
                 <thead align="center">
                     <tr>
-                        <th>اسم الخدمة بالعربية</th>
-                        <th>اسم الخدمة بالانجليزية</th>
-                        <th>سعر الخدمة </th>
-                        <th>قيمة الخصم </th>
+                        <th>#</th>
+                        <th> الاسم بالعربية</th>
+                        <th>الاسم  بالانجليزية</th>
+                        <th>الصورة </th>
                         <th>تاريخ الاضافة</th>
                         <th width="20%">العمليات</th>
                     </tr>
@@ -111,10 +111,13 @@
             });
             BindDataTable();
         });
+
         $(document).on("click", ".SearchBtn", function () {
             BindDataTable();
         });
+
         BindDataTable();
+
         function BindDataTable() {
             oTable = $('#dataTableId').dataTable(
                 {
@@ -125,6 +128,7 @@
                         , emptyTable: "لا يوجد بيانات لعرضها", info: "عرض _START_ الى _END_ من _TOTAL_ صف", infoEmpty: "لا يوجد نتائج لعرضها", infoFiltered: "(filtered1 من _MAX_ اجمالي صفوف)", lengthMenu: "_MENU_", search: "بحث", zeroRecords: "لا يوجد نتائج لعرضها",
                         paginate: { sFirst: "الاول", sLast: "الاخير", sNext: "التالي", sPrevious: "السابق" }
                     },
+
                     "dom":
                         "<'row'<'col-sm-12'tr>>" +
                         "<'row'<'col-sm-4'i><'col-sm-4 text-center'l><'col-sm-4'p>>",
@@ -141,24 +145,37 @@
                     //"bSort": false,
                     serverSide: true,
                     columns: [
-
+                        {
+                            "render": function (data, type, row) {
+                                var ss = "";
+                                ss += '<select data-id="' + row["id"] + '" id="' + row["id"] + '" class="selectOrder">';
+                                ss += '<option value="' + row["orderBy"] + '">' + row["orderBy"] + '</option>';
+                                for (var i = 1; i <= 3; i++) {
+                                    ss += '<option value="' + i + '">' + i + '</option>';
+                                }
+                                ss += '</select>';
+                                return ss;
+                            }
+                        },
                         { data: 'nameAr', name: 'nameAr' },
                         { data: 'nameEn', name: 'nameEn' },
-                        { data: 'priceBeforeDiscount', name: 'priceBeforeDiscount' },
-                        { data: 'priceAfterDiscount', name: 'priceAfterDiscount' },
-                        { data: 'createAt', name: 'createAt' },
+                        {
+                            "render": function (data, type, row) {
+                                return '<img class="img-fluit" width="40" src = "/Images/WhyUs/' + row["imagePath"] + '"/>';
+                            }
+                        }, { data: 'createAt', name: 'createAt' },
                         {
                             name: 'buttons', "render": function (data, type, row) {
                                 return ""
-                                    + "<a title='تعديل الخدمة' href='/CPanel/Service/Edit/" + row["id"] + "' class='PopUp btn btn-outline-primary btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='fa fa-edit'></i></a>"
-                                    + "<a title='حذف الخدمة' tname='#dataTableId' href='/CPanel/Service/Delete/" + row["id"] + "' class='Confirm  btn btn-outline-danger btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='flaticon-delete-1'></i></a>"
+                                    + "<a title='تعديل وصف الخدمة' href='/CPanel/WhyUs/Edit/" + row["id"] + "' class='PopUp btn btn-outline-primary btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='fa fa-edit'></i></a>"
+                                    + "<a title='حذف وصف الخدمة' tname='#dataTableId' href='/CPanel/WhyUs/Delete/" + row["id"] + "' class='Confirm  btn btn-outline-danger btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='flaticon-delete-1'></i></a>"
                             }
                         }
                     ],
                     ajax: {
                         type: "POST",
                         contentType: "application/json",
-                        url: '/CPanel/Service/AjaxData',
+                        url: '/CPanel/WhyUs/AjaxData',
                         data: function (d) {
                             d.SearchKey = ($("[name=SearchKey]").val());
                             return JSON.stringify(d);
@@ -166,6 +183,25 @@
                     }
                 });
         }
+    </script>
+    <script>
+
+    $(function () {
+        $(document).on("change", ".selectOrder", function () {
+            var id = $(this).data("id");
+            var value = ($('#' + id + ' option:selected').val());
+            var _path = "/CPanel/WhyUs/OrderWhyUs";
+            $.ajax({
+                url: _path,
+                data: { id: id, value: value },
+                type: "Get",
+                success: function (data) {
+                    ShowMessage(data.msg);
+                }
+            });
+        });
+    });
+
     </script>
 
 }

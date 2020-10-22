@@ -1,0 +1,162 @@
+﻿@model CMSCar.Areas.CPanel.Models.Settings.WhoWeAre
+@{
+    ViewData["Title"] = "معلومات اساسية";
+}
+
+@section Css{
+    <style>
+        td {
+            padding: 8px 1px 8px 1px !important;
+            font-size: 14px !important;
+        }
+
+        th {
+            font-weight: bold;
+            font-size: medium;
+        }
+
+        td a {
+            margin-left: 5px !important;
+        }
+
+        .m-portlet__body {
+            padding-top: 0px !important;
+        }
+
+        .dt-buttons {
+            margin-top: 12px
+        }
+    </style>
+}
+
+@if (ViewBag.EditStatus != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" style="background-color:#68dc39;border:none" role="alert">
+        <strong style="font-size:15px">@ViewBag.EditStatus</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"><i class="fa fa-user"></i></span>
+        </button>
+    </div>
+}
+<div class="m-portlet m-portlet--mobile">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                    <span style="color: #ebebeb"></span>عناوين داخل  الموقع
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="m-portlet__body">
+        <br />
+        <form asp-action="WhoWeAreIndex" method="post">
+            <input type="hidden" asp-for="Id" />
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="p-3 mb-2 text-white" style="background-color:crimson">
+                        من نحن بالعربية
+                    </div>
+                    <span asp-validation-for="WhoWeAreAr" class="text-danger"></span>
+                    <textarea class="summernote" asp-for="WhoWeAreAr"></textarea>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 mb-2 text-white" style="background-color:crimson">
+                        من نحن بالانجليزية
+                    </div>
+                    <span asp-validation-for="WhoWeAreEn" class="text-danger"></span>
+                    <textarea class="summernoteEN" asp-for="WhoWeAreEn"></textarea>
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="p-3 mb-2 text-white" style="background-color:crimson">
+                        الشروط والاحكام بالعربية
+                    </div>
+                    <span asp-validation-for="TermConditionAr" class="text-danger"></span>
+                    <textarea class="summernote" asp-for="TermConditionAr"></textarea>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 mb-2 text-white" style="background-color:crimson">
+                        الشروط والاحكام بالانجليزية
+                    </div>
+                    <span asp-validation-for="TermConditionEn" class="text-danger"></span>
+                    <textarea class="summernoteEN" asp-for="TermConditionEn"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="p-3 mb-2 text-white" style="background-color:crimson">
+                        سياسة الخصوصية بالعربية
+                    </div>
+                    <span asp-validation-for="policyAr" class="text-danger"></span>
+                    <textarea class="summernote" asp-for="policyAr"></textarea>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 mb-2 text-white" style="background-color:crimson">
+                        سياسة الخصوصية بالانجليزية
+                    </div>
+                    <span asp-validation-for="policyEn" class="text-danger"></span>
+                    <textarea class="summernoteEN" asp-for="policyEn"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="p-3 mb-2 text-white" style="background-color:crimson">
+                        رسالتنا بالعربية
+                    </div>
+                    <span asp-validation-for="OurMassegeAr" class="text-danger"></span>
+                    <textarea class="summernote" asp-for="OurMassegeAr"></textarea>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 mb-2 text-white" style="background-color:crimson">
+                        رسالتنا بالانجليزية
+                    </div>
+                    <span asp-validation-for="OurMassegeEn" class="text-danger"></span>
+                    <textarea class="summernoteEN" asp-for="OurMassegeEn"></textarea>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="p-3 mb-2 text-white" style="background-color:crimson">
+                        أهدافنا بالعربية
+                    </div>
+                    <span asp-validation-for="OurGoalsAr" class="text-danger"></span>
+                    <textarea class="summernote" asp-for="OurGoalsAr"></textarea>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 mb-2 text-white" style="background-color:crimson">
+                        أهدافنا بالانجليزية
+                    </div>
+                    <span asp-validation-for="OurGoalsEn" class="text-danger"></span>
+                    <textarea class="summernoteEN" asp-for="OurGoalsEn"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">حفظ</button>
+                <a href="/" class="btn btn-default waves-effect">رجوع</a>
+            </div>
+        </form>
+
+    </div>
+</div>
+@section Scripts{
+    <script>
+    $('.summernote').summernote({
+        placeholder: 'ادخل المحتوى  ...',
+        tabsize: 1,
+        height: 150
+    });
+    </script>
+    <script>
+    $('.summernoteEN').summernote({
+        placeholder: 'ادخل المحتوى باللغة الانجليزية  ...',
+        tabsize: 1,
+        height: 150
+    });
+    </script>
+}

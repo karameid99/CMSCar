@@ -375,6 +375,7 @@
                 <div id="m_ver_menu" class="m-aside-menu  m-aside-menu--skin-dark m-aside-menu--submenu-skin-dark " m-menu-vertical="1" m-menu-scrollable="0" m-menu-dropdown-timeout="500">
                     <ul class="m-menu__nav ">
                         <li class="m-menu__item " aria-haspopup="true" m-menu-link-redirect="1"><a href="/" class="m-menu__link "><span class="m-menu__item-here"></span><i class="m-menu__link-icon text-dark fa fa-backward"></i><span class="m-menu__link-text text-dark">الرجوع للرئيسية</span></a></li>
+                        <li class="m-menu__item " aria-haspopup="true" m-menu-link-redirect="1"><a href="~/CPanel/Home/Index" class="m-menu__link "><span class="m-menu__item-here"></span><i class="m-menu__link-icon text-dark fa fa-line-chart"></i><span class="m-menu__link-text text-dark"> الاحصائيات </span></a></li>
                         <li class="m-menu__item" aria-haspopup="true" m-menu-link-redirect="1"><a href="~/CPanel/User/Index" class="m-menu__link "><span class="m-menu__item-here"></span><i class="m-menu__link-icon text-dark fa fa-users"></i><span class="m-menu__link-text text-dark">المستخدمين</span></a></li>
 
                         <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
@@ -391,7 +392,18 @@
                         </li>
                         <li class="m-menu__item" aria-haspopup="true" m-menu-link-redirect="1"><a href="~/CPanel/Offer/Index" class="m-menu__link "><span class="m-menu__item-here"></span><i class="m-menu__link-icon text-dark fa fa-gift"></i><span class="m-menu__link-text text-dark">العروض الخاصة</span></a></li>
                         <li class="m-menu__item" aria-haspopup="true" m-menu-link-redirect="1"><a href="~/CPanel/Order/Index" class="m-menu__link "><span class="m-menu__item-here"></span><i class="m-menu__link-icon text-dark fa fa-first-order"></i><span class="m-menu__link-text text-dark">طلبات الشراء</span></a></li>
-                        <li class="m-menu__item" aria-haspopup="true" m-menu-link-redirect="1"><a href="~/CPanel/Service/Index" class="m-menu__link "><span class="m-menu__item-here"></span><i class="m-menu__link-icon text-dark fa fa-server"></i><span class="m-menu__link-text text-dark">الخدمات</span></a></li>
+                        <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
+                            <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                                <span class="m-menu__item-here"></span><i class="m-menu__link-icon text-dark fa fa-server"></i><span class="m-menu__link-text text-dark">الخدمات</span><i class="m-menu__ver-arrow la la-angle-right"></i>
+                            </a>
+                            <div class="m-menu__submenu">
+                                <span class="m-menu__arrow"></span>
+                                <ul class="m-menu__subnav">
+                                    <li class="m-menu__item " aria-haspopup="true"><a href="~/CPanel/Service/Index" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot text-dark"><span></span></i><span class="m-menu__link-text text-dark">كل الخدمات</span></a></li>
+                                    <li class="m-menu__item " aria-haspopup="true"><a href="~/CPanel/WhyUs/Index" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot text-dark"><span></span></i><span class="m-menu__link-text text-dark"> وصف الخدمات</span></a></li>
+                                </ul>
+                            </div>
+                        </li>
                         <li class="m-menu__item" aria-haspopup="true" m-menu-link-redirect="1"><a href="~/CPanel/Question/Index" class="m-menu__link "><span class="m-menu__item-here"></span><i class="m-menu__link-icon text-dark fa fa-question-circle"></i><span class="m-menu__link-text text-dark">الأسئلة الشائعة</span></a></li>
                         <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
                             <a href="javascript:;" class="m-menu__link m-menu__toggle">
@@ -405,6 +417,8 @@
                                 </ul>
                             </div>
                         </li>
+                        <li class="m-menu__item" aria-haspopup="true" m-menu-link-redirect="1"><a href="~/CPanel/FininceSide/Index" class="m-menu__link "><span class="m-menu__item-here"></span><i class="m-menu__link-icon text-dark fa fa-globe"></i><span class="m-menu__link-text text-dark"> جهات التمويل</span></a></li>
+
                         <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
                             <a href="javascript:;" class="m-menu__link m-menu__toggle">
                                 <span class="m-menu__item-here"></span><i class="m-menu__link-icon text-dark fa fa-cogs"></i><span class="m-menu__link-text text-dark">معلومات الموقع</span><i class="m-menu__ver-arrow la la-angle-right"></i>
@@ -412,12 +426,13 @@
                             <div class="m-menu__submenu">
                                 <span class="m-menu__arrow"></span>
                                 <ul class="m-menu__subnav">
-                                    <li class="m-menu__item " aria-haspopup="true"><a href="~/item.Url" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot text-dark"><span></span></i><span class="m-menu__link-text text-dark">معلوماتنا</span></a></li>
-                                    <li class="m-menu__item " aria-haspopup="true"><a href="~/item.Url" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot text-dark"><span></span></i><span class="m-menu__link-text text-dark">عناوين الرئيسية</span></a></li>
-                                    <li class="m-menu__item " aria-haspopup="true"><a href="~/item.Url" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot text-dark"><span></span></i><span class="m-menu__link-text text-dark">عناوين فرعية</span></a></li>
+                                    <li class="m-menu__item " aria-haspopup="true"><a href="~/CPanel/Setting/Index" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot text-dark"><span></span></i><span class="m-menu__link-text text-dark">معلوماتنا</span></a></li>
+                                    <li class="m-menu__item " aria-haspopup="true"><a href="~/CPanel/Setting/TitlesIndex" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot text-dark"><span></span></i><span class="m-menu__link-text text-dark">عناوين الرئيسية</span></a></li>
+                                    <li class="m-menu__item " aria-haspopup="true"><a href="~/CPanel/Setting/WhoWeAreIndex" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot text-dark"><span></span></i><span class="m-menu__link-text text-dark">عناوين فرعية</span></a></li>
                                 </ul>
                             </div>
                         </li>
+                        <li class="m-menu__item" aria-haspopup="true" m-menu-link-redirect="1"><a href="~/CPanel/Mail/Index" class="m-menu__link "><span class="m-menu__item-here"></span><i class="m-menu__link-icon text-dark fa fa-inbox"></i><span class="m-menu__link-text text-dark"> القائمة البريدية</span></a></li>
 
                     </ul>
                 </div>
