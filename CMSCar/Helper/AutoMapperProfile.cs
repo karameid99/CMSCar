@@ -10,6 +10,7 @@ using CMSCar.Areas.CPanel.Models.Services;
 using CMSCar.Areas.CPanel.Models.SpecialOffers;
 using CMSCar.Areas.CPanel.Models.User;
 using CMSCar.Areas.CPanel.ViewModels;
+using CMSCar.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -70,6 +71,9 @@ namespace CMSCar.Helper
             CreateMap<FininceSide, FininceSideVM>().ForMember(x => x.CreateAt, p =>
             p.MapFrom(m => m.CreatedAt.ToString("dd/MM/yyyy")));
             CreateMap<FininceSideDTO, FininceSide>().ReverseMap();
+
+            CreateMap<Car, CarShowVM>();
+
         }
     }
 }

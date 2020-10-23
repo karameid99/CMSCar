@@ -117,79 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="About Us" xml:space="preserve">
-    <value>About Us</value>
+  <data name="Car" xml:space="preserve">
+    <value>The latest cars</value>
   </data>
-  <data name="Build your project" xml:space="preserve">
-    <value>Do you want a successful project?</value>
+  <data name="Certified by funding agencies" xml:space="preserve">
+    <value>Certified by funding agencies</value>
   </data>
-  <data name="Contact Info" xml:space="preserve">
-    <value>Contact Info</value>
+  <data name="companies" xml:space="preserve">
+    <value>Companies</value>
   </data>
-  <data name="Contact Us" xml:space="preserve">
-    <value>Contact Us</value>
+  <data name="Individuals" xml:space="preserve">
+    <value>Individuals</value>
   </data>
-  <data name="ContactM" xml:space="preserve">
-    <value>We are very happy if you contact us. If you have any question or any inquiry, do not hesitate to contact us. We will answer all your questions.</value>
+  <data name="Order" xml:space="preserve">
+    <value>purchase order</value>
   </data>
-  <data name="Corporate Office" xml:space="preserve">
-    <value>Corporate Office</value>
+  <data name="Our price is the best" xml:space="preserve">
+    <value>Our price is the best</value>
   </data>
-  <data name="Creative Team" xml:space="preserve">
-    <value>Creative Team</value>
+  <data name="TypeCar" xml:space="preserve">
+    <value>Authorized distributor for all types of cars</value>
   </data>
-  <data name="Email Address" xml:space="preserve">
-    <value>Email Address</value>
-  </data>
-  <data name="error" xml:space="preserve">
-    <value>Your message has not been sent</value>
-  </data>
-  <data name="Full Name" xml:space="preserve">
-    <value>Full Name</value>
-  </data>
-  <data name="Just a moment" xml:space="preserve">
-    <value>Just a moment</value>
-  </data>
-  <data name="Latest News" xml:space="preserve">
-    <value>Latest News</value>
-  </data>
-  <data name="Learn More" xml:space="preserve">
-    <value>Learn More</value>
-  </data>
-  <data name="OederBtn" xml:space="preserve">
-    <value>Order Now!</value>
-  </data>
-  <data name="Our Latest Project" xml:space="preserve">
-    <value>Our Latest Project</value>
-  </data>
-  <data name="Send Message" xml:space="preserve">
-    <value>Send Message</value>
-  </data>
-  <data name="Services" xml:space="preserve">
-    <value>Services</value>
-  </data>
-  <data name="Subject" xml:space="preserve">
-    <value>Subject</value>
-  </data>
-  <data name="Subscribe to our newsletter" xml:space="preserve">
-    <value>Subscribe to our newsletter</value>
-  </data>
-  <data name="succes" xml:space="preserve">
-    <value>Your message was sent successfully</value>
-  </data>
-  <data name="Testimonials" xml:space="preserve">
-    <value>Testimonials</value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value>Lancer Blue</value>
-  </data>
-  <data name="View More" xml:space="preserve">
-    <value>View More</value>
-  </data>
-  <data name="What client says about us?" xml:space="preserve">
-    <value>What client says about us?</value>
-  </data>
-  <data name="Your Message" xml:space="preserve">
-    <value>Your Message</value>
+  <data name="WhyUs" xml:space="preserve">
+    <value>Why Emirates company</value>
   </data>
 </root>

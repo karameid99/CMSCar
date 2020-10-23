@@ -6,28 +6,65 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CMSCar.Models;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Http;
+using CMSCar.Data;
+using CMSCar.Models.ViewModels;
+using AutoMapper;
+using CMSCar.Areas.CPanel.Models.Settings;
 
 namespace CMSCar.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IMapper _Mapper;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ApplicationDbContext context , ILogger<HomeController> logger , IMapper mapper) : base(context)
         {
             _logger = logger;
+            _Mapper = mapper;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var Titles = _Context.Titles.FirstOrDefault();
+            var defaultObj = new Titles
+            {
+                WhyUSAr = " ",
+                WhyUSEn = " ",
+                OrderAr = " ",
+                OrderEn = " ",
+                OurPrice = " ",
+                OurSponsers = " ",
+                          };
+            ViewData["Titles"] = Titles == null ? defaultObj : Titles;
+            IndexVM index = new IndexVM();
+            index.Cars = _Mapper.Map<List<CarShowVM>>(_Context.Car.ToList());
+            return View(index);
         }
 
         public IActionResult Privacy()
         {
             return View();
         }
+        [HttpPost]
+        public IActionResult SetLanguage(string culture, string returnUrl)
+        {
+            Response.Cookies.Append(
+                CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+                new CookieOptions
+                {
+                    Expires = DateTimeOffset.UtcNow.AddYears(1),
+                    IsEssential = true,  //critical settings to apply new culture
+                    Path = "/",
+                    HttpOnly = false,
+                }
+            );
 
+            return LocalRedirect(returnUrl);
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

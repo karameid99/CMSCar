@@ -1,93 +1,36 @@
-﻿<!--@{
+﻿@model CMSCar.Models.ViewModels.IndexVM
+
+@{
     ViewData["Title"] = "Home Page";
 }
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Options
+
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+@{
+    string x = System.Globalization.CultureInfo.CurrentCulture.Name;
+}
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cultureItems = LocOptions.Value.SupportedUICultures
+        .Select(c => new SelectListItem { Value = c.Name, Text = c.DisplayName })
+        .ToList();
+}
+
 <div class="clearfix"></div>
-<div id="getFixed">
-    <section class="redSep">
-        <div class="container">
-            <div class="fixedLogo">
-                <img src="~/web/img/saleh_logo_icon.svg" width="50">
-            </div>
-            <nav class="inFixed">
-                <ul>
-                    <li><a class=" active  " href="~/ar">الرئيسية</a></li>
-                    <li class="have-child">
-                        <a class="" href="javascript:void(0);">من نحن<i class="fas fa-chevron-left"></i></a>
-                        <ul>
-                            <li><a class="" href="~/ar/about">عن الشركة</a></li>
-                            <li><a class="" href="~/ar/whySaleh">ليش صالح</a></li>
-                        </ul>
-                    </li>
-                    <li><a class="" href="~/ar/brands">السيارات</a></li>
-                    <li class="have-child">
-                        <a class="" href="javascript:void(0);">العروض<i class="fas fa-chevron-left"></i></a>
-                        <ul>
-                            <li><a class="" href="~/ar/cars/offers">الخصومات</a></li>
-                            <li><a class="" href="~/ar/offers">العروض الخاصة</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="have-child">
-                        <a class="" href="javascript:void(0);">طلب شراء <i class="fas fa-chevron-left"></i></a>
-                        <ul>
-                            <li><a class="" href="~/ar/buy_individual">افراد</a></li>
-                            <li><a class="" href="~/ar/buy_company">شركات</a></li>
-                        </ul>
-                    </li>
-                    <li><a class="" href="~/ar/common_questions">الاسئلة الشائعة</a></li>
-                    <li><a class="" href="~/ar/contact">اتصل بنا</a></li>
-                </ul>
-            </nav>
-
-            <div class="contactBtns">
-
-                <a href="javascript:void(0);" data-type="search" class="displayPopup searchy"><i class="fa fa-search fa-lg"></i> <span> </span></a>
-                <a href="javascript:void(0);" data-type="share" class="displayPopup"><i class="fas fa-share-alt"></i> <span> </span></a>
-
-                <a href="tel:920022122" class=""><i class="fas fa-phone"></i> <span> </span></a>
-                <a href="https://wa.me/966538665500" data-type="whats" data-link="https://wa.me/966538665500" class="" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
-            </div>
-            <div id="form_call">
-                <p>أدخل رقم جوالك لنخدمك</p>
-                <form method="post" action="~/ar/savePhone">
-                    <input type="hidden" name="_token" value="UuKzCtXmVTK47dBcYS9hPkqhZQ5rGLfU2Y40yCw4">					<input type="hidden" name="type" id="phonenumber_type">
-                    <input type="text" name="phone" placeholder="اختياري">
-                    <button type="submit"><i class="fas fa-phone"></i></button>
-                </form>
-            </div>
-            <div id="social_btns_wraper">
-
-                <ul class="share-social"><li><a class="share-link share-twitter" href="https://twitter.com/intent/tweet?text=صالح للسيارات | الرئيسية&amp;url=~/ar&amp;via=salehcars" target="_blank"><i class="fab fa-twitter"></i></a></li><li><a class="share-link share-facebook" href="https://www.facebook.com/sharer/sharer.php?u=~/ar" target="_blank"><i class="fab fa-facebook-f"></i></a></li><li><a class="share-link share-whatsapp" href="whatsapp://send?text=صالح للسيارات | الرئيسية ~/ar" target="_blank"><i class="fab fa-whatsapp"></i></a></li><li><a class="share-link share-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=~/ar&amp;title=صالح للسيارات | الرئيسية" target="_blank"><i class="fab fa-linkedin-in"></i></a></li></ul>
-
-            </div>
-
-            <div id="searchOnFixed">
-                <div class="searchMobile_onFixed" id="searchMobile_onFixed">
-                    <form action="~/ar/search" method="GET">
-                        <input type="hidden" name="_token" value="UuKzCtXmVTK47dBcYS9hPkqhZQ5rGLfU2Y40yCw4">						<input type="text" name="search_text" id="toHeadSearch" class="toHeadSearch" placeholder="ابحث هنا ...">
-                        <input type="submit" class="toHeadBtn" value="بحث">
-                    </form>
-                    <a class="advancedSearch" id="advancedSearch_DK" href="#"><i class="fab fa-searchengin"></i> البحث المتقدم ... </a>
-                </div>
-            </div>
-
-
-        </div>
-
-    </section>
-</div>
 <div class="w-100">
     <div class="slider" style="max-width: 100%;">
         <link href="https://fonts.googleapis.com/css?family=Cairo:700%2C800%2C600%2C400" rel="stylesheet" property="stylesheet" type="text/css" media="all">
-        <div id="rev_slider_13_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-source="gallery" style="margin:0px auto;background:transparent;padding:0px;margin-top:0px;margin-bottom:0px;">-->
+        <div id="rev_slider_13_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-source="gallery" style="margin:0px auto;background:transparent;padding:0px;margin-top:0px;margin-bottom:0px;">
             <!-- START REVOLUTION SLIDER 5.4.8.1 fullwidth mode -->
-            <!--<div id="rev_slider_13_1" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.4.8.1">
-                
+            <div id="rev_slider_13_1" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.4.8.1">
+
                 <ul>
-                    <li data-index="rs-1" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-thumb="https://slider.salehcars.com/revslider/admin/assets/images/transparent.png" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">-->
+                    <li data-index="rs-1" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-thumb="https://slider.salehcars.com/revslider/admin/assets/images/transparent.png" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
                         <!-- MAIN IMAGE -->
-                        <!--<p>يوجد لدينا مجموعة كبيرة من السيارات</p>
                         <img src="https://i.pinimg.com/originals/e0/b6/19/e0b619bb4def29cc007fba6c9b74cf99.jpg" data-bgcolor='#fec400' style='background:#fec400' alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
                         <div class="tp-caption   tp-resizeme"
                              id="slide-126-layer-34"
@@ -95,25 +38,25 @@
                              data-y="['top','top','top','top']" data-voffset="['594','594','594','644']"
                              data-frames='[{"delay":100,"speed":700,"frame":"0","from":"x:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"x:[-100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
                              style="z-index: 17;  white-space: nowrap; font-size: 15px; line-height: 28px; font-weight: 400; color: #ffffff; letter-spacing: -1px;font-family:Cairo;"></div>
-                    </li>-->
+                    </li>
                     <!-- SLIDE  -->
-                <!--</ul>
+                </ul>
                 <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>
             </div>
-        </div>--><!-- END REVOLUTION SLIDER -->
-    <!--</div>
-</div>--><!--w-100 -->
-<!--<section class="filterHome">
+        </div><!-- END REVOLUTION SLIDER -->
+    </div>
+</div><!--w-100 -->
+<section class="filterHome">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <form class="form" action="~/ar/search" method="GET">
+                <form class="form" action="#" method="GET">
                     <div class="row">
                         <div class="col-md-9">
                             <div class="row">
-                                <div class="form-group col-md-3">-->
+                                <div class="form-group col-md-3">
                                     <!-- <label for="inputState">State</label> -->
-                                    <!--<select name="car_brand_id" id="inputState" class="form-control">
+                                    <select name="car_brand_id" id="inputState" class="form-control">
                                         <option value="" selected>اختر الماركه</option>
                                     </select>
                                 </div>
@@ -135,71 +78,58 @@
                                     <input type="text" name="search_text" class="form-control" id="search-box" placeholder="ابحث هنا ...">
 
                                 </div>
-                            </div>--> <!--row inside -->
-                        <!--</div>--> <!-- col9 -->
+                            </div> <!--row inside -->
+                        </div> <!-- col9 -->
 
 
 
-                        <!--<button type="submit" class="btn btn-primary col-md-3">بحث</button>
-                    </div>--> <!--row -->
-                <!--</form>
+                        <button type="submit" class="btn btn-primary col-md-3">بحث</button>
+                    </div> <!--row -->
+                </form>
             </div>
             <ul class="results">
             </ul>
-        </div>--> <!--row -->
-    <!--</div>-->  <!-- container -->
-<!--</section>
+        </div> <!--row -->
+    </div>  <!-- container -->
+</section>
 <section class="whySaleh">
     <div class="w-100">
         <div class="container">
             <div class="sec-head">
-                <h1> ليش صالح</h1>
+                <h1>@Localizer["WhyUs"]</h1>
             </div>
-            <p>الإجابة بكل إختصار : أقل الأسعار ، أفضل باقة لخدمات مابعد البيع,أكبر تنوع للسيارات في مكان واحد ، جميع البنوك وشركات التمويل معتمدة لدينا ، لذلك صالح هو ( خيارك الأول ومستشارك الأفضل ) لشراء السيارة.</p>
+            @if (x == "ar-EG")
+            {
+                <p>@Html.Raw(ViewBag.Titles.WhyUSAr)</p>
+
+            }
+            else
+            {
+                <p>@Html.Raw(ViewBag.Titles.WhyUSEn)</p>
+            }
         </div>
     </div>
 </section>
 <section class="services">
     <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-xs-12">
-                <div class="new_service">
-                    <img class="new_service_bg" src="~/storage/whysaleh/5e4a50633eb551581928547.svg">
-                    <div class="new_service_wrap">
-                        <a class="new_service_link" href="~/whySaleh#whySaleh_2"> <h2 class="new_service_head">سعرنا هو الأفضل</h2></a>
-                        <div class="new_service_text">
-                            <p>
-                                الصفقات الكبرى المبرمة مع الوكلاء تمنحنا ميزة الدعم الأكبر لتقديم أفضل سعر ممكن لعملائنا مع كامل المزايا والخدمات الم...
-                            </p>
-
-                        </div>
-
-                    </div>
-                    <a href="~/whySaleh#whySaleh_2" class="new_service_more"> المزيد <i class="fa fa-caret-left" aria-hidden="true"></i></a>
+        <div id="Div_WhyUs" class="row">
 
 
-                </div>
-
-            </div>
-        </div>--><!-- row -->
-    <!--</div>--> <!-- container -->
-<!--</section>
+        </div><!-- row -->
+    </div> <!-- container -->
+</section>
 <div class="clearfix"></div>
 <section class="brands">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="sec-head">
-                    <h1>موزع معتمد لجميع انواع السيارات</h1>
+                    <h1>@Localizer["TypeCar"]</h1>
                 </div>
                 <p></p>
-                <div class="row d-flex justify-content-center">
-                    <div class="col col-md-2 col-6 brand">
-                        <a href="~/ar/cars/brands/7/%D9%87%D9%8A%D9%88%D9%86%D8%AF%D8%A7%D9%8A"><img src="~/storage/brands/5caf141da42881554977821.svg">هيونداي</a>
-                    </div>
-                    <div class="col col-md-2 col-6 brand">
-                        <a href="~/ar/cars/brands/36/GAC"><img src="~/storage/brands/5f5a446eed0c71599751278.png">GAC</a>
-                    </div>
+                <div id="Div_TypeCar" class="row d-flex justify-content-center">
+
+
                 </div>
             </div>
         </div>
@@ -210,44 +140,68 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="sec-head">
-                    <h1> أحدث السيارات</h1>
+                    <h1>@Localizer["Car"]</h1>
                 </div>
             </div>
             <div class="col-md-12">
-                <div class="owl-carousel">
-                    <div class="car">
-                        <a data-toggle="tooltip" data-placement="left" title="اضف للمفضلة" href="   ~/ar/favorite/503  " class="addToFavLink  ">
-                            <i class="far fa-heart"></i>
-                        </a>
-                        <a href="~/ar/car/503/GAC-GS5-GE-2021">
-                            <div class="img_wrap">
-                                <img src="https://salehcars.com/storage/products/main_5f7090de9c55c1601212638.png" alt="GAC GS5 GE 2021">
-                            </div>
-                            <h3> GAC GS5 GE 2021 </h3>
-                            <hr>
-                            <ul class="shortDesc">
-                                <li>سعة المحرك : 1.5 لتر</li>
-                                <li>
-                                    تنجيد المقاعد :
-                                    مخمل
-                                </li>
-                                <li>
-                                    نوع الجر :
-                                    دفع امامي
+                <div id="Div_Car" class="owl-carousel">
+                    @if (x == "ar-EG")
+                    {
+                        @foreach (var item in Model.Cars)
+                        {
+                            <div class="car">
+                                <a data-toggle="tooltip" data-placement="left" title="اضف للمفضلة" href="#" class="addToFavLink  ">
+                                    <i class="far fa-heart"></i>
+                                </a>
+                                <a href="#">
+                                    <div class="img_wrap">
+                                        <img src="/Images/Car/@item.ShowImage" alt="">
+                                    </div>
+                                    <h3>@item.NameAr</h3>
+                                    <hr>
+                                    <ul class="shortDesc">
+                                        <li>@Html.Raw(item.DescriptionAr)</li>
+                                        <li class="car_placeHolder"></li>
+                                    </ul>
+                                    <div class="car_price ">
+                                        السعر :  @item.PriceBeforeDiscount ر.س
+                                    </div>
+                                </a>
+                            </div> <!-- car -->
+                        }
 
-                                </li>
-                                <li class="car_placeHolder"></li>
-                            </ul>
-                            <div class="car_price ">
-                                السعر :  74,500 ر.س
-                            </div>
-                        </a>
-                    </div>
+                    }
+                    else
+                    {
+                        @foreach (var item in Model.Cars)
+                        {
+                            <div class="car">
+                                <a data-toggle="tooltip" data-placement="left" title="اضف للمفضلة" href="#" class="addToFavLink  ">
+                                    <i class="far fa-heart"></i>
+                                </a>
+                                <a href="#">
+                                    <div class="img_wrap">
+                                        <img src="/Images/Car/@item.ShowImage" alt="">
+                                    </div>
+                                    <h3>@item.NameEn</h3>
+                                    <hr>
+                                    <ul class="shortDesc">
+                                        <li>@Html.Raw(item.DescriptionEn)</li>
+                                        <li class="car_placeHolder"></li>
+                                    </ul>
+                                    <div class="car_price ">
+                                        Price :  @item.PriceBeforeDiscount R.S
+                                    </div>
+                                </a>
+                            </div> <!-- car -->
+                        }
+
+                    }
                 </div>
-                </div> 
-        </div>--> <!-- row big -->
-    <!--</div>--> <!-- container -->
-<!--</section>
+            </div>
+        </div> <!-- row big -->
+    </div> <!-- container -->
+</section>
 
 <section class="drive_quote">
 
@@ -262,14 +216,25 @@
 
                         <div class="sec-head">
                             <h1>
-                                طلب شراء
+                                @Localizer["Order"]
                             </h1>
                         </div>
-                        <div class="buy_car_text">
-                            إرفق البيانات المطلوبة وسنقوم بمساعدتك فورا" لشراء السيارة التي ترغب بها, بأقل نسبة مرابحة وأفضل عرض تمويلي من مختلف البنوك وشركات التمويل المعتمدة لدينا.
-                        </div>
-                        <a href="~/ar/buy_company" class="buy_car_home_btn">شركات</a>
-                        <a href="~/ar/buy_individual" class=" buy_car_home_btn">افراد</a>
+
+                        @if (x == "ar-EG")
+                        {
+                            <div class="buy_car_text">
+                                @Html.Raw(ViewBag.Titles.OrderAr)
+                            </div>
+
+                        }
+                        else
+                        {
+                            <div class="buy_car_text">
+                                @Html.Raw(ViewBag.Titles.OrderEn)
+                            </div>}
+
+                    <a href="~/ar/buy_company" class="buy_car_home_btn">@Localizer["Individuals"]</a>
+                    <a href="~/ar/buy_individual" class=" buy_car_home_btn">@Localizer["companies"]</a>
                     </div>
                     <div class="col-md-1"></div>
                 </div>
@@ -290,13 +255,39 @@
 
         <div class="col-md-12">
             <div class="sec-head">
-                <h2>سعرنا هو الأفضل</h2>
+                <h2>@Localizer["Our price is the best"]</h2>
             </div>
-            <p>الصفقات الكبرى المبرمة مع الوكلاء تمنحنا ميزة الدعم الأكبر لتقديم أفضل سعر ممكن لعملائنا مع كامل المزايا والخدمات الممكنة,لذلك أصبحنا موزع معتمد لأغلب العلامات التجارية في المملكة ,ونلنا ثقة جميع الوكلاء وأصبحنا الخيار الأول للعملاء عند الرغبة في شراء السيارات.</p>
+            @if (x == "ar-EG")
+            {
+                <p>@Html.Raw(ViewBag.Titles.OurPrice)</p>
+
+            }
+            else
+            {
+                <p>@Html.Raw(ViewBag.Titles.OurSponsers)</p>
+            }
         </div>
     </div>
 </div>
+<section class="allBanks">
+    <div class="row">
+        <div class="container">
+            <h2>@Localizer["Certified by funding agencies"]</h2>
+            <div id="GetBanks" class="row bankRow justify-content-center align-items-center">
+            </div>
+        </div>
+    </div>
+</section>
 @section Scripts{
+    @if (x == "ar-EG")
+    {
+        <script src="~/js/HomeAr.js"></script>
+
+    }
+    else
+    {
+        <script src="~/js/HomeEn.js"></script>
+    }
     <script>
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
@@ -423,4 +414,4 @@
             document.getElementsByTagName("head")[0].appendChild(htmlDiv.childNodes[0]);
         }
     </script>
-}-->
+}

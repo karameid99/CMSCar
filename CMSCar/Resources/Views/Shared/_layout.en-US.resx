@@ -117,34 +117,85 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="About" xml:space="preserve">
-    <value>About</value>
+  <data name="About Company" xml:space="preserve">
+    <value>About Company</value>
   </data>
-  <data name="Blog" xml:space="preserve">
-    <value>Blog</value>
+  <data name="Call Us" xml:space="preserve">
+    <value>Call Us</value>
   </data>
-  <data name="Contact" xml:space="preserve">
-    <value>Contact</value>
+  <data name="Cars" xml:space="preserve">
+    <value>Cars</value>
+  </data>
+  <data name="Companies" xml:space="preserve">
+    <value>Companies</value>
+  </data>
+  <data name="Conditions and terms" xml:space="preserve">
+    <value>Conditions and terms</value>
+  </data>
+  <data name="Contact information" xml:space="preserve">
+    <value>Contact information</value>
+  </data>
+  <data name="Contact Us" xml:space="preserve">
+    <value>Contact Us</value>
+  </data>
+  <data name="Discounts" xml:space="preserve">
+    <value>Discounts</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="FAQ" xml:space="preserve">
+    <value>FAQ</value>
+  </data>
+  <data name="Favorites" xml:space="preserve">
+    <value>Favorites</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Home Page</value>
   </data>
+  <data name="Individuals" xml:space="preserve">
+    <value>Individuals</value>
+  </data>
   <data name="Lang" xml:space="preserve">
     <value>ar-EG</value>
   </data>
-  <data name="Portfolio" xml:space="preserve">
-    <value>Portfolio</value>
+  <data name="Law" xml:space="preserve">
+    <value>all rights are save</value>
   </data>
-  <data name="Save" xml:space="preserve">
-    <value>عربي</value>
+  <data name="LG" xml:space="preserve">
+    <value>English</value>
   </data>
-  <data name="Service" xml:space="preserve">
-    <value>Service</value>
+  <data name="Offers" xml:space="preserve">
+    <value>Offers</value>
   </data>
-  <data name="Team" xml:space="preserve">
-    <value>Team</value>
+  <data name="Our branches" xml:space="preserve">
+    <value>Our branches</value>
+  </data>
+  <data name="Privacy policy" xml:space="preserve">
+    <value>Privacy policy</value>
+  </data>
+  <data name="Purchase Order" xml:space="preserve">
+    <value>Purchase Order</value>
+  </data>
+  <data name="Services" xml:space="preserve">
+    <value>Services</value>
+  </data>
+  <data name="Specials" xml:space="preserve">
+    <value>Specials</value>
+  </data>
+  <data name="Subscribe" xml:space="preserve">
+    <value>Subscribe</value>
+  </data>
+  <data name="Subscribe to the newsletter" xml:space="preserve">
+    <value>Subscribe to the newsletter</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Lancer Blue</value>
+    <value>Emirates Motor Company</value>
+  </data>
+  <data name="Vision and mission" xml:space="preserve">
+    <value>Vision and mission</value>
+  </data>
+  <data name="Why Us" xml:space="preserve">
+    <value>Why Us</value>
   </data>
 </root>

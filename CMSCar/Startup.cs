@@ -149,43 +149,36 @@ namespace CMSCar
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
-
+            // Initialize Default DB 
             Data.DBInitialize.Initialize(app);
-            app.UseDeveloperExceptionPage();
-            app.UseDatabaseErrorPage();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseCookiePolicy();
 
             app.UseRouting();
             app.UseSession();
 
             app.UseAuthentication();
             app.UseAuthorization();
-
             //Start => Language - Configure
 
             var Options = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
             app.UseRequestLocalization(Options.Value);
 
             //End => Language - Configure
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                    name: "default",
-                   pattern: "{controller=Home}/{action=123}/{id?}");
+                   pattern: "{controller=Home}/{action=Index}/{id?}");
 
                 endpoints.MapAreaControllerRoute(
                    name: "areas",
-                   areaName: "Admin",
-                   pattern: "{area:Admin}/{controller=exists}/{action=exists}/{id?}");
+                   areaName: "CPanel",
+                   pattern: "{area:CPanel}/{controller=exists}/{action=exists}/{id?}");
 
                 endpoints.MapRazorPages();
             });
-
-
         }
     }
 }
