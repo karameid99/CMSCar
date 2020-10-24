@@ -1,0 +1,421 @@
+﻿@model List<CMSCar.Areas.CPanel.Models.Contact.City>
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Options
+
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+@{
+    string x = System.Globalization.CultureInfo.CurrentCulture.Name;
+    var name = "";
+    var whatsapp = " ";
+    var phone = " ";
+    var working = " ";
+    var google_url = " ";
+}
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cultureItems = LocOptions.Value.SupportedUICultures
+        .Select(c => new SelectListItem { Value = c.Name, Text = c.DisplayName })
+        .ToList();
+}
+@{
+    ViewData["Title"] = "Contact";
+}
+
+
+<section class="inner_header">
+    <div class="w-100 row yellowSep">
+        <div class="container">
+            <div class="pageyHead col-md-12">
+                <h2>@Localizer["Call Us"]</h2>
+                <section class="breadcrambPage">
+                    <a href="/">@Localizer["Home"]</a>   <span class="current">@Localizer["Call Us"] </span>
+                </section>
+            </div>
+        </div>
+    </div><!--w-100 -->
+</section>
+
+
+<section id="contactUs" class="contactUs">
+
+    <div class="container">
+
+        <h3>@Localizer["Call Us"] :</h3>
+        <div class="row">
+            <div class="col-md-5 order-2">
+                <p>
+                    @Localizer["Call Us Note"]
+                </p>
+
+            </div>
+            <div class="col-md-7 order-1">
+                <div id="contactForm">
+                    @if (TempData["EditStatus"] != null)
+                    {
+                        <div class="alert alert-success alert-dismissible fade show" style="background-color:#68dc39;border:none" role="alert">
+                            <strong style="font-size:15px">@Localizer["Send"]</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true"><i class="fa fa-check"></i></span>
+                            </button>
+                        </div>
+                    }
+                    <form method="POST" action="/Home/contact">
+                        <div class="form-group row">
+                            <label for="clientName" class="col-sm-4 col-form-label">@Localizer["Name"] <span class="required">*</span></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="name" id="Name" placeholder="@Localizer["Name"] " required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="mobile" class="col-sm-4 col-form-label">@Localizer["Phone"]  <span class="required">*</span></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="Phone" id="mobile" placeholder="@Localizer["Phone"] " required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="email" class="col-sm-4 col-form-label">@Localizer["Email"] <span class="required">*</span></label>
+                            <div class="col-sm-8">
+                                <input type="email" class="form-control" name="email" id="email" placeholder="@Localizer["Email"]" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="subject" class="col-sm-4 col-form-label">@Localizer["subject"] <span class="required"></span></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="Title" id="subject" placeholder="@Localizer["subject"]">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="msg" class="col-sm-4 col-form-label">@Localizer["message"]<span class="required">*</span></label>
+                            <div class="col-sm-8">
+                                <textarea name="Massege" class="form-control" required placeholder="@Localizer["message"]"></textarea>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="modalBtn">@Localizer["submit"]</button>
+                        <div class="clearfix"></div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<section id="branches" class="branches">
+    <div class="container">
+        <h3>@Localizer["branches"] :</h3>
+        <div class="row">
+            <div class="col-md-5 order-2">
+                <div id="specs" class=" order-2">
+                    @if (x == "ar-EG")
+                    {
+                        for (int i = 0; i < Model.Count; i++)
+                        {
+                            <div class="block">
+                                <a class="toggle" href="javascript:void(0);">  @Model[i].CityAr<i class="fa fa-minus"></i></a>
+                                @if (i == 0)
+                                {
+                                    <ul class="inner showz">
+                                        @for (int item = 0; item < Model[i].Branches.Count; item++)
+                                        {
+                                            if (item == 0 && i == 0)
+                                            {
+                                                name = Model[i].Branches[item].NameAr;
+                                                whatsapp = Model[i].Branches[item].WhatsappNumber;
+                                                phone = Model[i].Branches[item].PhoneNumber;
+                                                working = Model[i].Branches[item].WorkingHoursAr;
+                                                google_url = Model[i].Branches[item].MapLink;
+                                                <li class="tab1  actv " data-branchid="@Model[i].Branches[item].Id">
+                                                    <span class="hide-txt">لزيارة</span>
+                                                    <span class="branchName d-inline">@Model[i].Branches[item].NameAr</span>
+                                                    <span class="branchAddress d-inline"></span>
+                                                    <span class="hide-txt float-left">إضغط هنا</span>
+                                                </li>
+                                            }
+                                            else
+                                            {
+                                                <li class="tab1" data-branchid="@Model[i].Branches[item].Id">
+                                                    <span class="hide-txt">لزيارة</span>
+                                                    <span class="branchName d-inline">@Model[i].Branches[item].NameAr</span>
+                                                    <span class="branchAddress d-inline"></span>
+                                                    <span class="hide-txt float-left">إضغط هنا</span>
+                                                </li>
+                                            }
+                                        }
+                                    </ul>
+                                }
+                                else
+                                {
+                                    <ul class="inner">
+                                        @for (int item = 0; item < Model[i].Branches.Count; item++)
+                                        {
+                                            <li class="tab1" data-branchid="@Model[i].Branches[item].Id">
+                                                <span class="hide-txt">لزيارة</span>
+                                                <span class="branchName d-inline">@Model[i].Branches[item].NameAr</span>
+                                                <span class="branchAddress d-inline"></span>
+                                                <span class="hide-txt float-left">إضغط هنا</span>
+                                            </li>
+                                        }
+                                    </ul>
+                                }
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < Model.Count; i++)
+                        {
+                            <div class="block">
+                                <a class="toggle" href="javascript:void(0);">  @Model[i].CityEn<i class="fa fa-minus"></i></a>
+                                @if (i == 0)
+                                {
+                                    <ul class="inner  showz ">
+                                        @for (int item = 0; item < Model[i].Branches.Count; item++)
+                                        {
+                                            if (item == 0 && i == 0)
+                                            {
+                                                name = Model[i].Branches[item].NameEn;
+                                                whatsapp = Model[i].Branches[item].WhatsappNumber;
+                                                phone = Model[i].Branches[item].PhoneNumber;
+                                                working = Model[i].Branches[item].WorkingHoursEn;
+                                                google_url = Model[i].Branches[item].MapLink;
+                                                <li class="tab1  actv " data-branchid="@Model[i].Branches[item].Id">
+                                                    <span class="hide-txt">To Visit</span>
+                                                    <span class="branchName d-inline">@Model[i].Branches[item].NameEn</span>
+                                                    <span class="branchAddress d-inline"></span>
+                                                    <span class="hide-txt float-left">Click Here</span>
+                                                </li>
+                                            }
+                                            else
+                                            {
+                                                <li class="tab1" data-branchid="@Model[i].Branches[item].Id">
+                                                    <span class="hide-txt">To Visit</span>
+                                                    <span class="branchName d-inline">@Model[i].Branches[item].NameEn</span>
+                                                    <span class="branchAddress d-inline"></span>
+                                                    <span class="hide-txt float-left">Click Here</span>
+                                                </li>
+                                            }
+                                        }
+                                    </ul>
+                                }
+                                else
+                                {
+                                    <ul class="inner ">
+                                        @for (int item = 0; item < Model[i].Branches.Count; item++)
+                                        {
+                                            <li class="tab1" data-branchid="@Model[i].Branches[item].Id">
+                                                <span class="hide-txt">To Visit</span>
+                                                <span class="branchName d-inline">@Model[i].Branches[item].NameEn</span>
+                                                <span class="branchAddress d-inline"></span>
+                                                <span class="hide-txt float-left">Click Here</span>
+                                            </li>
+                                        }
+                                    </ul>
+
+                                }
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="col-md-7 order-1">
+                <div id="branchDetails">
+
+                    <div id="loader"><img src="https://salehcars.com/web/img/loading.svg" alt="Loading.."></div>
+                    <h3 id="branchName"> @name</h3>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <p id="awqat">@Localizer["Time Work"]</p>
+                            <div id="workingHours">
+                                <p>@working</p>
+                            </div>
+                            <p id="branchAddress"><i class="fas fa-map-marker-alt"></i> <a href="https://goo.gl/maps/agHkGcTofbQ2" target="_blank">@Localizer["To Go To"]  <span> @name </span> @Localizer["Click Here"] </a></p>
+                        </div>
+                        <div class="col-md-5">
+                            <div id="branchContact">
+                                <div id="branchPhone">
+                                    <i class="fas fa-phone"></i> <a href="tel:920022122">@phone</a>
+                                </div>
+                                <div id="branchWhats">
+                                    <i class="fab fa-whatsapp"></i> <a href="https://wa.me/@whatsapp">@whatsapp</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="branchMap">
+                        <iframe src="@google_url" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="clearfix"></div>
+
+
+<script src="https://maps.google.com/maps/api/js?sensor=false&language=ar"></script>
+<script>
+    $(document).ready(function () {
+
+
+        $("#freeCall").on('click', function (e) {
+            // $("#web_stdy").click();
+            e.preventDefault();
+            console.log('free call clicked');
+            document.getElementById("web_stdy").click();
+
+        });
+
+        /*     $('#branchMap iframe').prettyMaps({
+
+                address: 'Melbourne, Australia',
+
+                image: 'map-icon.png',
+
+                hue: '#FF0000',
+
+                saturation: -20
+
+            });
+     */
+
+
+
+
+        // Maps
+        //$(function() {
+        /*    $('button').each(function(i, btn) {
+               $(btn).click(function() {
+                   var el = $(this)[0];
+                   var urlbeg="https://www.google.com/maps/embed/v1/view?center=";
+                   var urlend="&zoom=18&maptype=roadmap";
+                   var lat=el.dataset.lat;
+                   var lng=el.dataset.long;
+                   $("#branchMap iframe").attr("src",urlbeg+lat+","+lng+urlend);
+               });
+           }); */
+        // });
+
+        $(".block li.actv").find('span.hide-txt').hide();
+        $(".block li").on("click", function () {
+
+            var branchId = $(this).data('branchid');
+            /*   console.log(branchId);
+              $("#branchMap").html(branchId); */
+
+
+
+
+            var liss = $(this);
+            $(".block li").removeClass('actv');
+            $(".block li").find('span.hide-txt').show();
+            liss.find('span.hide-txt').hide();
+            liss.addClass('actv');
+            // console.log(clrId);
+
+            // var brand_id = ;
+            $.ajax({
+                url: "/Home/Branche",
+                method: 'POST',
+                data: { branchId: branchId },
+                dataType: 'JSON',
+                beforeSend: function () {
+                    // $(liss).addClass("selected").siblings().removeClass("selected");
+                    $("#branchDetails #loader").show();
+                },
+                success: function (data) {
+
+                    console.log(data);
+
+                    var name = data.nameAr;
+                    var whatsapp = data.whatsappNumber;
+                    var phone = data.phoneNumber;
+                    var working = data.workingHoursAr;
+                    var google_url = data.mapLink
+
+
+                    $("#branchName").text(name);
+                    $("#workingHours p").text(working);
+                    $("#branchAddress a span").text(name);
+                    $("#branchAddress a").attr('href', google_url);
+
+                    $("#branchMap iframe").attr('src', google_url);
+                    $("#branchPhone a").text(phone).attr('href', 'tel:' + phone);
+                    $("#branchWhats a").text(whatsapp).attr('href', 'https://wa.me/' + whatsapp);
+
+
+
+                    $("#loader").hide();
+
+                }
+            });
+
+
+
+
+
+
+
+
+
+
+
+        });
+
+
+
+        /// Accordion Branches
+        $('.toggle').on('click', function (e) {
+            e.preventDefault();
+
+            var $this = $(this);
+
+            if ($this.next().hasClass('show')) {
+                $this.next().removeClass('show');
+                $this.next().slideUp(350);
+                $this.children('i').removeClass('fa-minus').addClass('fa-plus');
+            } else if ($this.next().hasClass('showz')) {
+                $this.children('i').removeClass('fa-minus').addClass('fa-plus');
+                $this.next().removeClass('showz').slideUp('slow');
+                //$this.next().slideUp(350);
+                // $this.next().toggleClass('show');
+                //$this.next().slideUp(350);
+
+
+
+            } else {
+                $this.parent().parent().find('li .inner').removeClass('show');
+                $this.parent().parent().find('li .inner').slideUp(350);
+                $this.next().toggleClass('show');
+                $this.next().slideToggle(350);
+                $this.children('i').removeClass('fa-plus').addClass('fa-minus');
+            }
+        });
+
+
+
+
+        var $root = $('html, body');
+
+        $('a#toBranches').click(function () {
+            $root.animate({
+                scrollTop: $($.attr(this, 'href')).offset().top
+            }, 300);
+
+            return false;
+        });
+
+
+
+
+    }); // Ready</script>

@@ -1,0 +1,108 @@
+﻿@model List<CMSCar.Areas.CPanel.Models.Questions.Question>
+@{
+    ViewData["Title"] = "Qustion";
+}
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Options
+
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+@{
+    string x = System.Globalization.CultureInfo.CurrentCulture.Name;
+}
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cultureItems = LocOptions.Value.SupportedUICultures
+        .Select(c => new SelectListItem { Value = c.Name, Text = c.DisplayName })
+        .ToList();
+}
+
+
+<section class="inner_header">
+    <div class="w-100 row yellowSep">
+        <div class="container">
+            <div class="pageyHead col-md-12">
+                <h2>@Localizer["Common Question"]</h2>
+                <section class="breadcrambPage">
+                    <a href="/"> @Localizer["Home"]</a>   <span class="current"> @Localizer["Common Question"]</span>
+                </section>
+            </div>
+        </div>
+    </div><!--w-100 -->
+</section>
+<br />
+<br />
+<br />
+<br />
+
+
+<div class="clearfix"></div>
+
+<section class="faq">
+    <div class="container">
+        <p class="faqHead">
+            @Localizer["Common Question Note"]
+        </p>
+        @if (x == "ar-EG")
+        {
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <div class="block">
+                    <a class="toggle" href="javascript:void(0);">1- @Model[i].QuestionAr <i class="fa fa-plus"></i></a>
+                    <div class="inner">
+                        @Html.Raw(Model[i].AnswerAr)
+                    </div>
+                </div>
+
+            }
+
+        }
+        else
+        {
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <div class="block">
+                    <a class="toggle" href="javascript:void(0);">1- @Model[i].QuestionEn <i class="fa fa-plus"></i></a>
+                    <div class="inner">
+                        @Html.Raw(Model[i].AnswerEn)
+                    </div>
+                </div>
+
+            }
+
+        }
+
+
+
+    </div>
+</section>
+<br />
+<br />
+<br />
+<br />
+
+<script>
+
+    $(document).ready(function () {
+        /// Accordion FAQ
+        $('.toggle').click(function (e) {
+            e.preventDefault();
+
+            var $this = $(this);
+
+            if ($this.next().hasClass('show')) {
+                $this.next().removeClass('show');
+                $this.next().slideUp(350);
+                $this.children('i').removeClass('fa-minus').addClass('fa-plus');
+            } else {
+                $this.parent().parent().find('li .inner').removeClass('show');
+                $this.parent().parent().find('li .inner').slideUp(350);
+                $this.next().toggleClass('show');
+                $this.next().slideToggle(350);
+                $this.children('i').removeClass('fa-plus').addClass('fa-minus');
+            }
+        });
+    });
+</script>

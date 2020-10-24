@@ -62,6 +62,21 @@ namespace CMSCar.Controllers
                 x.CreatedAt,
             }).OrderByDescending(x => x.CreatedAt).ToList();
             return (items);
+        } 
+        [HttpGet]
+        public ActionResult<IEnumerable<object>> GetFaq()
+        {
+            var query = _context.Question;
+            var items = query.Select(x => new
+            {
+                x.Id,
+                x.QuestionAr,
+                x.QuestionEn,
+                x.AnswerAr,
+                x.AnswerEn,
+                x.CreatedAt,
+            }).OrderByDescending(x => x.CreatedAt).ToList();
+            return (items);
         }
         [HttpGet]
         public ActionResult<IEnumerable<object>> GetBanks()

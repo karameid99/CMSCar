@@ -117,28 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ClientName" xml:space="preserve">
-    <value>Client Name</value>
-  </data>
   <data name="Home" xml:space="preserve">
-    <value>Home</value>
+    <value>الرئيسية</value>
   </data>
-  <data name="Link" xml:space="preserve">
-    <value>Link Project</value>
+  <data name="Thank you" xml:space="preserve">
+    <value>شكرا لك</value>
   </data>
-  <data name="Next" xml:space="preserve">
-    <value>Next</value>
-  </data>
-  <data name="Prev" xml:space="preserve">
-    <value>Prev</value>
-  </data>
-  <data name="Project Details" xml:space="preserve">
-    <value>Project Details</value>
-  </data>
-  <data name="Service" xml:space="preserve">
-    <value>Services</value>
-  </data>
-  <data name="Skills" xml:space="preserve">
-    <value>Skills</value>
+  <data name="Your request has been successfully received" xml:space="preserve">
+    <value>لقد تم ارسال طلب الشراء الخاص بك سنراسلك في اقرب وقت..</value>
   </data>
 </root>

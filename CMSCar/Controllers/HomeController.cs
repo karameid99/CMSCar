@@ -12,6 +12,9 @@ using CMSCar.Data;
 using CMSCar.Models.ViewModels;
 using AutoMapper;
 using CMSCar.Areas.CPanel.Models.Settings;
+using CMSCar.Areas.CPanel.Models.PurchaseOrders;
+using Microsoft.EntityFrameworkCore;
+using CMSCar.Areas.CPanel.Models.Contact;
 
 namespace CMSCar.Controllers
 {
@@ -44,9 +47,31 @@ namespace CMSCar.Controllers
             return View(index);
         }
 
-        public IActionResult Privacy()
+        public IActionResult Qustion()
         {
-            return View();
+           var items =  _Context.Question.ToList();
+            return View(items);
+        }
+        public IActionResult Contact()
+        {
+            var items = _Context.City.Include(x => x.Branches).ToList();
+            return View(items);
+        }
+        [HttpPost]
+        public IActionResult Contact(CallUs call)
+        {
+            if (ModelState.IsValid)
+            {
+                _Context.CallUs.Add(call);
+                _Context.SaveChanges();
+                TempData["EditStatus"] = "Done";
+            }
+            return RedirectToAction("Contact");
+        }
+        public IActionResult Branche(int branchId)
+        {
+            var item = _Context.Branch.Find(branchId);
+            return Json(item);
         }
         [HttpPost]
         public IActionResult SetLanguage(string culture, string returnUrl)
@@ -70,5 +95,35 @@ namespace CMSCar.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
+
+        public IActionResult CompanyOrder()
+        {
+            return View();
+        }
+
+        public IActionResult SuccessOrder()
+        {
+            return View();
+        }
+
+        public IActionResult IndiviualOrder()
+        {
+            return View();
+        } 
+        [HttpPost]
+        public IActionResult ICash(IndividualCash cash)
+        {
+            if (ModelState.IsValid)
+            {
+                _Context.IndividualCash.Add(cash);
+                _Context.SaveChanges();
+                return RedirectToAction("SuccessOrder");
+            }
+            ViewData["EditStatus"] = "Error";
+            return RedirectToAction("IndiviualOrder");
+        }
+
     }
 }
