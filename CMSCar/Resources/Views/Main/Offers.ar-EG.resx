@@ -117,85 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="About Company" xml:space="preserve">
-    <value>حول الشركة</value>
+  <data name="cars" xml:space="preserve">
+    <value>السيارات المشمولة بالعرض</value>
   </data>
-  <data name="Call Us" xml:space="preserve">
-    <value>اتصل بنا</value>
-  </data>
-  <data name="Cars" xml:space="preserve">
-    <value>السيارات</value>
-  </data>
-  <data name="Companies" xml:space="preserve">
-    <value>الشركات</value>
-  </data>
-  <data name="Conditions and terms" xml:space="preserve">
-    <value>الشروط والاحكام</value>
-  </data>
-  <data name="Contact information" xml:space="preserve">
-    <value>معلومات التواصل</value>
-  </data>
-  <data name="Contact Us" xml:space="preserve">
-    <value>اتصل بنا</value>
-  </data>
-  <data name="Discounts" xml:space="preserve">
-    <value>الخصومات</value>
-  </data>
-  <data name="Email" xml:space="preserve">
-    <value>البريد الالكتروني</value>
-  </data>
-  <data name="FAQ" xml:space="preserve">
-    <value>الاسئلة الشائعة</value>
-  </data>
-  <data name="Favorites" xml:space="preserve">
-    <value>المفضلة</value>
+  <data name="Detlais" xml:space="preserve">
+    <value>التفاصيل</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>الرئيسية</value>
   </data>
-  <data name="Individuals" xml:space="preserve">
-    <value>الافراد</value>
-  </data>
-  <data name="Lang" xml:space="preserve">
-    <value>en-US</value>
-  </data>
-  <data name="Law" xml:space="preserve">
-    <value>جميع الحقوق محفوظة</value>
-  </data>
-  <data name="LG" xml:space="preserve">
-    <value>العربية</value>
-  </data>
-  <data name="Offers" xml:space="preserve">
-    <value>العروض </value>
-  </data>
-  <data name="Our branches" xml:space="preserve">
-    <value>فروعنا</value>
-  </data>
-  <data name="Privacy policy" xml:space="preserve">
-    <value>سياسة الخصوصية</value>
-  </data>
-  <data name="Purchase Order" xml:space="preserve">
-    <value>طلب الشراء</value>
-  </data>
-  <data name="Services" xml:space="preserve">
-    <value>الخدمات</value>
-  </data>
-  <data name="Specials" xml:space="preserve">
+  <data name="SOffers" xml:space="preserve">
     <value>العروض الخاصة</value>
-  </data>
-  <data name="Subscribe" xml:space="preserve">
-    <value>اشترك</value>
-  </data>
-  <data name="Subscribe to the newsletter" xml:space="preserve">
-    <value>أشترك بالنشرة البريدية</value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value>شركة الإمارات للسيارات</value>
-  </data>
-  <data name="Vision and mission" xml:space="preserve">
-    <value>الرؤية والرسالة</value>
-  </data>
-  <data name="Why Us" xml:space="preserve">
-    <value>لماذا نحن</value>
   </data>
 </root>

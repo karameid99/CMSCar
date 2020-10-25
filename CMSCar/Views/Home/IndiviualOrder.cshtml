@@ -125,10 +125,8 @@
                             <input id="submetCash" type="submit" class="mawadBtn form-control" value="@Localizer["submit"]">
                         </form>
 
-                        <form method="POST" action="/Home/sendAnyWay" id="personal_tamweel" enctype='multipart/form-data' class="sendNow">
-                            <input type="hidden" name="_token" value="5E18hRSOqK2MQfMsmkV32WhDIsYKBz3NmsopJf5u">
+                        <form method="POST" action="/Home/sendAnyWay" id="personal_tamweel" enctype='multipart/form-data' class="sendNow">                            
                             <div id="wrappingCar">
-                                <input type="hidden" name="payment_type" value="تمويل">
                                 <div id="needBeforeCalc">
                                     <<div class="form-group row ">
                                         <label for="selectedCar" class="col-sm-4 col-form-label">@Localizer["Name Of Car"] <span class="required">*</span></label>
@@ -198,7 +196,7 @@
 
                                     <div class="form-group row">
                                         <label for="initPayment" class="col-sm-4 col-form-label">@Localizer["initPayment"] </label>
-                                        <div class="col-sm-5">
+                                        <div class="col-sm-8">
 
                                             <select name="initPayment" required id="initPayment" value="" class="form-control">
                                                 <option selected value="0">0</option>
@@ -207,9 +205,6 @@
                                                 <option value="20">20%</option>
                                                 <option value="25">25%</option>
                                             </select>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <input type="number" class="form-control" disabled name="firstPaymentNo" id="firstPaymentNo" value="0">
                                         </div>
                                     </div>
                                     <hr>

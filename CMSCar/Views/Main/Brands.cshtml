@@ -1,0 +1,83 @@
+﻿@{
+    ViewData["Title"] = "Qustion";
+}
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Options
+
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+@{
+    string x = System.Globalization.CultureInfo.CurrentCulture.Name;
+}
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cultureItems = LocOptions.Value.SupportedUICultures
+        .Select(c => new SelectListItem { Value = c.Name, Text = c.DisplayName })
+        .ToList();
+}
+
+@{
+    ViewData["Title"] = "Brands";
+}
+<section class="inner_header">
+    <div class="w-100 row yellowSep">
+        <div class="container">
+            <div class="pageyHead col-md-12">
+                <h2>@Localizer["Cars"]</h2>
+                <section class="breadcrambPage">
+                    <a href="/">@Localizer["Home"]</a>   <span class="current">@Localizer["Cars"] </span>
+                </section>
+            </div>
+        </div>
+    </div><!--w-100 -->
+</section>
+
+<div class="clearfix"></div>
+<section class="brands">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <p></p>
+                <div id="Div_TypeCar" class="row d-flex justify-content-center">
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@if (x == "ar-EG")
+{
+    <script>
+        $.ajax({
+            url: '/api/HomeApi/GetTypeCar',
+            success: function (result) {
+                var res = "";
+                $.each(result, function (i, v) {
+                    res = res + '<div class="col col-md-2 col-6 brand"><a href="/Main/Cars/' + v.id + '"><img src="/Images/CarType/' + v.imagePath + '">' + v.nameAr + '</a></div>';
+                })
+                $("#Div_TypeCar").html(res);
+            }
+        });
+
+    </script>
+}
+else
+{
+    <script>
+        $.ajax({
+            url: '/api/HomeApi/GetTypeCar',
+            success: function (result) {
+                var res = "";
+                $.each(result, function (i, v) {
+                    res = res + '<div class="col col-md-2 col-6 brand"><a href="/Main/Cars/' + v.id + '"><img src="/Images/CarType/' + v.imagePath + '">' + v.nameEn + '</a></div>';
+                })
+                $("#Div_TypeCar").html(res);
+            }
+        });
+
+    </script>
+}

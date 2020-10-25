@@ -1,0 +1,184 @@
+﻿@model CMSCar.Areas.CPanel.Models.SpecialOffers.Offer
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Options
+
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+@{
+    string x = System.Globalization.CultureInfo.CurrentCulture.Name;
+}
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cultureItems = LocOptions.Value.SupportedUICultures
+        .Select(c => new SelectListItem { Value = c.Name, Text = c.DisplayName })
+        .ToList();
+}
+@{
+    ViewData["Title"] = "OfferDetalis";
+}
+
+<section class="inner_header">
+    <div class="w-100 row yellowSep">
+        <div class="container">
+            <div class="pageyHead col-md-12">
+                @if (x == "ar-EG")
+                {
+                    <h2>@Model.NameAr </h2>
+
+                }
+                else
+                {
+                    <h2>@Model.NameEn </h2>
+                }
+            <section class="breadcrambPage">
+                <a href="/">@Localizer["Home"]</a>  <a href="/Main/Offers">@Localizer["SOffers"]</a>
+                @if (x == "ar-EG")
+                {
+                    <span class="current">@Model.NameAr  </span>
+
+                }
+                else
+                {
+                    <span class="current">@Model.NameEn  </span>
+                }
+            </section>
+            </div>
+        </div>
+    </div><!--w-100 -->
+</section>
+
+
+
+<div class="clearfix"></div>
+
+<section class="landingPage">
+    <div class="container">
+        <img src="/Images/Offer/@Model.ImagePath" class="offerMainImage" alt="photo">
+        <section class="inCarRow"><p>@Localizer["Detlais"]</p></section>
+        @if (x == "ar-EG")
+        {
+            @Model.DescriptionAr
+        }
+        else
+        {
+            @Model.DescriptionEn
+
+        }
+        <section class="inCarRow"><p>@Localizer["cars"]</p></section>
+        <div class="row">
+            @if (x == "ar-EG")
+            {
+                foreach (var item in Model.OfferCars)
+                {
+                    <div class="col-md-3 ">
+                        <div class="car">
+                            <a data-toggle="tooltip" data-placement="left" title="اضف للمفضلة" href="  " class="addToFavLink  ">
+                                <i class="far fa-heart"></i>
+                            </a>
+                            <a href="">
+                                <div class="img_wrap" style="background-image:url(https://salehcars.com/web/img/offer_en_new-20.svg);background-repeat: no-repeat;    background-position: top left;background-size: 57px 57px;">
+                                    <img src="/Images/Car/@item.Car.ShowImage" alt="@item.Car.NameAr">
+                                </div>
+                                <h3>@item.Car.NameAr </h3>
+                                <hr>
+                                <ul class="shortDesc">
+                                    <li>@Html.Raw(item.Car.DescriptionAr)</li>
+
+                                    <li class="car_placeHolder"></li>
+                                </ul>
+                                <!--Start Editing-->
+                                <hr>
+                               
+                                <div class="car_price ">
+                                    Price :  @item.Car.PriceBeforeDiscount R.S
+                                </div>                                <!--End Editing-->
+                            </a>
+                        </div>  <!-- car -->
+                    </div>
+
+                }
+            }
+            else
+            {
+                foreach (var item in Model.OfferCars)
+                {
+                    <div class="col-md-3 ">
+                        <div class="car">
+                            <a data-toggle="tooltip" data-placement="left" title="add to favoirate" href="  " class="addToFavLink  ">
+                                <i class="far fa-heart"></i>
+                            </a>
+                            <a href="">
+                                <div class="img_wrap" style="background-image:url(https://salehcars.com/web/img/offer_en_new-20.svg);background-repeat: no-repeat;    background-position: top left;background-size: 57px 57px;">
+                                    <img src="/Images/Car/@item.Car.ShowImage" alt="@item.Car.NameEn">
+                                </div>
+                                <h3>@item.Car.NameEn </h3>
+                                <hr>
+                                <ul class="shortDesc">
+                                    <li>@Html.Raw(item.Car.DescriptionEn)</li>
+
+                                    <li class="car_placeHolder"></li>
+                                </ul>
+                                <!--Start Editing-->
+                                <div class="car_price ">
+                                    Price :  @item.Car.PriceBeforeDiscount R.S
+                                </div>
+                                <!--End Editing-->
+                            </a>
+                        </div>  <!-- car -->
+                    </div>
+
+                }
+
+            }
+        </div>
+        @*<section id="orderOffer" class="inCarRow"><p>نموذج طلب العرض</p></section>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div id="contactForm" class="col-md-8">
+                <form method="POST" action="https://salehcars.com/ar/special_order/store">
+                    <input type="hidden" name="_token" value="3E2vLazYZbWx8KJ5eq8TWd5uq7LXi2QJGk3keo8d">
+                    <input type="hidden" name="offer_name" value="عرض باص هيونداي كاونتي">
+                    <input type="hidden" name="offer_id" value="25">
+
+                    <div class="form-group row">
+                        <label for="clientName" class="col-sm-4 col-form-label">الاسم<span class="required">*</span></label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="name" id="clientName" placeholder="الاسم" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="mobile" class="col-sm-4 col-form-label">رقم الجوال<span class="required">*</span></label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="phone" id="mobile" placeholder="رقم الجوال" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+
+                        <label for="mobile" class="col-sm-4 col-form-label">اسم السيارة المطلوبة</label>
+                        <div class="col-sm-8">
+                            <select name="car" id="inputState" class="form-control">
+                                <option value="" selected>اختر السيارة</option>
+                                <option value="143">
+
+                                    <span style="textalign:right;direction:rtl;">152,000 ر.س</span>
+                                    - <span style="textalign:right;direction:rtl;">هيونداي باص كاونتي ديزل NB 2018 </span>
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="mawadBtn form-control">ارسال</button>
+                    <div class="clearfix"></div>
+                </form>
+
+            </div>
+            <div class="col-md-2"></div>
+        </div>*@
+
+    </div>
+</section>
+

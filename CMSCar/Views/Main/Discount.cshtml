@@ -1,0 +1,167 @@
+﻿@model CMSCar.Models.ViewModels.OfferVM
+@{
+    ViewData["Title"] = "Discount";
+}
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Options
+
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+@{
+    string x = System.Globalization.CultureInfo.CurrentCulture.Name;
+}
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cultureItems = LocOptions.Value.SupportedUICultures
+        .Select(c => new SelectListItem { Value = c.Name, Text = c.DisplayName })
+        .ToList();
+}
+
+
+
+<section class="inner_header">
+    <div class="w-100 row yellowSep">
+        <div class="container">
+            <div class="pageyHead col-md-12">
+                <h2>@Localizer["Discount"]</h2>
+                <section class="breadcrambPage">
+                    <a href="/">@Localizer["Home"]</a>  <a href="/Main/Cars">@Localizer["Cars"]</a>   <span class="current">@Localizer["Discount"]</span>
+                </section>
+            </div>
+        </div>
+    </div><!--w-100 -->
+</section>
+
+
+<div class="clearfix"></div>
+
+<section class="allCarsInBrand">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 order-2 float-right ">
+                <div class="brandList_col">
+                    <ul class="brandList inOffer">
+                        @if (x == "ar-EG")
+                        {
+                            <li class=" active  "> <a href="/Main/Discount">كل السيارات </a> <i id="hoverMe" class="fas fa-angle-down hoverMe"></i></li>
+                            foreach (var item in Model.CarTypes)
+                            {
+                                <li class=""><img src="/Images/CarType/@item.ImagePath" height="60"><a href="/Main/Discount/@item.Id">@item.NameAr</a></li>
+
+                            }
+
+                        }
+                        else
+                        {
+                            <li class=" active  "> <a href="/Main/Discount"> All Cars </a> <i id="hoverMe" class="fas fa-angle-down hoverMe"></i></li>
+                            foreach (var item in Model.CarTypes)
+                            {
+                                <li class=""><img src="/Images/CarType/@item.ImagePath" height="60"><a href="/Main/Discount/@item.Id">@item.NameEn</a></li>
+
+                            }
+                        }
+                    </ul>
+                </div> <!--brandList_col  -->
+            </div>
+            <!-- <div class="col-md-1 order-1 float-right"></div> -->
+            <div class="col-md-9 order-1">
+                <div id="ajaxResponseCars">
+                    <div class="row justify-content-center">
+                        @if (x == "ar-EG")
+                        {
+                            foreach (var item in Model.Cars)
+                            {
+                                <div class="col-md-4 float-right">
+                                    <div class="car">
+                                        <a data-toggle="tooltip" data-placement="left" title="اضف للمفضلة" href="" class="addToFavLink  ">
+                                            <i class="far fa-heart"></i>
+                                        </a>
+                                        <a href="">
+                                            <div class="img_wrap" style="background-image:url(https://salehcars.com/web/img/offer_en_new-20.svg);background-repeat: no-repeat;    background-position: top left;background-size: 57px 57px;">
+                                                <img src="/Images/Car/@item.ShowImage" alt=" @item.NameAr">
+                                            </div>
+                                            <h3>@item.NameAr</h3>
+                                            <hr>
+                                            <ul class="shortDesc">
+                                                <li>@item.DescriptionAr</li>
+                                                <li class="car_placeHolder"></li>
+                                            </ul>
+                                            <!--Start Editing-->
+                                            <hr>
+                                            <div class="car_price ">
+                                                السعر : @item.PriceAfterDiscount ر.س
+                                            </div>                                     <!--End Editing-->
+                                        </a>
+                                    </div>  <!-- car -->
+                                </div> <!-- col3 -->
+
+                            }
+                        }
+                        else
+                        {
+                            foreach (var item in Model.Cars)
+                            {
+                                <div class="col-md-4 float-right">
+                                    <div class="car">
+                                        <a data-toggle="tooltip" data-placement="left" title="add To Favorait" href="" class="addToFavLink  ">
+                                            <i class="far fa-heart"></i>
+                                        </a>
+                                        <a href="">
+                                            <div class="img_wrap" style="background-image:url(https://salehcars.com/web/img/offer_en_new-20.svg);background-repeat: no-repeat;    background-position: top left;background-size: 57px 57px;">
+                                                <img src="/Images/Car/@item.ShowImage" alt=" @item.NameEn">
+                                            </div>
+                                            <h3>@item.NameEn</h3>
+                                            <hr>
+                                            <ul class="shortDesc">
+                                                <li>@item.DescriptionEn</li>
+                                                <li class="car_placeHolder"></li>
+                                            </ul>
+                                            <!--Start Editing-->
+                                            <hr>
+                                            <div class="car_price ">
+                                                Price : @item.PriceAfterDiscount R.S
+                                            </div>                                     <!--End Editing-->
+                                        </a>
+                                    </div>  <!-- car -->
+                                </div> <!-- col3 -->
+
+                            }
+                        }
+                    </div> <!-- row -->
+                </div> <!-- ajaxResponse -->
+            </div>
+        </div>
+    </div>
+</section>
+@*<div align="center">
+    <ul class="pagination" role="navigation">
+        <li class="page-item disabled" aria-disabled="true" aria-label="&laquo; Previous">
+            <span class="page-link" aria-hidden="true">&lsaquo;</span>
+        </li>
+        <li class="page-item active" aria-current="page"><span class="page-link">1</span></li>
+        <li class="page-item"><a class="page-link" href="">2</a></li>
+        <li class="page-item">
+            <a class="page-link" href="" rel="next" aria-label="Next &raquo;">&rsaquo;</a>
+        </li>
+    </ul>
+</div>*@
+<script>
+    $(document).ready(function () {
+        // Cars Open Brand Models On Mobile
+        $('#hoverMe').on('click hover', function () {
+            if ($(this).hasClass('hoverMe')) {
+                $(this).parent().siblings().slideDown();
+                $(this).removeClass('fa-angle-down').addClass('fa-times');
+                $(this).removeClass('hoverMe').addClass('hoverd');
+            } else {
+                $(this).parent().siblings().slideUp();
+                $(this).removeClass('fa-times').addClass('fa-angle-down');
+                $(this).removeClass('hoverd').addClass('hoverMe');
+            }
+        });
+    });
+</script>
+
+

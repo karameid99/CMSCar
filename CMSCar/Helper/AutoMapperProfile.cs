@@ -33,7 +33,7 @@ namespace CMSCar.Helper
             p.MapFrom(m => m.CreatedAt.ToString("dd/MM/yyyy")));
             CreateMap<SubCarTypeDTO, SubCarType>();
             CreateMap<SubCarTypeUpdateDTO, SubCarType>().ReverseMap();
-            CreateMap<Offer, OfferVM>().ForMember(x => x.CreateAt, p =>
+            CreateMap<Offer, CMSCar.Areas.CPanel.ViewModels.OfferVM>().ForMember(x => x.CreateAt, p =>
             p.MapFrom(m => m.CreatedAt.ToString("dd/MM/yyyy")));
             CreateMap<OfferDTO, Offer>().ReverseMap();
             CreateMap<CallUs, CallUsVM>().ForMember(x => x.CreateAt, p =>

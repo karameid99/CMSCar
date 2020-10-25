@@ -62,6 +62,20 @@ namespace CMSCar.Controllers
                 x.CreatedAt,
             }).OrderByDescending(x => x.CreatedAt).ToList();
             return (items);
+        }
+        [HttpGet]
+        public ActionResult<IEnumerable<object>> GetOffer()
+        {
+            var query = _context.Offer;
+            var items = query.Select(x => new
+            {
+                x.Id,
+                x.NameAr,
+                x.NameEn,
+                x.ImagePath,
+                x.CreatedAt,
+            }).OrderByDescending(x => x.CreatedAt).ToList();
+            return (items);
         } 
         [HttpGet]
         public ActionResult<IEnumerable<object>> GetFaq()

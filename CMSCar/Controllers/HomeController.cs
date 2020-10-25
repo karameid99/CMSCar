@@ -57,6 +57,13 @@ namespace CMSCar.Controllers
             var items = _Context.City.Include(x => x.Branches).ToList();
             return View(items);
         }
+        public IActionResult Services()
+        {
+            ServicesVM vm = new ServicesVM();
+            vm.WhyUs = _Context.WhyUs.ToList();
+            vm.services = _Context.Service.ToList();
+            return View(vm);
+        }
         [HttpPost]
         public IActionResult Contact(CallUs call)
         {

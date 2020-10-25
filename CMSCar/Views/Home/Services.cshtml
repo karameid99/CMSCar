@@ -1,0 +1,512 @@
+﻿@model CMSCar.Models.ViewModels.ServicesVM
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Options
+
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+@{
+    string x = System.Globalization.CultureInfo.CurrentCulture.Name;
+}
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cultureItems = LocOptions.Value.SupportedUICultures
+        .Select(c => new SelectListItem { Value = c.Name, Text = c.DisplayName })
+        .ToList();
+}
+@{
+    ViewData["Title"] = "Services";
+}
+<link rel=" stylesheet" href="https://salehcars.com/web/services_page/css/style.css">
+
+<section class="inner_header">
+    <div class="w-100 row yellowSep">
+        <div class="container">
+            <div class="pageyHead col-md-12">
+                <h2>@Localizer["Service"]</h2>
+                <section class="breadcrambPage">
+                    <a href="">@Localizer["Home"]</a>   <span class="current">@Localizer["Service"]</span>
+                </section>
+            </div>
+        </div>
+    </div><!--w-100 -->
+</section>
+<div class="clearfix"></div>
+
+@if (x == "ar-EG")
+{
+    for (int i = 0; i < Model.WhyUs.Count; i++)
+    {
+        if (i % 2 == 0)
+        {
+            <section class="bg-yellow py-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-4 order-2 order-md-1">
+                            <table class="w-100 h-100 text-center">
+                                <tr>
+                                    <td>
+                                        <img src="/Images/WhyUs/@Model.WhyUs[i].ImagePath" alt="" width="220" class="my-3 my-md-0">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-12 col-md-8 order-1 order-md-2   text-right ">
+                            <h1 class="text-red font-weight-bolder"><b>@Model.WhyUs[i].NameAr</b></h1>
+                            <p>
+                                @Html.Raw(Model.WhyUs[i].DescrptionAr)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        }
+        else
+        {
+            <Section class="py-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-8   text-right ">
+                            <h1 class="text-red font-weight-bolder">
+                                <b>
+                                    @Model.WhyUs[i].NameAr
+                                </b>
+                            </h1>
+                            <p>
+                                @Html.Raw(Model.WhyUs[i].DescrptionAr)
+                            </p>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <table class="w-100 h-100 text-center">
+                                <tr>
+                                    <td>
+                                        <img src="/Images/WhyUs/@Model.WhyUs[i].ImagePath" alt="" width="230" class="my-3 my-md-0">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </Section>
+
+        }
+    }
+
+}
+else
+{
+    for (int i = 0; i < Model.WhyUs.Count; i++)
+    {
+        if (i % 2 == 0)
+        {
+            <section class="bg-yellow py-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-4 order-2 order-md-1">
+                            <table class="w-100 h-100 text-center">
+                                <tr>
+                                    <td>
+                                        <img src="/Images/WhyUs/@Model.WhyUs[i].ImagePath" alt="" width="220" class="my-3 my-md-0">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-12 col-md-8 order-1 order-md-2   text-right ">
+                            <h1 class="text-red font-weight-bolder"><b>@Model.WhyUs[i].NameEn</b></h1>
+                            <p>
+                                @Html.Raw(Model.WhyUs[i].DescrptionEn)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        }
+        else
+        {
+            <Section class="py-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-8   text-right ">
+                            <h1 class="text-red font-weight-bolder">
+                                <b>
+                                    @Model.WhyUs[i].NameEn
+                                </b>
+                            </h1>
+                            <p>
+                                @Html.Raw(Model.WhyUs[i].DescrptionEn)
+                            </p>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <table class="w-100 h-100 text-center">
+                                <tr>
+                                    <td>
+                                        <img src="/Images/WhyUs/@Model.WhyUs[i].ImagePath" alt="" width="230" class="my-3 my-md-0">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </Section>
+
+        }
+    }
+
+}
+
+
+
+<Section class="bg-red py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="font-weight-bolder text-white text-center mb-4">
+                </h1><h2 style="text-align: center;">
+                    <b style="">
+                        <font color="#ffffff">
+                            @Localizer["Services"]
+                        </font>
+                    </b>
+                </h2>
+                <h5 style="text-align: center; font-size: 13px;">
+                    <font color="#ffffff">
+                        <b style=""> @Localizer["xServices"]</b>
+                    </font>
+                </h5>
+            </div>
+            @if (x == "ar-EG")
+            {
+                foreach (var item in Model.services)
+                {
+                    <div class="col-12 col-md-4 border-left">
+                        <h5 style="text-align: center;"><font color="#ffffff"> <b style="">@item.NameAr</b></font></h5><p style="text-align: center; color: white " color="#ffffff">@item.DescrptionAr</p>
+                        <div class="w-100 text-center">
+                            <a href="1">
+                                <table class="mx-auto">
+                                    <tr>
+                                        <td class="bg-black text-grey p-2 price-box strikethrough">
+                                            @item.PriceBeforeDiscount <span>ريال سعودي</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="bg-black text-white p-2 price-box border-top border-left">
+                                            @item.PriceAfterDiscount <span>ريال سعودي</span>
+                                        </td>
+                                        <td class="bg-green text-white p-2 price-box">
+                                            شراء الخدمة
+                                        </td>
+                                    </tr>
+                                </table>
+                            </a>
+                        </div>
+                    </div>
+
+                }
+
+            }
+            else
+            {
+                foreach (var item in Model.services)
+                {
+                    <div class="col-12 col-md-4 border-left">
+                        <h5 style="text-align: center;"><font color="#ffffff">@item.NameEn</font></h5><p style="text-align: center;">@item.DescrptionEn</p>
+                        <div class="w-100 text-center">
+                            <a href="1">
+                                <table class="mx-auto">
+                                    <tr>
+                                        <td class="bg-black text-grey p-2 price-box strikethrough">
+                                            @item.PriceBeforeDiscount <span>R.S</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="bg-black text-white p-2 price-box border-top border-left">
+                                            @item.PriceAfterDiscount <span>R.S </span>
+                                        </td>
+                                        <td class="bg-green text-white p-2 price-box">
+                                            Pearchase Service
+                                        </td>
+                                    </tr>
+                                </table>
+                            </a>
+                        </div>
+                    </div>
+
+                }
+
+            }
+
+        </div>
+    </div>
+</Section>
+
+@*<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-4">
+                <h4>
+                    كما تقدم هذه الباقة مجاناً على سيارات مختارة لمنسوبي الجهات التالية:
+                </h4>
+            </div>
+            <div class="col-6 col-md-3  text-center">
+                <table class="w-100 h-100 text-center">
+                    <tr style="height: 70%;">
+                        <td>
+                            <img src="https://salehcars.com/storage/service_page/5f4a06471eaab1598686791.svg" alt="icon" class="icons" class="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                الشؤون الخاصة لسمو ولي العهد
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-6 col-md-3  text-center">
+                <table class="w-100 h-100 text-center">
+                    <tr style="height: 70%;">
+                        <td>
+                            <img src="https://salehcars.com/storage/service_page/5f5a178b1bb7d1599739787.svg" alt="icon" class="icons" class="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                مركز التواصل والإستشراف المعرفي بالديوان الملكي
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-6 col-md-3  text-center">
+                <table class="w-100 h-100 text-center">
+                    <tr style="height: 70%;">
+                        <td>
+                            <img src="https://salehcars.com/storage/service_page/5f704d02017c31601195266.svg" alt="icon" class="icons" class="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                المراسم الملكية
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-6 col-md-3  text-center">
+                <table class="w-100 h-100 text-center">
+                    <tr style="height: 70%;">
+                        <td>
+                            <img src="https://salehcars.com/storage/service_page/5f704e187027e1601195544.png" alt="icon" class="icons" class="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                الحرس الملكي
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-6 col-md-3  text-center">
+                <table class="w-100 h-100 text-center">
+                    <tr style="height: 70%;">
+                        <td>
+                            <img src="https://salehcars.com/storage/service_page/5f705299518c41601196697.svg" alt="icon" class="icons" class="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                الهيئة الملكية لمدينة الرياض
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-6 col-md-3  text-center">
+                <table class="w-100 h-100 text-center">
+                    <tr style="height: 70%;">
+                        <td>
+                            <img src="https://salehcars.com/storage/service_page/5f70530f74cb01601196815.svg" alt="icon" class="icons" class="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                وزارة الصحة
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-6 col-md-3  text-center">
+                <table class="w-100 h-100 text-center">
+                    <tr style="height: 70%;">
+                        <td>
+                            <img src="https://salehcars.com/storage/service_page/5f70559be384e1601197467.svg" alt="icon" class="icons" class="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                جامعة الملك سعود
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-6 col-md-3  text-center">
+                <table class="w-100 h-100 text-center">
+                    <tr style="height: 70%;">
+                        <td>
+                            <img src="https://salehcars.com/storage/service_page/5f705606209cb1601197574.svg" alt="icon" class="icons" class="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                مستشفى الملك فيصل التخصصي ومركز الابحاث
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-6 col-md-3  text-center">
+                <table class="w-100 h-100 text-center">
+                    <tr style="height: 70%;">
+                        <td>
+                            <img src="https://salehcars.com/storage/service_page/5f70572a5ff871601197866.svg" alt="icon" class="icons" class="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                مستشفى الدكتور سليمان حبيب
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-6 col-md-3  text-center">
+                <table class="w-100 h-100 text-center">
+                    <tr style="height: 70%;">
+                        <td>
+                            <img src="https://salehcars.com/storage/service_page/5f707034b4bf91601204276.svg" alt="icon" class="icons" class="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                هيئة المقاولون السعوديون
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-6 col-md-3  text-center">
+                <table class="w-100 h-100 text-center">
+                    <tr style="height: 70%;">
+                        <td>
+                            <img src="https://salehcars.com/storage/service_page/5f7072348d2a91601204788.svg" alt="icon" class="icons" class="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                جامعة الأميرة نورة
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-6 col-md-3  text-center">
+                <table class="w-100 h-100 text-center">
+                    <tr style="height: 70%;">
+                        <td>
+                            <img src="https://salehcars.com/storage/service_page/5f7072c558d341601204933.svg" alt="icon" class="icons" class="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                شركة الإتصالات السعودية
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-6 col-md-3  text-center">
+                <table class="w-100 h-100 text-center">
+                    <tr style="height: 70%;">
+                        <td>
+                            <img src="https://salehcars.com/storage/service_page/5f7082095731a1601208841.png" alt="icon" class="icons" class="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                بنك الرياض
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-6 col-md-3  text-center">
+                <table class="w-100 h-100 text-center">
+                    <tr style="height: 70%;">
+                        <td>
+                            <img src="https://salehcars.com/storage/service_page/5f708274bf6241601208948.svg" alt="icon" class="icons" class="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                مصرف الراجحي
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-6 col-md-3  text-center">
+                <table class="w-100 h-100 text-center">
+                    <tr style="height: 70%;">
+                        <td>
+                            <img src="https://salehcars.com/storage/service_page/5f7082d3b60461601209043.svg" alt="icon" class="icons" class="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                المؤسسة العامة للتقاعد
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-6 col-md-3  text-center">
+                <table class="w-100 h-100 text-center">
+                    <tr style="height: 70%;">
+                        <td>
+                            <img src="https://salehcars.com/storage/service_page/5f7d79f3f1f351602058739.svg" alt="icon" class="icons" class="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                أرامكو السعودية
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</section>*@
