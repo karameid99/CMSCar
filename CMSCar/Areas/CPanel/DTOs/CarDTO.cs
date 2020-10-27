@@ -25,9 +25,9 @@ namespace CMSCar.Areas.CPanel.DTOs
         [Display(Name = "قيمة الخصم")]
         public float PriceAfterDiscount { get; set; }
         [Display(Name = "الصورة الرئيسية")]
-        public IFormFile MainImage { get; set; }
+        public IFormFile Main { get; set; }
         [Display(Name = "صورة العرض")]
-        public IFormFile ShowImage { get; set; }
+        public IFormFile Show { get; set; }
         [Display(Name = "صور السيارة من الداخل")]
         public List<IFormFile> InsidImages { get; set; }
         [Display(Name = "النوع الفرعي")]

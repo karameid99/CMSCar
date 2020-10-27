@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using CMSCar.Areas.CPanel.DTOs;
 using CMSCar.Areas.CPanel.Models.Cars;
 using CMSCar.Areas.CPanel.Models.User;
 using CMSCar.Areas.CPanel.ViewModels;
@@ -50,7 +51,38 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
             ViewData["TypeCar"] = new SelectList(_Context.CarType, "Id", "NameAr");
             return View();
         }
+        [HttpPost]
+        public async Task<IActionResult> Create(CarDTO model)
+        {
+            if (ModelState.IsValid)
+            {
+                var car = _Mapper.Map<Car>(model);
+                car.MainImage = await ImageHelper.SaveImage(model.Main, _environment, "Images/Car");
+                car.ShowImage = await ImageHelper.SaveImage(model.Show, _environment, "Images/Car");
+                _Context.Car.Add(car);
+                _Context.SaveChanges();
+                if (model.InsidImages.Any())
+                {
+                    foreach (var item in model.InsidImages)
+                    {
+                        CarImage carImage = new CarImage();
+                        carImage.CarId = car.Id;
+                        carImage.ImagePath = await ImageHelper.SaveImage(item, _environment, "Images/Car");
+                        _Context.CarImage.Add(carImage);
+                    }
+                    _Context.SaveChanges();
 
+                }
+                return RedirectToAction("Color",new {id = car.Id });
+            }
+            ViewData["Cars"] = new SelectList(_Context.Car, "Id", "NameAr");
+            return View();
+        }
+        public IActionResult Color(int id)
+        {
+            ViewBag.id = id;
+            return View();
+        }
 
         public List<SubCarType> GetSubTypeCar(int id)
         {
