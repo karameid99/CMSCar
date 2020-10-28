@@ -9,6 +9,7 @@ namespace CMSCar.Areas.CPanel.DTOs
 {
     public class CarDTO
     {
+        public int Id { get; set; }
         [Display(Name = "الأسم بالعربية")]
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         public string NameAr { get; set; }
@@ -32,5 +33,6 @@ namespace CMSCar.Areas.CPanel.DTOs
         public List<IFormFile> InsidImages { get; set; }
         [Display(Name = "النوع الفرعي")]
         public int SubCarTypeId { get; set; }
+        public int CarTypeId { get; set; }
     }
 }

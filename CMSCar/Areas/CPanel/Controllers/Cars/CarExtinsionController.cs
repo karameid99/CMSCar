@@ -142,6 +142,7 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
             ViewBag.id = id;
             return View();
         }
+
         [HttpPost]
         public IActionResult AddFeature(FeteureCreateDTO featureCarDto)
         {
@@ -156,7 +157,95 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
 
             return View();
         }
+        public IActionResult EditFeature(int id)
+        {
+            var Feature = _Context.FeatureCar.Find(id);
 
+            return View(_Mapper.Map<FeteureUpdateDTO>(Feature));
+        }
+        [HttpPost]
+        public IActionResult EditFeature(FeteureUpdateDTO featureCarDto)
+        {
+            if (ModelState.IsValid)
+            {
+                var featureCar = _Mapper.Map<FeteureUpdateDTO, FeatureCar>(featureCarDto);
+                var org = _Context.FeatureCar.AsNoTracking().SingleOrDefault(x => x.Id == featureCar.Id);
+                featureCar.CarId = org.CarId;
+                featureCar.CreatedAt = org.CreatedAt;
+                _Context.FeatureCar.Update(featureCar);
+                _Context.SaveChanges();
+                return Content(ResultMessage.StatusUpdateResult(), "application/json");
+
+            }
+
+            return View();
+        }
+
+        public ActionResult DeleteFeature(int? Id)
+        {
+            if (Id == null) return NotFound();
+            var FeatureCar = _Context.FeatureCar.Find(Id);
+            if (FeatureCar == null) return NotFound();
+            _Context.FeatureCar.Remove(FeatureCar);
+            _Context.SaveChanges();
+            return Content(ResultMessage.DeleteSuccessResult(), "application/json");
+        }
+
+
+
+        public IActionResult AddSpecification(int id)
+        {
+            ViewBag.id = id;
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddSpecification(SpecificationCreateDTO specificationCarDto)
+        {
+            if (ModelState.IsValid)
+            {
+                var specificationCar = _Mapper.Map<SpecificationCreateDTO, SpecificationCar>(specificationCarDto);
+                _Context.SpecificationCar.Add(specificationCar);
+                _Context.SaveChanges();
+                return Content(ResultMessage.AddSuccessResult(), "application/json");
+
+            }
+
+            return View();
+        }
+        public IActionResult EditSpecification(int id)
+        {
+            var Specification = _Context.SpecificationCar.Find(id);
+
+            return View(_Mapper.Map<SpecificationUpdateDTO>(Specification));
+        }
+        [HttpPost]
+        public IActionResult EditSpecification(SpecificationUpdateDTO specificationCarDto)
+        {
+            if (ModelState.IsValid)
+            {
+                var specificationCar = _Mapper.Map<SpecificationUpdateDTO, SpecificationCar>(specificationCarDto);
+                var org = _Context.SpecificationCar.AsNoTracking().SingleOrDefault(x => x.Id == specificationCar.Id);
+                specificationCar.CarId = org.CarId;
+                specificationCar.CreatedAt = org.CreatedAt;
+                _Context.SpecificationCar.Update(specificationCar);
+                _Context.SaveChanges();
+                return Content(ResultMessage.StatusUpdateResult(), "application/json");
+
+            }
+
+            return View();
+        }
+
+        public ActionResult DeleteSpecification(int? Id)
+        {
+            if (Id == null) return NotFound();
+            var specificationCar = _Context.SpecificationCar.Find(Id);
+            if (specificationCar == null) return NotFound();
+            _Context.SpecificationCar.Remove(specificationCar);
+            _Context.SaveChanges();
+            return Content(ResultMessage.DeleteSuccessResult(), "application/json");
+        }
 
 
     }

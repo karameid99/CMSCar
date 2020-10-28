@@ -31,7 +31,6 @@ namespace CMSCar.Helper
             CreateMap<CarTypeDTO, CarType>().ReverseMap();
             CreateMap<SubCarType, SubCarTypeVM>().ForMember(x => x.CreateAt, p =>
             p.MapFrom(m => m.CreatedAt.ToString("dd/MM/yyyy")));
-            CreateMap<FeteureCreateDTO, FeatureCar>();
             CreateMap<SubCarTypeDTO, SubCarType>();
             CreateMap<SubCarTypeUpdateDTO, SubCarType>().ReverseMap();
             CreateMap<Offer, CMSCar.Areas.CPanel.ViewModels.OfferVM>().ForMember(x => x.CreateAt, p =>
@@ -77,6 +76,10 @@ namespace CMSCar.Helper
             CreateMap<FininceSideDTO, FininceSide>().ReverseMap();
 
             CreateMap<Car, CarShowVM>();
+            CreateMap<FeteureCreateDTO, FeatureCar>();
+            CreateMap<FeteureUpdateDTO, FeatureCar>().ReverseMap();
+            CreateMap<SpecificationUpdateDTO, SpecificationCar>().ReverseMap();
+            CreateMap<SpecificationCreateDTO, SpecificationCar>();
 
         }
     }

@@ -1,0 +1,220 @@
+﻿@model CarDTO
+@{
+    ViewData["Title"] = "تعديل سيارة  ";
+}
+@section Css{
+    <style>
+        td {
+            padding: 8px 1px 8px 1px !important;
+            font-size: 14px !important;
+        }
+
+        th {
+            font-weight: bold;
+            font-size: medium;
+        }
+
+        td a {
+            margin-left: 5px !important;
+        }
+
+        .m-portlet__body {
+            padding-top: 0px !important;
+        }
+
+        .dt-buttons {
+            margin-top: 12px
+        }
+    </style>
+}
+<div class="m-portlet m-portlet--mobile">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                    <span style="color: #ebebeb"></span> تعديل سيارة
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="m-portlet__body">
+        <br />
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="NameAr" class="control-label"></label>
+                        <input asp-for="NameAr" class="form-control">
+                        <span asp-validation-for="NameAr" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="NameEn" class="control-label"></label>
+                        <input asp-for="NameEn" class="form-control">
+                        <span asp-validation-for="NameEn" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="PriceBeforeDiscount" class="control-label"></label>
+                        <input type="number" asp-for="PriceBeforeDiscount" class="form-control">
+                        <span asp-validation-for="PriceBeforeDiscount" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="PriceAfterDiscount" class="control-label"></label>
+                        <input type="number" asp-for="PriceAfterDiscount" class="form-control">
+                        <span asp-validation-for="PriceAfterDiscount" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>نوع السيارة</label>
+                        <select id="CarType" asp-items="ViewBag.TypeCar" asp-for="CarTypeId" title="--- إختار  النوع الرئيسي ---" class="selectpicker dataLive" data-width="100%" data-live-search="true">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="SubCarTypeId"></label>
+                        <select id="select" asp-for="SubCarTypeId" title="--- إختار  النوع الفرعي ---" class="custom-select" data-width="100%">
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Main" class="control-label"></label>
+                        <input type="file" asp-for="Main" class="form-control">
+                        <span asp-validation-for="Main" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Show" class="control-label"></label>
+                        <input type="file" asp-for="Show" class="form-control">
+                        <span asp-validation-for="Show" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="InsidImages" class="control-label"></label>
+                        <input type="file" asp-for="InsidImages" multiple class="form-control">
+                        <span asp-validation-for="InsidImages" class="text-danger"></span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <br />
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="p-3 mb-2 text-white" style="background-color:crimson">
+                        وصف السيارة بالعربية
+                    </div>
+                    <span asp-validation-for="DescriptionAr" class="text-danger"></span>
+                    <textarea class="summernote" asp-for="DescriptionAr"></textarea>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 mb-2 text-white" style="background-color:crimson">
+                        وصف السيارة بالإنجليزية
+                    </div>
+                    <span asp-validation-for="DescriptionEn" class="text-danger"></span>
+                    <textarea class="summernoteEN" asp-for="DescriptionEn"></textarea>
+                </div>
+            </div>
+            <hr />
+            <div class="form-group">
+                <input type="submit" value="التالي" class="btn btn-primary" />
+                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">الغاء</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $('.summernote').summernote({
+            placeholder: 'ادخل المحتوى  ...',
+            tabsize: 1,
+            height: 150
+        });
+    </script>
+    <script>
+        $('.summernoteEN').summernote({
+            placeholder: 'ادخل المحتوى باللغة الانجليزية  ...',
+            tabsize: 1,
+            height: 150
+        });
+    </script>
+    <script>
+        $('.dataLive').selectpicker();
+    </script>
+    <script>
+        //$(".selectpicker").change(function () {
+        //    alert("Handler for .change() called.");
+        //});
+        $(document).ready(function () {
+            var id = @Model.CarTypeId;
+            var _path = "/CPanel/Car/GetSubTypeCar";
+            $.ajax({
+                url: _path,
+                data: { id: id },
+                type: "Get",
+                success: function (data) {
+                    var myOpts = document.getElementById('select').options;
+
+                    $('#select')
+                        .find('option')
+                        .remove()
+                        .end();
+                    jQuery.each(data, function (i, v) {
+                        if (v.id == @Model.SubCarTypeId) {
+                            $('#select').append(`<option selected value="${v.id}"> ${v.nameAr}  </option>`);
+
+                        } else {
+                            $('#select').append(`<option value="${v.id}"> ${v.nameAr}  </option>`);
+
+                        }
+                    });
+                }
+            });
+        });
+
+        $(function () {
+            $(".selectpicker").change(function () {
+                var id = $(this).children("option:selected").val();
+                var _path = "/CPanel/Car/GetSubTypeCar";
+                $.ajax({
+                    url: _path,
+                    data: { id: id },
+                    type: "Get",
+                    success: function (data) {
+                        var myOpts = document.getElementById('select').options;
+
+                        $('#select')
+                            .find('option')
+                            .remove()
+                            .end();
+                        jQuery.each(data, function (i, v) {
+                            $('#select').append(`<option value="${v.id}"> ${v.nameAr}  </option>`);
+                        });
+                    }
+                });
+            });
+        });
+
+    </script>
+}

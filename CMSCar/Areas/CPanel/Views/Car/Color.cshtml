@@ -72,11 +72,6 @@
     </div>
 
 </div>
-
-
-
-
-
 <div class="m-portlet m-portlet--mobile">
     <div class="m-portlet__head">
         <div class="m-portlet__head-caption">
@@ -89,7 +84,7 @@
         <div class="m-portlet__head-tools">
             <ul class="m-portlet__nav">
                 <li class="m-portlet__nav-item">
-                    <a href="~/CPanel/City/Create" title="اضافة مواصفة جديدة" class="PopUp m-btn--sm btn btn-success m-btn m-btn--custom m-btn--icon m-btn--pill">
+                    <a href="~/CPanel/CarExtinsion/AddSpecification/@ViewBag.id" title="اضافة مواصفة جديدة" class="PopUp m-btn--sm btn btn-success m-btn m-btn--custom m-btn--icon m-btn--pill">
                         <span>
                             <i class="fa fa-plus-square"></i>
                             <span style="font-size:14px">اضافة مواصفات جديدة</span>
@@ -155,6 +150,9 @@
     </div>
 
 </div>
+
+<a href="/CPanel/Car/Index" class="btn btn-dark">العودة الى السيارات</a>
+
 @section Scripts{
     <script>
         $(function () {
@@ -276,15 +274,15 @@
                         {
                             name: 'buttons', "render": function (data, type, row) {
                                 return ""
-                                    + "<a title='تعديل المواصفات' href='/CPanel/CarExtinsion/Edit/" + row["id"] + "' class='PopUp btn btn-outline-primary btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='fa fa-edit'></i></a>"
-                                    + "<a title='حذف المواصفات' tname='#dataTableId' href='/CPanel/CarExtinsion/Delete/" + row["id"] + "' class='Confirm  btn btn-outline-danger btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='flaticon-delete-1'></i></a>"
+                                    + "<a title='تعديل المواصفات' href='/CPanel/CarExtinsion/EditFeature/" + row["id"] + "' class='PopUp btn btn-outline-primary btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='fa fa-edit'></i></a>"
+                                    + "<a title='حذف المواصفات' tname='#Features' href='/CPanel/CarExtinsion/DeleteFeature/" + row["id"] + "' class='Confirm  btn btn-outline-danger btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='flaticon-delete-1'></i></a>"
                             }
                         }
                     ],
                     ajax: {
                         type: "POST",
                         contentType: "application/json",
-                        url: '/CPanel/CarExtinsion/SpecificationAjaxData/@ViewBag.id',
+                        url: '/CPanel/CarExtinsion/FeatureAjaxData/@ViewBag.id',
                         data: function (d) {
                             d.SearchKey = ($("[name=SearchKey]").val());
                             return JSON.stringify(d);
@@ -309,7 +307,7 @@
         BindDataTable();
 
         function BindDataTable() {
-            oTable = $('#Features').dataTable(
+            oTable = $('#Spicfic').dataTable(
                 {
                     language: {
                         aria: {
@@ -346,15 +344,15 @@
                         {
                             name: 'buttons', "render": function (data, type, row) {
                                 return ""
-                                    + "<a title='تعديل الميزة' href='/CPanel/CarExtinsion/Edit/" + row["id"] + "' class='PopUp btn btn-outline-primary btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='fa fa-edit'></i></a>"
-                                    + "<a title='حذف الميزة' tname='#dataTableId' href='/CPanel/CarExtinsion/Delete/" + row["id"] + "' class='Confirm  btn btn-outline-danger btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='flaticon-delete-1'></i></a>"
+                                    + "<a title='تعديل المواصفة' href='/CPanel/CarExtinsion/EditSpecification/" + row["id"] + "' class='PopUp btn btn-outline-primary btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='fa fa-edit'></i></a>"
+                                    + "<a title='حذف المواصفة' tname='#Spicfic' href='/CPanel/CarExtinsion/DeleteSpecification/" + row["id"] + "' class='Confirm  btn btn-outline-danger btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='flaticon-delete-1'></i></a>"
                             }
                         }
                     ],
                     ajax: {
                         type: "POST",
                         contentType: "application/json",
-                        url: '/CPanel/CarExtinsion/FeatureAjaxData/@ViewBag.id',
+                        url: '/CPanel/CarExtinsion/SpecificationAjaxData/@ViewBag.id',
                         data: function (d) {
                             d.SearchKey = ($("[name=SearchKey]").val());
                             return JSON.stringify(d);

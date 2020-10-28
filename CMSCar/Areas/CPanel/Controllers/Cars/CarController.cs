@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Linq;
 
 namespace CMSCar.Areas.CPanel.Controllers.Cars
@@ -61,7 +62,7 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
                 car.ShowImage = await ImageHelper.SaveImage(model.Show, _environment, "Images/Car");
                 _Context.Car.Add(car);
                 _Context.SaveChanges();
-                if (model.InsidImages.Any())
+                if (model.InsidImages.Count() != 0)
                 {
                     foreach (var item in model.InsidImages)
                     {
@@ -73,7 +74,59 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
                     _Context.SaveChanges();
 
                 }
-                return RedirectToAction("Color",new {id = car.Id });
+                return RedirectToAction("Color", new { id = car.Id });
+            }
+            ViewData["Cars"] = new SelectList(_Context.Car, "Id", "NameAr");
+            return View();
+        }
+        public IActionResult Edit(int? id)
+        {
+            if (id == null) return NotFound();
+            var car = _Context.Car.Include(x => x.SubCarType).SingleOrDefault(x => x.Id == id);
+            if (car == null) return NotFound();
+            var carDto = _Mapper.Map<CarDTO>(car);
+            carDto.CarTypeId = _Context.CarType.SingleOrDefault(x => x.Id == car.SubCarType.CarTypeId).Id;
+            ViewData["TypeCar"] = new SelectList(_Context.CarType, "Id", "NameAr");
+            return View(carDto);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(CarDTO model)
+        {
+            if (ModelState.IsValid)
+            {
+                var car = _Mapper.Map<Car>(model);
+                var org = _Context.Car.AsNoTracking().SingleOrDefault(x => x.Id == model.Id);
+                if (model.Main != null)
+                {
+                    car.MainImage = await ImageHelper.SaveImage(model.Main, _environment, "Images/Car");
+                }
+                else
+                {
+                    car.MainImage = org.MainImage;
+                }
+                if (model.Show != null)
+                {
+                    car.ShowImage = await ImageHelper.SaveImage(model.Show, _environment, "Images/Car");
+                }
+                else
+                {
+                    car.ShowImage = org.ShowImage;
+                }
+                _Context.Car.Update(car);
+                _Context.SaveChanges();
+                if (model.InsidImages != null)
+                {
+                    foreach (var item in model.InsidImages)
+                    {
+                        CarImage carImage = new CarImage();
+                        carImage.CarId = car.Id;
+                        carImage.ImagePath = await ImageHelper.SaveImage(item, _environment, "Images/Car");
+                        _Context.CarImage.Add(carImage);
+                    }
+                    _Context.SaveChanges();
+
+                }
+                return RedirectToAction("Color", new { id = car.Id });
             }
             ViewData["Cars"] = new SelectList(_Context.Car, "Id", "NameAr");
             return View();
@@ -88,6 +141,15 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
         {
             var list = _Context.SubCarType.Where(x => x.CarTypeId == id).ToList();
             return list;
+        }
+        public IActionResult Delete(int? id)
+        {
+            if (id == null) return NotFound();
+            var car = _Context.Car.Find(id);
+            if (car == null) return NotFound();
+            _Context.Car.Remove(car);
+            _Context.SaveChanges();
+            return Content(ResultMessage.DeleteSuccessResult(), "application/json");
         }
     }
 }
