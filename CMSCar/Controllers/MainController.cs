@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using CMSCar.Areas.CPanel.Models.Cars;
 using CMSCar.Data;
 using CMSCar.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -37,10 +38,10 @@ namespace CMSCar.Controllers
         {
             OfferVM vm = new OfferVM();
             vm.CarTypes = _Context.CarType.ToList();
-            vm.Cars = _Context.Car.Include(x => x.SubCarType).ThenInclude(c => c.CarType).Where(x => (x.SubCarType.CarTypeId == id || id == null)&& x.PriceAfterDiscount != 0).ToList();
+            vm.Cars = _Context.Car.Include(x => x.SubCarType).ThenInclude(c => c.CarType).Where(x => (x.SubCarType.CarTypeId == id || id == null) && x.PriceAfterDiscount != 0).ToList();
             return View(vm);
         }
-        public IActionResult Cars(int? id , int? subId)
+        public IActionResult Cars(int? id, int? subId)
         {
             if (id == null) return NotFound();
             var CarType = _Context.CarType.Find(id);
@@ -49,16 +50,42 @@ namespace CMSCar.Controllers
             SubCarVM vm = new SubCarVM();
             vm.nameAr = CarType.NameAr;
             vm.nameEn = CarType.NameEn;
-            vm.CarTypes = _Context.SubCarType.Where(x=> x.CarTypeId == id).ToList();
-            vm.Cars = _Context.Car.Include(x => x.SubCarType).ThenInclude(c => c.CarType).Where(x => (x.SubCarType.CarTypeId == id || id == null) && (x.SubCarTypeId == subId|| subId == null)).ToList();
+            vm.CarTypes = _Context.SubCarType.Where(x => x.CarTypeId == id).ToList();
+            vm.Cars = _Context.Car.Include(x => x.SubCarType).ThenInclude(c => c.CarType).Where(x => (x.SubCarType.CarTypeId == id || id == null) && (x.SubCarTypeId == subId || subId == null)).ToList();
             return View(vm);
         }
         public IActionResult Brands()
         {
-           
+
             return View();
         }
+        public IActionResult Car(int id)
+        {
+            var car = _Context.Car.Include(x=> x.ColorCars).ThenInclude(x=> x.colorImages).Include(v=> v.SubCarType).ThenInclude(b=> b.CarType).Include(z=> z.carImages).Include(x => x.SpecificationCars).ThenInclude(o => o.subSpecificationCars).Include(m => m.FeatureCars).ThenInclude(p => p.subFeatureCars).Where(c => c.Id == id).SingleOrDefault();
+            return View(car);
+        }
+        public List<ColorImage> ColorsImage(int clrId)
+        {
+            var images = _Context.ColorImage.Where(x=> x.ColorCarId == clrId).ToList();
+            return images;
+        }
+        public string Colorar(int clrId , string lang)
+        {
+            if (lang == "ar-EG")
+            {
+                var name = _Context.ColorCar.Find(clrId).NameAr;
+                return name;
+            }
+            else
+            {
+                var name = _Context.ColorCar.Find(clrId).NameEn;
+                return name;
+            }
 
-
+        }   public string Coloren(int clrId)
+        {
+            var name = _Context.ColorCar.Find(clrId).NameEn;
+            return name;
+        }
     }
 }

@@ -1,6 +1,438 @@
-﻿
+﻿@model CMSCar.Areas.CPanel.Models.Cars.Car
 @{
 }
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Options
 
-<h1>Car</h1>
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+@{
+    string x = System.Globalization.CultureInfo.CurrentCulture.Name;
+    var Colorid = 0;
+}
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cultureItems = LocOptions.Value.SupportedUICultures
+        .Select(c => new SelectListItem { Value = c.Name, Text = c.DisplayName })
+        .ToList();
 
+}
+
+
+<section class="inner_header">
+    <div class="w-100">
+
+        <div class="pageHead">
+            <div class="container">
+                <h2>@Model.NameAr</h2>
+                <!-- <div class="purchase">طلب شراء</div> -->
+                <div class="priceHead">
+                    <div class=" ">
+                        @if (@Model.PriceAfterDiscount != 0)
+                        {
+                            <p class="price">@Model.PriceAfterDiscount</p>
+                        }
+                        else
+                        {
+                            <p class="price">@Model.PriceBeforeDiscount</p>
+                        }
+                        @if (x == "ar-EG")
+                        {
+                            <p class="currancy">ر.س</p>
+                        }
+                        else
+                        {
+                            <p class="currancy">R.S</p>
+
+                        }
+                    </div>
+                </div>
+                <div class="favOnCar_Mobile d-block d-sm-none">
+                    <a href="#" class="addToFavLink  ">
+                        <i class="far fa-heart"></i>
+                    </a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="tranBread row">
+                <div class="container">
+                    <ul id="breadOnCar">
+                        <li><a href="/">@Localizer["Home"]</a></li>
+                        <li><a href="/Main/Cars">@Localizer["Cars"]</a> </li>
+                        @if (x == "ar-EG")
+                        {
+                            <li><a href="/Main/Cars/@Model.SubCarType.CarTypeId"> @Model.SubCarType.CarType.NameAr </a> </li>
+                            <li><a>@Model.NameAr</a></li>
+
+                        }
+                        else
+                        {
+                            <li><a href="/Main/Cars/@Model.SubCarType.CarTypeId"> @Model.SubCarType.CarType.NameEn </a> </li>
+                            <li><a>@Model.NameEn</a></li>
+
+                        }
+                    </ul>
+                </div>
+            </div><!-- tranBread -->
+        </div>
+    </div><!--w-100 -->
+</section>
+
+<div class="container">
+    <section class="car_banner">
+        <img src="/Images/Car/@Model.ShowImage">
+    </section>
+</div>
+<div class="clearfix"></div>
+<div class="container"></div>
+<section class="carInner">
+    <div class="container">
+        <div id="loader"><img src="https://salehcars.com/public/web/img/loading.svg" alt="Loading.."></div>
+        <div class="outerImgs">
+            <div class="inCarRow1">
+                <p>@Localizer["Available exterior colors"]</p>
+
+                @if (x == "ar-EG")
+                {
+                    var counter = 0;
+                    @foreach (var item in Model.ColorCars)
+                    {
+                        if (counter == 0)
+                        {
+                            <span class="colorName">
+                                @item.NameAr
+                            </span>
+                            <ul class="colorsIncar">
+                                <li id="@item.Id" class="selectColor selected" data-colorid="@item.Id" style="background-color:@item.Color;"></li>
+                            </ul>
+                            Colorid = item.Id;
+                        }
+                        else
+                        {
+                            <ul class="colorsIncar">
+                                <li id="@item.Id" class="selectColor" data-colorid="@item.Id" style="background-color:@item.Color;"></li>
+                            </ul>
+                        }
+                        counter++;
+                    }
+
+                }
+
+            </div>
+            <div class="innerCars owl-carousel" id="outerImgs">
+                @if (Model.ColorCars.Any())
+                {
+
+                
+                @foreach (var item in Model.ColorCars[0].colorImages)
+                {
+                    <div>
+                        <a href="/Images/Car/@item.ImagePath" data-lightbox="innerCar"><img src="/Images/Car/@item.ImagePath"></a>
+                    </div>
+                }
+                }
+            </div>
+        </div>
+        <div class="innerImgs">
+            <div class="inCarRow">
+                <p>@Localizer["Inner shape"]</p>
+            </div>
+            <div class="innerCars owl-carousel" id="newInnerImgs">
+                @foreach (var item in Model.carImages)
+                {
+                    <div>
+                        <a href="/Images/Car/@item.ImagePath" data-lightbox="innerCar"><img src="/Images/Car/@item.ImagePath"></a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    <section class="inCarRow">
+        <p>@Localizer["Description"] </p>
+    </section>
+    <div class="carNotes">
+        @if (x == "ar-EG")
+        {
+            @Html.Raw(Model.DescriptionAr)
+        }
+        else
+        {
+            @Html.Raw(Model.DescriptionEn)
+        }
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="container">
+    <section class="inCarRow-dark d-sm-none d-none d-md-block d-lg-block ">
+        <div class="row">
+            <div class="col-md-6 leftBorder order-2">
+                <p>@Localizer["Specifications"] </p>
+            </div>
+            <div class="col-md-6  order-1">
+                <p>@Localizer["Specifications"] </p>
+            </div>
+        </div>
+    </section>
+</div>
+<section class="spec_fet">
+    <div class="container">
+        <div class="row">
+            <ul class="fetSpecTabs d-block d-md-none col-xs-12">
+                <li class="activeTab"><a id="openSpecs" href="javascript:void(0);">@Localizer["Specifications"]</a></li>
+                <li><a id="openFetures" href="javascript:void(0);">@Localizer["Specifications"]</a></li>
+            </ul>
+            <div id="specs" class="col-md-6 leftBorder2 order-2">
+                @if (x == "ar-EG")
+                {
+                    @foreach (var item in Model.SpecificationCars)
+                    {
+                        <div class="block">
+                            <a class="toggle" href="javascript:void(0);">@item.NameAr  <i class="fa fa-plus"></i></a>
+                            <ul class="inner">
+                                @foreach (var item1 in item.subSpecificationCars)
+                                {
+                                    <li class="tab1"><span class="descTab">@item1.NameAr</span><span class="dataTab">@item1.AnswerAr</span></li>
+                                }
+                            </ul>
+                        </div>
+
+                    }
+                }
+                else
+                {
+                    @foreach (var item in Model.SpecificationCars)
+                    {
+                        <div class="block">
+                            <a class="toggle" href="javascript:void(0);">@item.NameEn  <i class="fa fa-plus"></i></a>
+                            <ul class="inner">
+                                @foreach (var item1 in item.subSpecificationCars)
+                                {
+                                    <li class="tab1"><span class="descTab">@item1.NameEn</span><span class="dataTab">@item1.AnswerEn</span></li>
+                                }
+                            </ul>
+                        </div>
+
+                    }
+
+                }
+            </div>
+            <div id="fetures" class="col-md-6  order-1">
+                @if (x == "ar-EG")
+                {
+                    @foreach (var item in Model.FeatureCars)
+                    {
+                        <div class="block">
+                            <a class="toggle" href="javascript:void(0);">@item.NameAr<i class="fa fa-plus"></i></a>
+                            <ul class="inner">
+                                @foreach (var item1 in item.subFeatureCars)
+                                {
+                                    <li class="tab1">
+                                        <span class="descTab">@item1.NameAr</span><span class="dataTab">
+                                            @item1.AnswerAr
+                                        </span>
+                                    </li>
+
+                                }
+                            </ul>
+                        </div>
+                    }
+                }
+                else
+                {
+                    @foreach (var item in Model.FeatureCars)
+                    {
+                        <div class="block">
+                            <a class="toggle" href="javascript:void(0);">@item.NameEn<i class="fa fa-plus"></i></a>
+                            <ul class="inner">
+                                @foreach (var item1 in item.subFeatureCars)
+                                {
+                                    <li class="tab1">
+                                        <span class="descTab">@item1.NameEn</span><span class="dataTab">
+                                            @item1.AnswerEn
+                                        </span>
+                                    </li>
+
+                                }
+                            </ul>
+                        </div>
+                    }
+
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="clearfix"></div>
+@section Scripts{
+    <script>
+
+        $(document).ready(function () {
+                            var Colorid = @Colorid;
+            // inner cars Page Carusal images
+            $('.innerCars.owl-carousel').owlCarousel({
+                loop: false,
+                rtl: true,
+                margin: 5,
+                autoplay: true,
+                navText: '',
+                autoplayHoverPause: true,
+                nav: false,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 3
+                    },
+                    1000: {
+                        items: 4
+                    }
+                }
+            });
+
+            $(".selectColor").on("click", function () {
+                var clrId = $(this).data('colorid');
+                var liss = $(this);
+                var carId = @Model.Id;
+
+                // console.log(clrId);
+                //$(liss).addClass("selected").siblings().removeClass("selected");
+
+                $.ajax({
+                    url: "/Main/ColorsImage",
+                    method: 'Get',
+                    data: {  clrId: clrId},
+                    beforeSend: function () {
+                        //$("#loader").show();
+                        $("#" + Colorid + "").removeClass("selected");
+                        Colorid = clrId;
+                    },
+                    success: function (data) {
+                        //console.log(data);
+                        $(liss).addClass("selected").siblings().removeClass("selected");
+                        var centers = '';
+                        $.each(data, function (i, item) {
+
+                            //  centers += '<div class="owl-item active"><div><a href="'+item+'" data-lightbox="innerCar"><img src="'+item+'"></a></div></div>';
+                            centers += '<div><a href="/Images/Car/' + item.imagePath + '" data-lightbox="innerCar"><img src="/Images/Car/' + item.imagePath + '"></a></div>';
+
+                        });
+
+                        $('#outerImgs').html(centers);
+
+                        var $owl = $('#outerImgs');
+
+                        $owl.trigger('destroy.owl.carousel');
+
+                        $owl.html($owl.find('.owl-stage-outer').html()).removeClass('owl-loaded');
+                        $owl.owlCarousel({
+                            loop: false,
+                            rtl: true,
+                            margin: 5,
+                            autoplay: true,
+                            navText: '',
+                            autoplayHoverPause: true,
+                            nav: false,
+                            responsive: {
+                                0: {
+                                    items: 1
+                                },
+                                600: {
+                                    items: 3
+                                },
+                                1000: {
+                                    items: 4
+                                }
+                            }
+                        });
+
+
+                            $.ajax({
+                                url: "/Main/Colorar",
+                                method: 'Get',
+                                data: { clrId: clrId},
+                                success: function (data) {
+                                    $('.colorName').text(data);
+                                }
+                            });
+
+                            //$.ajax({
+                            //    url: "/Main/Coloren",
+                            //    method: 'Get',
+                            //    data: { clrId: clrId },
+                            //    success: function (data) {
+                            //        $('.colorName').text(data);
+                            //    }
+                            //});
+
+                    }
+                });
+            });
+
+            /// Accordion Car Specification & Featuers
+            $('.toggle').click(function (e) {
+                e.preventDefault();
+
+                var $this = $(this);
+
+                if ($this.next().hasClass('show')) {
+                    $this.next().removeClass('show');
+                    $this.next().slideUp(350);
+                    $this.children('i').removeClass('fa-minus').addClass('fa-plus');
+                    $this.css('color', '#222');
+
+                } else {
+                    $this.next().toggleClass('show');
+                    $this.next().slideToggle(350);
+                    $this.children('i').removeClass('fa-plus').addClass('fa-minus');
+                    $this.css('color', '#c2000b');
+
+                    // Close Others
+                    $this.parent().siblings().find('ul.inner').removeClass('show').slideUp(350);
+                    // Change other colors and change minus to plus
+                    $this.parent().siblings().find('a.toggle').css('color', '#222').children('i').removeClass('fa-minus').addClass('fa-plus');
+
+                }
+            });
+
+
+            // On Mobile Change Between Featuers and Specs.
+            $('#openFetures').on('click', function (e) {
+                e.preventDefault();
+
+                var $this = $(this);
+
+                if (!$this.parent().hasClass('activeTab')) {
+
+                    $this.parent().addClass('activeTab');
+                    $('#specs').hide();
+                    $('#fetures').show();
+
+                    $this.parent().siblings().removeClass('activeTab');
+                }
+            });
+
+            $('#openSpecs').on('click', function (e) {
+                e.preventDefault();
+
+                var $this = $(this);
+
+                if (!$this.parent().hasClass('activeTab')) {
+
+                    $this.parent().addClass('activeTab');
+                    $('#fetures').hide();
+                    $('#specs').show();
+
+                    // $('#specs').slideUp();
+                    $this.parent().siblings().removeClass('activeTab');
+                }
+            });
+        });
+    </script>
+}

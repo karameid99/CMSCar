@@ -90,7 +90,11 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
                     {
                         ColorImage color = new ColorImage();
                         color.ImagePath = await ImageHelper.SaveImage(item, _environment, "Images/Car");
+                        color.ColorCarId = colorCar.Id;
+                        _Context.ColorImage.Add(color);
                     }
+                    _Context.SaveChanges();
+
                 }
                 return Content(ResultMessage.AddSuccessResult(), "application/json");
             }
@@ -121,7 +125,10 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
                     {
                         ColorImage color = new ColorImage();
                         color.ImagePath = await ImageHelper.SaveImage(item, _environment, "Images/Car");
+                        color.ColorCarId = colorCar.Id;
+                        _Context.ColorImage.Add(color);
                     }
+                    _Context.SaveChanges();
                 }
                 return Content(ResultMessage.EditSuccessResult(), "application/json");
             }

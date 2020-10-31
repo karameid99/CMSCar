@@ -23,7 +23,7 @@ namespace CMSCar.Areas.CPanel.Models.PurchaseOrders
         [Required]
         public int CompanyAge { get; set; }
         [Required]
-        public int Bank { get; set; }
+        public string Bank { get; set; }
         public List<CarOrderFinance> carOrders { get; set; }
 
     }

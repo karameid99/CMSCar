@@ -78,6 +78,8 @@ namespace CMSCar.Data
         #endregion
         #region WhyUs
         public DbSet<WhyUs> WhyUs { get; set; }
+
+       
         #endregion
     }
 }

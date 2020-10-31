@@ -117,8 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="bank_account" xml:space="preserve">
+    <value>راتبك على اي بنك</value>
+  </data>
   <data name="cash" xml:space="preserve">
     <value>كاش</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>المدينة</value>
+  </data>
+  <data name="commitments" xml:space="preserve">
+    <value>الالتزامات</value>
   </data>
   <data name="Companies" xml:space="preserve">
     <value>شركات</value>
@@ -132,11 +141,20 @@
   <data name="Individual" xml:space="preserve">
     <value>افراد</value>
   </data>
+  <data name="initPayment" xml:space="preserve">
+    <value>اول دفعة</value>
+  </data>
+  <data name="last_payment" xml:space="preserve">
+    <value>إخر دفعة</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>الاسم</value>
   </data>
   <data name="Name Of Car" xml:space="preserve">
     <value>اسم السيارة</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>لا</value>
   </data>
   <data name="Order" xml:space="preserve">
     <value>طلب شراء</value>
@@ -153,6 +171,12 @@
   <data name="Price" xml:space="preserve">
     <value>السعر</value>
   </data>
+  <data name="qard" xml:space="preserve">
+    <value>هل يوجد قرض عقاري ؟</value>
+  </data>
+  <data name="salary" xml:space="preserve">
+    <value>الراتب</value>
+  </data>
   <data name="Service" xml:space="preserve">
     <value>افراد</value>
   </data>
@@ -164,5 +188,11 @@
   </data>
   <data name="tamweel" xml:space="preserve">
     <value>تمويل</value>
+  </data>
+  <data name="work" xml:space="preserve">
+    <value>قطاع العمل</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>نعم</value>
   </data>
 </root>

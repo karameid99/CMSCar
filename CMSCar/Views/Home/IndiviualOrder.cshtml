@@ -48,16 +48,16 @@
                                 @Localizer["Order Car"]
                             </a>
                         </li>
-                        <li class="brandListLi act"><a class="mr-4 text-yellow" href="https://salehcars.com/ar/buy_individual" id="personalTap">@Localizer["Individual"]</a><i id="hoverMe" class="fas fa-angle-down hoverMe"></i></li>
-                        <li><a class="mr-4" href="https://salehcars.com/ar/buy_company" id="companyTap">@Localizer["Companies"]</a></li>
+                        <li class="brandListLi act"><a class="mr-4 text-yellow" href="/Home/IndiviualOrder" id="personalTap">@Localizer["Individual"]</a><i id="hoverMe" class="fas fa-angle-down hoverMe"></i></li>
+                        <li><a class="mr-4" href="/Home/CompaniesOrder" id="companyTap">@Localizer["Companies"]</a></li>
                     </ul>
-                    <ul class="brandList">
-                        <li class=" brandListLi">
-                            <a href="https://salehcars.com/ar/buy_service" id="">
-                                @Localizer["Service"]
-                            </a>
-                        </li>
-                    </ul>
+                    @*<ul class="brandList">
+                            <li class=" brandListLi">
+                                <a href="https://salehcars.com/ar/buy_service" id="">
+                                    @Localizer["Service"]
+                                </a>
+                            </li>
+                        </ul>*@
                 </div> <!--brandList_col  -->
             </div>
 
@@ -82,8 +82,8 @@
                                 </div>
                             </div>
                         </div><!-- row -->
-             
-                         @if(ViewBag.EditStatus != null)
+
+                        @if (ViewBag.EditStatus != null)
                         {
                             <div class="alert alert-danger alert-dismissible fade show" style="background-color: #ff0000;border: none" role="alert">
                                 <strong style="font-size:15px">@Localizer["error"]</strong>
@@ -125,10 +125,10 @@
                             <input id="submetCash" type="submit" class="mawadBtn form-control" value="@Localizer["submit"]">
                         </form>
 
-                        <form method="POST" action="/Home/sendAnyWay" id="personal_tamweel" enctype='multipart/form-data' class="sendNow">                            
+                        <form method="POST" action="/Home/IndviuialFinance" id="personal_tamweel" class="sendNow">
                             <div id="wrappingCar">
                                 <div id="needBeforeCalc">
-                                    <<div class="form-group row ">
+                                    <div class="form-group row ">
                                         <label for="selectedCar" class="col-sm-4 col-form-label">@Localizer["Name Of Car"] <span class="required">*</span></label>
                                         <div class="col-sm-8">
                                             <input name="CarName" required type="text" value="" class="form-control" id="selectedCar">
@@ -157,25 +157,25 @@
                                     <div class="form-group row">
                                         <label for="city" class="col-sm-4 col-form-label">@Localizer["salary"] <span class="required">*</span></label>
                                         <div class="col-sm-8">
-                                            <input type="number" class="form-control " name="salary" id="salary" placeholder="@Localizer["salary"]" value="" required min="3000">
+                                            <input type="number" class="form-control " name="Salary" id="salary" placeholder="@Localizer["salary"]" value="" required min="3000">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="staticEmail" class="col-sm-4 col-form-label">@Localizer["commitments"]<span class="required">*</span></label>
                                         <div class="col-sm-8">
 
-                                            <input type="number" class="form-control " name="commitments" placeholder="@Localizer["commitments"]" required value="">
+                                            <input type="number" class="form-control " name="Commitment" placeholder="@Localizer["commitments"]" required value="">
                                         </div>
                                     </div><!-- row -->
                                     <div class="form-group row">
                                         <label for="staticEmail" class="col-sm-4 col-form-label ">@Localizer["qard"]  <span class="required">*</span></label>
                                         <div class="col-sm-8">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="mortgage_loan" id="qardYes" value="1" required>
+                                                <input class="form-check-input" type="radio" name="Loan" id="qardYes" value="1" required>
                                                 <label class="form-check-label" for="qardYes">@Localizer["Yes"]</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" checked="checked" name="mortgage_loan" id="qardNo" value="0" required>
+                                                <input class="form-check-input" type="radio" checked="checked" name="Loan" id="qardNo" value="0" required>
                                                 <label class="form-check-label" for="qardNo">@Localizer["No"]</label>
                                             </div>
                                         </div>
@@ -183,7 +183,7 @@
                                     <div class="form-group row">
                                         <label for="city" class="col-sm-4 col-form-label">@Localizer["last_payment"] <span class="required">*</span> </label>
                                         <div class="col-sm-8">
-                                            <select name="last_payment" required value="" class="form-control">
+                                            <select name="LastPay" required value="" class="form-control">
                                                 <option value="25">25%</option>
                                                 <option value="30">30%</option>
                                                 <option selected value="35">35%</option>
@@ -198,7 +198,7 @@
                                         <label for="initPayment" class="col-sm-4 col-form-label">@Localizer["initPayment"] </label>
                                         <div class="col-sm-8">
 
-                                            <select name="initPayment" required id="initPayment" value="" class="form-control">
+                                            <select name="FirstPay" required id="initPayment" value="" class="form-control">
                                                 <option selected value="0">0</option>
                                                 <option value="10">10%</option>
                                                 <option value="15">15%</option>
@@ -211,53 +211,23 @@
                                     <div class="form-group row">
                                         <label for="city" class="col-sm-4 col-form-label">@Localizer["City"]  <span class="required">*</span></label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control " name="city" id="city" placeholder="@Localizer["City"] " value="" required>
+                                            <input type="text" class="form-control " name="City" id="city" placeholder="@Localizer["City"] " value="" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="city" class="col-sm-4 col-form-label">@Localizer["work"]<span class="required">*</span></label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control " name="work" id="work" placeholder="@Localizer["work"]" value="" required>
+                                            <input type="text" class="form-control " name="WorkSector" id="work" placeholder="@Localizer["work"]" value="" required>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label for="city" class="col-sm-4 col-form-label">@Localizer["bank_account"]<span class="required">*</span></label>
                                         <div class="col-sm-8">
-                                            <select class="form-control " name="bank_account" id="bank_account" required>
-                                                <option value="null">اختر البنك ..  </option>
-                                                <option value="0">لايوجد </option>
-                                                <option value="البنك الأهلي التجاري">البنك الأهلي التجاري</option>
-                                                <option value="البنك السعودي الفرنسي">البنك السعودي الفرنسي</option>
-                                                <option value="البنك العربي الوطني">البنك العربي الوطني</option>
-                                                <option value="بنك البلاد">بنك البلاد</option>
-                                                <option value="بنك الرياض">بنك الرياض</option>
-                                                <option value="مصرف الراجحي">مصرف الراجحي</option>
-                                                <option value="مصرف الإنماء">مصرف الإنماء</option>
-                                                <option value="بنك الإمارات">بنك الإمارات</option>
-                                            </select>
+                                            <input type="text" class="form-control " name="Bank" id="bank_account" placeholder="@Localizer["bank_account"]" value="" required>
                                         </div>
                                     </div>
-
-
-                                    <div class="form-group row">
-                                        <label for="licenceStatus" class="col-sm-4 col-form-label">@Localizer["licenceStatus"]<span class="required">*</span></label>
-                                        <div class="col-sm-8">
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="driving_license_status" id="licenceStatus1" value="1" checked="checked">
-                                                <label class="form-check-label" for="licenceStatus1">سارية </label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="driving_license_status" id="licenceStatus2" value="2">
-                                                <label class="form-check-label" for="licenceStatus2">منتهية</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="driving_license_status" id="licenceStatus3" value="0">
-                                                <label class="form-check-label" for="licenceStatus3">غير متاح</label>
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                    <input type="hidden" class="form-control " name="licenseStatus"  value="0">
                                 </div>
                                 <input type="submit" class="mawadBtn form-control" value="@Localizer["submit"]">
                             </div>

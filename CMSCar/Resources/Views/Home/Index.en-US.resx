@@ -123,6 +123,12 @@
   <data name="Certified by funding agencies" xml:space="preserve">
     <value>Certified by funding agencies</value>
   </data>
+  <data name="Change Brand" xml:space="preserve">
+    <value>Change Brand</value>
+  </data>
+  <data name="Change Car Type" xml:space="preserve">
+    <value>Change Car Type</value>
+  </data>
   <data name="companies" xml:space="preserve">
     <value>Companies</value>
   </data>
@@ -134,6 +140,12 @@
   </data>
   <data name="Our price is the best" xml:space="preserve">
     <value>Our price is the best</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Search Here ..." xml:space="preserve">
+    <value>Search Here ...</value>
   </data>
   <data name="TypeCar" xml:space="preserve">
     <value>Authorized distributor for all types of cars</value>

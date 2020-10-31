@@ -50,40 +50,28 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <form class="form" action="#" method="GET">
+                <form class="form" action="Home/Search" method="GET">
                     <div class="row">
                         <div class="col-md-9">
                             <div class="row">
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-md-4">
                                     <!-- <label for="inputState">State</label> -->
-                                    <select name="car_brand_id" id="inputState" class="form-control">
-                                        <option value="" selected>اختر الماركه</option>
+                                    <select asp-items="@ViewBag.Brands" name="BrandId" id="inputState" class="selectpicker form-control">
+                                        <option value="" selected>@Localizer["Change Brand"]</option>
                                     </select>
                                 </div>
-
-
-                                <div class="form-group col-md-3">
-                                    <select name="car_model_id" id="inputState_model" class="form-control">
-                                        <option value="" selected>اختر النوع</option>
+                                <div class="form-group col-md-4">
+                                    <select name="TypeId" id="inputState_model" class="form-control">
+                                        <option value="" selected>@Localizer["Change Car Type"]</option>
                                     </select>
                                 </div>
-
-                                <div class="form-group col-md-3">
-                                    <select name="car_model_type" id="inputState_model-type" class="form-control">
-                                        <option value="" selected>اختر الفئة</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group col-md-3">
-                                    <input type="text" name="search_text" class="form-control" id="search-box" placeholder="ابحث هنا ...">
-
+                                <div class="form-group col-md-4">
+                                    <input type="text" name="SearchKey" class="form-control" id="search-box" placeholder="@Localizer["Search Here ..."]">
                                 </div>
                             </div> <!--row inside -->
                         </div> <!-- col9 -->
 
-
-
-                        <button type="submit" class="btn btn-primary col-md-3">بحث</button>
+                        <button type="submit" class="btn btn-primary col-md-3">@Localizer["Search"]</button>
                     </div> <!--row -->
                 </form>
             </div>
@@ -233,8 +221,8 @@
                                 @Html.Raw(ViewBag.Titles.OrderEn)
                             </div>}
 
-                    <a href="~/ar/buy_company" class="buy_car_home_btn">@Localizer["Individuals"]</a>
-                    <a href="~/ar/buy_individual" class=" buy_car_home_btn">@Localizer["companies"]</a>
+                    <a href="/Home/IndiviualOrder" class="buy_car_home_btn">@Localizer["Individuals"]</a>
+                    <a href="/Home/CompaniesOrder" class=" buy_car_home_btn">@Localizer["companies"]</a>
                     </div>
                     <div class="col-md-1"></div>
                 </div>
@@ -414,4 +402,29 @@
             document.getElementsByTagName("head")[0].appendChild(htmlDiv.childNodes[0]);
         }
     </script>
+<script>
+    $(function () {
+        $(".selectpicker").change(function () {
+            var id = $(this).children("option:selected").val();
+            var _path = "/Home/GetSubTypeCar";
+            $.ajax({
+                url: _path,
+                data: { id: id },
+                type: "Get",
+                success: function (data) {
+                    var myOpts = document.getElementById('inputState_model').options;
+
+                    $('#inputState_model')
+                        .find('option')
+                        .remove()
+                        .end();
+                    $.each(data, function (i, v) {
+                        $('#inputState_model').append(`<option value="${v.id}"> ${v.nameAr}  </option>`);
+                    });
+                }
+            });
+        });
+    });
+
+</script>
 }

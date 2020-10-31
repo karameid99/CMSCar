@@ -117,55 +117,109 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Alert" xml:space="preserve">
-    <value>There Is No Data</value>
+  <data name="Add Another Type +" xml:space="preserve">
+    <value>اضافة سيارة جديدة +</value>
   </data>
-  <data name="Blog" xml:space="preserve">
-    <value>Our News &amp; Blog</value>
+  <data name="Bank" xml:space="preserve">
+    <value>البنك</value>
   </data>
-  <data name="Blogs" xml:space="preserve">
-    <value>Blog</value>
+  <data name="bank_account" xml:space="preserve">
+    <value>راتبك على اي بنك</value>
   </data>
-  <data name="Categories" xml:space="preserve">
-    <value>Categories</value>
+  <data name="Car Name" xml:space="preserve">
+    <value>اسم السيارة المطلوبة </value>
   </data>
-  <data name="Comments" xml:space="preserve">
-    <value>Comments</value>
+  <data name="cash" xml:space="preserve">
+    <value>كاش</value>
   </data>
-  <data name="E-mail*" xml:space="preserve">
-    <value>E-mail*</value>
+  <data name="City" xml:space="preserve">
+    <value>المدينة</value>
+  </data>
+  <data name="commitments" xml:space="preserve">
+    <value>الالتزامات</value>
+  </data>
+  <data name="Companies" xml:space="preserve">
+    <value>شركات</value>
+  </data>
+  <data name="Company Activity" xml:space="preserve">
+    <value>نشاط الشركة حسب السجل</value>
+  </data>
+  <data name="Company Age" xml:space="preserve">
+    <value>عمر الشركة</value>
+  </data>
+  <data name="Company Name" xml:space="preserve">
+    <value>اسم الشركة</value>
+  </data>
+  <data name="Count" xml:space="preserve">
+    <value>العدد</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>البريد الالكتروني</value>
+  </data>
+  <data name="error" xml:space="preserve">
+    <value>الرجاء ادخال كل المدخلات</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>Home</value>
+    <value>الرئيسية</value>
   </data>
-  <data name="Leave a reply" xml:space="preserve">
-    <value>Leave a reply</value>
+  <data name="Individual" xml:space="preserve">
+    <value>افراد</value>
   </data>
-  <data name="Name*" xml:space="preserve">
-    <value>Name*</value>
+  <data name="initPayment" xml:space="preserve">
+    <value>اول دفعة</value>
   </data>
-  <data name="Now" xml:space="preserve">
-    <value>Now</value>
+  <data name="last_payment" xml:space="preserve">
+    <value>إخر دفعة</value>
   </data>
-  <data name="Our news &amp; blog" xml:space="preserve">
-    <value>Blog Details</value>
+  <data name="Name" xml:space="preserve">
+    <value>الاسم</value>
   </data>
-  <data name="Popular Tags" xml:space="preserve">
-    <value>Popular Tags</value>
+  <data name="Name Of Car" xml:space="preserve">
+    <value>اسم السيارة</value>
   </data>
-  <data name="Post Comment" xml:space="preserve">
-    <value>Post Comment</value>
+  <data name="No" xml:space="preserve">
+    <value>لا</value>
   </data>
-  <data name="Recent Post" xml:space="preserve">
-    <value>Recent Post</value>
+  <data name="Order" xml:space="preserve">
+    <value>طلب شراء</value>
   </data>
-  <data name="Search" xml:space="preserve">
-    <value>Search ...</value>
+  <data name="Order Car" xml:space="preserve">
+    <value>طلب شراء سيارة</value>
   </data>
-  <data name="Website" xml:space="preserve">
-    <value>Website</value>
+  <data name="payment" xml:space="preserve">
+    <value>طريقة الدفع</value>
   </data>
-  <data name="Write here...*" xml:space="preserve">
-    <value>Write here...*</value>
+  <data name="Person Name" xml:space="preserve">
+    <value>اسم الشخص المسؤول بالشركة</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>رقم الجوال</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>السعر</value>
+  </data>
+  <data name="qard" xml:space="preserve">
+    <value>هل يوجد قرض عقاري ؟</value>
+  </data>
+  <data name="salary" xml:space="preserve">
+    <value>الراتب</value>
+  </data>
+  <data name="Service" xml:space="preserve">
+    <value>افراد</value>
+  </data>
+  <data name="submit" xml:space="preserve">
+    <value>ارسال</value>
+  </data>
+  <data name="succes" xml:space="preserve">
+    <value>تم ارسال طلب الشراء بنجاح</value>
+  </data>
+  <data name="tamweel" xml:space="preserve">
+    <value>تمويل</value>
+  </data>
+  <data name="work" xml:space="preserve">
+    <value>قطاع العمل</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>نعم</value>
   </data>
 </root>

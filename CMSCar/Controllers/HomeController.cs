@@ -15,6 +15,8 @@ using CMSCar.Areas.CPanel.Models.Settings;
 using CMSCar.Areas.CPanel.Models.PurchaseOrders;
 using Microsoft.EntityFrameworkCore;
 using CMSCar.Areas.CPanel.Models.Contact;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using CMSCar.Areas.CPanel.Models.Cars;
 
 namespace CMSCar.Controllers
 {
@@ -23,7 +25,7 @@ namespace CMSCar.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IMapper _Mapper;
 
-        public HomeController(ApplicationDbContext context , ILogger<HomeController> logger , IMapper mapper) : base(context)
+        public HomeController(ApplicationDbContext context, ILogger<HomeController> logger, IMapper mapper) : base(context)
         {
             _logger = logger;
             _Mapper = mapper;
@@ -31,6 +33,7 @@ namespace CMSCar.Controllers
 
         public IActionResult Index()
         {
+            ViewData["Brands"] = new SelectList(_Context.CarType, "Id", "NameAr");
             var Titles = _Context.Titles.FirstOrDefault();
             var defaultObj = new Titles
             {
@@ -40,7 +43,7 @@ namespace CMSCar.Controllers
                 OrderEn = " ",
                 OurPrice = " ",
                 OurSponsers = " ",
-                          };
+            };
             ViewData["Titles"] = Titles == null ? defaultObj : Titles;
             IndexVM index = new IndexVM();
             index.Cars = _Mapper.Map<List<CarShowVM>>(_Context.Car.ToList());
@@ -49,7 +52,7 @@ namespace CMSCar.Controllers
 
         public IActionResult Qustion()
         {
-           var items =  _Context.Question.ToList();
+            var items = _Context.Question.ToList();
             return View(items);
         }
         public IActionResult Contact()
@@ -105,7 +108,7 @@ namespace CMSCar.Controllers
 
 
 
-        public IActionResult CompanyOrder()
+        public IActionResult CompaniesOrder()
         {
             return View();
         }
@@ -118,7 +121,8 @@ namespace CMSCar.Controllers
         public IActionResult IndiviualOrder()
         {
             return View();
-        } 
+        }
+
         [HttpPost]
         public IActionResult ICash(IndividualCash cash)
         {
@@ -132,5 +136,53 @@ namespace CMSCar.Controllers
             return RedirectToAction("IndiviualOrder");
         }
 
+        [HttpPost]
+        public IActionResult CCash(CompanyCash cash)
+        {
+            if (ModelState.IsValid)
+            {
+                _Context.CompanyCash.Add(cash);
+                _Context.SaveChanges();
+                return RedirectToAction("SuccessOrder");
+            }
+            ViewData["EditStatus"] = "Error";
+            return RedirectToAction("IndiviualOrder");
+        }
+        [HttpPost]
+        public IActionResult CFinice(CompanyFinance cash)
+        {
+            if (ModelState.IsValid)
+            {
+                _Context.CompanyFinance.Add(cash);
+                _Context.SaveChanges();
+                return RedirectToAction("SuccessOrder");
+            }
+            ViewData["EditStatus"] = "Error";
+            return RedirectToAction("IndiviualOrder");
+        }
+        public IActionResult IndviuialFinance(IndividualFinance Finance)
+        {
+
+            _Context.IndividualFinance.Add(Finance);
+            _Context.SaveChanges();
+
+            ViewData["EditStatus"] = "Error";
+            return RedirectToAction("SuccessOrder");
+
+        }
+
+        public IActionResult Search(SearchVM searchVM)
+        {
+            var result = _Context.Car.Include(x => x.SubCarType).Where(z => (z.SubCarType.CarTypeId == searchVM.BrandId ||
+             !searchVM.BrandId.HasValue) && (z.SubCarTypeId == searchVM.TypeId || !searchVM.TypeId.HasValue) &&
+             (z.NameAr.Contains(searchVM.SearchKey) || z.NameEn.Contains(searchVM.SearchKey) ||
+             string.IsNullOrEmpty(searchVM.SearchKey))).ToList();
+            return View(result);
+        }
+        public List<SubCarType> GetSubTypeCar(int id)
+        {
+            var list = _Context.SubCarType.Where(x => x.CarTypeId == id).ToList();
+            return list;
+        }
     }
 }

@@ -117,28 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Alert" xml:space="preserve">
-    <value>There Is No Data</value>
+  <data name="Available exterior colors" xml:space="preserve">
+    <value>الألوان الخارجية المتاحة</value>
   </data>
-  <data name="Blog" xml:space="preserve">
-    <value>Our News &amp; Blog</value>
+  <data name="Cars" xml:space="preserve">
+    <value>السيارات </value>
   </data>
-  <data name="Blogs" xml:space="preserve">
-    <value>Blog</value>
+  <data name="Description" xml:space="preserve">
+    <value>الوصف</value>
   </data>
-  <data name="Categories" xml:space="preserve">
-    <value>Categories</value>
+  <data name="Features" xml:space="preserve">
+    <value>المميزات</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>Home</value>
+    <value>الرئيسية</value>
   </data>
-  <data name="Popular Tags" xml:space="preserve">
-    <value>Popular Tags</value>
+  <data name="Inner shape" xml:space="preserve">
+    <value>الشكل الداخلي</value>
   </data>
-  <data name="Recent Post" xml:space="preserve">
-    <value>Recent Post</value>
-  </data>
-  <data name="Search" xml:space="preserve">
-    <value>Search ...</value>
+  <data name="Specifications" xml:space="preserve">
+    <value>المواصفات</value>
   </data>
 </root>

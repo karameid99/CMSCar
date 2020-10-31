@@ -117,11 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Add Another Type +" xml:space="preserve">
+    <value>Add Another Type +</value>
+  </data>
+  <data name="bank_account" xml:space="preserve">
+    <value>Bank account</value>
+  </data>
+  <data name="Car Name" xml:space="preserve">
+    <value>Car Name</value>
+  </data>
   <data name="cash" xml:space="preserve">
     <value>Cash</value>
   </data>
+  <data name="City" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="commitments" xml:space="preserve">
+    <value>Commitments</value>
+  </data>
   <data name="Companies" xml:space="preserve">
     <value>Companies</value>
+  </data>
+  <data name="Company Name" xml:space="preserve">
+    <value>Company Name</value>
+  </data>
+  <data name="Count" xml:space="preserve">
+    <value>Count</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
   </data>
   <data name="error" xml:space="preserve">
     <value>Please enter all entries</value>
@@ -132,11 +156,20 @@
   <data name="Individual" xml:space="preserve">
     <value>Individual</value>
   </data>
+  <data name="initPayment" xml:space="preserve">
+    <value>First Payment</value>
+  </data>
+  <data name="last_payment" xml:space="preserve">
+    <value>last Payment</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>
   <data name="Name Of Car" xml:space="preserve">
     <value>Name Of Car</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
   </data>
   <data name="Order" xml:space="preserve">
     <value>Perchase Order</value>
@@ -147,11 +180,20 @@
   <data name="payment" xml:space="preserve">
     <value>How to pay</value>
   </data>
+  <data name="Person Name" xml:space="preserve">
+    <value>Name of the person in charge</value>
+  </data>
   <data name="Phone" xml:space="preserve">
     <value>Phone</value>
   </data>
   <data name="Price" xml:space="preserve">
     <value>Price</value>
+  </data>
+  <data name="qard" xml:space="preserve">
+    <value>Is there a mortgage?</value>
+  </data>
+  <data name="salary" xml:space="preserve">
+    <value>Salary</value>
   </data>
   <data name="Service" xml:space="preserve">
     <value>Order Service</value>
@@ -164,5 +206,11 @@
   </data>
   <data name="tamweel" xml:space="preserve">
     <value>Finance</value>
+  </data>
+  <data name="work" xml:space="preserve">
+    <value>Work sector</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
   </data>
 </root>

@@ -12,6 +12,8 @@ namespace CMSCar.Areas.CPanel.Models.Settings
         public string OrderAr { get; set; }
         public string OrderEn { get; set; }
         public string OurPrice { get; set; }
+        public string OurPriceEn { get; set; }
         public string OurSponsers { get; set; }
+        public string OurSponsersEn { get; set; }
     }
 }

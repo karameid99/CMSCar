@@ -123,6 +123,12 @@
   <data name="Certified by funding agencies" xml:space="preserve">
     <value>معتمدون لدى جهات التمويل</value>
   </data>
+  <data name="Change Brand" xml:space="preserve">
+    <value>إختار الماركة</value>
+  </data>
+  <data name="Change Car Type" xml:space="preserve">
+    <value>إختار النوع</value>
+  </data>
   <data name="companies" xml:space="preserve">
     <value>شركات</value>
   </data>
@@ -134,6 +140,12 @@
   </data>
   <data name="Our price is the best" xml:space="preserve">
     <value>سعرنا هوا الافضل</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>بحث</value>
+  </data>
+  <data name="Search Here ..." xml:space="preserve">
+    <value>إبحث هنا ...</value>
   </data>
   <data name="TypeCar" xml:space="preserve">
     <value>موزع معتمد لجميع انواع السيارات</value>

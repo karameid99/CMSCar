@@ -22,17 +22,16 @@ namespace CMSCar.Areas.CPanel.Models.PurchaseOrders
         public float Commitment { get; set; }
         public bool Loan { get; set; }
         [Required]
-        public int FirstPay { get; set; }
+        public string FirstPay { get; set; }
         [Required]
-        public int LastPay { get; set; }
+        public string LastPay { get; set; }
         [Required]
         public string City { get; set; }
         [Required]
         public string WorkSector { get; set; }
         [Required]
-        public int Bank { get; set; }
-        [Required]
-        public int licenseStatus { get; set; }
+        public string Bank { get; set; }
+        public string licenseStatus { get; set; }
 
     }
 }
