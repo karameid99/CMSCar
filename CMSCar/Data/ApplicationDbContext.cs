@@ -10,6 +10,7 @@ using CMSCar.Areas.CPanel.Models.PurchaseOrders;
 using CMSCar.Areas.CPanel.Models.Questions;
 using CMSCar.Areas.CPanel.Models.Services;
 using CMSCar.Areas.CPanel.Models.Settings;
+using CMSCar.Areas.CPanel.Models.Sliders;
 using CMSCar.Areas.CPanel.Models.SpecialOffers;
 using CMSCar.Areas.CPanel.Models.User;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -78,6 +79,7 @@ namespace CMSCar.Data
         #endregion
         #region WhyUs
         public DbSet<WhyUs> WhyUs { get; set; }
+        public DbSet<Slider> Slider { get; set; }
 
        
         #endregion

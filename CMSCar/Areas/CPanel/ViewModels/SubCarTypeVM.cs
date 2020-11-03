@@ -11,6 +11,7 @@ namespace CMSCar.Areas.CPanel.ViewModels
         public string NameAr { get; set; }
         public string NameEn { get; set; }
         public CarTypeVM CarType { get; set; }
+        public int CarTypeId { get; set; }
         public string CreateAt { get; set; }
 
     }

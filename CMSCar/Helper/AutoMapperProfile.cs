@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CMSCar.Areas.CPanel.DTOs;
+using CMSCar.Areas.CPanel.DTOs.SubFS;
 using CMSCar.Areas.CPanel.Models.Cars;
 using CMSCar.Areas.CPanel.Models.Contact;
 using CMSCar.Areas.CPanel.Models.FundingBodies;
@@ -80,6 +81,12 @@ namespace CMSCar.Helper
             CreateMap<FeteureUpdateDTO, FeatureCar>().ReverseMap();
             CreateMap<SpecificationUpdateDTO, SpecificationCar>().ReverseMap();
             CreateMap<SpecificationCreateDTO, SpecificationCar>();
+
+            CreateMap<SubSpecificationCarDTO, SubSpecificationCar>();
+            CreateMap<SubSpecificationCarUpdateDTO, SubSpecificationCar>().ReverseMap();
+
+            CreateMap<SubFeatureCarDTO, SubFeatureCar>();
+            CreateMap<SubFeatureCarUpdateDTO, SubFeatureCar>().ReverseMap();
 
         }
     }

@@ -152,6 +152,7 @@
                         {
                             name: 'buttons', "render": function (data, type, row) {
                                 return ""
+                                    + "<a target='_blank' title='تفاصيل  جهة التمويل' href='/Home/Index/#GetBanks' class=' btn btn-outline-warning btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='fa fa-info-circle'></i></a>"
                                     + "<a title='تعديل جهة التمويل' href='/CPanel/FininceSide/Edit/" + row["id"] + "' class='PopUp btn btn-outline-primary btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='fa fa-edit'></i></a>"
                                     + "<a title='حذف جهة التمويل' tname='#dataTableId' href='/CPanel/FininceSide/Delete/" + row["id"] + "' class='Confirm  btn btn-outline-danger btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='flaticon-delete-1'></i></a>"
                             }

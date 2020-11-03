@@ -154,6 +154,7 @@
                         {
                             name: 'buttons', "render": function (data, type, row) {
                                 return ""
+                                    + "<a target='_blank' title='تفاصيل الفرع' href='/Home/Contact/" + row["id"] + "' class=' btn btn-outline-warning btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='fa fa-info-circle'></i></a>"
                                     + "<a title='تعديل الفرع' href='/CPanel/Branch/Edit/" + row["id"] + "' class='PopUp btn btn-outline-primary btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='fa fa-edit'></i></a>"
                                     + "<a title='حذف الفرع' tname='#dataTableId' href='/CPanel/Branch/Delete/" + row["id"] + "' class='Confirm  btn btn-outline-danger btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='flaticon-delete-1'></i></a>"
                             }

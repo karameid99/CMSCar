@@ -118,9 +118,21 @@ namespace CMSCar.Controllers
             return View();
         }
 
-        public IActionResult IndiviualOrder()
+        public IActionResult IndiviualOrder(int? id)
         {
-            return View();
+            var car = _Context.Car.Find(id);
+            if (car == null)
+            {
+                return View();
+            }
+            var poc = new POCarVM
+            {
+                NameAr = car.NameAr,
+                NameEn = car.NameEn,
+                Price = car.PriceAfterDiscount == 0 ? car.PriceBeforeDiscount + "" : car.PriceAfterDiscount + ""
+            };
+            return View(poc);
+            
         }
 
         [HttpPost]

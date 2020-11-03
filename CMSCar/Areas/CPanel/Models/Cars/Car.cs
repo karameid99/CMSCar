@@ -1,6 +1,7 @@
 ﻿using CMSCar.Areas.CPanel.Models.SpecialOffers;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -21,6 +22,9 @@ namespace CMSCar.Areas.CPanel.Models.Cars
         public int SubCarTypeId { get; set; }
         public SubCarType SubCarType { get; set; }
 
+        //public int SubCarModelId { get; set; }
+        //[ForeignKey("SubCarModelId")]
+        //public SubCarType SubCarModel{ get; set; }
 
         public List<ColorCar> ColorCars { get; set; }
         public List<FeatureCar> FeatureCars { get; set; }
