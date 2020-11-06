@@ -74,20 +74,28 @@
             </div>
 
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label>نوع السيارة</label>
                         <select id="CarType" asp-items="ViewBag.TypeCar" name="OfferCarIds" title="--- إختار  النوع الرئيسي ---" class="selectpicker dataLive" data-width="100%" data-live-search="true">
                         </select>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label asp-for="SubCarTypeId"></label>
                         <select id="select" asp-for="SubCarTypeId" title="--- إختار  النوع الفرعي ---" class="custom-select" data-width="100%">
                         </select>
                     </div>
                 </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="ModelCarTypeId"></label>
+                        <select id="select1" asp-for="ModelCarTypeId" title="--- إختار   الموديل ---" class="custom-select" data-width="100%">
+                        </select>
+                    </div>
+                </div>
+
             </div>
 
             <div class="row">
@@ -171,6 +179,7 @@
             $(".selectpicker").change(function () {
                 var id = $(this).children("option:selected").val();
                 var _path = "GetSubTypeCar";
+                var _path1 = "GetModel";
                 $.ajax({
                     url: _path,
                     data: { id: id },
@@ -184,6 +193,23 @@
                             .end();
                         jQuery.each(data, function (i, v) {
                             $('#select').append(`<option value="${v.id}"> ${v.nameAr}  </option>`);
+                        });
+                    }
+                });
+
+                $.ajax({
+                    url: _path1,
+                    data: { id: id },
+                    type: "Get",
+                    success: function (data) {
+                        var myOpts = document.getElementById('select1').options;
+
+                        $('#select1')
+                            .find('option')
+                            .remove()
+                            .end();
+                        jQuery.each(data, function (i, v) {
+                            $('#select1').append(`<option value="${v.id}"> ${v.nameAr}  </option>`);
                         });
                     }
                 });

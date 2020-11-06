@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using CMSCar.Areas.CPanel.Models;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -17,5 +18,8 @@ namespace CMSCar.Areas.CPanel.DTOs
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         public string NameEn { get; set; }
         public int CarTypeId { get; set; }
+        [Display(Name = "نوع التصنيف الفرعي")]
+
+        public CategoryType CategoryType { get; set; }
     }
 }

@@ -33,6 +33,9 @@ namespace CMSCar.Areas.CPanel.DTOs
         public List<IFormFile> InsidImages { get; set; }
         [Display(Name = "النوع الفرعي")]
         public int SubCarTypeId { get; set; }
+        [Display(Name = "الموديل")]
+        public int ModelCarTypeId { get; set; }
+
         public int CarTypeId { get; set; }
     }
 }

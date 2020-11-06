@@ -19,13 +19,8 @@ namespace CMSCar.Areas.CPanel.Models.Cars
         public string MainImage { get; set; }
         public string ShowImage { get; set; }
 
-        public int SubCarTypeId { get; set; }
-        public SubCarType SubCarType { get; set; }
 
-        //public int SubCarModelId { get; set; }
-        //[ForeignKey("SubCarModelId")]
-        //public SubCarType SubCarModel{ get; set; }
-
+        public List<CarCategory> CarCategorys { get; set; }
         public List<ColorCar> ColorCars { get; set; }
         public List<FeatureCar> FeatureCars { get; set; }
         public List<SpecificationCar> SpecificationCars { get; set; }

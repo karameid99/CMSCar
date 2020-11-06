@@ -22,6 +22,16 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="CategoryType"></label>
+                <select id="select" asp-for="CategoryType" asp-items="Html.GetEnumSelectList<CMSCar.Areas.CPanel.Models.CategoryType>()" title="--- إختار  نوع التصنيف الفرعي ---" class="custom-select" data-width="100%">
+                </select>
+            </div>
+        </div>
+    </div>
+
     <hr />
     <div class="form-group">
         <input type="submit" value="اضافة" class="btn btn-primary" />

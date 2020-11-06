@@ -8,6 +8,7 @@ using CMSCar.Areas.CPanel.Models.Home;
 using CMSCar.Areas.CPanel.Models.PurchaseOrders;
 using CMSCar.Areas.CPanel.Models.Questions;
 using CMSCar.Areas.CPanel.Models.Services;
+using CMSCar.Areas.CPanel.Models.Sliders;
 using CMSCar.Areas.CPanel.Models.SpecialOffers;
 using CMSCar.Areas.CPanel.Models.User;
 using CMSCar.Areas.CPanel.ViewModels;
@@ -87,6 +88,9 @@ namespace CMSCar.Helper
 
             CreateMap<SubFeatureCarDTO, SubFeatureCar>();
             CreateMap<SubFeatureCarUpdateDTO, SubFeatureCar>().ReverseMap();
+
+            CreateMap<SliderDTO, Slider>().ReverseMap();
+            CreateMap<Car, CarDetalesVM>().ReverseMap();
 
         }
     }

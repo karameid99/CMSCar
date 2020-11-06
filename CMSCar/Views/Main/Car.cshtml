@@ -1,4 +1,4 @@
-﻿@model CMSCar.Areas.CPanel.Models.Cars.Car
+﻿@model CMSCar.Models.ViewModels.CarDetalesVM
 @{
 }
 @using Microsoft.AspNetCore.Builder
@@ -63,13 +63,13 @@
                         <li><a href="/Main/Cars">@Localizer["Cars"]</a> </li>
                         @if (x == "ar-EG")
                         {
-                            <li><a href="/Main/Cars/@Model.SubCarType.CarTypeId"> @Model.SubCarType.CarType.NameAr </a> </li>
+                            <li><a href="/Main/Cars/@Model.CarTypeId"> @Model.CarTypeAr</a> </li>
                             <li><a>@Model.NameAr</a></li>
 
                         }
                         else
                         {
-                            <li><a href="/Main/Cars/@Model.SubCarType.CarTypeId"> @Model.SubCarType.CarType.NameEn </a> </li>
+                            <li><a href="/Main/Cars/@Model.CarTypeId"> @Model.CarTypeAr</a> </li>
                             <li><a>@Model.NameEn</a></li>
 
                         }

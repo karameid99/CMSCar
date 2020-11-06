@@ -17,6 +17,7 @@ using Microsoft.EntityFrameworkCore;
 using CMSCar.Areas.CPanel.Models.Contact;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using CMSCar.Areas.CPanel.Models.Cars;
+using CMSCar.Areas.CPanel.Models;
 
 namespace CMSCar.Controllers
 {
@@ -47,6 +48,7 @@ namespace CMSCar.Controllers
             ViewData["Titles"] = Titles == null ? defaultObj : Titles;
             IndexVM index = new IndexVM();
             index.Cars = _Mapper.Map<List<CarShowVM>>(_Context.Car.ToList());
+            index.Sliders = _Context.Slider.ToList();
             return View(index);
         }
 
@@ -185,15 +187,23 @@ namespace CMSCar.Controllers
 
         public IActionResult Search(SearchVM searchVM)
         {
-            var result = _Context.Car.Include(x => x.SubCarType).Where(z => (z.SubCarType.CarTypeId == searchVM.BrandId ||
-             !searchVM.BrandId.HasValue) && (z.SubCarTypeId == searchVM.TypeId || !searchVM.TypeId.HasValue) &&
+
+            var result = _Context.Car.Include(x => x.CarCategorys).ThenInclude(c => c.SubCarType).ThenInclude(x => x.CarType).Where(z => (z.CarCategorys.Any(x => x.SubCarType.CarTypeId == searchVM.BrandId) ||
+             !searchVM.BrandId.HasValue) && 
+             (z.CarCategorys.Any(x => x.SubCarType.Id == searchVM.TypeId) || !searchVM.TypeId.HasValue) &&
+             (z.CarCategorys.Any(x => x.SubCarType.Id == searchVM.ModelId) || !searchVM.TypeId.HasValue) &&
              (z.NameAr.Contains(searchVM.SearchKey) || z.NameEn.Contains(searchVM.SearchKey) ||
              string.IsNullOrEmpty(searchVM.SearchKey))).ToList();
             return View(result);
         }
         public List<SubCarType> GetSubTypeCar(int id)
         {
-            var list = _Context.SubCarType.Where(x => x.CarTypeId == id).ToList();
+            var list = _Context.SubCarType.Where(x => x.CarTypeId == id && x.CategoryType == CategoryType.Firsr).ToList();
+            return list;
+        }
+        public List<SubCarType> GetModelCar(int id)
+        {
+            var list = _Context.SubCarType.Where(x => x.CarTypeId == id && x.CategoryType == CategoryType.Second).ToList();
             return list;
         }
     }

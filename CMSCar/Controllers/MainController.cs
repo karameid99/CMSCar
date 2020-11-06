@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using CMSCar.Areas.CPanel.Models.Cars;
+using CMSCar.Areas.CPanel.ViewModels;
 using CMSCar.Data;
 using CMSCar.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -36,9 +37,9 @@ namespace CMSCar.Controllers
 
         public IActionResult Discount(int? id)
         {
-            OfferVM vm = new OfferVM();
+            Models.ViewModels.OfferVM vm = new Models.ViewModels.OfferVM();
             vm.CarTypes = _Context.CarType.ToList();
-            vm.Cars = _Context.Car.Include(x => x.SubCarType).ThenInclude(c => c.CarType).Where(x => (x.SubCarType.CarTypeId == id || id == null) && x.PriceAfterDiscount != 0).ToList();
+            vm.Cars = _Context.Car.Include(x => x.CarCategorys).ThenInclude(c => c.SubCarType).ThenInclude(x => x.CarType).Where(x => (x.CarCategorys.Any(x => x.SubCarType.CategoryType == Areas.CPanel.Models.CategoryType.Second))&&(x.CarCategorys.Any(x => x.SubCarType.CarTypeId == id) || id == null) && x.PriceAfterDiscount != 0).ToList();
             return View(vm);
         }
         public IActionResult Cars(int? id, int? subId)
@@ -50,8 +51,8 @@ namespace CMSCar.Controllers
             SubCarVM vm = new SubCarVM();
             vm.nameAr = CarType.NameAr;
             vm.nameEn = CarType.NameEn;
-            vm.CarTypes = _Context.SubCarType.Where(x => x.CarTypeId == id).ToList();
-            vm.Cars = _Context.Car.Include(x => x.SubCarType).ThenInclude(c => c.CarType).Where(x => (x.SubCarType.CarTypeId == id || id == null) && (x.SubCarTypeId == subId || subId == null)).ToList();
+            vm.CarTypes = _Context.SubCarType.Where(x => x.CarTypeId == id && x.CategoryType == Areas.CPanel.Models.CategoryType.Firsr).ToList();
+            vm.Cars = _Context.Car.Include(x => x.CarCategorys).ThenInclude(c => c.SubCarType).ThenInclude(x => x.CarType).Where(x => (x.CarCategorys.Any(x => x.SubCarType.CategoryType == Areas.CPanel.Models.CategoryType.Second)) && (x.CarCategorys.Any(x => x.SubCarType.CarTypeId == id) || id == null) && (x.CarCategorys.Any(x => x.SubCarTypeId == subId) || subId == null)).ToList();
             return View(vm);
         }
         public IActionResult Brands()
@@ -61,15 +62,23 @@ namespace CMSCar.Controllers
         }
         public IActionResult Car(int id)
         {
-            var car = _Context.Car.Include(x=> x.ColorCars).ThenInclude(x=> x.colorImages).Include(v=> v.SubCarType).ThenInclude(b=> b.CarType).Include(z=> z.carImages).Include(x => x.SpecificationCars).ThenInclude(o => o.subSpecificationCars).Include(m => m.FeatureCars).ThenInclude(p => p.subFeatureCars).Where(c => c.Id == id).SingleOrDefault();
-            return View(car);
+            var car = _Context.Car.Include(x => x.ColorCars).ThenInclude(x => x.colorImages).Include(v => v.CarCategorys).ThenInclude(b => b.SubCarType).ThenInclude(c => c.CarType).Include(z => z.carImages).Include(x => x.SpecificationCars).ThenInclude(o => o.subSpecificationCars).Include(m => m.FeatureCars).ThenInclude(p => p.subFeatureCars).Where(c => c.Id == id).SingleOrDefault();
+            var CarVM = _Mapper.Map<CarDetalesVM>(car);
+            var subCar = _Context.CarCategory.Include(x => x.SubCarType).ThenInclude(s => s.CarType).SingleOrDefault(x => x.CarId == car.Id && x.SubCarType.CategoryType == Areas.CPanel.Models.CategoryType.Second);
+            CarVM.SubCarTypeAr = subCar.SubCarType.NameAr;
+            CarVM.SubCarTypeEn = subCar.SubCarType.NameEn;
+            CarVM.SubCarTypeId = subCar.SubCarType.Id;
+            CarVM.CarTypeAr = subCar.SubCarType.CarType.NameAr;
+            CarVM.CarTypeEn = subCar.SubCarType.CarType.NameEn;
+            CarVM.CarTypeId = subCar.SubCarType.CarType.Id;
+            return View(CarVM);
         }
         public List<ColorImage> ColorsImage(int clrId)
         {
-            var images = _Context.ColorImage.Where(x=> x.ColorCarId == clrId).ToList();
+            var images = _Context.ColorImage.Where(x => x.ColorCarId == clrId).ToList();
             return images;
         }
-        public string Colorar(int clrId , string lang)
+        public string Colorar(int clrId, string lang)
         {
             if (lang == "ar-EG")
             {
@@ -82,7 +91,8 @@ namespace CMSCar.Controllers
                 return name;
             }
 
-        }   public string Coloren(int clrId)
+        }
+        public string Coloren(int clrId)
         {
             var name = _Context.ColorCar.Find(clrId).NameEn;
             return name;

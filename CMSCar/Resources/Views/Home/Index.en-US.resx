@@ -126,6 +126,9 @@
   <data name="Change Brand" xml:space="preserve">
     <value>Change Brand</value>
   </data>
+  <data name="Change Car Model" xml:space="preserve">
+    <value>Change Car Model</value>
+  </data>
   <data name="Change Car Type" xml:space="preserve">
     <value>Change Car Type</value>
   </data>

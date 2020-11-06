@@ -53,14 +53,24 @@ namespace CMSCar.Data.Migrations
                     b.Property<string>("ShowImage")
                         .HasColumnType("nvarchar(max)");
 
+                    b.HasKey("Id");
+
+                    b.ToTable("Car");
+                });
+
+            modelBuilder.Entity("CMSCar.Areas.CPanel.Models.Cars.CarCategory", b =>
+                {
+                    b.Property<int>("CarId")
+                        .HasColumnType("int");
+
                     b.Property<int>("SubCarTypeId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("CarId", "SubCarTypeId");
 
                     b.HasIndex("SubCarTypeId");
 
-                    b.ToTable("Car");
+                    b.ToTable("CarCategory");
                 });
 
             modelBuilder.Entity("CMSCar.Areas.CPanel.Models.Cars.CarImage", b =>
@@ -1000,6 +1010,12 @@ namespace CMSCar.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("BackgroundColor")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BackgroundImage")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
@@ -1299,10 +1315,16 @@ namespace CMSCar.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("CMSCar.Areas.CPanel.Models.Cars.Car", b =>
+            modelBuilder.Entity("CMSCar.Areas.CPanel.Models.Cars.CarCategory", b =>
                 {
+                    b.HasOne("CMSCar.Areas.CPanel.Models.Cars.Car", "Car")
+                        .WithMany("CarCategorys")
+                        .HasForeignKey("CarId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("CMSCar.Areas.CPanel.Models.Cars.SubCarType", "SubCarType")
-                        .WithMany("Cars")
+                        .WithMany("CarCategorys")
                         .HasForeignKey("SubCarTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

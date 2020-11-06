@@ -9,6 +9,7 @@ namespace CMSCar.Models.ViewModels
     {
         public int? BrandId { get; set; }
         public int? TypeId { get; set; }
+        public int? ModelId { get; set; }
         public string SearchKey { get; set; }
     }
 }

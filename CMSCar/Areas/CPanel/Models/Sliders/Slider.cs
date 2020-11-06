@@ -7,6 +7,8 @@ namespace CMSCar.Areas.CPanel.Models.Sliders
 {
     public class Slider : BaseEntity
     {
+        public string BackgroundImage { get; set; }
+        public string BackgroundColor { get; set; }
         public string MainImage { get; set; }
         public string Image1 { get; set; }
         public string Image2 { get; set; }

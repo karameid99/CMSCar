@@ -1,0 +1,140 @@
+﻿@model SliderDTO
+@{
+    ViewData["Title"] = "تعديل منشور  ";
+}
+@section Css{
+    <style>
+        td {
+            padding: 8px 1px 8px 1px !important;
+            font-size: 14px !important;
+        }
+
+        th {
+            font-weight: bold;
+            font-size: medium;
+        }
+
+        td a {
+            margin-left: 5px !important;
+        }
+
+        .m-portlet__body {
+            padding-top: 0px !important;
+        }
+
+        .dt-buttons {
+            margin-top: 12px
+        }
+    </style>
+}
+<div class="m-portlet m-portlet--mobile">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                    <span style="color: #ebebeb"></span> تعديل منشور 
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="m-portlet__body">
+        <br />
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="TitleAr" class="control-label"></label>
+                        <input asp-for="TitleAr" class="form-control">
+                        <span asp-validation-for="TitleAr" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="TitleEn" class="control-label"></label>
+                        <input asp-for="TitleEn" class="form-control">
+                        <span asp-validation-for="TitleEn" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="SubTitleAr" class="control-label"></label>
+                        <input asp-for="SubTitleAr" class="form-control">
+                        <span asp-validation-for="SubTitleAr" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="SubTitleEn" class="control-label"></label>
+                        <input asp-for="SubTitleEn" class="form-control">
+                        <span asp-validation-for="SubTitleEn" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="SliderType"></label>
+                        <select id="select" asp-for="SliderType" asp-items="Html.GetEnumSelectList<CMSCar.Areas.CPanel.Models.SliderType>()" title="--- إختار  نموذج المنشور ---" class="custom-select" data-width="100%">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="MainImages" class="control-label"></label>
+                        <input type="file" asp-for="MainImages" class="form-control">
+                        <span asp-validation-for="MainImages" class="text-danger"></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Images1" class="control-label"></label>
+                        <input type="file" asp-for="Images1" class="form-control">
+                        <span asp-validation-for="Images1" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Images2" class="control-label"></label>
+                        <input type="file" asp-for="Images2" multiple class="form-control">
+                        <span asp-validation-for="Images2" class="text-danger"></span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Images3" class="control-label"></label>
+                        <input type="file" asp-for="Images3" class="form-control">
+                        <span asp-validation-for="Images3" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Images4" class="control-label"></label>
+                        <input type="file" asp-for="Images4" multiple class="form-control">
+                        <span asp-validation-for="Images4" class="text-danger"></span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" value="حفظ" class="btn btn-primary" />
+                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">الغاء</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+
+}

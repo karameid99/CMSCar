@@ -28,6 +28,7 @@ namespace CMSCar.Data
         {
             base.OnModelCreating(builder);
             builder.Entity<OfferCar>().HasKey(x => new { x.CarId, x.OfferId });
+            builder.Entity<CarCategory>().HasKey(x => new { x.CarId, x.SubCarTypeId });
         }
         #region Cars
         public DbSet<Car> Car { get; set; }
@@ -80,6 +81,7 @@ namespace CMSCar.Data
         #region WhyUs
         public DbSet<WhyUs> WhyUs { get; set; }
         public DbSet<Slider> Slider { get; set; }
+        public DbSet<CarCategory> CarCategory { get; set; }
 
        
         #endregion

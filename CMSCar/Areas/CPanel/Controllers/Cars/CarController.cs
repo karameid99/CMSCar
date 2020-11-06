@@ -62,6 +62,20 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
                 car.ShowImage = await ImageHelper.SaveImage(model.Show, _environment, "Images/Car");
                 _Context.Car.Add(car);
                 _Context.SaveChanges();
+                var sct = new CarCategory
+                {
+                    CarId = car.Id,
+                    SubCarTypeId = model.SubCarTypeId
+                };
+                var sct2 = new CarCategory
+                {
+                    CarId = car.Id,
+                    SubCarTypeId = model.ModelCarTypeId
+                };
+                _Context.CarCategory.Add(sct);
+                _Context.CarCategory.Add(sct2);
+                _Context.SaveChanges();
+
                 if (model.InsidImages.Count() != 0)
                 {
                     foreach (var item in model.InsidImages)
@@ -76,19 +90,19 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
                 }
                 return RedirectToAction("Color", new { id = car.Id });
             }
-            ViewData["Cars"] = new SelectList(_Context.Car, "Id", "NameAr");
+            ViewData["TypeCar"] = new SelectList(_Context.CarType, "Id", "NameAr");
             return View();
         }
-        public IActionResult Edit(int? id)
-        {
-            if (id == null) return NotFound();
-            var car = _Context.Car.Include(x => x.SubCarType).SingleOrDefault(x => x.Id == id);
-            if (car == null) return NotFound();
-            var carDto = _Mapper.Map<CarDTO>(car);
-            carDto.CarTypeId = _Context.CarType.SingleOrDefault(x => x.Id == car.SubCarType.CarTypeId).Id;
-            ViewData["TypeCar"] = new SelectList(_Context.CarType, "Id", "NameAr");
-            return View(carDto);
-        }
+        //public IActionResult Edit(int? id)
+        //{
+        //    if (id == null) return NotFound();
+        //    var car = _Context.Car.SingleOrDefault(x => x.Id == id);
+        //    if (car == null) return NotFound();
+        //    var carDto = _Mapper.Map<CarDTO>(car);
+        //    carDto.CarTypeId = _Context.CarType.SingleOrDefault(x => x.Id == car.SubCarType.CarTypeId).Id;
+        //    ViewData["TypeCar"] = new SelectList(_Context.CarType, "Id", "NameAr");
+        //    return View(carDto);
+        //}
         [HttpPost]
         public async Task<IActionResult> Edit(CarDTO model)
         {
@@ -139,7 +153,13 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
 
         public List<SubCarType> GetSubTypeCar(int id)
         {
-            var list = _Context.SubCarType.Where(x => x.CarTypeId == id).ToList();
+            var list = _Context.SubCarType.Where(x => x.CarTypeId == id && x.CategoryType == Models.CategoryType.Firsr).ToList();
+            return list;
+        }
+
+        public List<SubCarType> GetModel(int id)
+        {
+            var list = _Context.SubCarType.Where(x => x.CarTypeId == id && x.CategoryType == Models.CategoryType.Second).ToList();
             return list;
         }
         public IActionResult Delete(int? id)

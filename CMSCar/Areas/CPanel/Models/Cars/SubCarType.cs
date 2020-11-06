@@ -14,7 +14,8 @@ namespace CMSCar.Areas.CPanel.Models.Cars
         public string NameEn { get; set; }
         public int CarTypeId { get; set; }
         public CarType CarType { get; set; }
-        public List<Car> Cars { get; set; }
         public CategoryType CategoryType { get; set; }
+        public List<CarCategory> CarCategorys { get; set; }
+
     }
 }
