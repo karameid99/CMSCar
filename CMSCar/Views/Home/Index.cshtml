@@ -582,7 +582,7 @@
                                 <a data-toggle="tooltip" data-placement="left" title="اضف للمفضلة" href="#" class="addToFavLink  ">
                                     <i class="far fa-heart"></i>
                                 </a>
-                                <a href="#">
+                                <a href="/Main/Car/@item.Id">
                                     <div class="img_wrap">
                                         <img src="/Images/Car/@item.ShowImage" alt="">
                                     </div>
@@ -604,25 +604,25 @@
                     {
                         @foreach (var item in Model.Cars)
                         {
-                            <div class="car">
-                                <a data-toggle="tooltip" data-placement="left" title="اضف للمفضلة" href="#" class="addToFavLink  ">
-                                    <i class="far fa-heart"></i>
-                                </a>
-                                <a href="#">
-                                    <div class="img_wrap">
-                                        <img src="/Images/Car/@item.ShowImage" alt="">
-                                    </div>
-                                    <h3>@item.NameEn</h3>
-                                    <hr>
-                                    <ul class="shortDesc">
-                                        <li>@Html.Raw(item.DescriptionEn)</li>
-                                        <li class="car_placeHolder"></li>
-                                    </ul>
-                                    <div class="car_price ">
-                                        Price :  @item.PriceBeforeDiscount R.S
-                                    </div>
-                                </a>
-                            </div> <!-- car -->
+                <div class="car">
+                    <a data-toggle="tooltip" data-placement="left" title="اضف للمفضلة" href="#" class="addToFavLink  ">
+                        <i class="far fa-heart"></i>
+                    </a>
+                    <a href="/Main/Car/@item.Id">
+                        <div class="img_wrap">
+                            <img src="/Images/Car/@item.ShowImage" alt="">
+                        </div>
+                        <h3>@item.NameEn</h3>
+                        <hr>
+                        <ul class="shortDesc">
+                            <li>@Html.Raw(item.DescriptionEn)</li>
+                            <li class="car_placeHolder"></li>
+                        </ul>
+                        <div class="car_price ">
+                            Price :  @item.PriceBeforeDiscount R.S
+                        </div>
+                    </a>
+                </div> <!-- car -->
                         }
 
                     }

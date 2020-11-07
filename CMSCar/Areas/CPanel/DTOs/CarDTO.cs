@@ -35,6 +35,7 @@ namespace CMSCar.Areas.CPanel.DTOs
         public int SubCarTypeId { get; set; }
         [Display(Name = "الموديل")]
         public int ModelCarTypeId { get; set; }
+        public string CarIdentfire { get; set; }
 
         public int CarTypeId { get; set; }
     }

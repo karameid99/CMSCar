@@ -4,14 +4,16 @@ using CMSCar.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CMSCar.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201106120327_CarIdentfire")]
+    partial class CarIdentfire
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -134,6 +136,7 @@ namespace CMSCar.Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int?>("CarId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("CarIdentfire")
@@ -224,6 +227,7 @@ namespace CMSCar.Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int?>("CarId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("CarIdentfire")
@@ -1355,7 +1359,9 @@ namespace CMSCar.Data.Migrations
                 {
                     b.HasOne("CMSCar.Areas.CPanel.Models.Cars.Car", "Car")
                         .WithMany("ColorCars")
-                        .HasForeignKey("CarId");
+                        .HasForeignKey("CarId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("CMSCar.Areas.CPanel.Models.Cars.ColorImage", b =>
@@ -1378,7 +1384,9 @@ namespace CMSCar.Data.Migrations
                 {
                     b.HasOne("CMSCar.Areas.CPanel.Models.Cars.Car", "Car")
                         .WithMany("SpecificationCars")
-                        .HasForeignKey("CarId");
+                        .HasForeignKey("CarId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("CMSCar.Areas.CPanel.Models.Cars.SubCarType", b =>

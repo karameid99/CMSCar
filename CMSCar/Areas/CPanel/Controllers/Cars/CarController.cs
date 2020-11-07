@@ -49,6 +49,9 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
 
         public IActionResult Create()
         {
+            var ci = Guid.NewGuid();
+            ViewBag.ci = ci;
+
             ViewData["TypeCar"] = new SelectList(_Context.CarType, "Id", "NameAr");
             return View();
         }
@@ -76,7 +79,7 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
                 _Context.CarCategory.Add(sct2);
                 _Context.SaveChanges();
 
-                if (model.InsidImages.Count() != 0)
+                if (model.InsidImages != null)
                 {
                     foreach (var item in model.InsidImages)
                     {
@@ -88,21 +91,42 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
                     _Context.SaveChanges();
 
                 }
-                return RedirectToAction("Color", new { id = car.Id });
+
+                var colors = _Context.ColorCar.Where(x => x.CarIdentfire == model.CarIdentfire).ToList();
+                var Featsurs = _Context.FeatureCar.Where(x => x.CarIdentfire == model.CarIdentfire).ToList();
+                var Supsfication = _Context.SpecificationCar.Where(x => x.CarIdentfire == model.CarIdentfire).ToList();
+                foreach (var item in colors)
+                {
+                    item.CarId = car.Id;
+                }
+                foreach (var item in Featsurs)
+                {
+                    item.CarId = car.Id;
+                }
+                foreach (var item in Supsfication)
+                {
+                    item.CarId = car.Id;
+                }
+                _Context.SaveChanges();
+                return RedirectToAction("Index");
             }
             ViewData["TypeCar"] = new SelectList(_Context.CarType, "Id", "NameAr");
             return View();
         }
-        //public IActionResult Edit(int? id)
-        //{
-        //    if (id == null) return NotFound();
-        //    var car = _Context.Car.SingleOrDefault(x => x.Id == id);
-        //    if (car == null) return NotFound();
-        //    var carDto = _Mapper.Map<CarDTO>(car);
-        //    carDto.CarTypeId = _Context.CarType.SingleOrDefault(x => x.Id == car.SubCarType.CarTypeId).Id;
-        //    ViewData["TypeCar"] = new SelectList(_Context.CarType, "Id", "NameAr");
-        //    return View(carDto);
-        //}
+        public IActionResult Edit(int? id)
+        {
+            if (id == null) return NotFound();
+            var car = _Context.Car.SingleOrDefault(x => x.Id == id);
+            if (car == null) return NotFound();
+            ViewBag.ci = car.CarIdentfire;
+
+            var carDto = _Mapper.Map<CarDTO>(car);
+                var type = _Context.CarCategory.Include(x => x.SubCarType).ThenInclude(s => s.CarType).SingleOrDefault(x => x.CarId == car.Id && x.SubCarType.CategoryType == Areas.CPanel.Models.CategoryType.Firsr);
+            carDto.CarTypeId = type.SubCarType.CarTypeId;
+
+            ViewData["TypeCar"] = new SelectList(_Context.CarType, "Id", "NameAr");
+            return View(carDto);
+        }
         [HttpPost]
         public async Task<IActionResult> Edit(CarDTO model)
         {
@@ -167,6 +191,24 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
             if (id == null) return NotFound();
             var car = _Context.Car.Find(id);
             if (car == null) return NotFound();
+            var colors = _Context.ColorCar.Where(x => x.CarId == car.Id).ToList();
+            var Featsurs = _Context.FeatureCar.Where(x => x.CarId == car.Id).ToList();
+            var Supsfication = _Context.SpecificationCar.Where(x => x.CarId == car.Id).ToList();
+            foreach (var item in colors)
+            {
+                _Context.ColorCar.Remove(item);
+
+            }
+            foreach (var item in Featsurs)
+            {
+                _Context.FeatureCar.Remove(item);
+
+            }
+            foreach (var item in Supsfication)
+            {
+                _Context.SpecificationCar.Remove(item);
+
+            }
             _Context.Car.Remove(car);
             _Context.SaveChanges();
             return Content(ResultMessage.DeleteSuccessResult(), "application/json");

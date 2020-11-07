@@ -24,10 +24,10 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
             _environment = environment;
         }
 
-        public JsonResult  ColorAjaxData([FromBody] dynamic data , int id)
+        public JsonResult  ColorAjaxData([FromBody] dynamic data , string id)
         {
             DataTableHelper d = new DataTableHelper(data);
-            var query = _Context.ColorCar.Where(x => x.CarId == id).ToList();
+            var query = _Context.ColorCar.Where(x => x.CarIdentfire == id).ToList();
             int totalCount = query.Count();
             var items = query.Select(x => new
             {
@@ -39,11 +39,10 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
             var result = new {draw = d.Draw,recordsTotal = totalCount,recordsFiltered = totalCount, data = items};
             return Json(result);
         }
-
-        public JsonResult SpecificationAjaxData([FromBody] dynamic data, int id)
+        public JsonResult SpecificationAjaxData([FromBody] dynamic data, string id)
         {
             DataTableHelper d = new DataTableHelper(data);
-            var query = _Context.SpecificationCar.Where(x => x.CarId == id).ToList();
+            var query = _Context.SpecificationCar.Where( x => x.CarIdentfire == id).ToList();
             int totalCount = query.Count();
             var items = query.Select(x => new
             {
@@ -55,10 +54,10 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
             var result = new { draw = d.Draw, recordsTotal = totalCount, recordsFiltered = totalCount, data = items };
             return Json(result);
         }
-        public JsonResult FeatureAjaxData([FromBody] dynamic data, int id)
+        public JsonResult FeatureAjaxData([FromBody] dynamic data, string id)
         {
             DataTableHelper d = new DataTableHelper(data);
-            var query = _Context.FeatureCar.Where(x => x.CarId == id).ToList();
+            var query = _Context.FeatureCar.Where(x => x.CarIdentfire == id).ToList();
             int totalCount = query.Count();
             var items = query.Select(x => new
             {
@@ -71,7 +70,7 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
             return Json(result);
         }
 
-        public IActionResult AddColor(int id)
+        public IActionResult AddColor(string id)
         {
             ViewBag.id = id;
             return View();       
@@ -144,7 +143,7 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
             return Content(ResultMessage.DeleteSuccessResult(), "application/json");
         }
 
-        public IActionResult AddFeature(int id)
+        public IActionResult AddFeature(string id)
         {
             ViewBag.id = id;
             return View();
@@ -200,7 +199,7 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
 
 
 
-        public IActionResult AddSpecification(int id)
+        public IActionResult AddSpecification(string id)
         {
             ViewBag.id = id;
             return View();

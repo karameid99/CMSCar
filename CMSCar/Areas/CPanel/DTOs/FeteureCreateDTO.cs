@@ -14,6 +14,6 @@ namespace CMSCar.Areas.CPanel.DTOs
         [Display(Name = "الأسم بالانجليزية")]
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         public string NameEn { get; set; }
-        public int CarId { get; set; }
+        public string CarIdentfire { get; set; }
     }
 }

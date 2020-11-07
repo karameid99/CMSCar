@@ -10,6 +10,7 @@ using CMSCar.Data;
 using CMSCar.Helper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CMSCar.Areas.CPanel.Controllers.Cars
 {
@@ -22,14 +23,14 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
         public IActionResult IndexSF(int id)
         {
             ViewBag.id = id;
-            var items =  _Context.SubFeatureCar.Where(x => x.FeatureCarId == id).ToList();
+            var items = _Context.SubFeatureCar.Where(x => x.FeatureCarId == id).ToList();
             return View(items);
         }
-
+       
         public IActionResult IndexSC(int id)
         {
             ViewBag.id = id;
-            var items = _Context.SubSpecificationCar.Where(x => x.SpecificationCarId ==  id).ToList();
+            var items = _Context.SubSpecificationCar.Where(x => x.SpecificationCarId == id).ToList();
             return View(items);
         }
         public IActionResult CreateSF(int id)
@@ -54,6 +55,8 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
             ViewBag.id = id;
             return View();
         }
+        [HttpPost]
+
         public IActionResult CreateSC(SubSpecificationCarDTO model)
         {
             if (ModelState.IsValid)
@@ -74,7 +77,7 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
                 return NotFound();
             }
 
-                return View(_Mapper.Map<SubFeatureCar , SubFeatureCarUpdateDTO>(item));
+            return View(_Mapper.Map<SubFeatureCar, SubFeatureCarUpdateDTO>(item));
         }
         public IActionResult EditSC(int id)
         {
@@ -85,6 +88,57 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
             }
 
             return View(_Mapper.Map<SubSpecificationCar, SubSpecificationCarUpdateDTO>(item));
+        }
+        [HttpPost]
+        public IActionResult EditSF(SubFeatureCarUpdateDTO subFeatureCarUpdateDTO)
+        {
+            if (ModelState.IsValid)
+            {
+                var featureCar = _Mapper.Map<SubFeatureCarUpdateDTO, SubFeatureCar>(subFeatureCarUpdateDTO);
+                var orgFC = _Context.SubFeatureCar.AsNoTracking().SingleOrDefault(x => x.Id == subFeatureCarUpdateDTO.Id);
+                featureCar.FeatureCarId = orgFC.FeatureCarId;
+                _Context.SubFeatureCar.Update(featureCar);
+                _Context.SaveChanges();
+                return Content(ResultMessage.AddSuccessResult(), "application/json");
+
+            }
+            return View();
+        }
+        [HttpPost]
+
+        public IActionResult EditSC(SubSpecificationCarUpdateDTO subSpecificationCarUpdateDTO)
+        {
+            if (ModelState.IsValid)
+            {
+                var featureCar = _Mapper.Map<SubSpecificationCarUpdateDTO, SubSpecificationCar>(subSpecificationCarUpdateDTO);
+                var orgFC = _Context.SubSpecificationCar.AsNoTracking().SingleOrDefault(x => x.Id == subSpecificationCarUpdateDTO.Id);
+                featureCar.SpecificationCarId = orgFC.SpecificationCarId;
+                _Context.SubSpecificationCar.Update(featureCar);
+                _Context.SaveChanges();
+                return Content(ResultMessage.AddSuccessResult(), "application/json");
+
+            }
+            return View();
+        }
+
+        public ActionResult DeleteSC(int? Id)
+        {
+            if (Id == null) return NotFound();
+            var specificationCar = _Context.SubSpecificationCar.Find(Id);
+            if (specificationCar == null) return NotFound();
+            _Context.SubSpecificationCar.Remove(specificationCar);
+            _Context.SaveChanges();
+            return Content(ResultMessage.DeleteSuccessResult(), "application/json");
+        }
+
+        public ActionResult DeleteSF(int? Id)
+        {
+            if (Id == null) return NotFound();
+            var specificationCar = _Context.SubFeatureCar.Find(Id);
+            if (specificationCar == null) return NotFound();
+            _Context.SubFeatureCar.Remove(specificationCar);
+            _Context.SaveChanges();
+            return Content(ResultMessage.DeleteSuccessResult(), "application/json");
         }
     }
 }

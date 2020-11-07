@@ -12,8 +12,10 @@ namespace CMSCar.Areas.CPanel.Models.Cars
         public string NameAr { get; set; }
         [Required]
         public string NameEn { get; set; }
-        public int CarId { get; set; }
+        public int? CarId { get; set; }
         public Car Car { get; set; }
+        public string CarIdentfire { get; set; }
+
         public List<SubFeatureCar> subFeatureCars { get; set; }
     }
 }

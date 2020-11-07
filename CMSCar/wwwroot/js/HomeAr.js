@@ -13,7 +13,7 @@ $.ajax({
     success: function (result) {
         var res = "";
         $.each(result, function (i, v) {
-            res = res + '<div class="col col-md-2 col-6 brand"><a href="#"><img src="/Images/CarType/' + v.imagePath + '">' + v.nameAr + '</a></div>';
+            res = res + '<div class="col col-md-2 col-6 brand"><a href="/Main/Cars/'+v.id+'"><img src="/Images/CarType/' + v.imagePath + '">' + v.nameAr + '</a></div>';
         })
         $("#Div_TypeCar").html(res);
     }

@@ -19,6 +19,7 @@ namespace CMSCar.Areas.CPanel.Models.Cars
         public string MainImage { get; set; }
         public string ShowImage { get; set; }
 
+        public string CarIdentfire { get; set; }
 
         public List<CarCategory> CarCategorys { get; set; }
         public List<ColorCar> ColorCars { get; set; }

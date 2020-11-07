@@ -1,6 +1,6 @@
 ﻿@model CarDTO
 @{
-    ViewData["Title"] = "تعديل سيارة  ";
+    ViewData["Title"] = "إضافة سيارة جديدة ";
 }
 @section Css{
     <style>
@@ -39,9 +39,8 @@
     </div>
     <div class="m-portlet__body">
         <br />
-        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
             <input type="hidden" asp-for="CarIdentfire" value="@ViewBag.ci" />
-            <input type="hidden" asp-for="Id"  />
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -131,92 +130,92 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <a class="btn btn-success" style="font-size:medium" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                    إضافات السيارة
+                                       إضافات السيارة
                                 </a>
                             </div>
                         </div>
                         <div class="collapse" id="collapseExample">
-                            <div class="m-portlet m-portlet--mobile">
-                                <div class="m-portlet__head">
-                                    <div class="m-portlet__head-caption">
-                                        <div class="m-portlet__head-title">
-                                            <h3 class="m-portlet__head-text">
-                                                <span style="color: #ebebeb"></span> اضافة الالوان والميزات والمواصفات
-                                            </h3>
+                                <div class="m-portlet m-portlet--mobile">
+                                    <div class="m-portlet__head">
+                                        <div class="m-portlet__head-caption">
+                                            <div class="m-portlet__head-title">
+                                                <h3 class="m-portlet__head-text">
+                                                    <span style="color: #ebebeb"></span> اضافة الالوان والميزات والمواصفات
+                                                </h3>
+                                            </div>
+                                        </div>
+                                        <div class="m-portlet__head-tools">
+                                            <ul class="m-portlet__nav">
+                                                <li class="m-portlet__nav-item">
+                                                    <a href="~/CPanel/CarExtinsion/AddColor/@ViewBag.ci" title="اضافة لون جديد" class="PopUp m-btn--sm btn btn-success m-btn m-btn--custom m-btn--icon m-btn--pill">
+                                                        <span>
+                                                            <i class="fa fa-plus-square"></i>
+                                                            <span style="font-size:14px">اضافة لون جديد</span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li class="m-portlet__nav-item">
+                                                    <a href="~/CPanel/CarExtinsion/AddSpecification/@ViewBag.ci" title="اضافة مواصفة جديدة" class="PopUp m-btn--sm btn btn-success m-btn m-btn--custom m-btn--icon m-btn--pill">
+                                                        <span>
+                                                            <i class="fa fa-plus-square"></i>
+                                                            <span style="font-size:14px">اضافة مواصفة جديدة</span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+
+                                                <li class="m-portlet__nav-item">
+                                                    <a href="~/CPanel/CarExtinsion/AddFeature/@ViewBag.ci" title="اضافة ميزة جديدة" class="PopUp m-btn--sm btn btn-success m-btn m-btn--custom m-btn--icon m-btn--pill">
+                                                        <span>
+                                                            <i class="fa fa-plus-square"></i>
+                                                            <span style="font-size:14px">اضافة ميزة جديدة</span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+
+                                            </ul>
                                         </div>
                                     </div>
-                                    <div class="m-portlet__head-tools">
-                                        <ul class="m-portlet__nav">
-                                            <li class="m-portlet__nav-item">
-                                                <a href="~/CPanel/CarExtinsion/AddColor/@ViewBag.ci" title="اضافة لون جديد" class="PopUp m-btn--sm btn btn-success m-btn m-btn--custom m-btn--icon m-btn--pill">
-                                                    <span>
-                                                        <i class="fa fa-plus-square"></i>
-                                                        <span style="font-size:14px">اضافة لون جديد</span>
-                                                    </span>
-                                                </a>
-                                            </li>
-                                            <li class="m-portlet__nav-item">
-                                                <a href="~/CPanel/CarExtinsion/AddSpecification/@ViewBag.ci" title="اضافة مواصفة جديدة" class="PopUp m-btn--sm btn btn-success m-btn m-btn--custom m-btn--icon m-btn--pill">
-                                                    <span>
-                                                        <i class="fa fa-plus-square"></i>
-                                                        <span style="font-size:14px">اضافة مواصفة جديدة</span>
-                                                    </span>
-                                                </a>
-                                            </li>
+                                    <div class="m-portlet__body">
+                                        <table class="table m-table table-bordered table-striped m-table--head-separator-success" id="color">
+                                            <thead align="center">
+                                                <tr>
+                                                    <th>اسم اللون بالعربية</th>
+                                                    <th>اسم اللون بالانجليزية</th>
+                                                    <th>تاريخ الاضافة</th>
+                                                    <th width="20%">العمليات</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody align="center"></tbody>
+                                        </table>
 
-                                            <li class="m-portlet__nav-item">
-                                                <a href="~/CPanel/CarExtinsion/AddFeature/@ViewBag.ci" title="اضافة ميزة جديدة" class="PopUp m-btn--sm btn btn-success m-btn m-btn--custom m-btn--icon m-btn--pill">
-                                                    <span>
-                                                        <i class="fa fa-plus-square"></i>
-                                                        <span style="font-size:14px">اضافة ميزة جديدة</span>
-                                                    </span>
-                                                </a>
-                                            </li>
+                                        <table class="table m-table table-bordered table-striped m-table--head-separator-success" id="Spicfic">
+                                            <thead align="center">
+                                                <tr>
+                                                    <th>اسم المواصفة بالعربية</th>
+                                                    <th>اسم المواصفة بالانجليزية</th>
+                                                    <th>تاريخ الاضافة</th>
+                                                    <th width="20%">العمليات</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody align="center"></tbody>
+                                        </table>
 
-                                        </ul>
+                                        <table class="table m-table table-bordered table-striped m-table--head-separator-success" id="Features">
+                                            <thead align="center">
+                                                <tr>
+                                                    <th>اسم الميزة بالعربية</th>
+                                                    <th>اسم الميزة بالانجليزية</th>
+                                                    <th>تاريخ الاضافة</th>
+                                                    <th width="20%">العمليات</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody align="center"></tbody>
+                                        </table>
                                     </div>
-                                </div>
-                                <div class="m-portlet__body">
-                                    <table class="table m-table table-bordered table-striped m-table--head-separator-success" id="color">
-                                        <thead align="center">
-                                            <tr>
-                                                <th>اسم اللون بالعربية</th>
-                                                <th>اسم اللون بالانجليزية</th>
-                                                <th>تاريخ الاضافة</th>
-                                                <th width="20%">العمليات</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody align="center"></tbody>
-                                    </table>
 
-                                    <table class="table m-table table-bordered table-striped m-table--head-separator-success" id="Spicfic">
-                                        <thead align="center">
-                                            <tr>
-                                                <th>اسم المواصفة بالعربية</th>
-                                                <th>اسم المواصفة بالانجليزية</th>
-                                                <th>تاريخ الاضافة</th>
-                                                <th width="20%">العمليات</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody align="center"></tbody>
-                                    </table>
-
-                                    <table class="table m-table table-bordered table-striped m-table--head-separator-success" id="Features">
-                                        <thead align="center">
-                                            <tr>
-                                                <th>اسم الميزة بالعربية</th>
-                                                <th>اسم الميزة بالانجليزية</th>
-                                                <th>تاريخ الاضافة</th>
-                                                <th width="20%">العمليات</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody align="center"></tbody>
-                                    </table>
                                 </div>
 
                             </div>
-
-                        </div>
                     </div>
                 </div>
             </div>
@@ -243,12 +242,13 @@
             </div>
             <hr />
             <div class="form-group">
-                <input type="submit" value="حفظ" class="btn btn-primary" />
+                <input type="submit" value="اضافة" class="btn btn-primary" />
                 <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">الغاء</button>
             </div>
         </form>
     </div>
 </div>
+
 
 
 @section Scripts{
@@ -273,62 +273,13 @@
         //$(".selectpicker").change(function () {
         //    alert("Handler for .change() called.");
         //});
-        $(document).ready(function () {
-            var id = @Model.CarTypeId;
-            var _path = "/CPanel/Car/GetSubTypeCar";
-            var _path1 = "/CPanel/Car/GetModel";
-            $.ajax({
-                url: _path,
-                data: { id: id },
-                type: "Get",
-                success: function (data) {
-                    var myOpts = document.getElementById('select').options;
 
-                    $('#select')
-                        .find('option')
-                        .remove()
-                        .end();
-                    jQuery.each(data, function (i, v) {
-                        if (v.id == @Model.ModelCarTypeId) {
-                            $('#select').append(`<option selected value="${v.id}"> ${v.nameAr}  </option>`);
-
-                        } else {
-                            $('#select').append(`<option value="${v.id}"> ${v.nameAr}  </option>`);
-
-                        }
-                    });
-
-                $.ajax({
-                url: _path1,
-                data: { id: id },
-                type: "Get",
-                success: function (data) {
-                    var myOpts = document.getElementById('select1').options;
-
-                    $('#select1')
-                        .find('option')
-                        .remove()
-                        .end();
-                    jQuery.each(data, function (i, v) {
-                        if (v.id == @Model.SubCarTypeId) {
-                            $('#select1').append(`<option selected value="${v.id}"> ${v.nameAr}  </option>`);
-
-                        } else {
-                            $('#select1').append(`<option value="${v.id}"> ${v.nameAr}  </option>`);
-
-                        }
-                    });
-                }
-            });
-
-                }
-            });
-        });
 
         $(function () {
             $(".selectpicker").change(function () {
                 var id = $(this).children("option:selected").val();
-                var _path = "/CPanel/Car/GetSubTypeCar";
+                var _path = "GetSubTypeCar";
+                var _path1 = "GetModel";
                 $.ajax({
                     url: _path,
                     data: { id: id },
@@ -342,6 +293,23 @@
                             .end();
                         jQuery.each(data, function (i, v) {
                             $('#select').append(`<option value="${v.id}"> ${v.nameAr}  </option>`);
+                        });
+                    }
+                });
+
+                $.ajax({
+                    url: _path1,
+                    data: { id: id },
+                    type: "Get",
+                    success: function (data) {
+                        var myOpts = document.getElementById('select1').options;
+
+                        $('#select1')
+                            .find('option')
+                            .remove()
+                            .end();
+                        jQuery.each(data, function (i, v) {
+                            $('#select1').append(`<option value="${v.id}"> ${v.nameAr}  </option>`);
                         });
                     }
                 });
@@ -560,4 +528,5 @@
                 });
         }
     </script>
+
 }

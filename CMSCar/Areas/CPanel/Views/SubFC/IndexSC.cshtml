@@ -1,4 +1,4 @@
-﻿@model List<SubFeatureCar>
+﻿@model List<SubSpecificationCar>
 @{
     ViewData["Title"] = "IndexSF";
     Layout = null;
@@ -6,7 +6,7 @@
 
 
 <!------ Include the above in your HEAD tag ---------->
-<a href="/CPanel/SubFC/CreateSF/@ViewBag.id" class='PopUp btn btn-outline-success btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='fa fa-plus'></i></a>
+<a href="/CPanel/SubFC/CreateSC/@ViewBag.id" class='PopUp btn btn-outline-success btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='fa fa-plus'></i></a>
 
 <section class="container mt-4 mb-4">
     <div class="container">
@@ -18,8 +18,8 @@
                         <div class="card-body">
                             <h5 class="card-title">@item.NameAr</h5>
                             <h6 class="card-subtitle mb-2 text-muted">@item.AnswerAr</h6>
-                            <a href="/CPanel/SubFC/EditSF/@item.Id" class="PopUp btn btn-outline-info btn-sm m-btn m-btn--icon"><span class="fa fa-edit"></span></a>
-                            <a href="/CPanel/SubFC/DeleteSF/@item.Id" class="Confirm btn btn-outline-danger btn-sm m-btn m-btn--icon"><span class="fa fa-times"></span></a>
+                            <a href="/CPanel/SubFC/EditSC/@item.Id" class="PopUp btn btn-outline-info btn-sm m-btn m-btn--icon"><span class="fa fa-edit"></span></a>
+                            <a href="/CPanel/SubFC/DeleteSC/@item.Id" class="Confirm btn btn-outline-danger btn-sm m-btn m-btn--icon"><span class="fa fa-times"></span></a>
                         </div>
                     </div>
                 </div>
