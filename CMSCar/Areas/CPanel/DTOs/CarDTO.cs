@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using CMSCar.Areas.CPanel.Models.Cars;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -36,7 +37,18 @@ namespace CMSCar.Areas.CPanel.DTOs
         [Display(Name = "الموديل")]
         public int ModelCarTypeId { get; set; }
         public string CarIdentfire { get; set; }
-
+        public List<FeatureCar> featureCars { get; set; }
+        public List<SpecificationCar> specificationCars { get; set; }
         public int CarTypeId { get; set; }
+        public int[] subFeatureCars { get; set; }
+        public int[] feature { get; set; }
+        public string[] arValues { get; set; }
+        public string[] enValues { get; set; }
+
+
+        public int[] SepCars { get; set; }
+        public int[] subSepCars { get; set; }
+        public string[] SepAr { get; set; }
+        public string[] SepEn { get; set; }
     }
 }

@@ -3,7 +3,7 @@
     success: function (result) {
         var res = "";
         $.each(result, function (i, v) {
-            res = res + ' <div class="col-md-4 col-xs-12"><div class="new_service"><img class="" src="/Images/WhyUs/' + v.imagePath + '"><div class="new_service_wrap"><a class="new_service_link" href="/Home/WhyUs"> <h2 class="new_service_head">' + v.nameEn + '</h2></a><div class="new_service_text"><p>' + v.descrptionEn + '</p></div> </div><a href="#" class="new_service_more"> Read More <i class="fa fa-caret-left" aria-hidden="true"></i></a> </div> </div>';
+            res = res + ' <div class="col-md-4 col-xs-12"><div class="new_service"><img class="" src="/Images/WhyUs/' + v.imagePath + '"><div class="new_service_wrap"><a class="new_service_link" href="/home/Services"> <h2 class="new_service_head">' + v.nameEn + '</h2></a><div class="new_service_text"><p>' + v.descrptionEn + '...</p></div> </div><a href="/home/Services" class="new_service_more"> Read More <i class="fa fa-caret-left" aria-hidden="true"></i></a> </div> </div>';
         })
         $("#Div_WhyUs").html(res);
     }

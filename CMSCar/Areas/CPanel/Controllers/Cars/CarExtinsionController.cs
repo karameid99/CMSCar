@@ -24,7 +24,7 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
             _environment = environment;
         }
 
-        public JsonResult  ColorAjaxData([FromBody] dynamic data , string id)
+        public JsonResult  ColorAjaxData([FromBody] dynamic data ,string id)
         {
             DataTableHelper d = new DataTableHelper(data);
             var query = _Context.ColorCar.Where(x => x.CarIdentfire == id).ToList();
@@ -39,10 +39,10 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
             var result = new {draw = d.Draw,recordsTotal = totalCount,recordsFiltered = totalCount, data = items};
             return Json(result);
         }
-        public JsonResult SpecificationAjaxData([FromBody] dynamic data, string id)
+        public JsonResult SpecificationAjaxData([FromBody] dynamic data)
         {
             DataTableHelper d = new DataTableHelper(data);
-            var query = _Context.SpecificationCar.Where( x => x.CarIdentfire == id).ToList();
+            var query = _Context.SpecificationCar.Where( x => !x.CarId.HasValue).ToList();
             int totalCount = query.Count();
             var items = query.Select(x => new
             {
@@ -54,10 +54,10 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
             var result = new { draw = d.Draw, recordsTotal = totalCount, recordsFiltered = totalCount, data = items };
             return Json(result);
         }
-        public JsonResult FeatureAjaxData([FromBody] dynamic data, string id)
+        public JsonResult FeatureAjaxData([FromBody] dynamic data)
         {
             DataTableHelper d = new DataTableHelper(data);
-            var query = _Context.FeatureCar.Where(x => x.CarIdentfire == id).ToList();
+            var query = _Context.FeatureCar.Where(x => !x.CarId.HasValue).ToList();
             int totalCount = query.Count();
             var items = query.Select(x => new
             {
@@ -116,6 +116,7 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
                var colorCar = _Mapper.Map<ColorCar>(colorCardto);
                 var org = _Context.ColorCar.AsNoTracking().SingleOrDefault(x => x.Id == colorCar.Id);
                 colorCar.CarId = org.CarId;
+                colorCar.CarIdentfire = org.CarIdentfire;
                 _Context.ColorCar.Update(colorCar);
                 _Context.SaveChanges();
                 if (Images.Any())

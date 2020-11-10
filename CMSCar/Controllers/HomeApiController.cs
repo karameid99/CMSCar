@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CMSCar.Data;
+using CMSCar.Helper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,8 +28,8 @@ namespace CMSCar.Controllers
                 x.NameAr,
                 x.NameEn,
                 x.ImagePath,
-                x.DescrptionAr,
-                x.DescrptionEn,
+                DescrptionAr = ConvertText.ConvertHtmlToText(x.DescrptionAr).Length < 180? ConvertText.ConvertHtmlToText(x.DescrptionAr): ConvertText.ConvertHtmlToText(x.DescrptionAr).Substring(0 , 180),
+                DescrptionEn = ConvertText.ConvertHtmlToText(x.DescrptionEn).Length < 180 ? ConvertText.ConvertHtmlToText(x.DescrptionEn) : ConvertText.ConvertHtmlToText(x.DescrptionEn).Substring(0, 180),
                 x.CreatedAt,
             }).OrderByDescending(x => x.CreatedAt).Take(3).ToList();
             return (items);

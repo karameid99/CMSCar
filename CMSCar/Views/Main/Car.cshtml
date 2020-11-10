@@ -119,6 +119,31 @@
                     }
 
                 }
+                else
+                {
+                    var counter = 0;
+                    @foreach (var item in Model.ColorCars)
+                    {
+                        if (counter == 0)
+                        {
+                            <span class="colorName">
+                                @item.NameEn
+                            </span>
+                            <ul class="colorsIncar">
+                                <li id="@item.Id" class="selectColor selected" data-colorid="@item.Id" style="background-color:@item.Color;"></li>
+                            </ul>
+                            Colorid = item.Id;
+                        }
+                        else
+                        {
+                            <ul class="colorsIncar">
+                                <li id="@item.Id" class="selectColor" data-colorid="@item.Id" style="background-color:@item.Color;"></li>
+                            </ul>
+                        }
+                        counter++;
+                    }
+
+                }
 
             </div>
             <div class="innerCars owl-carousel" id="outerImgs">
@@ -231,11 +256,15 @@
                             <ul class="inner">
                                 @foreach (var item1 in item.subFeatureCars)
                                 {
-                                    <li class="tab1">
-                                        <span class="descTab">@item1.NameAr</span><span class="dataTab">
-                                            @item1.AnswerAr
-                                        </span>
-                                    </li>
+                                    if (!string.IsNullOrEmpty(item1.AnswerAr))
+                                    {
+                                        <li class="tab1">
+                                            <span class="descTab">@item1.NameAr</span><span class="dataTab">
+                                                @item1.AnswerAr
+                                            </span>
+                                        </li>
+
+                                    }
 
                                 }
                             </ul>
@@ -251,12 +280,15 @@
                             <ul class="inner">
                                 @foreach (var item1 in item.subFeatureCars)
                                 {
+                                    if (!string.IsNullOrEmpty(item1.AnswerEn))
+                                    {
                                     <li class="tab1">
                                         <span class="descTab">@item1.NameEn</span><span class="dataTab">
                                             @item1.AnswerEn
                                         </span>
                                     </li>
 
+                                }
                                 }
                             </ul>
                         </div>

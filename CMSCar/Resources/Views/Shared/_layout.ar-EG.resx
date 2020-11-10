@@ -126,6 +126,15 @@
   <data name="Cars" xml:space="preserve">
     <value>السيارات</value>
   </data>
+  <data name="Change Brand" xml:space="preserve">
+    <value>إختار الماركة</value>
+  </data>
+  <data name="Change Car Model" xml:space="preserve">
+    <value>اختار الموديل</value>
+  </data>
+  <data name="Change Car Type" xml:space="preserve">
+    <value>إختار النوع</value>
+  </data>
   <data name="Companies" xml:space="preserve">
     <value>الشركات</value>
   </data>
@@ -163,7 +172,7 @@
     <value>جميع الحقوق محفوظة</value>
   </data>
   <data name="LG" xml:space="preserve">
-    <value>العربية</value>
+    <value>English</value>
   </data>
   <data name="Offers" xml:space="preserve">
     <value>العروض </value>

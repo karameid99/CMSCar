@@ -126,6 +126,15 @@
   <data name="Cars" xml:space="preserve">
     <value>Cars</value>
   </data>
+  <data name="Change Brand" xml:space="preserve">
+    <value>Change Brand</value>
+  </data>
+  <data name="Change Car Model" xml:space="preserve">
+    <value>Change Car Model</value>
+  </data>
+  <data name="Change Car Type" xml:space="preserve">
+    <value>Change Car Type</value>
+  </data>
   <data name="Companies" xml:space="preserve">
     <value>Companies</value>
   </data>
@@ -163,7 +172,7 @@
     <value>all rights are save</value>
   </data>
   <data name="LG" xml:space="preserve">
-    <value>English</value>
+    <value>العربية</value>
   </data>
   <data name="Offers" xml:space="preserve">
     <value>Offers</value>

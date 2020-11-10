@@ -38,45 +38,6 @@
         <div class="m-portlet__head-caption">
             <div class="m-portlet__head-title">
                 <h3 class="m-portlet__head-text">
-                    <span style="color: #ebebeb"></span>فهرس الالوان الخاصة بالسيارة في النظام<small style="color : gray">عرض وتعديل بيانات الالوان </small>
-                </h3>
-            </div>
-        </div>
-        <div class="m-portlet__head-tools">
-            <ul class="m-portlet__nav">
-                <li class="m-portlet__nav-item">
-                    <a href="~/CPanel/CarExtinsion/AddColor/@ViewBag.id" title="اضافة لون جديدة" class="PopUp m-btn--sm btn btn-success m-btn m-btn--custom m-btn--icon m-btn--pill">
-                        <span>
-                            <i class="fa fa-plus-square"></i>
-                            <span style="font-size:14px">اضافة لون جديد</span>
-                        </span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="m-portlet__body">
-        <div class="table-responsive">
-            <table class="table m-table table-bordered table-striped m-table--head-separator-success" id="color">
-                <thead align="center">
-                    <tr>
-                        <th>الاسم بالعربية</th>
-                        <th>الاسم بالانجليزية</th>
-                        <th>تاريخ الاضافة</th>
-                        <th width="20%">العمليات</th>
-                    </tr>
-                </thead>
-                <tbody align="center"></tbody>
-            </table>
-        </div>
-    </div>
-
-</div>
-<div class="m-portlet m-portlet--mobile">
-    <div class="m-portlet__head">
-        <div class="m-portlet__head-caption">
-            <div class="m-portlet__head-title">
-                <h3 class="m-portlet__head-text">
                     <span style="color: #ebebeb"></span>فهرس المواصفات الخاصة بالسيارة في النظام<small style="color : gray">عرض وتعديل بيانات المواصفات </small>
                 </h3>
             </div>
@@ -170,73 +131,6 @@
         BindDataTable();
 
         function BindDataTable() {
-            oTable = $('#color').dataTable(
-                {
-                    language: {
-                        aria: {
-                            sortAscending: ": فعال لترتيب العمود تصاعديا", sortDescending: ": فعال لترتيب العمود تنازليا"
-                        }
-                        , emptyTable: "لا يوجد بيانات لعرضها", info: "عرض _START_ الى _END_ من _TOTAL_ صف", infoEmpty: "لا يوجد نتائج لعرضها", infoFiltered: "(filtered1 من _MAX_ اجمالي صفوف)", lengthMenu: "_MENU_", search: "بحث", zeroRecords: "لا يوجد نتائج لعرضها",
-                        paginate: { sFirst: "الاول", sLast: "الاخير", sNext: "التالي", sPrevious: "السابق" }
-                    },
-
-                    "dom":
-                        "<'row'<'col-sm-12'tr>>" +
-                        "<'row'<'col-sm-4'i><'col-sm-4 text-center'l><'col-sm-4'p>>",
-                    "iDisplayLength": 8,
-                    "sPaginationType": "full_numbers",
-                    "bFilter": false,
-                    "bDestroy": true,
-                    "bSort": false,
-                    "bStateSave": true,
-                    "bLengthChange": true,
-                    "columnDefs": [{
-                        "orderable": false
-                    }],
-                    //"bSort": false,
-                    serverSide: true,
-                    columns: [
-
-                        { data: 'nameAr', name: 'nameAr' },
-                        { data: 'nameEn', name: 'nameEn' },
-
-                        { data: 'createdAt', name: 'createdAt' },
-                        {
-                            name: 'buttons', "render": function (data, type, row) {
-                                return ""
-                                    + "<a title='تعديل اللون' href='/CPanel/CarExtinsion/EditColor/" + row["id"] + "' class='PopUp btn btn-outline-primary btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='fa fa-edit'></i></a>"
-                                    + "<a title='حذف اللون' tname='#color' href='/CPanel/CarExtinsion/DeleteColor/" + row["id"] + "' class='Confirm  btn btn-outline-danger btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='flaticon-delete-1'></i></a>"
-                            }
-                        }
-                    ],
-                    ajax: {
-                        type: "POST",
-                        contentType: "application/json",
-                        url: '/CPanel/CarExtinsion/ColorAjaxData/@ViewBag.id',
-                        data: function (d) {
-                            d.SearchKey = ($("[name=SearchKey]").val());
-                            return JSON.stringify(d);
-                        }
-                    }
-                });
-        }
-    </script>
-    <script>
-        $(function () {
-            $(".DTForm").submit(function () {
-                BindDataTable();
-                return false;
-            });
-            BindDataTable();
-        });
-
-        $(document).on("click", ".SearchBtn", function () {
-            BindDataTable();
-        });
-
-        BindDataTable();
-
-        function BindDataTable() {
             oTable = $('#Features').dataTable(
                 {
                     language: {
@@ -263,27 +157,24 @@
                     //"bSort": false,
                     serverSide: true,
                     columns: [
-                        {
-                            "render": function (data, type, row) {
-                                return '<a href="/CPanel/Branch/Index/' + row["id"] + '"><b>' + row["nameAr"] +'</b></a>';
-                            }
-                        },
+                        { data: 'nameAr', name: 'nameAr' },
+
                         { data: 'nameEn', name: 'nameEn' },
 
                         { data: 'createdAt', name: 'createdAt' },
                         {
                             name: 'buttons', "render": function (data, type, row) {
                                 return ""
-                                    + "<a title='تعديل المواصفات' href='/CPanel/CarExtinsion/EditFeature/" + row["id"] + "' class='PopUp btn btn-outline-primary btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='fa fa-edit'></i></a>"
-                                    + "<a title='حذف المواصفات' tname='#Features' href='/CPanel/CarExtinsion/DeleteFeature/" + row["id"] + "' class='Confirm  btn btn-outline-danger btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='flaticon-delete-1'></i></a>"
-                                    + "<a title=' المواصفات الفرعية' href='/CPanel/SubFC/IndexSF/" + row["id"] + "' class='PopUp btn btn-outline-primary btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='fa fa-server'></i></a>"
+                                    + "<a title='تعديل الميزة' href='/CPanel/CarExtinsion/EditFeature/" + row["id"] + "' class='PopUp btn btn-outline-primary btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='fa fa-edit'></i></a>"
+                                    + "<a title='حذف الميزة' tname='#Features' href='/CPanel/CarExtinsion/DeleteFeature/" + row["id"] + "' class='Confirm  btn btn-outline-danger btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='flaticon-delete-1'></i></a>"
+                                    + "<a title=' الميزات الفرعية' href='/CPanel/SubFC/IndexSF/" + row["id"] + "' class='PopUp btn btn-outline-primary btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='fa fa-server'></i></a>"
                             }
                         }
                     ],
                     ajax: {
                         type: "POST",
                         contentType: "application/json",
-                        url: '/CPanel/CarExtinsion/FeatureAjaxData/@ViewBag.id',
+                        url: '/CPanel/CarExtinsion/FeatureAjaxData',
                         data: function (d) {
                             d.SearchKey = ($("[name=SearchKey]").val());
                             return JSON.stringify(d);
@@ -334,11 +225,8 @@
                     //"bSort": false,
                     serverSide: true,
                     columns: [
-                        {
-                            "render": function (data, type, row) {
-                                return '<a href="/CPanel/Branch/Index/' + row["id"] + '"><b>' + row["nameAr"] +'</b></a>';
-                            }
-                        },
+                        { data: 'nameAr', name: 'nameAr' },
+
                         { data: 'nameEn', name: 'nameEn' },
 
                         { data: 'createdAt', name: 'createdAt' },
@@ -347,13 +235,14 @@
                                 return ""
                                     + "<a title='تعديل المواصفة' href='/CPanel/CarExtinsion/EditSpecification/" + row["id"] + "' class='PopUp btn btn-outline-primary btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='fa fa-edit'></i></a>"
                                     + "<a title='حذف المواصفة' tname='#Spicfic' href='/CPanel/CarExtinsion/DeleteSpecification/" + row["id"] + "' class='Confirm  btn btn-outline-danger btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='flaticon-delete-1'></i></a>"
+                                    + "<a title=' المواصفات الفرعية' href='/CPanel/SubFC/IndexSC/" + row["id"] + "' class='PopUp btn btn-outline-primary btn-sm m-btn m-btn--icon  m-btn--icon-only'><i class='fa fa-server'></i></a>"
                             }
                         }
                     ],
                     ajax: {
                         type: "POST",
                         contentType: "application/json",
-                        url: '/CPanel/CarExtinsion/SpecificationAjaxData/@ViewBag.id',
+                        url: '/CPanel/CarExtinsion/SpecificationAjaxData',
                         data: function (d) {
                             d.SearchKey = ($("[name=SearchKey]").val());
                             return JSON.stringify(d);

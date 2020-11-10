@@ -109,6 +109,17 @@
             justify-content: center;
             margin: 0 0 30px 0;
         }
+
+        .inFixed :hover {
+            color: #cdff05 !important;
+        }
+
+        .inFixed a.active {
+            color: #cdff05 !important;
+        }
+        .breadcrambPage span.current {
+            color: #06ea63 !important;
+        }
     </style>
 </head>
 <body>
@@ -124,27 +135,88 @@
                 </div>
                 <nav class="inFixed">
                     <ul>
-                        <li><a class=" active  " href="/">@Localizer["Home"]</a></li>
-                        <li><a class="" href="/Home/Services">@Localizer["Services"]</a></li>
+                        @if (@Action == "index" && @Controller == "home")
+                        {
+                            <li><a class=" active  " href="/">@Localizer["Home"]</a></li>
+                        }
+                        else
+                        {
+                            <li><a class="" href="/">@Localizer["Home"]</a></li>
+                        }
+                        @if (@Action == "services" && @Controller == "home")
+                        {
+                            <li><a class="active" href="/Home/Services">@Localizer["Services"]</a></li>
+                        }
+                        else
+                        {
+                            <li><a class="" href="/Home/Services">@Localizer["Services"]</a></li>
+                        }
+                        @if (@Action == "brands" && @Controller == "main")
+                        {
+                            <li><a class="active" href="/Main/Brands">@Localizer["Cars"]</a></li>
+                        }
+                        else
+                        {
+                            <li><a class="" href="/Main/Brands">@Localizer["Cars"]</a></li>
+                        }
+                        @if (@Action == "discount" && @Controller == "main" || @Action == "offers" && @Controller == "main")
+                        {
+                            <li class="have-child">
+                                <a class="active" href="javascript:void(0);">@Localizer["Offers"]<i class="fas fa-chevron-left"></i></a>
+                                <ul>
+                                    <li><a class="" href="/Main/Discount">@Localizer["Discounts"]</a></li>
+                                    <li><a class="" href="/Main/Offers">@Localizer["Specials"]</a></li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="have-child">
+                                <a class="" href="javascript:void(0);">@Localizer["Offers"]<i class="fas fa-chevron-left"></i></a>
+                                <ul>
+                                    <li><a class="" href="/Main/Discount">@Localizer["Discounts"]</a></li>
+                                    <li><a class="" href="/Main/Offers">@Localizer["Specials"]</a></li>
+                                </ul>
+                            </li>
+                        }
+                        @if (@Action == "indiviualorder" && @Controller == "home" || @Action == "companiesorder" && @Controller == "home")
+                        {
+                            <li class="have-child">
+                                <a class="active" href="javascript:void(0);">@Localizer["Purchase Order"] <i class="fas fa-chevron-left"></i></a>
+                                <ul>
+                                    <li><a class="" href="/Home/IndiviualOrder">@Localizer["Individuals"]</a></li>
+                                    <li><a class="" href="/Home/CompaniesOrder">@Localizer["Companies"]</a></li>
+                                </ul>
+                            </li>
 
-                        <li><a class="" href="/Main/Brands">@Localizer["Cars"]</a></li>
-                        <li class="have-child">
-                            <a class="" href="javascript:void(0);">@Localizer["Offers"]<i class="fas fa-chevron-left"></i></a>
-                            <ul>
-                                <li><a class="" href="/Main/Discount">@Localizer["Discounts"]</a></li>
-                                <li><a class="" href="/Main/Offers">@Localizer["Specials"]</a></li>
-                            </ul>
-                        </li>
+                        }
+                        else
+                        {
+                            <li class="have-child">
+                                <a class="" href="javascript:void(0);">@Localizer["Purchase Order"] <i class="fas fa-chevron-left"></i></a>
+                                <ul>
+                                    <li><a class="" href="/Home/IndiviualOrder">@Localizer["Individuals"]</a></li>
+                                    <li><a class="" href="/Home/CompaniesOrder">@Localizer["Companies"]</a></li>
+                                </ul>
+                            </li>
 
-                        <li class="have-child">
-                            <a class="" href="javascript:void(0);">@Localizer["Purchase Order"] <i class="fas fa-chevron-left"></i></a>
-                            <ul>
-                                <li><a class="" href="/Home/IndiviualOrder">@Localizer["Individuals"]</a></li>
-                                <li><a class="" href="/Home/CompaniesOrder">@Localizer["Companies"]</a></li>
-                            </ul>
-                        </li>
-                        <li><a class="" href="/Home/Qustion">@Localizer["FAQ"]</a></li>
-                        <li><a class="" href="/Home/Contact">@Localizer["Call Us"]</a></li>
+                        }
+                        @if (@Action == "qustion" && @Controller == "home")
+                        {
+                            <li><a class="active" href="/Home/Qustion">@Localizer["FAQ"]</a></li>
+                        }
+                        else
+                        {
+                            <li><a class="" href="/Home/Qustion">@Localizer["FAQ"]</a></li>
+                        }
+                        @if (@Action == "contact" && @Controller == "home")
+                        {
+                            <li><a class="active" href="/Home/Contact">@Localizer["Call Us"]</a></li>
+                        }
+                        else
+                        {
+                            <li><a class="" href="/Home/Contact">@Localizer["Call Us"]</a></li>
+                        }
                     </ul>
                 </nav>
 
@@ -157,10 +229,10 @@
                 </div>
                 <div id="searchOnFixed">
                     <div class="searchMobile_onFixed" id="searchMobile_onFixed">
-                        <form action="WhoWeAresearch" method="GET">
-                            <input type="hidden" name="_token" value="UuKzCtXmVTK47dBcYS9hPkqhZQ5rGLfU2Y40yCw4">						<input type="text" name="search_text" id="toHeadSearch" class="toHeadSearch" placeholder="ابحث هنا ...">
-                            <input type="submit" class="toHeadBtn" value="بحث">
-                        </form>
+                        @*<form action="WhoWeAresearch" method="GET">
+                                <input type="hidden" name="_token" value="UuKzCtXmVTK47dBcYS9hPkqhZQ5rGLfU2Y40yCw4">						<input type="text" name="search_text" id="toHeadSearch" class="toHeadSearch" placeholder="ابحث هنا ...">
+                                <input type="submit" class="toHeadBtn" value="بحث">
+                            </form>*@
                         <a class="advancedSearch" id="advancedSearch_DK" href="#"><i class="fab fa-searchengin"></i> البحث المتقدم ... </a>
                     </div>
                 </div>
@@ -196,27 +268,88 @@
                     <div class="spacing-60"></div>
                     <nav>
                         <ul>
-                            <li><a class=" active  " href="/">@Localizer["Home"]</a></li>
-                            <li><a class="" href="/Home/Services">@Localizer["Services"]</a></li>
+                            @if (@Action == "index" && @Controller == "home")
+                            {
+                                <li><a class=" active  " href="/">@Localizer["Home"]</a></li>
+                            }
+                            else
+                            {
+                                <li><a class="" href="/">@Localizer["Home"]</a></li>
+                            }
+                            @if (@Action == "services" && @Controller == "home")
+                            {
+                                <li><a class="active" href="/Home/Services">@Localizer["Services"]</a></li>
+                            }
+                            else
+                            {
+                                <li><a class="" href="/Home/Services">@Localizer["Services"]</a></li>
+                            }
+                            @if (@Action == "brands" && @Controller == "main")
+                            {
+                                <li><a class="active" href="/Main/Brands">@Localizer["Cars"]</a></li>
+                            }
+                            else
+                            {
+                                <li><a class="" href="/Main/Brands">@Localizer["Cars"]</a></li>
+                            }
+                            @if (@Action == "discount" && @Controller == "main" || @Action == "offers" && @Controller == "main")
+                            {
+                                <li class="have-child">
+                                    <a class="active" href="javascript:void(0);">@Localizer["Offers"]<i class="fas fa-chevron-left"></i></a>
+                                    <ul>
+                                        <li><a class="" href="/Main/Discount">@Localizer["Discounts"]</a></li>
+                                        <li><a class="" href="/Main/Offers">@Localizer["Specials"]</a></li>
+                                    </ul>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="have-child">
+                                    <a class="" href="javascript:void(0);">@Localizer["Offers"]<i class="fas fa-chevron-left"></i></a>
+                                    <ul>
+                                        <li><a class="" href="/Main/Discount">@Localizer["Discounts"]</a></li>
+                                        <li><a class="" href="/Main/Offers">@Localizer["Specials"]</a></li>
+                                    </ul>
+                                </li>
+                            }
+                            @if (@Action == "indiviualorder" && @Controller == "home" || @Action == "companiesorder" && @Controller == "home")
+                            {
+                                <li class="have-child">
+                                    <a class="active" href="javascript:void(0);">@Localizer["Purchase Order"] <i class="fas fa-chevron-left"></i></a>
+                                    <ul>
+                                        <li><a class="" href="/Home/IndiviualOrder">@Localizer["Individuals"]</a></li>
+                                        <li><a class="" href="/Home/CompaniesOrder">@Localizer["Companies"]</a></li>
+                                    </ul>
+                                </li>
 
-                            <li><a class="" href="/Main/Brands">@Localizer["Cars"]</a></li>
-                            <li class="have-child">
-                                <a class="" href="javascript:void(0);">@Localizer["Offers"]<i class="fas fa-chevron-left"></i></a>
-                                <ul>
-                                    <li><a class="" href="/Main/Discount">@Localizer["Discounts"]</a></li>
-                                    <li><a class="" href="/Main/Offers">@Localizer["Specials"]</a></li>
-                                </ul>
-                            </li>
+                            }
+                            else
+                            {
+                                <li class="have-child">
+                                    <a class="" href="javascript:void(0);">@Localizer["Purchase Order"] <i class="fas fa-chevron-left"></i></a>
+                                    <ul>
+                                        <li><a class="" href="/Home/IndiviualOrder">@Localizer["Individuals"]</a></li>
+                                        <li><a class="" href="/Home/CompaniesOrder">@Localizer["Companies"]</a></li>
+                                    </ul>
+                                </li>
 
-                            <li class="have-child">
-                                <a class="" href="javascript:void(0);">@Localizer["Purchase Order"] <i class="fas fa-chevron-left"></i></a>
-                                <ul>
-                                    <li><a class="" href="/Home/IndiviualOrder">@Localizer["Individuals"]</a></li>
-                                    <li><a class="" href="/Home/CompaniesOrder">@Localizer["Companies"]</a></li>
-                                </ul>
-                            </li>
-                            <li><a class="" href="/Home/Qustion">@Localizer["FAQ"]</a></li>
-                            <li><a class="" href="/Home/Contact">@Localizer["Call Us"]</a></li>
+                            }
+                            @if (@Action == "qustion" && @Controller == "home")
+                            {
+                                <li><a class="active" href="/Home/Qustion">@Localizer["FAQ"]</a></li>
+                            }
+                            else
+                            {
+                                <li><a class="" href="/Home/Qustion">@Localizer["FAQ"]</a></li>
+                            }
+                            @if (@Action == "contact" && @Controller == "home")
+                            {
+                                <li><a class="active" href="/Home/Contact">@Localizer["Call Us"]</a></li>
+                            }
+                            else
+                            {
+                                <li><a class="" href="/Home/Contact">@Localizer["Call Us"]</a></li>
+                            }
                         </ul>
                     </nav>
                 </div>
@@ -273,7 +406,6 @@
                     </li>
                     <li><a class="" href="/Home/Qustion">@Localizer["FAQ"]</a></li>
                     <li><a class="" href="/Home/Contact">@Localizer["Call Us"]</a></li>
-                    <li><a href="#">المفضلة</a></li>
                     <li>
                         <div class="BtnForm" @requestCulture?.Provider?.GetType().Name>
                             <form id="selectLanguage" asp-controller="Home" asp-action="SetLanguage" asp-route-returnUrl="@Context.Request.Path" method="post" class="form-horizontal" role="form">
@@ -300,29 +432,34 @@
                     <div class="modal-header">
                         <h5 class="modal-title">البحث المتقدم</h5>
                     </div>
-                    <form class="form" action="WhoWeAresearch" method="GET">
+                    <form class="form" action="Home/Search" method="GET">
                         <div class="row">
                             <div class="col-md-9">
                                 <div class="row">
-                                    <div class="form-group col-md-4">
-                                        <select name="car_brand_id" id="inputState" class="form-control">
-                                            <option value="" selected>اختر الماركه</option>
+                                    <div class="form-group col-md-3">
+                                        <!-- <label for="inputState">State</label> -->
+                                        <select asp-items="@ViewBag.Brands" name="BrandId" id="inputState" class="selectpicker form-control">
+                                            <option value="" selected>@Localizer["Change Brand"]</option>
                                         </select>
                                     </div>
-                                    <div class="form-group col-md-4">
-                                        <select name="car_model_id" id="inputState" class="form-control">
-                                            <option value="" selected>اختر النوع</option>
+                                    <div class="form-group col-md-3">
+                                        <select name="TypeId" id="inputState_model" class="form-control">
+                                            <option value="" selected>@Localizer["Change Car Type"]</option>
                                         </select>
                                     </div>
-                                    <div class="form-group col-md-4">
-                                        <select name="car_model_type" id="inputState" class="form-control">
-                                            <option value="" selected>اختر الفئة</option>
+                                    <div class="form-group col-md-3">
+                                        <select name="ModelId" id="inputStateModel" class="form-control">
+                                            <option value="" selected>@Localizer["Change Car Model"]</option>
                                         </select>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <input type="text" name="SearchKey" class="form-control" id="search-box" placeholder="@Localizer["Search Here ..."]">
                                     </div>
                                 </div> <!--row inside -->
                             </div> <!-- col9 -->
-                            <button type="submit" class="btn btn-primary col-md-3 modalBtn">بحث</button>
-                        </div> <!-- row -->
+
+                            <button type="submit" class="btn btn-primary col-md-3">@Localizer["Search"]</button>
+                        </div> <!--row -->
                     </form>
                 </section>
                 <!-- <a href="car.php" class="modalBtn">المزيد من التفاصيل ...</a> -->
@@ -766,6 +903,49 @@
 
         });
     </script>
+    <script>
+        $(function () {
+            $(".selectpicker").change(function () {
+                var id = $(this).children("option:selected").val();
+                var _path = "/Home/GetSubTypeCar";
+                var _path1 = "/Home/GetModelCar";
+                $.ajax({
+                    url: _path,
+                    data: { id: id },
+                    type: "Get",
+                    success: function (data) {
+                        var myOpts = document.getElementById('inputState_model').options;
+
+                        $('#inputState_model')
+                            .find('option')
+                            .remove()
+                            .end();
+                        $.each(data, function (i, v) {
+                            $('#inputState_model').append(`<option value="${v.id}"> ${v.nameAr}  </option>`);
+                        });
+                    }
+                });
+                $.ajax({
+                    url: _path1,
+                    data: { id: id },
+                    type: "Get",
+                    success: function (data) {
+                        var myOpts = document.getElementById('inputStateModel').options;
+
+                        $('#inputStateModel')
+                            .find('option')
+                            .remove()
+                            .end();
+                        $.each(data, function (i, v) {
+                            $('#inputStateModel').append(`<option value="${v.id}"> ${v.nameAr}  </option>`);
+                        });
+                    }
+                });
+            });
+        });
+
+    </script>
+
     @RenderSection("Scripts", required: false)
 </body>
 </html>

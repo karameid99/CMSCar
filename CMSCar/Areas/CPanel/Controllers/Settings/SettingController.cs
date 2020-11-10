@@ -56,7 +56,7 @@ namespace CMSCar.Areas.CPanel.Controllers.Settings
                         information.Logo = information1.Logo;
                     }
                     if (SmallImage != null)
-                    { information.SmallLogo = await ImageHelper.SaveImage(Image, _environment, "Images/Information"); }
+                    { information.SmallLogo = await ImageHelper.SaveImage(SmallImage, _environment, "Images/Information"); }
                     else
                     {
                         var information1 = await _Context.Information.AsNoTracking().FirstOrDefaultAsync();

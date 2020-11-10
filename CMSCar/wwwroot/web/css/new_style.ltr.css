@@ -4,7 +4,7 @@ a:hover{
     color:#c2000b;
 }
 a {
-    color:#FEC400;
+    color:#18a150;
 }
 body{
     font-family: 'Tajawal', sans-serif !important;
@@ -62,7 +62,7 @@ body{
 .form-control:focus {
     color: #495057;
     background-color: #fff;
-    border-color: #FEC400;
+    border-color: #18a150;
     outline: 0;
     box-shadow:none;
 }
@@ -91,10 +91,10 @@ body{
 }
 .toHeadBtn{
     float: left;
-    background-color: #FEC400;
+    background-color: #18a150;
     color: #fff;
     border: none;
-    border-bottom: 1px solid #FEC400;
+    border-bottom: 1px solid #18a150;
     display: block;
     padding: 1px 10px;
 }
@@ -107,10 +107,10 @@ body{
     color:#fff;
 }
 .advancedSearch:hover, .advancedSearch:focus{
-    color:#FEC400;
+    color:#18a150;
 }
 .toHeadSearch:focus{
-    border-bottom: 1px solid #FEC400;
+    border-bottom: 1px solid #18a150;
     outline: 0;
 }
 .toHeadSearch::placeholder { 
@@ -151,7 +151,7 @@ body{
     list-style: none;
     margin-top: 0;
     margin-left: 0;
-    background-color: #FEC400;
+    background-color: #18a150;
     color: #333;
 }
 .header a.icon#searchIcon {
@@ -182,7 +182,7 @@ body{
     content:"\f00d";
 }
 .header a.icon#topIcon.responsive{
-    background-color: #FEC400;
+    background-color: #18a150;
     color: #fff;
 }
 .searchMobile{
@@ -231,7 +231,7 @@ a.logo {
     margin-right: 7px;
 }
 .callTop a:hover{
-    color:#FEC400;
+    color:#18a150;
 }
 .callTop i{
     font-size: 17px;
@@ -270,7 +270,7 @@ a.logo {
     color:#000;
 }
 .social-header a:hover{
-    color:#FEC400;
+    color:#18a150;
 }
 .social-header i{
     float: left;
@@ -396,7 +396,7 @@ nav.inFixed ul li ul li a{
 .slider{
     width: 100%;
     min-height: 400px;
-    background-color: #FEC400;
+    background-color: #18a150;
 }
 .slider img{
     background-size: cover;
@@ -439,7 +439,7 @@ nav.inFixed ul li ul li a{
 .filterHome .form-group .form-control:focus {
     color: #222;
     background-color:transparent;
-    border-color: #FEC400;
+    border-color: #18a150;
     outline: 0;
     box-shadow:none;
 }
@@ -486,7 +486,7 @@ nav.inFixed ul li ul li a{
     direction: ltr;
     text-align: left;
     overflow: hidden;
-    background-color: #FEC400;
+    background-color: #18a150;
     margin-top: -35px;
 }
 .whySaleh .w-100{
@@ -615,7 +615,7 @@ nav.inFixed ul li ul li a{
     min-height: 340px;
     /* margin-top: -100px; */
     margin-bottom:50px;
-    background-color: #FEC400;
+    background-color: #18a150;
 }
 .service{
     position: relative;
@@ -790,8 +790,8 @@ nav.inFixed ul li ul li a{
     font-weight: 500;
 }
 .buy_car_home_btn:hover{
-    color:#FEC400;
-    border-color: #FEC400;
+    color:#18a150;
+    border-color: #18a150;
 }
 
 
@@ -838,7 +838,7 @@ nav.inFixed ul li ul li a{
 .drive_quote .form-control:focus {
     color: #fff;
     background-color: transparent;
-    border-color: #FEC400;
+    border-color: #18a150;
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(255, 204, 0, .10);
 }
@@ -857,9 +857,9 @@ nav.inFixed ul li ul li a{
     padding: .375rem 1.5rem;
 }
 .drive_quote .btn-outline-warning:hover {
-    color: #FEC400;
+    color: #18a150;
     background-color: transparent;
-    border-color: #FEC400;
+    border-color: #18a150;
 }
 .drive_quote .form-group input{
     direction: ltr;
@@ -867,7 +867,7 @@ nav.inFixed ul li ul li a{
 }
 .drive_quote .sec-head h1{
     text-align: left;
-    color: #FEC400;
+    color: #18a150;
      font-family: 'Cairo', sans-serif;
 }
 .drive_quote p{
@@ -1186,7 +1186,7 @@ footer ul li a:hover{
     direction: ltr;
 }
 p.footer_title{
-    color: #FEC400;
+    color: #18a150;
     clear: both;
     margin-bottom: 5px;
     margin-top: 7px;
@@ -1354,7 +1354,7 @@ p.footer_title{
 }
 .modal-content .modalBtn{
     display: block;
-    background-color: #FEC400;
+    background-color: #18a150;
     color:#222;
     text-align: center;
     line-height: 30px;
@@ -1547,18 +1547,18 @@ p.footer_title{
     content:" / ";
 }
 .tranBread .container > a:last-child{
-    color:#FEC400;
+    color:#18a150;
     margin-right: 0;
 }
 .tranBread .container > a:last-child:hover{
-    color:#FEC400;
+    color:#18a150;
     margin-right: 0;
 }
 .tranBread  > .container >  a:last-child:after{
    content: "";
 }
 .tranBread span{
-    color:#FEC400;
+    color:#18a150;
     margin-left: 5px;
 }
 #breadOnCar{
@@ -1573,7 +1573,7 @@ p.footer_title{
     color:#fff;
 }
 #breadOnCar li:last-child  a{
-    color:#FEC400;
+    color:#18a150;
 }
 
 #breadOnCar li > a:after{
@@ -1684,7 +1684,7 @@ div#favOnCar .addToFavLink.inFav {
     content: " / ";
 }
 .breadcrambPage span.current{
-    color:#FEC400;
+    color:#18a150;
 }
 .breadcrambMawad{
     position: relative;
@@ -1693,7 +1693,7 @@ div#favOnCar .addToFavLink.inFav {
     direction: ltr;
     text-align: left;
     overflow: hidden;
-    background-color: #FEC400;
+    background-color: #18a150;
     width: 100%;
     display: block;
     margin-bottom:40px; 
@@ -1847,10 +1847,10 @@ div#favOnCar .addToFavLink.inFav {
     color:#fff;
 }
 .inFixed a.active{
-    color:#FEC400 !important;
+    color:#18a150 !important;
 }
 .inFixed a:hover{
-    color:#FEC400;
+    color:#18a150;
 }
 .redSep{
     width: 100%;
@@ -2119,13 +2119,13 @@ ul.fetSpecTabs li.activeTab a{
 .contactUs .form-control:focus {
     color: #333;
     background-color: rgba(255,255,255,.4);
-    border-color: #FEC400;
+    border-color: #18a150;
     outline: 0;
     box-shadow: none;
 }
 .contactUs .modalBtn {
     display: block;
-    background-color: #FEC400;
+    background-color: #18a150;
     color: #222;
     text-align: center;
     line-height: 30px;
@@ -2137,8 +2137,8 @@ ul.fetSpecTabs li.activeTab a{
 }
 .contactUs .modalBtn:focus, .contactUs .modalBtn:active {
     color: #f2f2f2;
-    background-color: #FEC400 !important;
-    border-color: #FEC400;
+    background-color: #18a150 !important;
+    border-color: #18a150;
     opacity: .7;
     outline: 0;
     box-shadow: none;
@@ -2248,7 +2248,7 @@ ul.fetSpecTabs li.activeTab a{
 }
 #companyForm .modalBtn {
     display: block;
-    background-color: #FEC400;
+    background-color: #18a150;
     color: #222;
     text-align: center;
     line-height: 30px;
@@ -2361,7 +2361,7 @@ ul.fetSpecTabs li.activeTab a{
 }
 .calculateHead{
     padding: 7px 15px;
-    background-color: #FEC400;
+    background-color: #18a150;
     color:#222;
     text-align: center;
 }
@@ -2435,7 +2435,7 @@ input.mawadBtn {
    
 }
 .home_btn:hover{
-    color: #FEC400;
+    color: #18a150;
 }
 .results li{ 
     border-bottom: 1px solid #f8f8f8;
@@ -2606,7 +2606,7 @@ div#noData{
     text-align: center;
 }
 #form_call button{
-    background-color: #FEC400;
+    background-color: #18a150;
     border: 0;
     padding: 2px 10px;
     cursor: pointer;
@@ -2795,7 +2795,7 @@ nav  li.have-child i{
 
 #advancedSearchModal .modal-content .modalBtn {
     display: block;
-    background-color: #FEC400;
+    background-color: #18a150;
     color: #222;
     text-align: center;
     line-height: 19px;
@@ -3140,7 +3140,7 @@ a#sendAnyWayDisplaySecondPart {
     .slider {
         width: 100%;
         min-height: auto;
-        background-color: #FEC400;
+        background-color: #18a150;
     }
     #myTopnav li.active a{
         color: #c2000b !important;
@@ -3266,7 +3266,7 @@ a#sendAnyWayDisplaySecondPart {
         font-size: 22px;
         width: 44px;
         height: 48px;
-        background-color: #FEC400;
+        background-color: #18a150;
         color: #fff;
         line-height: 49px;
         text-align: center;
@@ -3310,7 +3310,7 @@ a#sendAnyWayDisplaySecondPart {
     }
     .header.hasSearch a.icon#searchIcon{
         top: 69px;
-        color:#FEC400;
+        color:#18a150;
     }
     .header.hasSearch a.icon#searchIcon i:before{
         content:"\f010";
@@ -3324,7 +3324,7 @@ a#sendAnyWayDisplaySecondPart {
         direction: ltr;
         text-align: justify;
         overflow: hidden;
-        background-color: #FEC400;
+        background-color: #18a150;
         margin-top: 0;
     }
     .modal-dialog {
@@ -3416,7 +3416,7 @@ a#sendAnyWayDisplaySecondPart {
     .slider {
         width: 100%;
         min-height: auto;
-        background-color: #FEC400;
+        background-color: #18a150;
     }
     #myTopnav li.active a{
         color: #c2000b !important;
@@ -3460,7 +3460,7 @@ a#sendAnyWayDisplaySecondPart {
     }
     .header.hasSearch a.icon#searchIcon{
         top: 69px;
-        color:#FEC400;
+        color:#18a150;
     }
     .header.hasSearch a.icon#searchIcon i:before{
         content:"\f010";
@@ -3474,7 +3474,7 @@ a#sendAnyWayDisplaySecondPart {
         direction: ltr;
         text-align: justify;
         overflow: hidden;
-        background-color: #FEC400;
+        background-color: #18a150;
         margin-top: 0;
     }
     .modal-dialog {
