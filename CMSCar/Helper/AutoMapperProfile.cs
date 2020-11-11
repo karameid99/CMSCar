@@ -49,6 +49,7 @@ namespace CMSCar.Helper
             CreateMap<BranchUpdateDTO, Branch>().ReverseMap();
             CreateMap<CarDTO, Car>().ReverseMap();
             CreateMap <ColorCarDTO, ColorCar>().ReverseMap();
+            CreateMap <ColorCarDTOEdit, ColorCar>().ReverseMap();
             CreateMap <ColorCar, ColorCarUpdateDTO>().ReverseMap();
             CreateMap<Car, CarVM>().ForMember(x => x.CreateAt, p =>
             p.MapFrom(m => m.CreatedAt.ToString("dd/MM/yyyy")));

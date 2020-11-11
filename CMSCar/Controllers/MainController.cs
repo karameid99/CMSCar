@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using CMSCar.Areas.CPanel.Models.Cars;
+using CMSCar.Areas.CPanel.Models.Mails;
 using CMSCar.Areas.CPanel.ViewModels;
 using CMSCar.Data;
 using CMSCar.Models.ViewModels;
@@ -59,6 +60,20 @@ namespace CMSCar.Controllers
         {
 
             return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Email(Mail mail)
+        {
+
+            if (ModelState.IsValid)
+            {
+                _Context.Add(mail);
+                await _Context.SaveChangesAsync();
+                return RedirectToAction("Index");
+
+            }
+            return RedirectToAction("Index");
         }
         public IActionResult Car(int id)
         {

@@ -39,6 +39,21 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
             var result = new {draw = d.Draw,recordsTotal = totalCount,recordsFiltered = totalCount, data = items};
             return Json(result);
         }
+        public JsonResult ColorData([FromBody] dynamic data, int id)
+        {
+            DataTableHelper d = new DataTableHelper(data);
+            var query = _Context.ColorCar.Where(x => x.CarId == id).ToList();
+            int totalCount = query.Count();
+            var items = query.Select(x => new
+            {
+                x.Id,
+                x.NameAr,
+                x.NameEn,
+                createdAt = x.CreatedAt.ToString("MM/dd/yyyy"),
+            }).Skip(d.Start).Take(d.Length).OrderByDescending(x => x.createdAt).ToList();
+            var result = new { draw = d.Draw, recordsTotal = totalCount, recordsFiltered = totalCount, data = items };
+            return Json(result);
+        }
         public JsonResult SpecificationAjaxData([FromBody] dynamic data)
         {
             DataTableHelper d = new DataTableHelper(data);
@@ -75,6 +90,36 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
             ViewBag.id = id;
             return View();       
         }
+        public IActionResult AddColorEdit(int id)
+        {
+            ViewBag.id = id;
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddColorEdit(ColorCarDTOEdit colorDto, List<IFormFile> Images)
+        {
+            if (ModelState.IsValid)
+            {
+                var colorCar = _Mapper.Map<ColorCar>(colorDto);
+                _Context.Add(colorCar);
+                _Context.SaveChanges();
+                if (Images.Any())
+                {
+                    foreach (var item in Images)
+                    {
+                        ColorImage color = new ColorImage();
+                        color.ImagePath = await ImageHelper.SaveImage(item, _environment, "Images/Car");
+                        color.ColorCarId = colorCar.Id;
+                        _Context.ColorImage.Add(color);
+                    }
+                    _Context.SaveChanges();
+
+                }
+                return Content(ResultMessage.AddSuccessResult(), "application/json");
+            }
+            return View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> AddColor(ColorCarDTO colorDto, List<IFormFile> Images)
         {
