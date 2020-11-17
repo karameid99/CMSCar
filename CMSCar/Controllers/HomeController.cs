@@ -189,13 +189,13 @@ namespace CMSCar.Controllers
                 {
                     for (int i = 0; i < cars.Count(); i++)
                     {
-                        var carOrder = new CarOrderCash
+                        var carOrder = new CarOrderFinance
                         {
                             Count = quantity[i],
                             NameCar = cars[i],
-                            CompanyCashId = cash.Id
+                            CompanyFinanceId = cash.Id
                         };
-                        _Context.CarOrderCash.Add(carOrder);
+                        _Context.CarOrderFinance.Add(carOrder);
                     }
                     _Context.SaveChanges();
 
