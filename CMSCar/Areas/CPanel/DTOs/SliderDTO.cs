@@ -29,6 +29,8 @@ namespace CMSCar.Areas.CPanel.DTOs
         public string SubTitleAr { get; set; }
         [Display(Name = "العنوان الفرعي بالانجليزية")]
         public string SubTitleEn { get; set; }
+        [Display(Name = "لون الخلفية")]
+        public string BackgroundColor { get; set; }
         [Display(Name = "  رابط التوجيه")]
         public string LinkUrl { get; set; }
         [Display(Name = "نموذج المنشور")]

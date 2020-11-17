@@ -1,0 +1,58 @@
+﻿@model CMSCar.Areas.CPanel.Models.Settings.WhoWeAre
+@{
+    ViewData["Title"] = "Conditions";
+}
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Options
+
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+@{
+    string x = System.Globalization.CultureInfo.CurrentCulture.Name;
+}
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cultureItems = LocOptions.Value.SupportedUICultures
+        .Select(c => new SelectListItem { Value = c.Name, Text = c.DisplayName })
+        .ToList();
+}
+
+<section class="inner_header">
+    <div class="w-100 row yellowSep">
+        <div class="container">
+            <div class="pageyHead col-md-12">
+                <h2>@Localizer["Terms and Conditions"]</h2>
+                <section class="breadcrambPage">
+                    <a href="/"> @Localizer["Home"]</a>   <span class="current"> @Localizer["Terms and Conditions"]</span>
+                </section>
+            </div>
+        </div>
+    </div><!--w-100 -->
+</section>
+<div class="clearfix"></div>
+<section class="aboutUs">
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12" id="about">
+
+                @if (x == "ar-EG")
+                {
+                    <div>
+                        @Html.Raw(Model.TermConditionAr)
+                    </div>
+                }
+                else
+                {
+                    <div>
+                        @Html.Raw(Model.TermConditionEn)
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>

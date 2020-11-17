@@ -17,5 +17,6 @@ namespace CMSCar.Areas.CPanel.Models.Settings
         public string TermConditionEn { get; set; }
         public string policyAr { get; set; }
         public string policyEn { get; set; }
+        public string LinkVideo { get; set; }
     }
 }

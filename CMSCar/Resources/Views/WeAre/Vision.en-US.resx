@@ -117,46 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Car" xml:space="preserve">
-    <value>أحدث السيارات</value>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
   </data>
-  <data name="Certified by funding agencies" xml:space="preserve">
-    <value>معتمدون لدى جهات التمويل</value>
+  <data name="Our Goals" xml:space="preserve">
+    <value>Our Goals</value>
   </data>
-  <data name="Change Brand" xml:space="preserve">
-    <value>إختار الماركة</value>
+  <data name="Our Massege" xml:space="preserve">
+    <value>Our Massege</value>
   </data>
-  <data name="Change Car Model" xml:space="preserve">
-    <value>اختار الموديل</value>
+  <data name="Vision and mission" xml:space="preserve">
+    <value>Vision and mission</value>
   </data>
-  <data name="Change Car Type" xml:space="preserve">
-    <value>إختار النوع</value>
-  </data>
-  <data name="companies" xml:space="preserve">
-    <value>شركات</value>
-  </data>
-  <data name="Individuals" xml:space="preserve">
-    <value>أفراد</value>
-  </data>
-  <data name="Know Now" xml:space="preserve">
-    <value>اعرف الان</value>
-  </data>
-  <data name="Order" xml:space="preserve">
-    <value>طلب شراء</value>
-  </data>
-  <data name="Our price is the best" xml:space="preserve">
-    <value>سعرنا هوا الافضل</value>
-  </data>
-  <data name="Search" xml:space="preserve">
-    <value>بحث</value>
-  </data>
-  <data name="Search Here ..." xml:space="preserve">
-    <value>إبحث هنا ...</value>
-  </data>
-  <data name="TypeCar" xml:space="preserve">
-    <value>موزع معتمد لجميع انواع السيارات</value>
-  </data>
-  <data name="WhyUs" xml:space="preserve">
-    <value>ليش شركة الامارات</value>
+  <data name="Who We Are" xml:space="preserve">
+    <value>Who We Are</value>
   </data>
 </root>

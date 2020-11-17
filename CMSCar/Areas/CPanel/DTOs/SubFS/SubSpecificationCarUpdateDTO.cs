@@ -14,12 +14,7 @@ namespace CMSCar.Areas.CPanel.DTOs.SubFS
         [Display(Name = "اسم المواصفات بالانجليزية")]
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         public string NameEn { get; set; }
-        [Display(Name = "الاجابة بالعربية")]
-        [Required(ErrorMessage = "هذا الحقل مطلوب")]
-        public string AnswerAr { get; set; }
-        [Display(Name = "الاجابة بالانجليزية")]
-        [Required(ErrorMessage = "هذا الحقل مطلوب")]
-        public string AnswerEn { get; set; }
+    
         public int Id { get; set; }
     }
 }

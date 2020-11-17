@@ -48,7 +48,7 @@ namespace CMSCar.Controllers
             ViewData["Titles"] = Titles == null ? defaultObj : Titles;
             IndexVM index = new IndexVM();
             index.Cars = _Mapper.Map<List<CarShowVM>>(_Context.Car.ToList());
-            index.Sliders = _Context.Slider.ToList();
+            index.Sliders = _Context.Slider.OrderByDescending(x => x.CreatedAt).ToList();
             return View(index);
         }
 
@@ -134,7 +134,7 @@ namespace CMSCar.Controllers
                 Price = car.PriceAfterDiscount == 0 ? car.PriceBeforeDiscount + "" : car.PriceAfterDiscount + ""
             };
             return View(poc);
-            
+
         }
 
         [HttpPost]
@@ -151,24 +151,56 @@ namespace CMSCar.Controllers
         }
 
         [HttpPost]
-        public IActionResult CCash(CompanyCash cash)
+        public IActionResult CCash(CompanyCash cash, string[] cars, int[] quantity)
         {
             if (ModelState.IsValid)
             {
+
                 _Context.CompanyCash.Add(cash);
                 _Context.SaveChanges();
+                if (cars != null && quantity != null)
+                {
+                    for (int i = 0; i < cars.Count(); i++)
+                    {
+                        var carOrder = new CarOrderCash
+                        {
+                            Count = quantity[i],
+                            NameCar = cars[i],
+                            CompanyCashId = cash.Id
+                        };
+                        _Context.CarOrderCash.Add(carOrder);
+                    }
+                    _Context.SaveChanges();
+
+                }
                 return RedirectToAction("SuccessOrder");
             }
             ViewData["EditStatus"] = "Error";
             return RedirectToAction("IndiviualOrder");
         }
         [HttpPost]
-        public IActionResult CFinice(CompanyFinance cash)
+        public IActionResult CFinice(CompanyFinance cash, string[] cars, int[] quantity)
         {
             if (ModelState.IsValid)
             {
                 _Context.CompanyFinance.Add(cash);
                 _Context.SaveChanges();
+                if (cars != null && quantity != null)
+                {
+                    for (int i = 0; i < cars.Count(); i++)
+                    {
+                        var carOrder = new CarOrderCash
+                        {
+                            Count = quantity[i],
+                            NameCar = cars[i],
+                            CompanyCashId = cash.Id
+                        };
+                        _Context.CarOrderCash.Add(carOrder);
+                    }
+                    _Context.SaveChanges();
+
+                }
+
                 return RedirectToAction("SuccessOrder");
             }
             ViewData["EditStatus"] = "Error";
@@ -189,7 +221,7 @@ namespace CMSCar.Controllers
         {
 
             var result = _Context.Car.Include(x => x.CarCategorys).ThenInclude(c => c.SubCarType).ThenInclude(x => x.CarType).Where(z => (z.CarCategorys.Any(x => x.SubCarType.CarTypeId == searchVM.BrandId) ||
-             !searchVM.BrandId.HasValue) && 
+             !searchVM.BrandId.HasValue) &&
              (z.CarCategorys.Any(x => x.SubCarType.Id == searchVM.TypeId) || !searchVM.TypeId.HasValue) &&
              (z.CarCategorys.Any(x => x.SubCarType.Id == searchVM.ModelId) || !searchVM.TypeId.HasValue) &&
              (z.NameAr.Contains(searchVM.SearchKey) || z.NameEn.Contains(searchVM.SearchKey) ||

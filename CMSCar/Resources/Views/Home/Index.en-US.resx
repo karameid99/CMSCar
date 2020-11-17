@@ -138,6 +138,9 @@
   <data name="Individuals" xml:space="preserve">
     <value>Individuals</value>
   </data>
+  <data name="Know Now" xml:space="preserve">
+    <value>Know Now</value>
+  </data>
   <data name="Order" xml:space="preserve">
     <value>purchase order</value>
   </data>

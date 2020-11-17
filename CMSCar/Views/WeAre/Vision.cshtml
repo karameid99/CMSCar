@@ -1,0 +1,63 @@
+﻿@model CMSCar.Areas.CPanel.Models.Settings.WhoWeAre
+@{
+    ViewData["Title"] = "Conditions";
+}
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Options
+
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+@{
+    string x = System.Globalization.CultureInfo.CurrentCulture.Name;
+}
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cultureItems = LocOptions.Value.SupportedUICultures
+        .Select(c => new SelectListItem { Value = c.Name, Text = c.DisplayName })
+        .ToList();
+}
+<section class="inner_header">
+    <div class="w-100 row yellowSep">
+        <div class="container">
+            <div class="pageyHead col-md-12">
+                <h2>@Localizer["Vision and mission"]</h2>
+                <section class="breadcrambPage">
+                    <a href="/"> @Localizer["Home"]</a>   <span class="current"> @Localizer["Vision and mission"]</span>
+                </section>
+            </div>
+        </div>
+    </div><!--w-100 -->
+</section>
+<div class="clearfix"></div>
+<section class="aboutUs">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5" id="video">
+                <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/@Model.LinkVideo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="col-md-7" id="about">
+                @if (x == "ar-EG")
+                {
+                    <b><span style="font-size: 18pt; line-height: 107%; font-family: Tajawal;">@Localizer["Who We Are"]</span></b>
+                    <p>@Html.Raw(Model.WhoWeAreAr)</p>
+                    <b> <span style="font-size: 18pt; line-height: 107%; font-family: Tajawal;">@Localizer["Our Goals"]</span></b>
+                    <p>@Html.Raw(Model.OurGoalsAr)</p>
+                    <b>  <span style="font-size: 18pt; line-height: 107%; font-family: Tajawal;">@Localizer["Our Massege"]</span></b>
+                    <p>@Html.Raw(Model.OurMassegeAr)</p>
+                }
+                else
+                {
+                    <b>   <span style="font-size: 18pt; line-height: 107%; font-family: Tajawal;">@Localizer["Who We Are"]</span></b>
+                    <p>@Html.Raw(Model.WhoWeAreEn)</p>
+                    <b>   <span style="font-size: 18pt; line-height: 107%; font-family: Tajawal;">@Localizer["Our Goals"]</span></b>
+                    <p>@Html.Raw(Model.OurGoalsEn)</p>
+                    <b>  <span style="font-size: 18pt; line-height: 107%; font-family: Tajawal;">@Localizer["Our Massege"]</span></b>
+                    <p>@Html.Raw(Model.OurMassegeEn)</p>
+                }
+            </div>
+        </div>
+    </div>
+</section>

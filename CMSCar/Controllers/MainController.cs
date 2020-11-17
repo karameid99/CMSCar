@@ -28,6 +28,25 @@ namespace CMSCar.Controllers
         {
             return View();
         }
+
+        public IActionResult Vision()
+        {
+            var model = _Context.WhoWeAre.FirstOrDefault();
+            return View(model);
+        }
+
+        public IActionResult Privacy()
+        {
+            var model = _Context.WhoWeAre.FirstOrDefault();
+            return View(model);
+        }
+
+        public IActionResult Conditions()
+        {
+            var model = _Context.WhoWeAre.FirstOrDefault();
+            return View(model);
+        }
+
         public IActionResult OfferDetalis(int? id)
         {
             if (id == null) return NotFound();

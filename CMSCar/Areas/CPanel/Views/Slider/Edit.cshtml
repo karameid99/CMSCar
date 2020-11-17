@@ -32,7 +32,7 @@
         <div class="m-portlet__head-caption">
             <div class="m-portlet__head-title">
                 <h3 class="m-portlet__head-text">
-                    <span style="color: #ebebeb"></span> تعديل منشور 
+                    <span style="color: #ebebeb"></span> تعديل منشور
                 </h3>
             </div>
         </div>
@@ -45,14 +45,14 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label asp-for="TitleAr" class="control-label"></label>
-                        <input asp-for="TitleAr" class="form-control">
+                        <input onkeydown="return checkLength(this)" id="input" asp-for="TitleAr" class="form-control"> <span id="count">0</span>
                         <span asp-validation-for="TitleAr" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label asp-for="TitleEn" class="control-label"></label>
-                        <input asp-for="TitleEn" class="form-control">
+                        <input onkeydown="return checkLength(this)" id="input1" max="30" asp-for="TitleEn" class="form-control"> <span id="count1">0</span>
                         <span asp-validation-for="TitleEn" class="text-danger"></span>
                     </div>
                 </div>
@@ -61,18 +61,35 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label asp-for="SubTitleAr" class="control-label"></label>
-                        <input asp-for="SubTitleAr" class="form-control">
+                        <input onkeydown="return checkLength1(this)" id="input2" asp-for="SubTitleAr" class="form-control"> <span id="count2">0</span>
                         <span asp-validation-for="SubTitleAr" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label asp-for="SubTitleEn" class="control-label"></label>
-                        <input asp-for="SubTitleEn" class="form-control">
+                        <input onkeydown="return checkLength1(this)" id="input3" asp-for="SubTitleEn" class="form-control"> <span id="count3">0</span>
                         <span asp-validation-for="SubTitleEn" class="text-danger"></span>
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="LinkUrl" class="control-label"></label>
+                        <input id="title" asp-for="LinkUrl" class="form-control">
+                        <span asp-validation-for="LinkUrl" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="BackgroundColor" class="control-label"></label>
+                        <input type="color" max="30" asp-for="BackgroundColor" class="form-control">
+                        <span asp-validation-for="BackgroundColor" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -136,5 +153,37 @@
 </div>
 
 @section Scripts{
+    <script>
+        var maxLength = 31;
 
+        function checkLength(elem) {
+            if (elem.value.length == maxLength) {
+                return false;
+            }
+            return true;
+        }
+        var maxLength1 = 71;
+
+        function checkLength1(elem) {
+            if (elem.value.length == maxLength1) {
+                return false;
+            }
+            return true;
+        }
+
+
+        $("#input").on("input", function () {
+            $("#count").text(this.value.length);
+        });
+        $("#input1").on("input", function () {
+            $("#count1").text(this.value.length);
+        });
+        $("#input2").on("input", function () {
+            $("#count2").text(this.value.length);
+        });
+        $("#input3").on("input", function () {
+            $("#count3").text(this.value.length);
+        });
+
+    </script>
 }

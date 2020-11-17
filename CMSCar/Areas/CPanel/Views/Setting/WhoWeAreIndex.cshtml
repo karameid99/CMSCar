@@ -54,6 +54,18 @@
             <input type="hidden" asp-for="Id" />
             <div class="row">
                 <div class="col-md-6">
+                    <label class="control-label"><b> رابط فيديو من نحن </b><span style="color:red"> يرجى ادخال Key اليوتيوب</span></label>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-youtube"></i></span>
+                        </div>
+                        <input class="form-control" asp-for="LinkVideo" autocomplete="on">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
                     <div class="p-3 mb-2 text-white" style="background-color:crimson">
                         من نحن بالعربية
                     </div>

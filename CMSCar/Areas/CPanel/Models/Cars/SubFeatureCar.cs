@@ -12,9 +12,7 @@ namespace CMSCar.Areas.CPanel.Models.Cars
         public string NameAr { get; set; }
         [Required]
         public string NameEn { get; set; }
-        [Required]
         public string AnswerAr { get; set; }
-        [Required]
         public string AnswerEn { get; set; }
         [Required]
         public int FeatureCarId { get; set; }
