@@ -1,0 +1,44 @@
+﻿@model IEnumerable<CMSCar.Areas.CPanel.Models.Notfication.Notifications>
+@{
+    ViewData["Title"] = "جميع التنبيهات";
+}
+
+<div class="m-portlet m-portlet--mobile">
+    <div class="m-portlet__body">
+        <br />
+        <div class="alert alert-primary">
+            جميع التنبيهات
+        </div>
+        <table class="table table-striped m-table m-table--head-separator-primary">
+            <thead class="thead-light ">
+                <tr>
+                    <th scope="col">
+                        العنوان
+                    </th>
+                    <th scope="col">
+                        الرسالة
+                    </th>
+                    <th scope="col">
+                       وقت الارسال
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row">
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Body)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SendAt)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

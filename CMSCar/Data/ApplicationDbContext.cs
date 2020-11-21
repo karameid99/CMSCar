@@ -6,6 +6,7 @@ using CMSCar.Areas.CPanel.Models.Contact;
 using CMSCar.Areas.CPanel.Models.FundingBodies;
 using CMSCar.Areas.CPanel.Models.Home;
 using CMSCar.Areas.CPanel.Models.Mails;
+using CMSCar.Areas.CPanel.Models.Notfication;
 using CMSCar.Areas.CPanel.Models.PurchaseOrders;
 using CMSCar.Areas.CPanel.Models.Questions;
 using CMSCar.Areas.CPanel.Models.Services;
@@ -82,6 +83,7 @@ namespace CMSCar.Data
         public DbSet<WhyUs> WhyUs { get; set; }
         public DbSet<Slider> Slider { get; set; }
         public DbSet<CarCategory> CarCategory { get; set; }
+        public DbSet<Notifications> Notifications { get; set; }
 
        
         #endregion

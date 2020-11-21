@@ -117,11 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Add Another Type +" xml:space="preserve">
+    <value>اضافة سيارة جديدة +</value>
+  </data>
+  <data name="Bank" xml:space="preserve">
+    <value>البنك</value>
+  </data>
   <data name="bank_account" xml:space="preserve">
     <value>راتبك على اي بنك</value>
   </data>
   <data name="Buy Service" xml:space="preserve">
     <value>شراء خدمة</value>
+  </data>
+  <data name="Car Name" xml:space="preserve">
+    <value>اسم السيارة المطلوبة </value>
   </data>
   <data name="cash" xml:space="preserve">
     <value>كاش</value>
@@ -135,6 +144,21 @@
   <data name="Companies" xml:space="preserve">
     <value>شركات</value>
   </data>
+  <data name="Company Activity" xml:space="preserve">
+    <value>نشاط الشركة حسب السجل</value>
+  </data>
+  <data name="Company Age" xml:space="preserve">
+    <value>عمر الشركة</value>
+  </data>
+  <data name="Company Name" xml:space="preserve">
+    <value>اسم الشركة</value>
+  </data>
+  <data name="Count" xml:space="preserve">
+    <value>العدد</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>البريد الالكتروني</value>
+  </data>
   <data name="error" xml:space="preserve">
     <value>الرجاء ادخال كل المدخلات</value>
   </data>
@@ -147,14 +171,14 @@
   <data name="initPayment" xml:space="preserve">
     <value>اول دفعة</value>
   </data>
-  <data name="Invalid" xml:space="preserve">
-    <value>منتهية</value>
-  </data>
   <data name="last_payment" xml:space="preserve">
     <value>إخر دفعة</value>
   </data>
-  <data name="license Status" xml:space="preserve">
-    <value>حالة رخصة القيادة</value>
+  <data name="Meter reading" xml:space="preserve">
+    <value>قراءة العداد</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>موديل السيارة</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>الاسم</value>
@@ -174,8 +198,14 @@
   <data name="payment" xml:space="preserve">
     <value>طريقة الدفع</value>
   </data>
+  <data name="Person Name" xml:space="preserve">
+    <value>اسم الشخص المسؤول بالشركة</value>
+  </data>
   <data name="Phone" xml:space="preserve">
     <value>رقم الجوال</value>
+  </data>
+  <data name="Please Select Order Service" xml:space="preserve">
+    <value>الرجاء اختيار الخدمة المطلوبة</value>
   </data>
   <data name="Price" xml:space="preserve">
     <value>السعر</value>
@@ -185,6 +215,9 @@
   </data>
   <data name="salary" xml:space="preserve">
     <value>الراتب</value>
+  </data>
+  <data name="Select Order Service" xml:space="preserve">
+    <value>اختر الخدمة المطلوبة</value>
   </data>
   <data name="Service" xml:space="preserve">
     <value>افراد</value>
@@ -197,12 +230,6 @@
   </data>
   <data name="tamweel" xml:space="preserve">
     <value>تمويل</value>
-  </data>
-  <data name="Unavailable" xml:space="preserve">
-    <value>لا يوجد</value>
-  </data>
-  <data name="Valid" xml:space="preserve">
-    <value>سارية</value>
   </data>
   <data name="work" xml:space="preserve">
     <value>قطاع العمل</value>

@@ -37,6 +37,8 @@ namespace CMSCar.Controllers
                };
 
             ViewData["Info"] = ObjInfo == null ? defaultObj : ObjInfo;
+            ViewBag.URL = $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}";
+
         }
     }
 }

@@ -123,6 +123,9 @@
   <data name="bank_account" xml:space="preserve">
     <value>Bank account</value>
   </data>
+  <data name="Buy Service" xml:space="preserve">
+    <value>Buy Service</value>
+  </data>
   <data name="Car Name" xml:space="preserve">
     <value>Car Name</value>
   </data>
@@ -159,8 +162,14 @@
   <data name="initPayment" xml:space="preserve">
     <value>First Payment</value>
   </data>
+  <data name="Invalid" xml:space="preserve">
+    <value>Invalid</value>
+  </data>
   <data name="last_payment" xml:space="preserve">
     <value>last Payment</value>
+  </data>
+  <data name="license Status" xml:space="preserve">
+    <value>license Status</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
@@ -206,6 +215,12 @@
   </data>
   <data name="tamweel" xml:space="preserve">
     <value>Finance</value>
+  </data>
+  <data name="Unavailable" xml:space="preserve">
+    <value>Unavailable</value>
+  </data>
+  <data name="Valid" xml:space="preserve">
+    <value>Valid</value>
   </data>
   <data name="work" xml:space="preserve">
     <value>Work sector</value>

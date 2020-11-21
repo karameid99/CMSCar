@@ -230,19 +230,27 @@
                 <div id="searchOnFixed">
                     <div class="searchMobile_onFixed" id="searchMobile_onFixed">
                         @*<form action="WhoWeAresearch" method="GET">
-                                <input type="hidden" name="_token" value="UuKzCtXmVTK47dBcYS9hPkqhZQ5rGLfU2Y40yCw4">						<input type="text" name="search_text" id="toHeadSearch" class="toHeadSearch" placeholder="ابحث هنا ...">
-                                <input type="submit" class="toHeadBtn" value="بحث">
-                            </form>*@
+                    <input type="hidden" name="_token" value="UuKzCtXmVTK47dBcYS9hPkqhZQ5rGLfU2Y40yCw4">						<input type="text" name="search_text" id="toHeadSearch" class="toHeadSearch" placeholder="ابحث هنا ...">
+                    <input type="submit" class="toHeadBtn" value="بحث">
+                </form>*@
                         <a class="advancedSearch" id="advancedSearch_DK" href="#"><i class="fab fa-searchengin"></i> البحث المتقدم ... </a>
                     </div>
                 </div>
+                <div id="social_btns_wraper">
 
+                    <ul class="share-social">
+                    <li><a class="share-link share-twitter" href="https://twitter.com/intent/tweet?text=@ViewBag.URL" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                    <li><a class="share-link share-facebook" href="https://www.facebook.com/sharer/sharer.php?u=@ViewBag.URL" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a class="share-link share-whatsapp" href="whatsapp://send?text=@ViewBag.URL" data-action="share/whatsapp/share" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+                    <li><a class="share-link share-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=@ViewBag.URL" target="_blank"><i class="fab fa-linkedin-in"></i></a></li></ul>
+
+                </div>
 
             </div>
 
         </section>
     </div>
-
+    
 
     <div class="header">
         <div class="container">
@@ -388,7 +396,7 @@
                     <li><a class=" active  " href="/">@Localizer["Home"]</a></li>
                     <li><a class="" href="/Home/Services">@Localizer["Services"]</a></li>
 
-                    <li><a class="" href="/Main/Cars">@Localizer["Cars"]</a></li>
+                    <li><a class="" href="/Main/Brands">@Localizer["Cars"]</a></li>
                     <li class="have-child">
                         <a class="" href="javascript:void(0);">@Localizer["Offers"]<i class="fas fa-chevron-left"></i></a>
                         <ul>
@@ -400,8 +408,8 @@
                     <li class="have-child">
                         <a class="" href="javascript:void(0);">@Localizer["Purchase Order"] <i class="fas fa-chevron-left"></i></a>
                         <ul>
-                            <li><a class="" href="/Home/IndividualOrder">@Localizer["Individuals"]</a></li>
-                            <li><a class="" href="#">@Localizer["Companies"]</a></li>
+                            <li><a class="" href="/Home/IndiviualOrder">@Localizer["Individuals"]</a></li>
+                            <li><a class="" href="/Home/CompaniesOrder">@Localizer["Companies"]</a></li>
                         </ul>
                     </li>
                     <li><a class="" href="/Home/Qustion">@Localizer["FAQ"]</a></li>
@@ -474,7 +482,7 @@
                         <div class="col-md-3 col-6 order-4">
                             <p class="footer_title">@Localizer["Cars"]</p>
                             <ul class="outerLinks">
-                                <li><a href="/Main/Cars">@Localizer["Cars"]</a></li>
+                                <li><a href="/Main/Brands">@Localizer["Cars"]</a></li>
                                 <li><a href="/Main/Discount">@Localizer["Discounts"]</a></li>
                                 <li><a href="/Main/Offers">@Localizer["Specials"]</a></li>
                                 <li><a href="/Home/Qustion">@Localizer["FAQ"]</a></li>
@@ -484,7 +492,7 @@
                         <div class="col-md-3 col-6 order-3">
                             <p class="footer_title">@Localizer["Purchase Order"]</p>
                             <ul class="outerLinks">
-                                <li><a href="/Home/IndividualOrder">@Localizer["Individuals"]</a></li>
+                                <li><a href="/Home/IndiviualOrder">@Localizer["Individuals"]</a></li>
                                 <li><a href="/Home/CompaniesOrder">@Localizer["Companies"]</a></li>
                             </ul>
 

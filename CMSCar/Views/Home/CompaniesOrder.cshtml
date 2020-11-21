@@ -56,6 +56,8 @@
                         </li>
                         <li class="brandListLi act"><a class="mr-4 text-yellow" href="/Home/IndiviualOrder" id="personalTap">@Localizer["Individual"]</a><i id="hoverMe" class="fas fa-angle-down hoverMe"></i></li>
                         <li><a class="mr-4" href="/Home/CompaniesOrder" id="companyTap">@Localizer["Companies"]</a></li>
+                        <li><a class="mr-4" href="/Home/BuyService" id="companyTap">@Localizer["Buy Service"]</a></li>
+
                     </ul>
                     @*<ul class="brandList">
                             <li class=" brandListLi">
@@ -77,12 +79,12 @@
                             <div class="col-sm-8">
                                 <input type="hidden" name="type" value="0">
 
-                                <div class="form-check form-check-inline mawadRadio activeBtn">
-                                    <input class="form-check-input" checked="checked" type="radio" name="payment_method" id="tamweelRadio" value="1">
+                                <div class="form-check form-check-inline mawadRadio ">
+                                    <input class="form-check-input"  type="radio" name="payment_method" id="tamweelRadio" value="1">
                                     <label class="form-check-label" for="tamweelRadio">@Localizer["tamweel"]</label>
                                 </div>
-                                <div class="form-check form-check-inline mawadRadio ">
-                                    <input class="form-check-input" type="radio" name="payment_method" id="cashRadio" value="0">
+                                <div class="form-check form-check-inline mawadRadio activeBtn">
+                                    <input class="form-check-input" checked="checked" type="radio" name="payment_method" id="cashRadio" value="0">
                                     <label class="form-check-label" for="cashRadio">@Localizer["cash"]</label>
                                 </div>
                             </div>
@@ -130,7 +132,7 @@
                                 </div>
                             </div><!-- .cash #cash -->
 
-                            <input type="submit" class="mawadBtn form-control" value="@Localizer["Submit"]">
+                            <input type="submit" class="mawadBtn form-control" value="@Localizer["submit"]">
                         </form>
 
                         <form action="/Home/CFinice" method="POST" id="formTamweel">
@@ -161,9 +163,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="companyContactPerson" class="col-sm-4 col-form-label">@Localizer["Name Person"]  <span class="required">*</span></label>
+                                    <label for="companyContactPerson" class="col-sm-4 col-form-label">@Localizer["Person Name"]  <span class="required">*</span></label>
                                     <div class="col-sm-8">
-                                        <input type="text" required value="" class="form-control" name="NamePerson" id="companyContactPerson" placeholder="@Localizer["Name Person"]">
+                                        <input type="text" required value="" class="form-control" name="NamePerson" id="companyContactPerson" placeholder="@Localizer["Person Name"]">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -205,7 +207,7 @@
 
 
 
-                            <input type="submit" class="mawadBtn form-control" value="@Localizer["Submit"]">
+                            <input type="submit" class="mawadBtn form-control" value="@Localizer["submit"]">
                         </form>
                     </div>
                     <div class="col-md-1"></div>

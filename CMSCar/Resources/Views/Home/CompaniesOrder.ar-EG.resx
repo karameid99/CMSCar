@@ -126,6 +126,9 @@
   <data name="bank_account" xml:space="preserve">
     <value>راتبك على اي بنك</value>
   </data>
+  <data name="Buy Service" xml:space="preserve">
+    <value>شراء خدمة</value>
+  </data>
   <data name="Car Name" xml:space="preserve">
     <value>اسم السيارة المطلوبة </value>
   </data>

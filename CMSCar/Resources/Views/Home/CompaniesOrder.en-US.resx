@@ -126,6 +126,9 @@
   <data name="bank_account" xml:space="preserve">
     <value>Bank account</value>
   </data>
+  <data name="Buy Service" xml:space="preserve">
+    <value>Buy Service</value>
+  </data>
   <data name="Car Name" xml:space="preserve">
     <value>Car Name</value>
   </data>

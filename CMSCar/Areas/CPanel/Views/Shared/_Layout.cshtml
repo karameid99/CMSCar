@@ -196,9 +196,17 @@
         .m-subheader {
             padding: 0px 20px 10px 30px;
         }
+
         .m-aside-menu.m-aside-menu--skin-dark .m-menu__nav > .m-menu__item.m-menu__item--open > .m-menu__heading, .m-aside-menu.m-aside-menu--skin-dark .m-menu__nav > .m-menu__item.m-menu__item--open > .m-menu__link {
             background-color: #F1E8CC;
         }
+        .card{
+            margin-top:10px;
+        }
+        .card :hover{
+            background-color:darkgray
+        }
+
     </style>
 
     @RenderSection("Css", false)
@@ -264,39 +272,39 @@
                         <div id="m_header_topbar" class="m-topbar  m-stack m-stack--ver m-stack--general">
                             <div class="m-stack__item m-topbar__nav-wrapper">
                                 <ul class="m-topbar__nav m-nav m-nav--inline">
-                                    @*<li class="m-nav__item m-topbar__user-profile  m-dropdown m-dropdown--medium m-dropdown--arrow  m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" m-dropdown-toggle="click" onclick="ChangeNotification()">
-                                            <a href="#" class="m-nav__link m-dropdown__toggle" id="m_topbar_notification_icon">
-                                                <span class="m-nav__link-icon">
-                                                    <span class="m-nav__link-icon-wrapper"><i class="flaticon-alarm" style="font-size:20px"></i></span>
-                                                    <span id="notification__id">
+                                    <li class="m-nav__item m-topbar__user-profile  m-dropdown m-dropdown--medium m-dropdown--arrow  m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" m-dropdown-toggle="click" onclick="ChangeNotification()">
+                                        <a href="#" class="m-nav__link m-dropdown__toggle" id="m_topbar_notification_icon">
+                                            <span class="m-nav__link-icon">
+                                                <span class="m-nav__link-icon-wrapper"><i class="flaticon-alarm" style="font-size:20px"></i></span>
+                                                <span id="notification__id">
 
-                                                    </span>
                                                 </span>
-                                            </a>
-                                            <div class="m-dropdown__wrapper">
-                                                <span class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left"></span>
-                                                <div class="m-dropdown__inner">
+                                            </span>
+                                        </a>
+                                        <div class="m-dropdown__wrapper">
+                                            <span class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left"></span>
+                                            <div class="m-dropdown__inner">
 
-                                                    <div class="m-dropdown__wrapper">
-                                                        <div class="m-dropdown__inner">
-                                                            <div class="m-dropdown__header bg-light h-25">
-                                                                <a href="~/Admin/Notification/AllNotifications" class="m-card-user__email m-link">
-                                                                    جميع التنبيهات
-                                                                </a>
-                                                            </div>
-                                                            <div class="m-dropdown__body">
-                                                                <div class="m-dropdown__content">
-                                                                    <div class="m-scrollable table__1" data-scrollable="true" data-max-height="200" id="list_message">
+                                                <div class="m-dropdown__wrapper">
+                                                    <div class="m-dropdown__inner">
+                                                        <div class="m-dropdown__header bg-light h-25">
+                                                            <a href="~/CPanel/Notification/AllNotifications" class="m-card-user__email m-link">
+                                                                جميع التنبيهات
+                                                            </a>
+                                                        </div>
+                                                        <div class="m-dropdown__body">
+                                                            <div class="m-dropdown__content">
+                                                                <div class="m-scrollable table__1" data-scrollable="true" data-max-height="200" id="list_message">
 
-                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                 </div>
+
                                             </div>
-                                        </li>*@
+                                        </div>
+                                    </li>
 
                                     <li class="m-nav__item m-topbar__user-profile  m-dropdown m-dropdown--medium m-dropdown--arrow  m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" m-dropdown-toggle="click">
                                         <a href="#" class="m-nav__link m-dropdown__toggle">
@@ -375,8 +383,8 @@
                 <div id="m_ver_menu" class="m-aside-menu  m-aside-menu--skin-dark m-aside-menu--submenu-skin-dark " m-menu-vertical="1" m-menu-scrollable="0" m-menu-dropdown-timeout="500">
                     <ul class="m-menu__nav ">
                         <li class="m-menu__item " aria-haspopup="true" m-menu-link-redirect="1"><a href="/" class="m-menu__link "><span class="m-menu__item-here"></span><i class="m-menu__link-icon text-dark fa fa-backward"></i><span class="m-menu__link-text text-dark">الرجوع للرئيسية</span></a></li>
-                        <li class="m-menu__item " aria-haspopup="true" m-menu-link-redirect="1"><a href="~/CPanel/Slider/Index" class="m-menu__link "><span class="m-menu__item-here"></span><i class="m-menu__link-icon text-dark fa fa-pencil"></i><span class="m-menu__link-text text-dark"> المنشورات</span></a></li>
                         <li class="m-menu__item " aria-haspopup="true" m-menu-link-redirect="1"><a href="~/CPanel/Home/Index" class="m-menu__link "><span class="m-menu__item-here"></span><i class="m-menu__link-icon text-dark fa fa-line-chart"></i><span class="m-menu__link-text text-dark"> الاحصائيات </span></a></li>
+                        <li class="m-menu__item " aria-haspopup="true" m-menu-link-redirect="1"><a href="~/CPanel/Slider/Index" class="m-menu__link "><span class="m-menu__item-here"></span><i class="m-menu__link-icon text-dark fa fa-pencil"></i><span class="m-menu__link-text text-dark"> السلايدر</span></a></li>
                         <li class="m-menu__item" aria-haspopup="true" m-menu-link-redirect="1"><a href="~/CPanel/User/Index" class="m-menu__link "><span class="m-menu__item-here"></span><i class="m-menu__link-icon text-dark fa fa-users"></i><span class="m-menu__link-text text-dark">المستخدمين</span></a></li>
 
                         <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
@@ -520,6 +528,42 @@
     <script src="~/Metronic/bootstrap-timepicker.js" type="text/javascript"></script>
     <script src="~/Metronic/MainLayout.js"></script>
     <script src="~/Metronic/Notification.js"></script>
+    <script>
+        $.ajax({
+            url: '/CPanel/Notification/getCountNotification',
+            dataType: "json",
+            success: function (Data) {
+                if (Data != 0) {
+                    $("#notification__id").append($("<b class='m-nav__link-badge m-badge m-badge--danger'>" + Data + "</b>"));
+                    var audio = new Audio('/Not.mp3');
+                    audio.play();
+                    audio.remove();
+                }
+            }
+        });
+
+        function ChangeNotification() {
+            $.ajax({
+                url: '/CPanel/Notification/ChangeNotification',
+            });
+            $('#notification__id').find('b').remove().end();
+        }
+
+       
+    </script>
+    <script>
+        $.ajax({
+            url: '/api/NotfiAPi/GetNotifications',
+            success: function (result) {
+                var res = "";
+                $.each(result, function (i, v) {
+                    res = res + '<a style="color:black;text-decoration: none;" href="/CPanel/Notification/AllNotifications"><div class="card"><div class="card-body">' + v.title + '</div></div></a>';
+                })
+                $("#list_message").html(res);
+            }
+        });
+    </script>
+
     @RenderSection("Scripts", required: false)
 
 </body>

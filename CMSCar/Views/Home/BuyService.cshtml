@@ -1,0 +1,154 @@
+﻿@model CMSCar.Models.ViewModels.IndexVM
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Options
+
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+@{
+    string x = System.Globalization.CultureInfo.CurrentCulture.Name;
+}
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cultureItems = LocOptions.Value.SupportedUICultures
+        .Select(c => new SelectListItem { Value = c.Name, Text = c.DisplayName })
+        .ToList();
+}
+@{
+    ViewData["Title"] = "IndiviualOrder";
+}
+@{
+    ViewData["Title"] = "CompanyOrder";
+}
+
+
+<section class="inner_header">
+    <div class="w-100 row yellowSep">
+        <div class="container">
+            <div class="pageyHead col-md-12">
+                <h2>@Localizer["Order"]</h2>
+                <section class="breadcrambPage">
+                    <a href="">@Localizer["Home"]</a>   <span class="current">@Localizer["Order"]</span>
+                </section>
+            </div>
+        </div>
+    </div><!--w-100 -->
+</section>
+<div class="clearfix"></div>
+
+
+<section class="buy">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 order-2 float-right mobileOrder-1">
+                <div class="brandList_col">
+                    <ul class=" brandList inOffer">
+                        <li class="active brandListLi">
+                            <a>
+                                @Localizer["Order Car"]
+                            </a>
+                        </li>
+                        <li class="brandListLi act"><a class="mr-4 text-yellow" href="/Home/IndiviualOrder" id="personalTap">@Localizer["Individual"]</a><i id="hoverMe" class="fas fa-angle-down hoverMe"></i></li>
+                        <li><a class="mr-4" href="/Home/CompaniesOrder" id="companyTap">@Localizer["Companies"]</a></li>
+                        <li><a class="mr-4" href="/Home/BuyService" id="companyTap">@Localizer["Buy Service"]</a></li>
+                    </ul>
+                    @*<ul class="brandList">
+                            <li class=" brandListLi">
+                                <a href="" id="">
+                                    @Localizer["Service"]
+                                </a>
+                            </li>
+                        </ul>*@
+                </div> <!--brandList_col  -->
+            </div>
+            <div class="col-md-9 order-1">
+                <div class="row ">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10" id="personal">
+
+                        <form method="POST" action="/Home/CreateServiceOrder" id="">
+                            <div class="cash" id="cash">
+                                <div class="form-group row ">
+                                    <label for="clientName" class="col-sm-4 col-form-label">@Localizer["Name"] <span class="required">*</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control " value="" name="Name" id="clientName" placeholder="@Localizer["Name"]" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row ">
+                                    <label for="mobile" class="col-sm-4 col-form-label">@Localizer["Phone"]<span class="required">*</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control " value="" name="Phone" id="mobile" placeholder="@Localizer["Phone"]" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row ">
+                                    <label for="model" class="col-sm-4 col-form-label">@Localizer["Model"]<span class="required">*</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control " value="" name="Model" id="model" placeholder="@Localizer["Model"]" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row ">
+                                    <label for="meter_reading" class="col-sm-4 col-form-label"> @Localizer["Meter reading"]<span class="required">*</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="number" class="form-control " value="" name="MeterReading" id="meter_reading" placeholder="@Localizer["Meter reading"] " required>
+                                    </div>
+                                </div>
+                                <div class="form-group row ">
+                                    <label for="service" class="col-sm-4 col-form-label"> @Localizer["Select Order Service"]<span class="required">*</span></label>
+                                    <div class="col-sm-8">
+                                        <select asp-items="ViewBag.Services" class="form-control " value="" name="serviceId" id="service" required>
+                                            <option selected value="">
+                                                @Localizer["Please Select Order Service"]
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row ">
+                                    <label for="meter_reading" class="col-sm-4 col-form-label">@Localizer["Price"]</label>
+                                    <div class="col-sm-8">
+                                        <input type="number" id="price_Service" class="form-control" value="" readonly name="Price" required>
+                                    </div>
+                                </div>
+
+                            </div><!-- .cash #cash -->
+
+                            <input type="submit" class="mawadBtn form-control" value="@Localizer["submit"]">
+                        </form>
+                    </div>
+
+                    <div class="col-md-1"></div>
+                </div> <!-- row -->
+
+            </div><!-- col-9 -->
+        </div>
+    </div>
+
+
+</section>
+
+<script>
+        $(function () {
+            $("#service").change(function () {
+                var id = $(this).children("option:selected").val();
+                var _path = "/Home/GetPrice";
+                $.ajax({
+                    url: _path,
+                    data: { id: id },
+                    type: "Get",
+                    success: function (data) {
+                        $('#price_Service').val(data);
+                    }
+                });
+            });
+        });
+
+</script>
+
+
+

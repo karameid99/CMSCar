@@ -62,6 +62,10 @@ namespace CMSCar.Helper
             CreateMap<CompanyFinance, CompanyFinanceVM>().ForMember(x => x.CreateAt, p =>
             p.MapFrom(m => m.CreatedAt.ToString("dd/MM/yyyy")));
 
+            CreateMap<ServiceOrder, ServiceOrderVM>().ForMember(x => x.CreatedAt, p =>
+            p.MapFrom(m => m.CreatedAt.ToString("dd/MM/yyyy"))).ForMember(x => x.ServiceName, p =>
+            p.MapFrom(m => m.Service.NameAr));
+
             CreateMap<Question, QuestionVM>().ForMember(x => x.CreateAt, p =>
             p.MapFrom(m => m.CreatedAt.ToString("dd/MM/yyyy")));
             CreateMap<QuestionDTO, Question>().ReverseMap();

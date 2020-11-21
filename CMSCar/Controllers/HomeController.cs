@@ -18,6 +18,7 @@ using CMSCar.Areas.CPanel.Models.Contact;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using CMSCar.Areas.CPanel.Models.Cars;
 using CMSCar.Areas.CPanel.Models;
+using CMSCar.Areas.CPanel.Models.Notfication;
 
 namespace CMSCar.Controllers
 {
@@ -57,6 +58,11 @@ namespace CMSCar.Controllers
             var items = _Context.Question.ToList();
             return View(items);
         }
+        public IActionResult BuyService()
+        {
+            ViewData["Services"] = new SelectList(_Context.Service, "Id", "NameAr");
+            return View();
+        }
         public IActionResult Contact()
         {
             var items = _Context.City.Include(x => x.Branches).ToList();
@@ -75,8 +81,15 @@ namespace CMSCar.Controllers
             if (ModelState.IsValid)
             {
                 _Context.CallUs.Add(call);
+                var not = new Notifications {
+                    Title = "هناك طلب تواصل جديد من " + call.Name,
+                    Body = "يرجى الاطلاع على طلب التواصل في لوحة التحكم",
+                    IsRead = false
+                };
+                _Context.Notifications.Add(not);
                 _Context.SaveChanges();
                 TempData["EditStatus"] = "Done";
+
             }
             return RedirectToAction("Contact");
         }
@@ -143,11 +156,40 @@ namespace CMSCar.Controllers
             if (ModelState.IsValid)
             {
                 _Context.IndividualCash.Add(cash);
+                var not = new Notifications
+                {
+                    Title = "هناك طلب شراء(كاش افراد) جديد من " + cash.Name,
+                    Body = "يرجى الاطلاع على طلب الشراء في لوحة التحكم",
+                    IsRead = false
+                };
+                _Context.Notifications.Add(not);
                 _Context.SaveChanges();
                 return RedirectToAction("SuccessOrder");
             }
             ViewData["EditStatus"] = "Error";
             return RedirectToAction("IndiviualOrder");
+        }
+
+        [HttpPost]
+        public IActionResult CreateServiceOrder(ServiceOrder serviceOrder)
+        {
+            if (ModelState.IsValid)
+            {
+                _Context.ServiceOrder.Add(serviceOrder);
+                var not = new Notifications
+                {
+                    Title = "هناك طلب شراء(خدمة) جديد من " + serviceOrder.Name,
+                    Body = "يرجى الاطلاع على طلب شراء الخدمة في لوحة التحكم",
+                    IsRead = false
+                };
+                _Context.Notifications.Add(not);
+                _Context.SaveChanges();
+
+                return RedirectToAction("SuccessOrder");
+            }
+
+            ViewData["EditStatus"] = "Error";
+            return RedirectToAction("BuyService");
         }
 
         [HttpPost]
@@ -173,6 +215,14 @@ namespace CMSCar.Controllers
                     _Context.SaveChanges();
 
                 }
+                var not = new Notifications
+                {
+                    Title = "هناك طلب شراء(كاش شركات) جديد من " + cash.NameCompany,
+                    Body = "يرجى الاطلاع على طلب شراء الشركة في لوحة التحكم",
+                    IsRead = false
+                };
+                _Context.Notifications.Add(not);
+                _Context.SaveChanges();
                 return RedirectToAction("SuccessOrder");
             }
             ViewData["EditStatus"] = "Error";
@@ -200,7 +250,14 @@ namespace CMSCar.Controllers
                     _Context.SaveChanges();
 
                 }
-
+                var not = new Notifications
+                {
+                    Title = "هناك طلب شراء(تمويل شركات) جديد من " + cash.NameCompany,
+                    Body = "يرجى الاطلاع على طلب شراء الشركة في لوحة التحكم",
+                    IsRead = false
+                };
+                _Context.Notifications.Add(not);
+                _Context.SaveChanges();
                 return RedirectToAction("SuccessOrder");
             }
             ViewData["EditStatus"] = "Error";
@@ -211,7 +268,14 @@ namespace CMSCar.Controllers
 
             _Context.IndividualFinance.Add(Finance);
             _Context.SaveChanges();
-
+            var not = new Notifications
+            {
+                Title = "هناك طلب شراء(تمويل افراد) جديد من " + Finance.Name,
+                Body = "يرجى الاطلاع على طلب شراء الفرد في لوحة التحكم",
+                IsRead = false
+            };
+            _Context.Notifications.Add(not);
+            _Context.SaveChanges();
             ViewData["EditStatus"] = "Error";
             return RedirectToAction("SuccessOrder");
 
@@ -237,6 +301,10 @@ namespace CMSCar.Controllers
         {
             var list = _Context.SubCarType.Where(x => x.CarTypeId == id && x.CategoryType == CategoryType.Second).ToList();
             return list;
+        }    public float GetPrice(int id)
+        {
+            var list = _Context.Service.Find(id);
+            return list.PriceBeforeDiscount;
         }
     }
 }

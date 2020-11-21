@@ -117,97 +117,127 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Add Another Type +" xml:space="preserve">
+    <value>Add Another Type +</value>
+  </data>
+  <data name="Bank" xml:space="preserve">
+    <value>Bank</value>
+  </data>
   <data name="bank_account" xml:space="preserve">
-    <value>راتبك على اي بنك</value>
+    <value>Bank account</value>
   </data>
   <data name="Buy Service" xml:space="preserve">
-    <value>شراء خدمة</value>
+    <value>Buy Service</value>
+  </data>
+  <data name="Car Name" xml:space="preserve">
+    <value>Car Name</value>
   </data>
   <data name="cash" xml:space="preserve">
-    <value>كاش</value>
+    <value>Cash</value>
   </data>
   <data name="City" xml:space="preserve">
-    <value>المدينة</value>
+    <value>City</value>
   </data>
   <data name="commitments" xml:space="preserve">
-    <value>الالتزامات</value>
+    <value>Commitments</value>
   </data>
   <data name="Companies" xml:space="preserve">
-    <value>شركات</value>
+    <value>Companies</value>
+  </data>
+  <data name="Company Activity" xml:space="preserve">
+    <value>Company Activity</value>
+  </data>
+  <data name="Company Age" xml:space="preserve">
+    <value>Company Age</value>
+  </data>
+  <data name="Company Name" xml:space="preserve">
+    <value>Company Name</value>
+  </data>
+  <data name="Count" xml:space="preserve">
+    <value>Count</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
   </data>
   <data name="error" xml:space="preserve">
-    <value>الرجاء ادخال كل المدخلات</value>
+    <value>Please enter all entries</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>الرئيسية</value>
+    <value>Home</value>
   </data>
   <data name="Individual" xml:space="preserve">
-    <value>افراد</value>
+    <value>Individual</value>
   </data>
   <data name="initPayment" xml:space="preserve">
-    <value>اول دفعة</value>
-  </data>
-  <data name="Invalid" xml:space="preserve">
-    <value>منتهية</value>
+    <value>First Payment</value>
   </data>
   <data name="last_payment" xml:space="preserve">
-    <value>إخر دفعة</value>
+    <value>last Payment</value>
   </data>
-  <data name="license Status" xml:space="preserve">
-    <value>حالة رخصة القيادة</value>
+  <data name="Meter reading" xml:space="preserve">
+    <value>Meter reading</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Model</value>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>الاسم</value>
+    <value>Name</value>
   </data>
   <data name="Name Of Car" xml:space="preserve">
-    <value>اسم السيارة</value>
+    <value>Name Of Car</value>
   </data>
   <data name="No" xml:space="preserve">
-    <value>لا</value>
+    <value>No</value>
   </data>
   <data name="Order" xml:space="preserve">
-    <value>طلب شراء</value>
+    <value>Perchase Order</value>
   </data>
   <data name="Order Car" xml:space="preserve">
-    <value>طلب شراء سيارة</value>
+    <value>Order Car</value>
   </data>
   <data name="payment" xml:space="preserve">
-    <value>طريقة الدفع</value>
+    <value>How to pay</value>
+  </data>
+  <data name="Person Name" xml:space="preserve">
+    <value>Name of the person in charge</value>
   </data>
   <data name="Phone" xml:space="preserve">
-    <value>رقم الجوال</value>
+    <value>Phone</value>
+  </data>
+  <data name="Please Select Order Service" xml:space="preserve">
+    <value>Please Select Order Service</value>
   </data>
   <data name="Price" xml:space="preserve">
-    <value>السعر</value>
+    <value>Price</value>
   </data>
   <data name="qard" xml:space="preserve">
-    <value>هل يوجد قرض عقاري ؟</value>
+    <value>Is there a mortgage?</value>
   </data>
   <data name="salary" xml:space="preserve">
-    <value>الراتب</value>
+    <value>Salary</value>
+  </data>
+  <data name="Select Order Service" xml:space="preserve">
+    <value>Select Order Service</value>
   </data>
   <data name="Service" xml:space="preserve">
-    <value>افراد</value>
+    <value>Order Service</value>
   </data>
   <data name="submit" xml:space="preserve">
-    <value>ارسال</value>
+    <value>submit</value>
+  </data>
+  <data name="Submit1" xml:space="preserve">
+    <value>Submit</value>
   </data>
   <data name="succes" xml:space="preserve">
-    <value>تم ارسال طلب الشراء بنجاح</value>
+    <value>The purchase request has been sent successfully</value>
   </data>
   <data name="tamweel" xml:space="preserve">
-    <value>تمويل</value>
-  </data>
-  <data name="Unavailable" xml:space="preserve">
-    <value>لا يوجد</value>
-  </data>
-  <data name="Valid" xml:space="preserve">
-    <value>سارية</value>
+    <value>Finance</value>
   </data>
   <data name="work" xml:space="preserve">
-    <value>قطاع العمل</value>
+    <value>Work sector</value>
   </data>
   <data name="Yes" xml:space="preserve">
-    <value>نعم</value>
+    <value>Yes</value>
   </data>
 </root>
