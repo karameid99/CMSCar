@@ -25,11 +25,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\Images\CarType\" />
-    <Folder Include="wwwroot\Images\FininceSide\" />
-    <Folder Include="wwwroot\Images\Information\" />
-    <Folder Include="wwwroot\Images\WhyUs\" />
-    <Folder Include="wwwroot\Images\Offer\" />
     <Folder Include="wwwroot\Images\User\" />
   </ItemGroup>
 

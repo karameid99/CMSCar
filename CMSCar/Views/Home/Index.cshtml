@@ -736,7 +736,7 @@
         </div>
 
 
-        <div class="col-md-6 float-right min_335 hideOnMobile" style="background:url('/Images/Car/8c61d90305564df0916819f7edecd51c.jpg')"></div>
+        <div class="col-md-6 float-right min_335 hideOnMobile" style="background:url('/PO.jpg')"></div>
     </div>
     <div class="container">
         <div class="row">
@@ -757,7 +757,7 @@
             }
             else
             {
-                <p>@Html.Raw(ViewBag.Titles.OurSponsers)</p>
+                <p>@Html.Raw(ViewBag.Titles.OurPriceEn)</p>
             }
         </div>
     </div>
@@ -766,6 +766,15 @@
     <div class="row">
         <div class="container">
             <h2>@Localizer["Certified by funding agencies"]</h2>
+            @if (x == "ar-EG")
+            {
+                <p>@Html.Raw(ViewBag.Titles.OurSponsers)</p>
+
+            }
+            else
+            {
+                <p>@Html.Raw(ViewBag.Titles.OurSponsersEn)</p>
+            }
             <div id="GetBanks" class="row bankRow justify-content-center align-items-center">
             </div>
         </div>

@@ -146,8 +146,8 @@ namespace CMSCar
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
-                app.UseHsts();
+                app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
             }
             // Initialize Default DB 
             Data.DBInitialize.Initialize(app);
