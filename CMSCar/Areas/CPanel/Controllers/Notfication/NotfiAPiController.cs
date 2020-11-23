@@ -28,6 +28,7 @@ namespace CMSCar.Areas.CPanel.Controllers.Notfication
                 x.Title,
                 x.Body,
                 x.SendAt,
+                x.NotficationLink,
             }).OrderByDescending(x => x.SendAt).ToList();
             return (items);
         }

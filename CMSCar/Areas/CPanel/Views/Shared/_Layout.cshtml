@@ -200,13 +200,14 @@
         .m-aside-menu.m-aside-menu--skin-dark .m-menu__nav > .m-menu__item.m-menu__item--open > .m-menu__heading, .m-aside-menu.m-aside-menu--skin-dark .m-menu__nav > .m-menu__item.m-menu__item--open > .m-menu__link {
             background-color: #F1E8CC;
         }
-        .card{
-            margin-top:10px;
-        }
-        .card :hover{
-            background-color:darkgray
+
+        .card {
+            margin-top: 10px;
         }
 
+            .card :hover {
+                background-color: darkgray
+            }
     </style>
 
     @RenderSection("Css", false)
@@ -411,6 +412,7 @@
                                 <ul class="m-menu__subnav">
                                     <li class="m-menu__item " aria-haspopup="true"><a href="~/CPanel/Service/Index" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot text-dark"><span></span></i><span class="m-menu__link-text text-dark">كل الخدمات</span></a></li>
                                     <li class="m-menu__item " aria-haspopup="true"><a href="~/CPanel/WhyUs/Index" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot text-dark"><span></span></i><span class="m-menu__link-text text-dark"> وصف الخدمات</span></a></li>
+                                    <li class="m-menu__item " aria-haspopup="true"><a href="~/CPanel/ServiceOrder/Index" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot text-dark"><span></span></i><span class="m-menu__link-text text-dark"> طلبات الخدمات</span></a></li>
                                 </ul>
                             </div>
                         </li>
@@ -549,7 +551,7 @@
             $('#notification__id').find('b').remove().end();
         }
 
-       
+
     </script>
     <script>
         $.ajax({
@@ -557,7 +559,7 @@
             success: function (result) {
                 var res = "";
                 $.each(result, function (i, v) {
-                    res = res + '<a style="color:black;text-decoration: none;" href="/CPanel/Notification/AllNotifications"><div class="card"><div class="card-body">' + v.title + '</div></div></a>';
+                    res = res + '<a style="color:black;text-decoration: none;" href="' + v.notficationLink + '"><div class="card"><div class="card-body">' + v.title + '</div></div></a>';
                 })
                 $("#list_message").html(res);
             }

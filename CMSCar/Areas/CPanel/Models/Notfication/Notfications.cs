@@ -24,5 +24,7 @@ namespace CMSCar.Areas.CPanel.Models.Notfication
 
         [ScaffoldColumn(false)]
         public bool IsRead { get; set; }
+        public NotficationType NotficationType { get; set; }
+        public string NotficationLink { get; set; }
     }
 }

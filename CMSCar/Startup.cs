@@ -107,7 +107,7 @@ namespace CMSCar
                 .AddTokenProvider(TokenOptions.DefaultEmailProvider, emailTokenProviderType)
                 .AddTokenProvider(TokenOptions.DefaultPhoneProvider, phoneNumberProviderType);
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddRazorRuntimeCompilation(); ;
             services.AddRazorPages();
             //Start => SendMail - ConfigureServices
             services.AddTransient<CustomEmailConfirmationTokenProvider<ApplicationUser>>();

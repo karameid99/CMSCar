@@ -1,0 +1,292 @@
+﻿@font-face {
+    font-family: Cairo;
+    src: url(../assets/fonts/Cairo-Light.ttf), url(../assets/fonts/Cairo-Regular.ttf), url(../assets/fonts/Cairo-SemiBold.ttf), url(../assets/fonts/Cairo-Bold.ttf);
+}
+
+.strikethrough {
+    position: relative;
+}
+
+    .strikethrough:before {
+        position: absolute;
+        content: "";
+        left: 0;
+        top: 50%;
+        right: 0;
+        border-top: 1px solid;
+        border-color: #e30613;
+        -webkit-transform: rotate(-14deg);
+        -moz-transform: rotate(-14deg);
+        -ms-transform: rotate(-14deg);
+        -o-transform: rotate(-14deg);
+        transform: rotate(-14deg);
+    }
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Cairo !important;
+}
+
+.price-box {
+    width: 150px;
+    text-align: center;
+}
+
+    .price-box span {
+        font-size: 10px;
+    }
+
+    .price-box.bg-black {
+        font-weight: bolder;
+        font-size: 20px;
+    }
+
+    .price-box.bg-green {
+        width: 130px !important;
+    }
+
+.bg-red {
+    background-color: #C2000B !important;
+}
+
+.bg-black {
+    background-color: #222 !important;
+}
+
+.bg-green {
+    background-color: #00c023 !important;
+}
+
+.bg-yellow {
+    background-color: #FEC400 !important;
+}
+
+.text-yellow {
+    color: #FEC400 !important;
+}
+
+.text-grey {
+    color: grey !important;
+}
+
+.text-red {
+    color: #C2000B !important;
+}
+
+ul.breadcrumb {
+    padding: 10px 16px;
+    list-style: none;
+    background-color: transparent;
+}
+
+    /* Display list items side by side */
+    ul.breadcrumb li {
+        display: inline;
+        font-size: 18px;
+    }
+
+        /* Add a slash symbol (/) before/behind each list item */
+        ul.breadcrumb li + li:before {
+            padding: 8px;
+            color: white;
+            content: "/\00a0";
+        }
+
+        /* Add a color to all links inside the list */
+        ul.breadcrumb li a {
+            color: white;
+            text-decoration: none;
+        }
+
+            /* Add a color on mouse-over */
+            ul.breadcrumb li a:hover, ul.breadcrumb li a.active {
+                color: #FEC400;
+                text-decoration: underline;
+            }
+
+
+
+header {
+    background-color: #fff;
+}
+
+.logo {
+    width: 300px;
+    background-image: unset;
+}
+
+.nav-link {
+    color: #222;
+}
+
+.purpel {
+    background-color: #802973;
+}
+
+.light-green {
+    background-color: #009540;
+}
+
+.dark-green {
+    background-color: #006837;
+}
+
+.trequaze {
+    background-color: #00A99D;
+}
+
+.yellow {
+    background-color: #f9c004;
+}
+
+.pink {
+    background-color: #d71373;
+}
+
+.large-txt {
+    color: #fff;
+    padding: 10px;
+    font-size: 60px;
+}
+
+.larger-txt {
+    color: #fff;
+    font-size: 27px;
+}
+
+.extra-large-txt {
+    color: #fff;
+    font-size: 130px;
+    margin-top: 45px;
+}
+
+.icons {
+    width: 50px;
+}
+
+.bk-light {
+    background-color: #808080;
+    padding: 30px;
+}
+
+    .bk-light h1, .bk-light p {
+        color: #fff;
+    }
+
+.bk {
+    background-color: #4d4d4d;
+    padding: 50px;
+}
+
+    .bk h1, .bk p {
+        color: #fff;
+    }
+
+    .bk p {
+        margin-right: 10px;
+    }
+
+.car-img {
+    width: 100%;
+    height: 350px;
+    padding: 5px 0;
+}
+
+.bk h6 {
+    color: #f9c004;
+}
+
+.heading {
+    padding: 10px;
+    color: #009540;
+    background-color: #fff;
+    width: fit-content;
+    border-radius: 20px;
+}
+
+hr {
+    margin-top: -20px;
+    border-top: 1px solid #999999;
+}
+
+.service {
+    width: 100%;
+}
+
+input.mawadBtn {
+    background-color: #c2000b;
+    color: #fff;
+    font-weight: 600;
+    width: 50%;
+    float: left;
+    margin: 20px auto;
+    padding: 7px;
+}
+
+.col-form-label {
+    padding-top: calc(.375rem + 1px);
+    padding-bottom: calc(.375rem + 1px);
+    margin-bottom: 0;
+    font-size: inherit;
+    line-height: 1.5;
+}
+
+.required {
+    color: #f00;
+}
+
+
+html {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: Cairo;
+    position: relative;
+    max-width: 100% !important;
+    margin: 0;
+    background-color: #fff;
+}
+
+
+@media(max-width: 1025px) {
+    .car-img {
+        height: 250px;
+    }
+
+    .large-txt {
+        font-size: 50px !important;
+    }
+
+    @media(max-width: 800px) {
+        .small-img {
+            max-width: 160px !important;
+        }
+
+        .hc {
+            font-size: 20px !important;
+            text-align: center;
+            width: 100%;
+        }
+
+        .hc-1 {
+            font-size: 20px !important;
+        }
+
+        .hc-2 {
+            font-size: 8px !important;
+        }
+
+        .hc-3 {
+            font-size: 15px !important;
+            line-height: 0 !important;
+        }
+
+        .cars {
+            width: 200px !important;
+        }
+
+        .large-txt {
+            font-size: 30px !important;
+        }
+    }

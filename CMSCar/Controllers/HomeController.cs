@@ -84,7 +84,10 @@ namespace CMSCar.Controllers
                 var not = new Notifications {
                     Title = "هناك طلب تواصل جديد من " + call.Name,
                     Body = "يرجى الاطلاع على طلب التواصل في لوحة التحكم",
-                    IsRead = false
+                    IsRead = false,
+                    NotficationType = NotficationType.Contact,
+                    NotficationLink = "/CPanel/CallUs/Index"
+
                 };
                 _Context.Notifications.Add(not);
                 _Context.SaveChanges();
@@ -160,7 +163,11 @@ namespace CMSCar.Controllers
                 {
                     Title = "هناك طلب شراء(كاش افراد) جديد من " + cash.Name,
                     Body = "يرجى الاطلاع على طلب الشراء في لوحة التحكم",
-                    IsRead = false
+                    IsRead = false,
+                    NotficationType = NotficationType.CashIndiviual,
+                    NotficationLink = "/CPanel/Indiviual/CashIndex"
+
+
                 };
                 _Context.Notifications.Add(not);
                 _Context.SaveChanges();
@@ -180,7 +187,11 @@ namespace CMSCar.Controllers
                 {
                     Title = "هناك طلب شراء(خدمة) جديد من " + serviceOrder.Name,
                     Body = "يرجى الاطلاع على طلب شراء الخدمة في لوحة التحكم",
-                    IsRead = false
+                    IsRead = false,
+                    NotficationType = NotficationType.BuyService,
+                    NotficationLink = "/CPanel/ServiceOrder/Index"
+
+
                 };
                 _Context.Notifications.Add(not);
                 _Context.SaveChanges();
@@ -219,7 +230,10 @@ namespace CMSCar.Controllers
                 {
                     Title = "هناك طلب شراء(كاش شركات) جديد من " + cash.NameCompany,
                     Body = "يرجى الاطلاع على طلب شراء الشركة في لوحة التحكم",
-                    IsRead = false
+                    IsRead = false,
+                    NotficationType = NotficationType.CashCompany,
+                    NotficationLink = "/CPanel/Company/CashIndex"
+
                 };
                 _Context.Notifications.Add(not);
                 _Context.SaveChanges();
@@ -254,7 +268,10 @@ namespace CMSCar.Controllers
                 {
                     Title = "هناك طلب شراء(تمويل شركات) جديد من " + cash.NameCompany,
                     Body = "يرجى الاطلاع على طلب شراء الشركة في لوحة التحكم",
-                    IsRead = false
+                    IsRead = false,
+                    NotficationType = NotficationType.FininceCompany,
+                    NotficationLink = "/CPanel/Company/FinanceIndex"
+
                 };
                 _Context.Notifications.Add(not);
                 _Context.SaveChanges();
@@ -272,7 +289,10 @@ namespace CMSCar.Controllers
             {
                 Title = "هناك طلب شراء(تمويل افراد) جديد من " + Finance.Name,
                 Body = "يرجى الاطلاع على طلب شراء الفرد في لوحة التحكم",
-                IsRead = false
+                IsRead = false,
+                NotficationType = NotficationType.FininceIndiviual,
+                NotficationLink = "/CPanel/Indiviual/FinanceIndex"
+
             };
             _Context.Notifications.Add(not);
             _Context.SaveChanges();
