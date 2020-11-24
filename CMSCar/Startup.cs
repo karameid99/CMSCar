@@ -69,7 +69,7 @@ namespace CMSCar
             services.AddDistributedMemoryCache();
             services.AddCors();
             services.AddHttpClient();
-            services.PostConfigure<CookieAuthenticationOptions>(IdentityConstants.ApplicationScheme,opt =>{opt.LoginPath = "/Identity/Account/Login"; opt.AccessDeniedPath = "/Identity/Account/AccessDenied"; });
+            services.PostConfigure<CookieAuthenticationOptions>(IdentityConstants.ApplicationScheme, opt => { opt.LoginPath = "/Identity/Account/Login"; opt.AccessDeniedPath = "/Identity/Account/AccessDenied"; });
             services.AddSession(options =>
             {
                 // Set a short timeout for easy testing.
@@ -88,20 +88,20 @@ namespace CMSCar
             var dataProtectionProviderType = typeof(DataProtectorTokenProvider<ApplicationUser>);
             var phoneNumberProviderType = typeof(PhoneNumberTokenProvider<ApplicationUser>);
             var emailTokenProviderType = typeof(EmailTokenProvider<ApplicationUser>);
-            services.AddIdentity<ApplicationUser , IdentityRole>(options =>
-            {
-                
-                options.Password.RequireDigit = false;
-                options.Password.RequiredLength = 6;
-                options.Password.RequireLowercase = false;
-                options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequireUppercase = false;
-                options.SignIn.RequireConfirmedEmail = false;
-                options.Tokens.ProviderMap.Add("CustomEmailConfirmation",
-                    new TokenProviderDescriptor(
-                        typeof(CustomEmailConfirmationTokenProvider<ApplicationUser>)));
-                options.Tokens.EmailConfirmationTokenProvider = "CustomEmailConfirmation";
-            })
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+           {
+
+               options.Password.RequireDigit = false;
+               options.Password.RequiredLength = 6;
+               options.Password.RequireLowercase = false;
+               options.Password.RequireNonAlphanumeric = false;
+               options.Password.RequireUppercase = false;
+               options.SignIn.RequireConfirmedEmail = false;
+               options.Tokens.ProviderMap.Add("CustomEmailConfirmation",
+                   new TokenProviderDescriptor(
+                       typeof(CustomEmailConfirmationTokenProvider<ApplicationUser>)));
+               options.Tokens.EmailConfirmationTokenProvider = "CustomEmailConfirmation";
+           })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddTokenProvider(TokenOptions.DefaultProvider, dataProtectionProviderType)
                 .AddTokenProvider(TokenOptions.DefaultEmailProvider, emailTokenProviderType)
@@ -124,12 +124,18 @@ namespace CMSCar
             services.Configure<RequestLocalizationOptions>(opts =>
             {
                 var supportedCulures = new List<CultureInfo> {
-                    new CultureInfo("en-US"),
                     new CultureInfo("ar-EG"),//Arabic Egypt
+                    new CultureInfo("en-US"),
+
                 };
-                opts.DefaultRequestCulture = new RequestCulture("ar-EG");
+                opts.DefaultRequestCulture = new RequestCulture(new CultureInfo("ar-EG"));
                 opts.SupportedCultures = supportedCulures;
                 opts.SupportedUICultures = supportedCulures;
+                opts.RequestCultureProviders = new List<IRequestCultureProvider>
+        {
+            new QueryStringRequestCultureProvider(),
+            new CookieRequestCultureProvider()
+        };
             });
             //End => Language - ConfigureServices
         }
@@ -151,7 +157,7 @@ namespace CMSCar
             }
             // Initialize Default DB 
             Data.DBInitialize.Initialize(app);
-
+            app.UseRequestLocalization();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

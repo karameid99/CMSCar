@@ -32,7 +32,7 @@ namespace CMSCar.Areas.CPanel.Controllers.User
             return View();
         }
 
-        public JsonResult AjaxData([FromBody] dynamic data)
+        public async Task<JsonResult> AjaxData([FromBody] dynamic data)
         {
             DataTableHelper d = new DataTableHelper(data);
             string jsonString = data.ToString();
@@ -45,6 +45,17 @@ namespace CMSCar.Areas.CPanel.Controllers.User
             int totalCount = query.Count();
             var items = query.Skip(d.Start).Take(d.Length).ToList();
             var itemsVM = _Mapper.Map<List<UserVM>>(items);
+            foreach (var item in itemsVM)
+            {
+                if (await _userManager.IsInRoleAsync(_Context.Users.Find(item.Id), "Admin"))
+                {
+                    item.role = true;
+                }
+                else
+                {
+                    item.role = false;
+                }
+            }
             var result = new { draw = d.Draw, recordsTotal = totalCount, recordsFiltered = totalCount, data = itemsVM };
             return Json(result);
         }

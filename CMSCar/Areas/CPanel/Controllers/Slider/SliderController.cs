@@ -44,13 +44,33 @@ namespace CMSCar.Areas.CPanel.Controllers.Slider
                 x.TitleAr,
                 x.TitleEn,
                 createAt = x.CreatedAt.ToString("dd/MM/yyyy"),
-                x.CreatedAt
+                x.CreatedAt,
+                x.SliderType
             }).Skip(d.Start).Take(d.Length).ToList();
             var result = new { draw = d.Draw, recordsTotal = totalCount, recordsFiltered = totalCount, data = items };
             return Json(result);
         }
         public IActionResult Create()
         {
+            return View();
+        }
+        public IActionResult CreateOneImg()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateOneImg(SliderDTO model)
+        {
+            if (ModelState.IsValid)
+            {
+                var slider = _Mapper.Map<CMSCar.Areas.CPanel.Models.Sliders.Slider>(model);
+
+                slider.MainImage = await ImageHelper.SaveImage(model.MainImages, _environment, "Images/Slider");
+                slider.SliderType = Models.SliderType.OneImage;
+                _Context.Slider.Add(slider);
+                _Context.SaveChanges();
+                return Content(ResultMessage.AddSuccessResult(), "application/json");
+            }
             return View();
         }
         [HttpPost]
@@ -77,8 +97,37 @@ namespace CMSCar.Areas.CPanel.Controllers.Slider
             if (id == null) return NotFound();
             var slider = _Context.Slider.Find(id);
             if (slider == null) return NotFound();
+            
             var sliderDTO = _Mapper.Map<SliderDTO>(slider);
             return View(sliderDTO);
+        }
+        [HttpGet]
+        public IActionResult EditOneImg(int? id)
+        {
+            if (id == null) return NotFound();
+            var slider = _Context.Slider.Find(id);
+            if (slider == null) return NotFound();
+            var sliderDTO = _Mapper.Map<SliderDTO>(slider);
+            return View(sliderDTO);
+        }
+        [HttpPost]
+        public async Task<IActionResult> EditOneImg(SliderDTO model)
+        {
+            if (ModelState.IsValid)
+            {
+                var slider = _Mapper.Map<CMSCar.Areas.CPanel.Models.Sliders.Slider>(model);
+                var orgOffer = _Context.Slider.AsNoTracking().SingleOrDefault(x => x.Id == model.Id);
+                if (model.MainImages != null)
+                { slider.MainImage = await ImageHelper.SaveImage(model.MainImages, _environment, "Images/Slider"); }
+                else { slider.MainImage = orgOffer.MainImage; }
+           
+                slider.CreatedAt = orgOffer.CreatedAt;
+                slider.SliderType = orgOffer.SliderType;
+                _Context.Slider.Update(slider);
+                _Context.SaveChanges();
+                return Content(ResultMessage.EditSuccessResult(), "application/json");
+            }
+            return View();
         }
         [HttpPost]
         public async Task<IActionResult> Edit(SliderDTO model)
@@ -88,19 +137,19 @@ namespace CMSCar.Areas.CPanel.Controllers.Slider
                 var slider = _Mapper.Map<CMSCar.Areas.CPanel.Models.Sliders.Slider>(model);
                 var orgOffer = _Context.Slider.AsNoTracking().SingleOrDefault(x => x.Id == model.Id);
                 if (model.MainImages != null)
-                { slider.MainImage = await ImageHelper.SaveImage(model.MainImages, _environment, "Images/Offer"); }
+                { slider.MainImage = await ImageHelper.SaveImage(model.MainImages, _environment, "Images/Slider"); }
                 else { slider.MainImage = orgOffer.MainImage; }
                 if (model.Images1 != null)
-                { slider.Image1 = await ImageHelper.SaveImage(model.Images1, _environment, "Images/Offer"); }
+                { slider.Image1 = await ImageHelper.SaveImage(model.Images1, _environment, "Images/Slider"); }
                 else { slider.Image1 = orgOffer.Image1; }
                 if (model.Images2 != null)
-                { slider.Image2 = await ImageHelper.SaveImage(model.Images2, _environment, "Images/Offer"); }
+                { slider.Image2 = await ImageHelper.SaveImage(model.Images2, _environment, "Images/Slider"); }
                 else { slider.Image2 = orgOffer.Image2; }
                 if (model.Images3 != null)
-                { slider.Image3 = await ImageHelper.SaveImage(model.Images3, _environment, "Images/Offer"); }
+                { slider.Image3 = await ImageHelper.SaveImage(model.Images3, _environment, "Images/Slider"); }
                 else { slider.Image3 = orgOffer.Image3; }
                 if (model.MainImages != null)
-                { slider.Image4 = await ImageHelper.SaveImage(model.Images4, _environment, "Images/Offer"); }
+                { slider.Image4 = await ImageHelper.SaveImage(model.Images4, _environment, "Images/Slider"); }
                 else { slider.Image4 = orgOffer.Image4; }
                 slider.CreatedAt = orgOffer.CreatedAt;
                 _Context.Slider.Update(slider);

@@ -1,0 +1,71 @@
+﻿@model SliderDTO
+@{
+    ViewData["Title"] = "تعديل سلايدر";
+    Layout = null;
+}
+
+<form asp-action="EditOneImg" method="post" class="ajaxForm" tname="#dataTableId" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="TitleAr" class="control-label"></label>
+                <input id="input" asp-for="TitleAr" class="form-control">
+                <span asp-validation-for="TitleAr" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="TitleEn" class="control-label"></label>
+                <input id="input1" max="30" asp-for="TitleEn" class="form-control">
+                <span asp-validation-for="TitleEn" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="SubTitleAr" class="control-label"></label>
+                <input id="input2" asp-for="SubTitleAr" class="form-control">
+                <span asp-validation-for="SubTitleAr" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="SubTitleEn" class="control-label"></label>
+                <input id="input3" asp-for="SubTitleEn" class="form-control">
+                <span asp-validation-for="SubTitleEn" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="MainImages" class="control-label"></label>
+                <input type="file" asp-for="MainImages" class="form-control">
+                <span asp-validation-for="MainImages" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="BackgroundColor" class="control-label"></label>
+                <input type="color" max="30" asp-for="BackgroundColor" class="form-control">
+                <span asp-validation-for="BackgroundColor" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="حفظ" class="btn btn-primary" />
+        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">الغاء</button>
+    </div>
+</form>
+
+    <script>
+        PageLoadActions();
+    </script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+
+
+
+

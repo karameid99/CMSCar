@@ -14,5 +14,7 @@ namespace CMSCar.Areas.CPanel.Models
         Second,
         [Display(Name = "الثالث")]
         Third,
+        OneImage,
+
     }
 }

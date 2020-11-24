@@ -20,6 +20,6 @@ namespace CMSCar.Areas.CPanel.Models.Sliders
         public string SubTitleEn { get; set; }
         public string LinkUrl { get; set; }
         public SliderType SliderType { get; set; }
-        
+
     }
 }
