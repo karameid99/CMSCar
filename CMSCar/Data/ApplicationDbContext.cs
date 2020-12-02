@@ -82,6 +82,7 @@ namespace CMSCar.Data
         #region WhyUs
         public DbSet<WhyUs> WhyUs { get; set; }
         public DbSet<Slider> Slider { get; set; }
+        public DbSet<FixedSlider> FixedSlider { get; set; }
         public DbSet<CarCategory> CarCategory { get; set; }
         public DbSet<Notifications> Notifications { get; set; }
 

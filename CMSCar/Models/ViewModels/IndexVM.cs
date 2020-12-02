@@ -10,5 +10,6 @@ namespace CMSCar.Models.ViewModels
     {
         public List<CarShowVM> Cars { get; set; }
         public List<Slider> Sliders { get; set; }
+        public List<FixedSlider> FixedSliders { get; set; }
     }
 }
