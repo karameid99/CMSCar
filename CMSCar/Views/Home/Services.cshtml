@@ -18,6 +18,11 @@
 @{
     ViewData["Title"] = "Services";
 }
+<style>
+    .bg-yellow {
+        background-color: #ffffff !important;
+    }
+</style>
 <link rel=" stylesheet" href="/web/css/Service.css">
 
 <section class="inner_header">
@@ -40,7 +45,7 @@
     {
         if (i % 2 == 0)
         {
-            <section id="@Model.WhyUs[i].Id" class="bg-yellow py-5">
+            <section id="@Model.WhyUs[i].Id" class=" py-5">
                 <div class="container">
                     <div class="row">
                         <div class="col-12 col-md-4 order-2 order-md-1">

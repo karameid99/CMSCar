@@ -50,6 +50,7 @@ namespace CMSCar.Controllers
             IndexVM index = new IndexVM();
             index.Cars = _Mapper.Map<List<CarShowVM>>(_Context.Car.ToList());
             index.Sliders = _Context.Slider.OrderByDescending(x => x.CreatedAt).ToList();
+            index.FixedSliders = _Context.FixedSlider.OrderByDescending(x => x.CreatedAt).ToList();
             return View(index);
         }
 

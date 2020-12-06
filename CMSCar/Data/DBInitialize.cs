@@ -1,4 +1,5 @@
-﻿using CMSCar.Areas.CPanel.Models.User;
+﻿using CMSCar.Areas.CPanel.Models.Sliders;
+using CMSCar.Areas.CPanel.Models.User;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
@@ -55,7 +56,31 @@ namespace CMSCar.Data
                     var result = await _userManager.CreateAsync(user, PasswordAdmin);
                     IdentityResult identityResult = await _userManager.AddToRoleAsync(user, "Provider");
                     }
+                    if (!context.FixedSlider.Any())
+                    {
+                        var model = new FixedSlider();
+                        model.FixedSliders = Areas.CPanel.Models.FixedSlider.First;
+                        var model1 = new FixedSlider();
+                        model1.FixedSliders = Areas.CPanel.Models.FixedSlider.Socond;
+                        var model2 = new FixedSlider();
+                        model2.FixedSliders = Areas.CPanel.Models.FixedSlider.Third;
+                        var model3 = new FixedSlider();
+                        model3.FixedSliders = Areas.CPanel.Models.FixedSlider.Forth;
+                        List<FixedSlider> fixedSliders = new List<FixedSlider>();
+                        fixedSliders.Add(model);
+                        fixedSliders.Add(model1);
+                        fixedSliders.Add(model2);
+                        fixedSliders.Add(model3);
+                        foreach (var item in fixedSliders)
+                        {
+                            context.FixedSlider.Add(item);
+                        }
+                        context.SaveChanges();
 
+                    }
+                    {
+
+                    }
 
                 }
                 catch (Exception e)

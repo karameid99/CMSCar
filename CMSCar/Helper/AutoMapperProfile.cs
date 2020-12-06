@@ -73,6 +73,7 @@ namespace CMSCar.Helper
             CreateMap<Service, ServiceVM>().ForMember(x => x.CreateAt, p =>
             p.MapFrom(m => m.CreatedAt.ToString("dd/MM/yyyy")));
             CreateMap<ServiceDTO, Service>().ReverseMap();
+            CreateMap<FixedSliderDto, FixedSlider>().ReverseMap();
 
             CreateMap<WhyUs, WhyUsVM>().ForMember(x => x.CreateAt, p =>
             p.MapFrom(m => m.CreatedAt.ToString("dd/MM/yyyy")));

@@ -1,0 +1,243 @@
+﻿@model FixedSliderDto
+@{
+    ViewData["Title"] = "تعديل السلايدر ";
+}
+@section Css{
+    <style>
+        td {
+            padding: 8px 1px 8px 1px !important;
+            font-size: 14px !important;
+        }
+
+        th {
+            font-weight: bold;
+            font-size: medium;
+        }
+
+        td a {
+            margin-left: 5px !important;
+        }
+
+        .m-portlet__body {
+            padding-top: 0px !important;
+        }
+
+        .dt-buttons {
+            margin-top: 12px
+        }
+    </style>
+}
+<div class="m-portlet m-portlet--mobile">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                    <span style="color: #ebebeb"></span> تعديل السلايدر
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="m-portlet__body">
+        <br />
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input asp-for="Layer1" class="form-control">
+                        <span asp-validation-for="Layer1" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input asp-for="Layer2" class="form-control">
+                        <span asp-validation-for="Layer2" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input asp-for="Layer19" class="form-control">
+                        <span asp-validation-for="Layer19" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input asp-for="Layer20" class="form-control">
+                        <span asp-validation-for="Layer20" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <img width="225" src="~/Images/Slider/@Model.Layer3" />
+                </div>
+                <div class="col-md-3">
+                    <img width="225" src="~/Images/Slider/@Model.Layer4" />
+                </div>
+                <div class="col-md-3">
+                    <img width="225" src="~/Images/Slider/@Model.Layer5" />
+                </div>
+                <div class="col-md-3">
+                    <img width="225" src="~/Images/Slider/@Model.Layer6" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input type="file" asp-for="IMGLayer3" class="form-control">
+                        <span asp-validation-for="IMGLayer3" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input type="file" asp-for="IMGLayer4" multiple class="form-control">
+                        <span asp-validation-for="IMGLayer4" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input type="file" asp-for="IMGLayer5" multiple class="form-control">
+                        <span asp-validation-for="IMGLayer5" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input type="file" asp-for="IMGLayer6" multiple class="form-control">
+                        <span asp-validation-for="IMGLayer6" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <img width="225" src="~/Images/Slider/@Model.Layer7" />
+                </div>
+                <div class="col-md-3">
+                    <img width="225" src="~/Images/Slider/@Model.Layer8" />
+                </div>
+                <div class="col-md-3">
+                    <img width="225" src="~/Images/Slider/@Model.Layer9" />
+                </div>
+                <div class="col-md-3">
+                    <img width="225" src="~/Images/Slider/@Model.Layer10" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input type="file" asp-for="IMGLayer7" class="form-control">
+                        <span asp-validation-for="IMGLayer7" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input type="file" asp-for="IMGLayer8" multiple class="form-control">
+                        <span asp-validation-for="IMGLayer8" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input type="file" asp-for="IMGLayer9" multiple class="form-control">
+                        <span asp-validation-for="IMGLayer9" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input type="file" asp-for="IMGLayer10" multiple class="form-control">
+                        <span asp-validation-for="IMGLayer10" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <img width="225" src="~/Images/Slider/@Model.Layer11" />
+                </div>
+                <div class="col-md-3">
+                    <img width="225" src="~/Images/Slider/@Model.Layer12" />
+                </div>
+                <div class="col-md-3">
+                    <img width="225" src="~/Images/Slider/@Model.Layer13" />
+                </div>
+                <div class="col-md-3">
+                    <img width="225" src="~/Images/Slider/@Model.Layer14" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input type="file" asp-for="IMGLayer11" class="form-control">
+                        <span asp-validation-for="IMGLayer11" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input type="file" asp-for="IMGLayer12" multiple class="form-control">
+                        <span asp-validation-for="IMGLayer12" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input type="file" asp-for="IMGLayer13" multiple class="form-control">
+                        <span asp-validation-for="IMGLayer13" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input type="file" asp-for="IMGLayer14" multiple class="form-control">
+                        <span asp-validation-for="IMGLayer14" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <img width="225" src="~/Images/Slider/@Model.Layer15" />
+                </div>
+                <div class="col-md-3">
+                    <img width="225" src="~/Images/Slider/@Model.Layer16" />
+                </div>
+                <div class="col-md-3">
+                    <img width="225" src="~/Images/Slider/@Model.Layer17" />
+                </div>
+                <div class="col-md-3">
+                    <img width="225" src="~/Images/Slider/@Model.Layer18" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input type="file" asp-for="IMGLayer15" class="form-control">
+                        <span asp-validation-for="IMGLayer15" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input type="file" asp-for="IMGLayer16" multiple class="form-control">
+                        <span asp-validation-for="IMGLayer16" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input type="file" asp-for="IMGLayer17" multiple class="form-control">
+                        <span asp-validation-for="IMGLayer17" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input type="file" asp-for="IMGLayer18" multiple class="form-control">
+                        <span asp-validation-for="IMGLayer18" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="حفظ" class="btn btn-primary" />
+                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">الغاء</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+
+}
