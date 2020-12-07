@@ -65,7 +65,7 @@ body{
 }
 .toHeadBtn{
     float: right;
-    background-color: #18a150;
+    background-color: #ffffff;
     color: #fff;
     border: none;
     border-bottom: 1px solid #18a150;
@@ -125,7 +125,7 @@ body{
     list-style: none;
     margin-top: 0;
     margin-right: 0;
-    background-color: #18a150;
+    background-color: #ffffff;
     color: #333;
 }
 .header a.icon#searchIcon {
@@ -156,7 +156,7 @@ body{
     content:"\f00d";
 }
 .header a.icon#topIcon.responsive{
-    background-color: #18a150;
+    background-color: #ffffff;
     color: #fff;
 }
 .searchMobile{
@@ -370,7 +370,7 @@ nav.inFixed ul li ul li a{
 .slider{
     width: 100%;
     min-height: 400px;
-    background-color: #18a150;
+    background-color: #ffffff;
 }
 .slider img{
     background-size: cover;
@@ -460,7 +460,7 @@ nav.inFixed ul li ul li a{
     direction: rtl;
     text-align: right;
     overflow: hidden;
-    background-color: #18a150;
+    background-color: #ffffff;
     margin-top: -35px;
 }
 .whySaleh .w-100{
@@ -549,9 +549,9 @@ nav.inFixed ul li ul li a{
     border: 1px solid #222;
 }
 
-.new_service:hover .new_service_more{
+.new_service:hover .new_service_more {
     border: 1px solid #fff;
-    color: #fff;
+    color: #18a150;
     background-color: #222;
 }
 
@@ -563,8 +563,8 @@ nav.inFixed ul li ul li a{
     display: block;
 }
 
-.new_service:hover .new_service_head{
-    color:#fff;
+.new_service:hover .new_service_head {
+    color: #18a150;
 }
 .new_service_more{
     color: #222;
@@ -589,7 +589,7 @@ nav.inFixed ul li ul li a{
     min-height: 340px;
     /* margin-top: -100px; */
     margin-bottom:50px;
-    background-color: #18a150;
+    background-color: #ffffff;
 }
 .service{
     position: relative;
@@ -1328,7 +1328,7 @@ p.footer_title{
 }
 .modal-content .modalBtn{
     display: block;
-    background-color: #18a150;
+    background-color: #ffffff;
     color:#222;
     text-align: center;
     line-height: 30px;
@@ -1666,7 +1666,7 @@ div#favOnCar .addToFavLink.inFav {
     direction: rtl;
     text-align: right;
     overflow: hidden;
-    background-color: #18a150;
+    background-color: #ffffff;
     width: 100%;
     display: block;
     margin-bottom:40px; 
@@ -2098,7 +2098,7 @@ ul.fetSpecTabs li.activeTab a{
 }
 .contactUs .modalBtn {
     display: block;
-    background-color: #18a150;
+    background-color: #ffffff;
     color: #222;
     text-align: center;
     line-height: 30px;
@@ -2221,7 +2221,7 @@ ul.fetSpecTabs li.activeTab a{
 }
 #companyForm .modalBtn {
     display: block;
-    background-color: #18a150;
+    background-color: #ffffff;
     color: #222;
     text-align: center;
     line-height: 30px;
@@ -2334,7 +2334,7 @@ ul.fetSpecTabs li.activeTab a{
 }
 .calculateHead{
     padding: 7px 15px;
-    background-color: #18a150;
+    background-color: #ffffff;
     color:#222;
     text-align: center;
 }
@@ -2597,7 +2597,7 @@ div#noData{
     text-align: center;
 }
 #form_call button{
-    background-color: #18a150;
+    background-color: #ffffff;
     border: 0;
     padding: 2px 10px;
     cursor: pointer;
@@ -2785,7 +2785,7 @@ nav  li.have-child i{
 
 #advancedSearchModal .modal-content .modalBtn {
     display: block;
-    background-color: #18a150;
+    background-color: #ffffff;
     color: #222;
     text-align: center;
     line-height: 19px;
@@ -3139,7 +3139,7 @@ a#sendAnyWayDisplaySecondPart {
     .slider {
         width: 100%;
         min-height: auto;
-        background-color: #18a150;
+        background-color: #ffffff;
     }
     #myTopnav li.active a{
         color: #c2000b !important;
@@ -3265,7 +3265,7 @@ a#sendAnyWayDisplaySecondPart {
         font-size: 22px;
         width: 44px;
         height: 48px;
-        background-color: #18a150;
+        background-color: #ffffff;
         color: #fff;
         line-height: 49px;
         text-align: center;
@@ -3323,7 +3323,7 @@ a#sendAnyWayDisplaySecondPart {
         direction: rtl;
         text-align: justify;
         overflow: hidden;
-        background-color: #18a150;
+        background-color: #ffffff;
         margin-top: 0;
     }
     .modal-dialog {
@@ -3413,7 +3413,7 @@ a#sendAnyWayDisplaySecondPart {
     .slider {
         width: 100%;
         min-height: auto;
-        background-color: #18a150;
+        background-color: #ffffff;
     }
     #myTopnav li.active a{
         color: #c2000b !important;
@@ -3471,7 +3471,7 @@ a#sendAnyWayDisplaySecondPart {
         direction: rtl;
         text-align: justify;
         overflow: hidden;
-        background-color: #18a150;
+        background-color: #ffffff;
         margin-top: 0;
     }
     .modal-dialog {

@@ -117,8 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="branches" xml:space="preserve">
+    <value>Our branches</value>
+  </data>
+  <data name="Call Us" xml:space="preserve">
+    <value>Call Us</value>
+  </data>
+  <data name="Call Us Note" xml:space="preserve">
+    <value>We are happy to contact you and welcome your suggestions and answer your inquiries in an efficient way that guarantees a response to you as soon as possible as you receive alerts on your e-mail for easy follow-up of your question.</value>
+  </data>
   <data name="Car" xml:space="preserve">
     <value>The latest cars</value>
+  </data>
+  <data name="Cash sales" xml:space="preserve">
+    <value>Cash sales :</value>
   </data>
   <data name="Certified by funding agencies" xml:space="preserve">
     <value>Certified by funding agencies</value>
@@ -132,11 +144,17 @@
   <data name="Change Car Type" xml:space="preserve">
     <value>Change Car Type</value>
   </data>
+  <data name="Click Here" xml:space="preserve">
+    <value>Click Here</value>
+  </data>
   <data name="companies" xml:space="preserve">
     <value>Companies</value>
   </data>
   <data name="Individuals" xml:space="preserve">
     <value>Individuals</value>
+  </data>
+  <data name="Installment sales" xml:space="preserve">
+    <value>Installment sales :</value>
   </data>
   <data name="Know Now" xml:space="preserve">
     <value>Know Now</value>
@@ -152,6 +170,12 @@
   </data>
   <data name="Search Here ..." xml:space="preserve">
     <value>Search Here ...</value>
+  </data>
+  <data name="Time Work" xml:space="preserve">
+    <value>Time Work</value>
+  </data>
+  <data name="To Go To" xml:space="preserve">
+    <value>To Go To</value>
   </data>
   <data name="TypeCar" xml:space="preserve">
     <value>Authorized distributor for all types of cars</value>

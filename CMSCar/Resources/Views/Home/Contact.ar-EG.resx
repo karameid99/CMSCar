@@ -126,6 +126,9 @@
   <data name="Call Us Note" xml:space="preserve">
     <value>نسعد بتواصلكم ونرّحب بمقترحاتكم والإجابة على استفساراتكم بطريقة فعالة تضمن الرد عليكم في أسرع وقت حيث تصلك تنبيهات على بريدك الإلكتروني لسهولة متابعة سؤالك.</value>
   </data>
+  <data name="Cash sales" xml:space="preserve">
+    <value>رقم المبيعات كاش:</value>
+  </data>
   <data name="Click Here" xml:space="preserve">
     <value>إضغط هنا</value>
   </data>
@@ -134,6 +137,9 @@
   </data>
   <data name="Home" xml:space="preserve">
     <value>الرئيسية</value>
+  </data>
+  <data name="Installment sales" xml:space="preserve">
+    <value>رقم المبيعات تقسيط:</value>
   </data>
   <data name="message" xml:space="preserve">
     <value>الرسالة</value>

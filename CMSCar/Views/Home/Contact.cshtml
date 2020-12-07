@@ -231,17 +231,25 @@
 
                     <h3 id="branchName"> @name</h3>
                     <div class="row">
-                        <div class="col-md-7">
+                        <div class="col-md-4">
                             <p id="awqat">@Localizer["Time Work"]</p>
                             <div id="workingHours">
                                 <p>@working</p>
                             </div>
-                            <p id="branchAddress"><i class="fas fa-map-marker-alt"></i> <a href="https://goo.gl/maps/agHkGcTofbQ2" target="_blank">@Localizer["To Go To"]  <span> @name </span> @Localizer["Click Here"] </a></p>
+                            <p id="branchAddress"><i class="fas fa-map-marker-alt"></i> <a href="@google_url" target="_blank">@Localizer["To Go To"]  <span> @name </span> @Localizer["Click Here"] </a></p>
                         </div>
-                        <div class="col-md-5">
+                        <div style="padding-right:50px" class="col-md-4">
+                            <div >
+                                <b>@Localizer["Cash sales"]</b>
+                             </div>
+                            <div style="padding-top:12px">
+                                <b>@Localizer["Installment sales"]</b>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
                             <div id="branchContact">
                                 <div id="branchPhone">
-                                    <i class="fas fa-phone"></i> <a href="tel:920022122">@phone</a>
+                                    <i class="fas fa-phone"></i> <a href="tel:@phone">@phone</a>
                                 </div>
                                 <div id="branchWhats">
                                     <i class="fab fa-whatsapp"></i> <a href="https://wa.me/@whatsapp">@whatsapp</a>

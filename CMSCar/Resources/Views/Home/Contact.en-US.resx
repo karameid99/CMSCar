@@ -126,6 +126,9 @@
   <data name="Call Us Note" xml:space="preserve">
     <value>We are happy to contact you and welcome your suggestions and answer your inquiries in an efficient way that guarantees a response to you as soon as possible as you receive alerts on your e-mail for easy follow-up of your question.</value>
   </data>
+  <data name="Cash sales" xml:space="preserve">
+    <value>Cash sales :</value>
+  </data>
   <data name="Click Here" xml:space="preserve">
     <value>Click Here</value>
   </data>
@@ -134,6 +137,9 @@
   </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
+  </data>
+  <data name="Installment sales" xml:space="preserve">
+    <value>Installment sales :</value>
   </data>
   <data name="message" xml:space="preserve">
     <value>Message</value>
