@@ -27,6 +27,8 @@ namespace CMSCar.Data
                 //-------------- Initialize Admin -------------------
                 try
                 {
+                    
+
                     if (!context.Roles.Any())
                     {
                         IdentityResult result2 = await _roleManager.CreateAsync(new IdentityRole("Admin"));

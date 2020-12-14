@@ -119,15 +119,15 @@ body{
 #myTopnav li:last-child{
     border-bottom:none;
 }
-#myTopnav.responsive, #myTopnav {
-    position: relative;
-    margin-bottom: 0;
-    list-style: none;
-    margin-top: 0;
-    margin-right: 0;
-    background-color: #ffffff;
-    color: #333;
-}
+    #myTopnav.responsive, #myTopnav {
+        position: relative;
+        margin-bottom: 0;
+        list-style: none;
+        margin-top: 0;
+        margin-right: 0;
+        background-color: #18a150;
+        color: #333;
+    }
 .header a.icon#searchIcon {
     position: absolute;
     left: 60px;
@@ -155,10 +155,10 @@ body{
 .header a.icon#topIcon.responsive i:before{
     content:"\f00d";
 }
-.header a.icon#topIcon.responsive{
-    background-color: #ffffff;
-    color: #fff;
-}
+    .header a.icon#topIcon.responsive {
+        background-color: #18a150;
+        color: #fff;
+    }
 .searchMobile{
     display: none;
     position: relative;
@@ -3257,19 +3257,19 @@ a#sendAnyWayDisplaySecondPart {
     .brandList li.active:after {
         font-family: "Font Awesome 5 Free";
     }
-    .brandList li.active i{
-        display: inline-block;
-        position: absolute;
-        left: 0;
-        top: 0;
-        font-size: 22px;
-        width: 44px;
-        height: 48px;
-        background-color: #ffffff;
-        color: #fff;
-        line-height: 49px;
-        text-align: center;
-    }
+        .brandList li.active i {
+            display: inline-block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 22px;
+            width: 44px;
+            height: 48px;
+            background-color: #18a150;
+            color: #fff;
+            line-height: 49px;
+            text-align: center;
+        }
     .brandList li.active:after {
         display: none;
     }

@@ -60,7 +60,7 @@
                 <div class="container">
                     <ul id="breadOnCar">
                         <li><a href="/">@Localizer["Home"]</a></li>
-                        <li><a href="/Main/Cars">@Localizer["Cars"]</a> </li>
+                        <li><a href="/Main/Brands">@Localizer["Cars"]</a> </li>
                         @if (x == "ar-EG")
                         {
                             <li><a href="/Main/Cars/@Model.CarTypeId"> @Model.CarTypeAr</a> </li>
@@ -95,52 +95,55 @@
 
                 @if (x == "ar-EG")
                 {
-                    var counter = 0;
-                    @foreach (var item in Model.ColorCars)
+                    if (Model.ColorCars[0] != null)
                     {
-                        if (counter == 0)
-                        {
-                            <span class="colorName">
-                                @item.NameAr
-                            </span>
-                            <ul class="colorsIncar">
-                                <li id="@item.Id" class="selectColor selected" data-colorid="@item.Id" style="background-color:@item.Color;"></li>
-                            </ul>
-                            Colorid = item.Id;
-                        }
-                        else
-                        {
-                            <ul class="colorsIncar">
-                                <li id="@item.Id" class="selectColor" data-colorid="@item.Id" style="background-color:@item.Color;"></li>
-                            </ul>
-                        }
-                        counter++;
+                        <span class="colorName">
+                            @Model.ColorCars[0].NameAr
+                        </span>
                     }
+                    var counter = 0;
+                    <ul class="colorsIncar">
+                        @foreach (var item in Model.ColorCars)
+                        {
+                            if (counter == 0)
+                            {
 
+                                <li id="@item.Id" class="selectColor selected" data-colorid="@item.Id" style="background-color:@item.Color;"></li>
+                                Colorid = item.Id;
+                            }
+                            else
+                            {
+                                <li id="@item.Id" class="selectColor" data-colorid="@item.Id" style="background-color:@item.Color;"></li>
+                            }
+                            counter++;
+                        }
+                    </ul>
                 }
                 else
                 {
-                    var counter = 0;
-                    @foreach (var item in Model.ColorCars)
+                    if (Model.ColorCars[0] != null)
                     {
-                        if (counter == 0)
-                        {
-                            <span class="colorName">
-                                @item.NameEn
-                            </span>
-                            <ul class="colorsIncar">
-                                <li id="@item.Id" class="selectColor selected" data-colorid="@item.Id" style="background-color:@item.Color;"></li>
-                            </ul>
-                            Colorid = item.Id;
-                        }
-                        else
-                        {
-                            <ul class="colorsIncar">
-                                <li id="@item.Id" class="selectColor" data-colorid="@item.Id" style="background-color:@item.Color;"></li>
-                            </ul>
-                        }
-                        counter++;
+                        <span class="colorName">
+                            @Model.ColorCars[0].NameEn
+                        </span>
                     }
+                    var counter = 0;
+                    <ul class="colorsIncar">
+                        @foreach (var item in Model.ColorCars)
+                        {
+                            if (counter == 0)
+                            {
+
+                                <li id="@item.Id" class="selectColor selected" data-colorid="@item.Id" style="background-color:@item.Color;"></li>
+                                Colorid = item.Id;
+                            }
+                            else
+                            {
+                                <li id="@item.Id" class="selectColor" data-colorid="@item.Id" style="background-color:@item.Color;"></li>
+                            }
+                            counter++;
+                        }
+                    </ul>
 
                 }
 

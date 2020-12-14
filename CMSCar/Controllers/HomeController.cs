@@ -32,7 +32,12 @@ namespace CMSCar.Controllers
             _logger = logger;
             _Mapper = mapper;
         }
-
+        public IActionResult Privacy()
+        {
+            _Context.FixedSlider.Add(new Areas.CPanel.Models.Sliders.FixedSlider { FixedSliders = FixedSlider.Faive});
+            _Context.SaveChanges();
+            return View();
+        }
         public IActionResult Index()
         {
             ViewData["Brands"] = new SelectList(_Context.CarType, "Id", "NameAr");

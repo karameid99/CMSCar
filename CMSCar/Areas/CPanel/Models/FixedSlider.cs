@@ -10,6 +10,8 @@ namespace CMSCar.Areas.CPanel.Models
         First,
         Socond,
         Third,
-        Forth
+        Forth,
+        Faive,
+        Six,
     }
 }

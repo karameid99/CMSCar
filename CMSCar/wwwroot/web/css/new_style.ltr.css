@@ -145,15 +145,15 @@ body{
 #myTopnav li:last-child{
     border-bottom:none;
 }
-#myTopnav.responsive, #myTopnav {
-    position: relative;
-    margin-bottom: 0;
-    list-style: none;
-    margin-top: 0;
-    margin-left: 0;
-    background-color: #ffffff;
-    color: #333;
-}
+    #myTopnav.responsive, #myTopnav {
+        position: relative;
+        margin-bottom: 0;
+        list-style: none;
+        margin-top: 0;
+        margin-left: 0;
+        background-color: #18a150;
+        color: #333;
+    }
 .header a.icon#searchIcon {
     position: absolute;
     right: 60px;
@@ -575,9 +575,9 @@ nav.inFixed ul li ul li a{
     border: 1px solid #222;
 }
 
-.new_service:hover .new_service_more{
+.new_service:hover .new_service_more {
     border: 1px solid #fff;
-    color: #fff;
+    color: #18a150;
     background-color: #222;
 }
 
@@ -589,8 +589,8 @@ nav.inFixed ul li ul li a{
     display: block;
 }
 
-.new_service:hover .new_service_head{
-    color:#fff;
+.new_service:hover .new_service_head {
+    color: #18a150;
 }
 .new_service_more{
     color: #222;
@@ -3258,19 +3258,19 @@ a#sendAnyWayDisplaySecondPart {
     .brandList li.active:after {
         font-family: "Font Awesome 5 Free";
     }
-    .brandList li.active i{
-        display: inline-block;
-        position: absolute;
-        right: 0;
-        top: 0;
-        font-size: 22px;
-        width: 44px;
-        height: 48px;
-        background-color: #ffffff;
-        color: #fff;
-        line-height: 49px;
-        text-align: center;
-    }
+        .brandList li.active i {
+            display: inline-block;
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-size: 22px;
+            width: 44px;
+            height: 48px;
+            background-color: #18a150;
+            color: #fff;
+            line-height: 49px;
+            text-align: center;
+        }
     .brandList li.active:after {
         display: none;
     }
