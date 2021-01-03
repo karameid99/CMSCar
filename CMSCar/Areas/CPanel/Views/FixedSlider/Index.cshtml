@@ -81,6 +81,7 @@
                     <tr>
                         <th> عنوان المنشور بالعربية</th>
                         <th>عنوان المنشور بالانجليزية</th>
+                        <th>الفعالية</th>
                         <th>تاريخ الاضافة</th>
                         <th width="20%">العمليات</th>
                     </tr>
@@ -137,6 +138,12 @@
                     columns: [
                         { data: 'layer1', name: 'layer1' },
                         { data: 'layer2', name: 'layer2' },
+                        {
+                            "render": function (data, type, row) {
+                                return '<input type="checkbox" class="cbActive" data-id="' + row["id"] +
+                                    '" ' + (row["isActive"] ? "checked" : "") + ' />';
+                            }
+                        },
                         { data: 'createAt', name: 'createdAt' },
                         {
                             name: 'buttons', "render": function (data, type, row) {
@@ -157,6 +164,22 @@
                     }
                 });
         }
+        $(function () {
+            $(document).on("click", ".cbActive", function () {
+                var id = $(this).data("id");
+                var checked = $(this).is(":checked");
+                var _path = "/CPanel/FixedSlider/Activate";
+                $.ajax({
+                    url: _path,
+                    data: { id: id, active: checked },
+                    type: "Get",
+                    success: function (data) {
+                        ShowMessage(data.msg);
+                    }
+                });
+            });
+        });
+
     </script>
 
 }

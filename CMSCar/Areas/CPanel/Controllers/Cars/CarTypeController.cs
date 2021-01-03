@@ -39,7 +39,7 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
                 || x.NameEn.Contains(d.SearchKey)
                 )).OrderBy(x => x.CreatedAt);
             int totalCount = query.Count();
-            var items = query.Skip(d.Start).Take(d.Length).ToList();
+            var items = query.OrderByDescending(x=> x.CreatedAt).Skip(d.Start).Take(d.Length).ToList();
             var itemsVM = _Mapper.Map<List<CarTypeVM>>(items);
             var result = new { draw = d.Draw, recordsTotal = totalCount, recordsFiltered = totalCount, data = itemsVM };
             return Json(result);

@@ -46,7 +46,20 @@ namespace CMSCar.Areas.CPanel.Controllers.Slider
             var result = new { draw = d.Draw, recordsTotal = totalCount, recordsFiltered = totalCount, data = items };
             return Json(result);
         }
-
+        [HttpGet]
+        public  ActionResult Activate(int? Id, bool Active)
+        {
+            if (Id == null) return NotFound();
+            FixedSlider slider = _Context.FixedSlider.Find(Id);
+            if (slider != null)
+            {
+                slider.IsActive = Active;
+                _Context.SaveChanges();
+                return Content(ResultMessage.StatusUpdateResult(), "application/json");
+            }
+            else
+                return Content(ResultMessage.FailedResult(), "application/json");
+        }
         public IActionResult Index()
         {
             return View();

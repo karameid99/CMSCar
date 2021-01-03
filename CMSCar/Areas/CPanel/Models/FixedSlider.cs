@@ -13,5 +13,8 @@ namespace CMSCar.Areas.CPanel.Models
         Forth,
         Faive,
         Six,
+        Seven,
+        Eight,
+        Nine,
     }
 }

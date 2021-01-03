@@ -86,6 +86,7 @@
                         <label asp-for="SubCarTypeId"></label>
                         <select id="select" asp-for="SubCarTypeId" title="--- إختار  النوع الفرعي ---" class="custom-select" data-width="100%">
                         </select>
+                        <span asp-validation-for="SubCarTypeId" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -93,6 +94,7 @@
                         <label asp-for="ModelCarTypeId"></label>
                         <select id="select1" asp-for="ModelCarTypeId" title="--- إختار   الموديل ---" class="custom-select" data-width="100%">
                         </select>
+                        <span asp-validation-for="ModelCarTypeId" class="text-danger"></span>
                     </div>
                 </div>
 
@@ -201,11 +203,11 @@
                                                     <div class="col-md-4">
                                                         <div class="card-header">
                                                             <input name="SepCars" value="@item.Id" type="checkbox">
-                                                            <a style="color: black;text-decoration: none;" data-toggle="collapse" href="#collapseExample_@item.Id" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                                            <a style="color: black;text-decoration: none;" data-toggle="collapse" href="#collapse_@item.Id" role="button" aria-expanded="false" aria-controls="collapseExample">
                                                                 <b>@item.NameAr</b>
                                                             </a>
                                                         </div>
-                                                        <div class="collapse" id="collapseExample_@item.Id">
+                                                        <div class="collapse" id="collapse_@item.Id">
                                                             <div class="m-form__group form-group">
                                                                 <div class="m-checkbox-list">
                                                                     <ul class="list-group list-group-flush">
@@ -285,6 +287,24 @@
                     </div>
                 </div>
             </div>
+            <br />
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="p-3 mb-2 text-white" style="background-color:crimson">
+                        الوصف المصغر بالعربية
+                    </div>
+                    <span asp-validation-for="SubDescriptionAr" class="text-danger"></span>
+                    <textarea class="summernote" asp-for="SubDescriptionAr"></textarea>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 mb-2 text-white" style="background-color:crimson">
+                        الوصف المصغر  بالإنجليزية
+                    </div>
+                    <span asp-validation-for="SubDescriptionEn" class="text-danger"></span>
+                    <textarea class="summernoteEN" asp-for="SubDescriptionEn"></textarea>
+                </div>
+            </div>
+            <hr />
             <br />
             <div class="row">
                 <div class="col-md-6">

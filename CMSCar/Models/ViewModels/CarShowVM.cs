@@ -12,6 +12,8 @@ namespace CMSCar.Models.ViewModels
         public string NameEn { get; set; }
         public string DescriptionAr { get; set; }
         public string DescriptionEn { get; set; }
+        public string SubDescriptionAr { get; set; }
+        public string SubDescriptionEn { get; set; }
         public float PriceBeforeDiscount { get; set; }
         public float PriceAfterDiscount { get; set; }
         public string ShowImage { get; set; }

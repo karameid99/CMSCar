@@ -74,25 +74,31 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-6 col-md-4">
                     <div class="form-group">
-                        <label>نوع السيارة</label>
-                        <select id="CarType" asp-items="ViewBag.TypeCar" name="OfferCarIds" title="--- إختار  النوع الرئيسي ---" class="selectpicker dataLive" data-width="100%" data-live-search="true">
+                        <label class="text-primary control-label"></label>
+                        <select id="CarType" data-size="6" data-live-search="true" class="rounded selectpicker" data-width="100%">
+                            <option value="">--- إختار  النوع الرئيسي ---</option>
                         </select>
+                        <span class="text-danger"></span>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-6 col-md-4">
                     <div class="form-group">
-                        <label asp-for="SubCarTypeId"></label>
-                        <select id="select" asp-for="SubCarTypeId" title="--- إختار  النوع الفرعي ---" class="custom-select" data-width="100%">
+                        <label class="text-primary control-label"></label>
+                        <select asp-for="SubCarTypeId" id="SubCarTypeSelect" data-size="6" data-live-search="true" class="rounded selectpicker" data-width="100%">
+                            <option value="">--- إختار  النوع الفرعي ---</option>
                         </select>
+                        <span asp-validation-for="SubCarTypeId" class="text-danger"></span>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-6 col-md-4">
                     <div class="form-group">
-                        <label asp-for="ModelCarTypeId"></label>
-                        <select id="select1" asp-for="ModelCarTypeId" title="--- إختار   الموديل ---" class="custom-select" data-width="100%">
+                        <label class="text-primary control-label"></label>
+                        <select asp-for="ModelCarTypeId" id="ModelCarTypeSelect" data-size="6" data-live-search="true" class="rounded selectpicker" data-width="100%">
+                            <option value="">--- إختار الموديل ---</option>
                         </select>
+                        <span asp-validation-for="ModelCarTypeId" class="text-danger"></span>
                     </div>
                 </div>
 
@@ -145,7 +151,7 @@
                                             {
                                                 foreach (var item in Model.featureCars)
                                                 {
-                                                    if (!string.IsNullOrEmpty(item.CarIdentfire))
+                                                    if (item.isTake)
                                                     {
                                                         <div class="col-md-4">
                                                             <div class="card-header">
@@ -161,18 +167,39 @@
                                                                             @foreach (var item1 in item.subFeatureCars)
                                                                             {
                                                                                 <li class="list-group-item">
-                                                                                    <label class="custom-checkbox">
-                                                                                        <input name="subFeatureCars[]" checked onchange="change('checkbox_@item1.Id', 'text_@item1.Id', 'entext_@item1.Id');" id="checkbox_@item1.Id" value="@item1.Id" type="checkbox">
-                                                                                        @item1.NameAr
-                                                                                    </label>
-                                                                                    <div class="row">
-                                                                                        <div class="col-md-6">
-                                                                                            <input name="arValues[]" placeholder="القيمة بالعربية" id="text_@item1.Id" class="form-control" value="@item1.AnswerAr" type="text">
+
+                                                                                    @if (!string.IsNullOrEmpty(item1.AnswerAr) || !string.IsNullOrEmpty(item1.AnswerAr))
+                                                                                    {
+                                                                                        <label class="custom-checkbox">
+                                                                                            <input name="subFeatureCars[]" checked onchange="change('checkbox_@item1.Id', 'text_@item1.Id', 'entext_@item1.Id');" id="checkbox_@item1.Id" value="@item1.Id" type="checkbox">
+                                                                                            @item1.NameAr
+                                                                                        </label>
+                                                                                        <div class="row">
+                                                                                            <div class="col-md-6">
+                                                                                                <input name="arValues[]" placeholder="القيمة بالعربية" id="text_@item1.Id" class="form-control" value="@item1.AnswerAr" type="text">
+                                                                                            </div>
+                                                                                            <div class="col-md-6">
+                                                                                                <input name="enValues[]" placeholder="القيمة بالانجليزية" id="entext_@item1.Id" class="form-control" value="@item1.AnswerAr" type="text">
+                                                                                            </div>
                                                                                         </div>
-                                                                                        <div class="col-md-6">
-                                                                                            <input name="enValues[]" placeholder="القيمة بالانجليزية" id="entext_@item1.Id" class="form-control" value="@item1.AnswerAr" type="text">
+
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        <label class="custom-checkbox">
+                                                                                            <input name="subFeatureCars[]" onchange="change('checkbox_@item1.Id', 'text_@item1.Id', 'entext_@item1.Id');" id="checkbox_@item1.Id" value="@item1.Id" type="checkbox">
+                                                                                            @item1.NameAr
+                                                                                        </label>
+                                                                                        <div class="row">
+                                                                                            <div class="col-md-6">
+                                                                                                <input name="arValues[]" disabled placeholder="القيمة بالعربية" id="text_@item1.Id" class="form-control" value="@item1.AnswerAr" type="text">
+                                                                                            </div>
+                                                                                            <div class="col-md-6">
+                                                                                                <input name="enValues[]" disabled placeholder="القيمة بالانجليزية" id="entext_@item1.Id" class="form-control" value="@item1.AnswerAr" type="text">
+                                                                                            </div>
                                                                                         </div>
-                                                                                    </div>
+
+                                                                                    }
 
                                                                                 </li>
                                                                             }
@@ -241,7 +268,7 @@
                                             {
                                                 foreach (var item in Model.specificationCars)
                                                 {
-                                                    if (!string.IsNullOrEmpty(item.CarIdentfire))
+                                                    if (item.isTake)
                                                     {<div class="col-md-4">
                                                             <div class="card-header">
                                                                 <input name="SepCars" checked value="@item.Id" type="checkbox">
@@ -256,18 +283,36 @@
                                                                             @foreach (var item1 in item.subSpecificationCars)
                                                                             {
                                                                                 <li class="list-group-item">
-                                                                                    <label class="custom-checkbox">
-                                                                                        <input name="subSepCars[]" checked onchange="change('checkbox_Sep_@item1.Id', 'text_Sep_@item1.Id', 'entext_Sep_@item1.Id');" id="checkbox_Sep_@item1.Id" value="@item1.Id" type="checkbox">
-                                                                                        @item1.NameAr
-                                                                                    </label>
-                                                                                    <div class="row">
-                                                                                        <div class="col-md-6">
-                                                                                            <input name="SepAr[]" placeholder="القيمة بالعربية" id="text_Sep_@item1.Id" class="form-control" value="@item1.AnswerAr" type="text">
+                                                                                    @if (!string.IsNullOrEmpty(item1.AnswerAr) || !string.IsNullOrEmpty(item1.AnswerAr))
+                                                                                    {
+                                                                                        <label class="custom-checkbox">
+                                                                                            <input name="subSepCars[]" checked onchange="change('checkbox_Sep_@item1.Id', 'text_Sep_@item1.Id', 'entext_Sep_@item1.Id');" id="checkbox_Sep_@item1.Id" value="@item1.Id" type="checkbox">
+                                                                                            @item1.NameAr
+                                                                                        </label>
+                                                                                        <div class="row">
+                                                                                            <div class="col-md-6">
+                                                                                                <input name="SepAr[]" placeholder="القيمة بالعربية" id="text_Sep_@item1.Id" class="form-control" value="@item1.AnswerAr" type="text">
+                                                                                            </div>
+                                                                                            <div class="col-md-6">
+                                                                                                <input name="SepEn[]" placeholder="القيمة بالانجليزية" id="entext_Sep_@item1.Id" class="form-control" value="@item1.AnswerEn" type="text">
+                                                                                            </div>
                                                                                         </div>
-                                                                                        <div class="col-md-6">
-                                                                                            <input name="SepEn[]" placeholder="القيمة بالانجليزية" id="entext_Sep_@item1.Id" class="form-control" value="@item1.AnswerEn" type="text">
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        <label class="custom-checkbox">
+                                                                                            <input name="subSepCars[]" onchange="change('checkbox_Sep_@item1.Id', 'text_Sep_@item1.Id', 'entext_Sep_@item1.Id');" id="checkbox_Sep_@item1.Id" value="@item1.Id" type="checkbox">
+                                                                                            @item1.NameAr
+                                                                                        </label>
+                                                                                        <div class="row">
+                                                                                            <div class="col-md-6">
+                                                                                                <input name="SepAr[]" disabled placeholder="القيمة بالعربية" id="text_Sep_@item1.Id" class="form-control" value="@item1.AnswerAr" type="text">
+                                                                                            </div>
+                                                                                            <div class="col-md-6">
+                                                                                                <input name="SepEn[]" disabled placeholder="القيمة بالانجليزية" id="entext_Sep_@item1.Id" class="form-control" value="@item1.AnswerEn" type="text">
+                                                                                            </div>
                                                                                         </div>
-                                                                                    </div>
+                                                                                    }
                                                                                 </li>
                                                                             }
                                                                         </ul>
@@ -368,7 +413,24 @@
                     </div>
                 </div>
             </div>
-
+            <br />
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="p-3 mb-2 text-white" style="background-color:crimson">
+                        الوصف المصغر بالعربية
+                    </div>
+                    <span asp-validation-for="SubDescriptionAr" class="text-danger"></span>
+                    <textarea class="summernote" asp-for="SubDescriptionAr"></textarea>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 mb-2 text-white" style="background-color:crimson">
+                        الوصف المصغر  بالإنجليزية
+                    </div>
+                    <span asp-validation-for="SubDescriptionEn" class="text-danger"></span>
+                    <textarea class="summernoteEN" asp-for="SubDescriptionEn"></textarea>
+                </div>
+            </div>
+            <hr />
             <br />
             <div class="row">
                 <div class="col-md-6">
@@ -415,86 +477,94 @@
     <script>
         $('.dataLive').selectpicker();
     </script>
+  
     <script>
-        //$(".selectpicker").change(function () {
-        //    alert("Handler for .change() called.");
-        //});
-        $(document).ready(function () {
-            var id = @Model.CarTypeId;
-            var _path = "/CPanel/Car/GetSubTypeCar";
-            var _path1 = "/CPanel/Car/GetModel";
-            $.ajax({
-                url: _path,
-                data: { id: id },
-                type: "Get",
-                success: function (data) {
-                    var myOpts = document.getElementById('select').options;
-
-                    $('#select')
-                        .find('option')
-                        .remove()
-                        .end();
-                    jQuery.each(data, function (i, v) {
-                        if (v.id == @Model.ModelCarTypeId) {
-                            $('#select').append(`<option selected value="${v.id}"> ${v.nameAr}  </option>`);
-
-                        } else {
-                            $('#select').append(`<option value="${v.id}"> ${v.nameAr}  </option>`);
-
-                        }
-                    });
-
+    $.ajax({
+        url: '/CPanel/Car/GetTypeCar',
+            dataType: "json",
+            success: function (Data) {
+                $(Data).each(function (index, value) {
+                    if (value.id == @Model.CarTypeId) {
+                        $("#CarType").append($("<option selected></option>").val(value.id).html(value.nameAr));
+                    } else {
+                        $("#CarType").append($("<option></option>").val(value.id).html(value.nameAr));
+                    }
+                    $("#CarType").selectpicker('refresh');
+                })
+            },
+            complete: function (Data) {
+                $('#SubCarTypeSelect option[value!=""]').remove();
+                $("#SubCarTypeSelect").selectpicker('refresh');
                 $.ajax({
-                url: _path1,
-                data: { id: id },
-                type: "Get",
-                success: function (data) {
-                    var myOpts = document.getElementById('select1').options;
-
-                    $('#select1')
-                        .find('option')
-                        .remove()
-                        .end();
-                    jQuery.each(data, function (i, v) {
-                        if (v.id == @Model.SubCarTypeId) {
-                            $('#select1').append(`<option selected value="${v.id}"> ${v.nameAr}  </option>`);
-
-                        } else {
-                            $('#select1').append(`<option value="${v.id}"> ${v.nameAr}  </option>`);
-
-                        }
-                    });
-                }
-            });
-
-                }
-            });
-        });
-
-        $(function () {
-            $(".selectpicker").change(function () {
-                var id = $(this).children("option:selected").val();
-                var _path = "/CPanel/Car/GetSubTypeCar";
-                $.ajax({
-                    url: _path,
-                    data: { id: id },
-                    type: "Get",
-                    success: function (data) {
-                        var myOpts = document.getElementById('select').options;
-
-                        $('#select')
-                            .find('option')
-                            .remove()
-                            .end();
-                        jQuery.each(data, function (i, v) {
-                            $('#select').append(`<option value="${v.id}"> ${v.nameAr}  </option>`);
+                    url: '/CPanel/Car/GetSubTypeCar/' + $('#CarType').val(),
+                    dataType: "json",
+                    success: function (Data) {
+                        $(Data).each(function (index, value) {
+                            if (value.id == @Model.SubCarTypeId) {
+                                $("#SubCarTypeSelect").append($("<option selected></option>").val(value.id).html(value.nameAr));
+                            } else {
+                                $("#SubCarTypeSelect").append($("<option></option>").val(value.id).html(value.nameAr));
+                            }
+                            $("#SubCarTypeSelect").selectpicker('refresh');
+                        })
+                    },
+                    complete: function (Data) {
+                        $('#ModelCarTypeSelect option[value!=""]').remove();
+                        $("#ModelCarTypeSelect").selectpicker('refresh');
+                        $.ajax({
+                            url: '/CPanel/Car/GetModel/' + $('#CarType').val(),
+                            dataType: "json",
+                            success: function (Data) {
+                                $(Data).each(function (index, value) {
+                                    if (value.id == @Model.ModelCarTypeId) {
+                                        $("#ModelCarTypeSelect").append($("<option selected></option>").val(value.id).html(value.nameAr));
+                                    } else {
+                                        $("#ModelCarTypeSelect").append($("<option></option>").val(value.id).html(value.nameAr));
+                                    }
+                                    $("#ModelCarTypeSelect").selectpicker('refresh');
+                                })
+                            }
                         });
                     }
                 });
+            }
+        });
+
+        $('#CarType').on('changed.bs.select', function (e, clickedIndex, isSelected, previousValue) {
+            $('#SubCarTypeSelect option[value!=""]').remove();
+            $("#CarType").selectpicker('refresh');
+            $("#SubCarTypeSelect").selectpicker('refresh');
+            $('#ModelCarTypeSelect option[value!=""]').remove();
+            $("#ModelCarTypeSelect").selectpicker('refresh');
+            $.ajax({
+                url: '/CPanel/Car/GetSubTypeCar/' + $('#CarType').val(),
+                dataType: "json",
+                success: function (Data) {
+                    $(Data).each(function (index, value) {
+                        $("#SubCarTypeSelect").append($("<option></option>").val(value.id).html(value.nameAr)).selectpicker('refresh');
+                    })
+                }
             });
         });
 
+        $('#SubCarTypeSelect').on('changed.bs.select', function (e, clickedIndex, isSelected, previousValue) {
+            $('#ModelCarTypeSelect option[value!=""]').remove();
+            $("#ModelCarTypeSelect").selectpicker('refresh');
+            $.ajax({
+                url: '/CPanel/Car/GetModel/' + $('#CarType').val(),
+                dataType: "json",
+                success: function (Data) {
+                    $(Data).each(function (index, value) {
+                        $("#ModelCarTypeSelect").append($("<option></option>").val(value.id).html(value.nameAr)).selectpicker('refresh');
+                    })
+                }
+            });
+        });
     </script>
+
+
+
+
     <script>
         function change(checkId, inputId, enInputID) {
             var chek = document.getElementById(checkId);

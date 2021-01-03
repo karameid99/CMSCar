@@ -56,6 +56,12 @@ namespace CMSCar.Data.Migrations
                     b.Property<string>("ShowImage")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("SubDescriptionAr")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SubDescriptionEn")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Car");

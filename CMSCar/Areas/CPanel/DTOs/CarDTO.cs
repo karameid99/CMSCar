@@ -24,7 +24,7 @@ namespace CMSCar.Areas.CPanel.DTOs
         [Display(Name = "السعر بدون خصم")]
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         public float PriceBeforeDiscount { get; set; }
-        [Display(Name = "قيمة الخصم")]
+        [Display(Name = "السعر بعد خصم")]
         public float PriceAfterDiscount { get; set; }
         [Display(Name = "الصورة الرئيسية")]
         public IFormFile Main { get; set; }
@@ -32,11 +32,15 @@ namespace CMSCar.Areas.CPanel.DTOs
         public IFormFile Show { get; set; }
         [Display(Name = "صور السيارة من الداخل")]
         public List<IFormFile> InsidImages { get; set; }
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "النوع الفرعي")]
         public int SubCarTypeId { get; set; }
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "الموديل")]
         public int ModelCarTypeId { get; set; }
         public string CarIdentfire { get; set; }
+        public string SubDescriptionAr { get; set; }
+        public string SubDescriptionEn { get; set; }
         public List<FeatureCar> featureCars { get; set; }
         public List<SpecificationCar> specificationCars { get; set; }
         public int CarTypeId { get; set; }

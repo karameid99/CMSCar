@@ -104,100 +104,82 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
 
                 }
                 _Context.SaveChanges();
-                var subType = _Context.FeatureCar.Include(x => x.subFeatureCars).Where(x => model.feature.Any(m => m == x.Id)).ToList();
-                var subFeatureType = _Context.SubFeatureCar.Where(x => model.subFeatureCars.Any(m => m == x.Id)).ToList();
-                foreach (var item in subType)
+                if (model.feature != null)
                 {
-                    var fc = new FeatureCar
+                    var subType = _Context.FeatureCar.Include(x => x.subFeatureCars).Where(x => model.feature.Any(m => m == x.Id)).ToList();
+                    var subFeatureType = _Context.SubFeatureCar.Where(x => model.subFeatureCars.Any(m => m == x.Id)).ToList();
+                    foreach (var item in subType)
                     {
-                        CarId = car.Id,
-                        NameAr = item.NameAr,
-                        NameEn = item.NameEn,
-                        CarIdentfire = item.Id+""
-                    };
-                    _Context.FeatureCar.Add(fc);
-                    _Context.SaveChanges();
-                    for (var item1 = 0; item1 < subFeatureType.Count; item1++)
-                    {
-                        if (item.Id == subFeatureType[item1].FeatureCarId)
+                        var fc = new FeatureCar
                         {
-                            var sfc = new SubFeatureCar
-                            {
-                                FeatureCarId = fc.Id,
-                                NameAr = subFeatureType[item1].NameAr,
-                                NameEn = subFeatureType[item1].NameEn,
-                                AnswerAr = model.arValues[item1],
-                                AnswerEn = model.enValues[item1]
-                            };
-                           
-                            _Context.SubFeatureCar.Add(sfc);
-                          
-                        }
-
-                    }
-                    var sfList = _Context.SubFeatureCar.Where(x => x.FeatureCarId == item.Id && !model.subFeatureCars.Any(m => m == x.Id)).ToList();
-                    foreach (var item2 in sfList)
-                    {
-                        var sfc = new SubFeatureCar
-                        {
-                            FeatureCarId = fc.Id,
-                            NameAr = item2.NameAr,
-                            NameEn = item2.NameEn,
-                            AnswerAr = item2.AnswerAr,
-                            AnswerEn = item2.AnswerEn
+                            CarId = car.Id,
+                            NameAr = item.NameAr,
+                            NameEn = item.NameEn,
+                            CarIdentfire = item.CarIdentfire
                         };
-                        _Context.SubFeatureCar.Add(sfc);
-
+                        _Context.FeatureCar.Add(fc);
+                        _Context.SaveChanges();
+                        for (var item1 = 0; item1 < subFeatureType.Count; item1++)
+                        {
+                            if (item.Id == subFeatureType[item1].FeatureCarId)
+                            {
+                                var sfc = new SubFeatureCar
+                                {
+                                    FeatureCarId = fc.Id,
+                                    NameAr = subFeatureType[item1].NameAr,
+                                    NameEn = subFeatureType[item1].NameEn,
+                                    AnswerAr = model.arValues[item1],
+                                    AnswerEn = model.enValues[item1]
+                                };
+                                _Context.SubFeatureCar.Add(sfc);
+                            }
+                        }
+                        _Context.SaveChanges();
                     }
-                    _Context.SaveChanges();
-
                 }
-
-                var sepCar = _Context.SpecificationCar.Include(x => x.subSpecificationCars).Where(x => model.SepCars.Any(m => m == x.Id)).ToList();
-                var subSpType = _Context.SubSpecificationCar.Where(x => model.subSepCars.Any(m => m == x.Id)).ToList();
-                foreach (var item in sepCar)
+                if (model.SepCars != null)
                 {
-                    var sc = new SpecificationCar
+                    var sepCar = _Context.SpecificationCar.Include(x => x.subSpecificationCars).Where(x => model.SepCars.Any(m => m == x.Id)).ToList();
+                    if (model.subSepCars != null)
                     {
-                        CarId = car.Id,
-                        NameAr = item.NameAr,
-                        NameEn = item.NameEn,
-                        CarIdentfire = item.Id + ""
-                    };
-                    _Context.SpecificationCar.Add(sc);
-                    _Context.SaveChanges();
-                    for (var item1 = 0; item1 < subSpType.Count; item1++)
-                    {
-                        if (item.Id == subSpType[item1].SpecificationCarId)
+                        var subSpType = _Context.SubSpecificationCar.Where(x => model.subSepCars.Any(m => m == x.Id)).ToList();
+                        if (sepCar != null)
                         {
-                            var sfc = new SubSpecificationCar
+                            foreach (var item in sepCar)
                             {
-                                SpecificationCarId = sc.Id,
-                                NameAr = subSpType[item1].NameAr,
-                                NameEn = subSpType[item1].NameEn,
-                                AnswerAr = model.SepAr[item1],
-                                AnswerEn = model.SepEn[item1]
-                            };
-                            _Context.SubSpecificationCar.Add(sfc);
+                                var sc = new SpecificationCar
+                                {
+                                    CarId = car.Id,
+                                    NameAr = item.NameAr,
+                                    NameEn = item.NameEn,
+                                    CarIdentfire = item.CarIdentfire
+                                };
+                                _Context.SpecificationCar.Add(sc);
+                                _Context.SaveChanges();
+                                if (subSpType != null)
+                                {
+                                    for (var item1 = 0; item1 < subSpType.Count; item1++)
+                                    {
+                                        if (item.Id == subSpType[item1].SpecificationCarId)
+                                        {
+                                            var sfc = new SubSpecificationCar
+                                            {
+                                                SpecificationCarId = sc.Id,
+                                                NameAr = subSpType[item1].NameAr,
+                                                NameEn = subSpType[item1].NameEn,
+                                                AnswerAr = model.SepAr[item1],
+                                                AnswerEn = model.SepEn[item1]
+                                            };
+                                            _Context.SubSpecificationCar.Add(sfc);
+                                        }
+
+                                    }
+                                }
+                                _Context.SaveChanges();
+
+                            }
                         }
-
                     }
-                    var sfList = _Context.SubSpecificationCar.Where(x => x.SpecificationCarId == item.Id && !model.subSepCars.Any(m => m == x.Id)).ToList();
-                    foreach (var item2 in sfList)
-                    {
-                        var sfc = new SubSpecificationCar
-                        {
-                            SpecificationCarId = sc.Id,
-                            NameAr = item2.NameAr,
-                            NameEn = item2.NameEn,
-                            AnswerAr = item2.AnswerAr,
-                            AnswerEn = item2.AnswerEn
-                        };
-                        _Context.SubSpecificationCar.Add(sfc);
-
-                    }
-                    _Context.SaveChanges();
-
                 }
                 return RedirectToAction("Index");
             }
@@ -212,31 +194,68 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
             ViewBag.ci = car.CarIdentfire;
 
             var carDto = _Mapper.Map<CarDTO>(car);
+
             var type = _Context.CarCategory.Include(x => x.SubCarType).ThenInclude(s => s.CarType).SingleOrDefault(x => x.CarId == car.Id && x.SubCarType.CategoryType == Areas.CPanel.Models.CategoryType.Firsr);
             carDto.CarTypeId = type.SubCarType.CarTypeId;
-             carDto.featureCars = await  _Context.FeatureCar.Include(x => x.subFeatureCars).Where(x => x.CarId == id).ToListAsync();
+            carDto.ModelCarTypeId = _Context.CarCategory.Include(x => x.SubCarType).SingleOrDefault(x => x.CarId == id && x.SubCarType.CategoryType == Models.CategoryType.Second).SubCarType.Id;
+            carDto.SubCarTypeId = _Context.CarCategory.Include(x => x.SubCarType).SingleOrDefault(x => x.CarId == id && x.SubCarType.CategoryType == Models.CategoryType.Firsr).SubCarType.Id;
+
+            var featureCars = await _Context.FeatureCar.Include(x => x.subFeatureCars).Where(x => x.CarId == id).ToListAsync();
             var ds = await _Context.FeatureCar.Include(x => x.subFeatureCars).Where
             (x => !x.CarId.HasValue).ToListAsync();
-                       foreach (var item in ds)
+            for (int i = 0; i < featureCars.Count; i++)
             {
-                if (!carDto.featureCars.Any(x=> x.CarIdentfire == item.Id+""))
+                for (int j = 0; j < ds.Count; j++)
                 {
-                    carDto.featureCars.Add(item);
+                    if (featureCars[i].CarIdentfire == ds[j].CarIdentfire)
+                    {
+                        foreach (var item in featureCars[i].subFeatureCars)
+                        {
+                            for (int y = 0; y < ds[j].subFeatureCars.Count; y++)
+                            {
+                                ds[j].isTake = true;
+                                if (ds[j].subFeatureCars[y].NameAr == item.NameAr)
+                                {
+                                    ds[j].subFeatureCars[y].AnswerAr = item.AnswerAr;
+                                    ds[j].subFeatureCars[y].AnswerEn = item.AnswerEn;
+                                }
+                            }
+                        }
+
+                    }
                 }
+
             }
+            carDto.featureCars = ds;
 
-
-            carDto.specificationCars = _Context.SpecificationCar.Include(x => x.subSpecificationCars).Where(x => x.CarId == id).ToList();
+            var specificationCars = _Context.SpecificationCar.Include(x => x.subSpecificationCars).Where(x => x.CarId == id).ToList();
             var dss = await _Context.SpecificationCar.Include(x => x.subSpecificationCars).Where
             (x => !x.CarId.HasValue).ToListAsync();
-            foreach (var item in dss)
+
+            for (int i = 0; i < specificationCars.Count; i++)
             {
-                if (!carDto.specificationCars.Any(x => x.CarIdentfire == item.Id + ""))
+                for (int j = 0; j < dss.Count; j++)
                 {
-                    carDto.specificationCars.Add(item);
+                    if (specificationCars[i].CarIdentfire == dss[j].CarIdentfire)
+                    {
+                        foreach (var item in specificationCars[i].subSpecificationCars)
+                        {
+                            for (int y = 0; y < dss[j].subSpecificationCars.Count; y++)
+                            {
+                                dss[j].isTake = true;
+                                if (dss[j].subSpecificationCars[y].NameAr == item.NameAr)
+                                {
+                                    dss[j].subSpecificationCars[y].AnswerAr = item.AnswerAr;
+                                    dss[j].subSpecificationCars[y].AnswerEn = item.AnswerEn;
+                                }
+                            }
+                        }
+
+                    }
                 }
+
             }
-            ViewData["TypeCar"] = new SelectList(_Context.CarType, "Id", "NameAr");
+            carDto.specificationCars = dss;
             return View(carDto);
         }
         [HttpPost]
@@ -263,7 +282,9 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
                     car.ShowImage = org.ShowImage;
                 }
                 _Context.Car.Update(car);
-                _Context.SaveChanges();
+               await _Context.SaveChangesAsync();
+                DeleteAllSubFeature(org.Id);
+                DeleteAllSubsep(org.Id);
                 if (model.InsidImages != null)
                 {
                     foreach (var item in model.InsidImages)
@@ -275,103 +296,80 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
                     }
                     _Context.SaveChanges();
                 }
-                DeleteAllSubFeature(model.Id);
-                DeleteAllSubsep(model.Id);
-
-                var subType = _Context.FeatureCar.Include(x => x.subFeatureCars).Where(x => model.feature.Any(m => m == x.Id)).ToList();
-                var subFeatureType = _Context.SubFeatureCar.Where(x => model.subFeatureCars.Any(m => m == x.Id)).ToList();
-                foreach (var item in subType)
+                if (model.feature != null)
                 {
-                    var fc = new FeatureCar
+                    var subType = await _Context.FeatureCar.Include(x => x.subFeatureCars).Where(x => model.feature.Any(m => m == x.Id)).ToListAsync();
+                    var subFeatureType = await _Context.SubFeatureCar.Where(x => model.subFeatureCars.Any(m => m == x.Id)).ToListAsync();
+                    foreach (var item in subType)
                     {
-                        CarId = car.Id,
-                        NameAr = item.NameAr,
-                        NameEn = item.NameEn,
-                        CarIdentfire = item.Id + ""
-                    };
-                    _Context.FeatureCar.Add(fc);
-                    _Context.SaveChanges();
-                    for (var item1 = 0; item1 < subFeatureType.Count; item1++)
-                    {
-                        if (item.Id == subFeatureType[item1].FeatureCarId)
+                        var fc = new FeatureCar
                         {
-                            var sfc = new SubFeatureCar
-                            {
-                                FeatureCarId = fc.Id,
-                                NameAr = subFeatureType[item1].NameAr,
-                                NameEn = subFeatureType[item1].NameEn,
-                                AnswerAr = model.arValues[item1],
-                                AnswerEn = model.enValues[item1]
-                            };
-
-                            _Context.SubFeatureCar.Add(sfc);
-
-                        }
-
-                    }
-                    var sfList = _Context.SubFeatureCar.Where(x => x.FeatureCarId == item.Id && !model.subFeatureCars.Any(m => m == x.Id)).ToList();
-                    foreach (var item2 in sfList)
-                    {
-                        var sfc = new SubFeatureCar
-                        {
-                            FeatureCarId = fc.Id,
-                            NameAr = item2.NameAr,
-                            NameEn = item2.NameEn,
-                            AnswerAr = item2.AnswerAr,
-                            AnswerEn = item2.AnswerEn
+                            CarId = car.Id,
+                            NameAr = item.NameAr,
+                            NameEn = item.NameEn,
+                            CarIdentfire = item.CarIdentfire
                         };
-                        _Context.SubFeatureCar.Add(sfc);
-
+                        _Context.FeatureCar.Add(fc);
+                        _Context.SaveChanges();
+                        for (var item1 = 0; item1 < subFeatureType.Count; item1++)
+                        {
+                            if (item.Id == subFeatureType[item1].FeatureCarId)
+                            {
+                                var sfc = new SubFeatureCar
+                                {
+                                    FeatureCarId = fc.Id,
+                                    NameAr = subFeatureType[item1].NameAr,
+                                    NameEn = subFeatureType[item1].NameEn,
+                                    AnswerAr = model.arValues[item1],
+                                    AnswerEn = model.enValues[item1]
+                                };
+                                _Context.SubFeatureCar.Add(sfc);
+                            }
+                        }
+                        await _Context.SaveChangesAsync();
                     }
-                    _Context.SaveChanges();
-
                 }
-
-                var sepCar = _Context.SpecificationCar.Include(x => x.subSpecificationCars).Where(x => model.SepCars.Any(m => m == x.Id)).ToList();
-                var subSpType = _Context.SubSpecificationCar.Where(x => model.subSepCars.Any(m => m == x.Id)).ToList();
-                foreach (var item in sepCar)
+                if (model.SepCars != null)
                 {
-                    var sc = new SpecificationCar
+                    var sepCar = await _Context.SpecificationCar.Include(x => x.subSpecificationCars).Where(x => model.SepCars.Any(m => m == x.Id)).ToListAsync();
+                    if (model.subSepCars != null)
                     {
-                        CarId = car.Id,
-                        NameAr = item.NameAr,
-                        NameEn = item.NameEn,
-                        CarIdentfire = item.Id + ""
-                    };
-                    _Context.SpecificationCar.Add(sc);
-                    _Context.SaveChanges();
-                    for (var item1 = 0; item1 < subSpType.Count; item1++)
-                    {
-                        if (item.Id == subSpType[item1].SpecificationCarId)
+                        var subSpType = await _Context.SubSpecificationCar.Where(x => model.subSepCars.Any(m => m == x.Id)).ToListAsync();
+                        if (sepCar != null)
                         {
-                            var sfc = new SubSpecificationCar
+                            foreach (var item in sepCar)
                             {
-                                SpecificationCarId = sc.Id,
-                                NameAr = subSpType[item1].NameAr,
-                                NameEn = subSpType[item1].NameEn,
-                                AnswerAr = model.SepAr[item1],
-                                AnswerEn = model.SepEn[item1]
-                            };
-                            _Context.SubSpecificationCar.Add(sfc);
+                                var sc = new SpecificationCar
+                                {
+                                    CarId = car.Id,
+                                    NameAr = item.NameAr,
+                                    NameEn = item.NameEn,
+                                    CarIdentfire = item.CarIdentfire
+                                };
+                                _Context.SpecificationCar.Add(sc);
+                                await _Context.SaveChangesAsync();
+                                if (subSpType != null)
+                                {
+                                    for (var item1 = 0; item1 < subSpType.Count; item1++)
+                                    {
+                                        if (item.Id == subSpType[item1].SpecificationCarId)
+                                        {
+                                            var sfc = new SubSpecificationCar
+                                            {
+                                                SpecificationCarId = sc.Id,
+                                                NameAr = subSpType[item1].NameAr,
+                                                NameEn = subSpType[item1].NameEn,
+                                                AnswerAr = model.SepAr[item1],
+                                                AnswerEn = model.SepEn[item1]
+                                            };
+                                            _Context.SubSpecificationCar.Add(sfc);
+                                        }
+                                    }
+                                }
+                                await _Context.SaveChangesAsync();
+                            }
                         }
-
                     }
-                    var sfList = _Context.SubSpecificationCar.Where(x => x.SpecificationCarId == item.Id && !model.subSepCars.Any(m => m == x.Id)).ToList();
-                    foreach (var item2 in sfList)
-                    {
-                        var sfc = new SubSpecificationCar
-                        {
-                            SpecificationCarId = sc.Id,
-                            NameAr = item2.NameAr,
-                            NameEn = item2.NameEn,
-                            AnswerAr = item2.AnswerAr,
-                            AnswerEn = item2.AnswerEn
-                        };
-                        _Context.SubSpecificationCar.Add(sfc);
-
-                    }
-                    _Context.SaveChanges();
-
                 }
                 return RedirectToAction("Index");
             }
@@ -383,17 +381,21 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
             ViewBag.id = id;
             return View();
         }
-
-        public List<SubCarType> GetSubTypeCar(int id)
+        public async Task<IActionResult> GetTypeCar()
         {
-            var list = _Context.SubCarType.Where(x => x.CarTypeId == id && x.CategoryType == Models.CategoryType.Firsr).ToList();
-            return list;
+            var list = await _Context.CarType.ToListAsync();
+            return Json(list);
+        }
+        public async Task<IActionResult> GetSubTypeCar(int id)
+        {
+            var list = await _Context.SubCarType.Where(x => x.CarTypeId == id && x.CategoryType == Models.CategoryType.Firsr).ToListAsync();
+            return Json(list);
         }
 
-        public List<SubCarType> GetModel(int id)
+        public async Task<IActionResult> GetModel(int id)
         {
-            var list = _Context.SubCarType.Where(x => x.CarTypeId == id && x.CategoryType == Models.CategoryType.Second).ToList();
-            return list;
+            var list = await _Context.SubCarType.Where(x => x.CarTypeId == id && x.CategoryType == Models.CategoryType.Second).ToListAsync();
+            return Json(list);
         }
         public IActionResult Delete(int? id)
         {
@@ -422,24 +424,18 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
             _Context.SaveChanges();
             return Content(ResultMessage.DeleteSuccessResult(), "application/json");
         }
-        [NonAction]
-        public void DeleteAllSubFeature(int carId)
+        public async void DeleteAllSubFeature(int carId)
         {
-            var Features = _Context.FeatureCar.Where(x => x.CarId == carId).ToList();
-            foreach (var Feature in Features)
-            {
-                _Context.Remove(Feature);
-            }
-            _Context.SaveChanges();
+            var Features = await _Context.FeatureCar.Where(x => x.CarId == carId).ToListAsync();
+            _Context.RemoveRange(Features);
+            await _Context.SaveChangesAsync();
         }
-        public void DeleteAllSubsep(int carId)
+        public async void DeleteAllSubsep(int carId)
         {
-            var Features = _Context.SpecificationCar.Where(x => x.CarId == carId).ToList();
-            foreach (var Feature in Features)
-            {
-                _Context.Remove(Feature);
-            }
-            _Context.SaveChanges();
+            var Features = await _Context.SpecificationCar.Where(x => x.CarId == carId).ToListAsync();
+
+            _Context.RemoveRange(Features);
+            await _Context.SaveChangesAsync();
         }
     }
 }

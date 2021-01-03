@@ -94,9 +94,9 @@ namespace CMSCar.Controllers
             }
             return RedirectToAction("Index");
         }
-        public IActionResult Car(int id)
+        public async Task<IActionResult> Car(int id)
         {
-            var car = _Context.Car.Include(x => x.ColorCars).ThenInclude(x => x.colorImages).Include(v => v.CarCategorys).ThenInclude(b => b.SubCarType).ThenInclude(c => c.CarType).Include(z => z.carImages).Include(x => x.SpecificationCars).ThenInclude(o => o.subSpecificationCars).Include(m => m.FeatureCars).ThenInclude(p => p.subFeatureCars).Where(c => c.Id == id).SingleOrDefault();
+            var car = await _Context.Car.Include(x => x.ColorCars).ThenInclude(x => x.colorImages).Include(z => z.carImages).Include(x => x.SpecificationCars).ThenInclude(o => o.subSpecificationCars).Include(m => m.FeatureCars).ThenInclude(p => p.subFeatureCars).SingleOrDefaultAsync(c => c.Id == id);
             var CarVM = _Mapper.Map<CarDetalesVM>(car);
             var subCar = _Context.CarCategory.Include(x => x.SubCarType).ThenInclude(s => s.CarType).SingleOrDefault(x => x.CarId == car.Id && x.SubCarType.CategoryType == Areas.CPanel.Models.CategoryType.Second);
             CarVM.SubCarTypeAr = subCar.SubCarType.NameAr;

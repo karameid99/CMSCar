@@ -90,9 +90,11 @@
 <section class="carInner">
     <div class="container">
         <div class="outerImgs">
+            @if (Model.ColorCars.Any())
+            {
             <div class="inCarRow1">
                 <p>@Localizer["Available exterior colors"]</p>
-
+                 
                 @if (x == "ar-EG")
                 {
                     if (Model.ColorCars[0] != null)
@@ -161,6 +163,7 @@
                 }
                 }
             </div>
+            }
         </div>
         <div class="innerImgs">
             <div class="inCarRow">

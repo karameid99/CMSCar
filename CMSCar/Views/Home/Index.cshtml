@@ -123,14 +123,15 @@
             <!-- START REVOLUTION SLIDER 5.4.8.1 fullwidth mode -->
             <div id="rev_slider_13_1" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.4.8.1">
                 <ul>
-                    
+
+
 
                     @foreach (var item in Model.FixedSliders)
                     {
 
                         if (item.FixedSliders == CMSCar.Areas.CPanel.Models.FixedSlider.First)
                         {
-                            <li data-index="rs-153" data-transition="slidingoverlayright" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="default" data-thumb="/Images/Slider/transparent.png" data-delay="9010" data-rotate="0" data-saveperformance="off" data-mediafilter="perpetua" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                            <li data-index="rs-@item.Id " data-transition="slidingoverlayright" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="default" data-thumb="/Images/Slider/transparent.png" data-delay="9010" data-rotate="0" data-saveperformance="off" data-mediafilter="perpetua" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
                                 <!-- MAIN IMAGE -->
                                 <img src="/Images/Slider/transparent.png" data-bgcolor='linear-gradient(180deg,rgba(255,0,0,1)0%,rgba(255,0,0,1)0%,rgba(63,0,0,1)100%,rgba(63,0,0,1)100%)' style='background:linear-gradient(180deg,rgba(255,0,0,1)0%,rgba(255,0,0,1)0%,rgba(63,0,0,1)100%,rgba(63,0,0,1)100%)' alt="" data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="repeat" class="rev-slidebg" data-no-retina>
                                 <!-- LAYERS -->
@@ -412,7 +413,7 @@
                         }
                         else if (item.FixedSliders == CMSCar.Areas.CPanel.Models.FixedSlider.Socond)
                         {
-                            <li data-index="rs-164" data-transition="slidingoverlayright" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="default" data-thumb="/Images/Slider/transparent.png" data-delay="4260" data-rotate="0" data-saveperformance="off" data-mediafilter="perpetua" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                            <li data-index="rs-@item.Id" data-transition="slidingoverlayright" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="default" data-thumb="/Images/Slider/transparent.png" data-delay="4260" data-rotate="0" data-saveperformance="off" data-mediafilter="perpetua" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
                                 <img src="/Images/Slider/transparent.png" data-bgcolor='linear-gradient(180deg,rgba(255,0,0,1)0%,rgba(255,0,0,1)0%,rgba(81,0,0,1)100%,rgba(81,0,0,1)100%)' style='background:linear-gradient(180deg,rgba(255,0,0,1)0%,rgba(255,0,0,1)0%,rgba(81,0,0,1)100%,rgba(81,0,0,1)100%)' alt="" data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="repeat" class="rev-slidebg" data-no-retina>
                                 <div class="tp-caption   tp-resizeme"
                                      id="slide-164-layer-28"
@@ -592,7 +593,7 @@
                         }
                         else if (item.FixedSliders == CMSCar.Areas.CPanel.Models.FixedSlider.Third)
                         {
-                            <li data-index="rs-110" data-transition="slidingoverlayright" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="default" data-thumb="https://slider.salehcars.com/media/thumb/100x50_60fa4-shutterstock_1297017274-2.jpg" data-delay="7000" data-rotate="0" data-saveperformance="off" data-mediafilter="perpetua" data-title="Charger" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                            <li data-index="rs-@item.Id" data-transition="slidingoverlayright" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="default" data-thumb="https://slider.salehcars.com/media/thumb/100x50_60fa4-shutterstock_1297017274-2.jpg" data-delay="7000" data-rotate="0" data-saveperformance="off" data-mediafilter="perpetua" data-title="Charger" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
                                 <img src="/Images/Slider/@item.Layer6" alt="" data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="repeat" class="rev-slidebg" data-no-retina>
 
                                 <div class="tp-caption tp-shape tp-shapewrapper  tp-resizeme"
@@ -749,9 +750,9 @@
                                      style="z-index: 21; white-space: nowrap; font-size: 14px; line-height: 12px; font-weight: 700; color: #222222; letter-spacing: ;font-family:Cairo;background-color:rgb(255,204,0);border-color:rgba(0,0,0,1);border-radius:30px 30px 30px 30px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">@Localizer["Know Now"] </div>
                                 </li>
                             }
-                            else if (item.FixedSliders == CMSCar.Areas.CPanel.Models.FixedSlider.Forth)
+                        else if (item.FixedSliders == CMSCar.Areas.CPanel.Models.FixedSlider.Forth)
                             {
-                                <li data-index="rs-176" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-thumb="/Images/Slider/transparent.png" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                                <li data-index="rs-@item.Id" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-thumb="/Images/Slider/transparent.png" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
                                     <img src="/Images/Slider/transparent.png" data-bgcolor='linear-gradient(180deg,rgba(193,0,0,1)0%,rgba(193,0,0,1)0%,rgba(255,0,0,1)48%,rgba(188,0,0,1)100%,rgba(188,0,0,1)100%)' style='background:linear-gradient(180deg,rgba(193,0,0,1)0%,rgba(193,0,0,1)0%,rgba(255,0,0,1)48%,rgba(188,0,0,1)100%,rgba(188,0,0,1)100%)' alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
                                     <div class="tp-caption   tp-resizeme"
                                          id="slide-176-layer-14"
@@ -1092,68 +1093,306 @@
                                          data-paddingleft="[30,30,30,30]"
                                          style="z-index: 27; white-space: nowrap; font-size: 14px; line-height: 14px; font-weight: 700; color: #222222; letter-spacing: ;font-family:Cairo;background-color:rgb(255,204,0);border-color:rgb(255,255,255);border-style:solid;border-width:1px 1px 1px 1px;border-radius:30px 30px 30px 30px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">@Localizer["Know Now"] </div>
                                     </li>
-                        }
+                                }
                         else if (item.FixedSliders == CMSCar.Areas.CPanel.Models.FixedSlider.Faive)
-                        {
-                <li data-index="rs-16" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-thumb="/Images/Slider/transparent.png" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
-                    <!-- MAIN IMAGE -->
-                    <img src="/Images/Slider/@item.Layer3" data-bgcolor='#f5f5f5' style='background:linear-gradient(180deg,rgba(193,0,0,1)0%,rgba(193,0,0,1)0%,rgba(255,0,0,1)48%,rgba(188,0,0,1)100%,rgba(188,0,0,1)100%)' alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
-                    <!-- LAYERS -->
-                    <!-- LAYER NR. 80 -->
-                    <div class="tp-caption   tp-resizeme"
-                         id="slide-176-layer-14"
-                         data-x="['left','left','left','left']" data-hoffset="['-227','-227','-227','-219']"
-                         data-y="['top','top','top','top']" data-voffset="['163','163','163','174']"
-                         data-width="none"
-                         data-height="none"
-                         data-whitespace="nowrap"
-                         data-type="image"
-                         data-responsive_offset="on"
-                         data-frames='[{"delay":2300,"speed":1000,"frame":"0","from":"opacity:0;","to":"o:0.5;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                         data-textAlign="['inherit','inherit','inherit','inherit']"
-                         data-paddingtop="[0,0,0,0]"
-                         data-paddingright="[0,0,0,0]"
-                         data-paddingbottom="[0,0,0,0]"
-                         data-paddingleft="[0,0,0,0]"
-                         style="z-index: 5;">
-                        <div class="rs-looped rs-pulse" data-easing="" data-speed="10" data-zoomstart="1" data-zoomend="1.3"><img src="https://slider.salehcars.com/media/830bf-L-clouds.png" alt="" data-ww="['714px','714px','714px','407px']" data-hh="['301px','301px','301px','171px']" data-no-retina> </div>
-                    </div>
-                    <!-- LAYER NR. 94 -->
-                    <div class="tp-caption   tp-resizeme"
-                         id="slide-176-layer-5"
-                         data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                         data-y="['top','top','top','top']" data-voffset="['54','54','54','116']"
-                         data-width="none"
-                         data-height="none"
-                         data-whitespace="nowrap"
-                         data-type="image"
-                         data-responsive_offset="on"
-                         data-frames='[{"delay":500,"speed":6000,"frame":"0","from":"x:50px;opacity:0;","to":"o:1;","ease":"Circ.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                         data-textAlign="['inherit','inherit','inherit','inherit']"
-                         data-paddingtop="[0,0,0,0]"
-                         data-paddingright="[0,0,0,0]"
-                         data-paddingbottom="[0,0,0,0]"
-                         data-paddingleft="[0,0,0,0]"
-                         style="z-index: 19;"><img src="https://i.imgur.com/EzIGLwk.png" alt="" data-ww="['500px','500px','500px','300px']" data-hh="['150px','150px','150px','90px']" data-no-retina> </div>
-                    <div class="tp-caption   tp-resizeme"
-                         id="slide-176-layer-5"
-                         data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                         data-y="['top','top','top','top']" data-voffset="['54','54','54','116']"
-                         data-width="none"
-                         data-height="none"
-                         data-whitespace="nowrap"
-                         data-type="image"
-                         data-responsive_offset="on"
-                         data-frames='[{"delay":500,"speed":3000,"frame":"0","from":"x:50px;opacity:0;","to":"o:1;","ease":"Circ.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                         data-textAlign="['inherit','inherit','inherit','inherit']"
-                         data-paddingtop="[0,0,0,0]"
-                         data-paddingright="[0,0,0,0]"
-                         data-paddingbottom="[0,0,0,0]"
-                         data-paddingleft="[0,0,0,0]"
-                         style="z-index: 19;"><img src="https://i.imgur.com/GBzqAD1.png" alt="" data-ww="['650px','650px','650px','450px']" data-hh="['620px','620px','620px','480px']" data-no-retina> </div>
-                </li>
-                        }
-                    }
+                                {
+                                    <li data-index="rs-@item.Id" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-thumb="/Images/Slider/transparent.png" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                                        <!-- MAIN IMAGE -->
+                                        <img src="/Images/Slider/@item.Layer3" data-bgcolor='#f5f5f5' style='background:linear-gradient(180deg,rgba(193,0,0,1)0%,rgba(193,0,0,1)0%,rgba(255,0,0,1)48%,rgba(188,0,0,1)100%,rgba(188,0,0,1)100%)' alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
+                                        <!-- LAYERS -->
+                                        <!-- LAYER NR. 80 -->
+                                        <div class="tp-caption   tp-resizeme"
+                                             id="slide-176-layer-14"
+                                             data-x="['left','left','left','left']" data-hoffset="['-227','-227','-227','-219']"
+                                             data-y="['top','top','top','top']" data-voffset="['163','163','163','174']"
+                                             data-width="none"
+                                             data-height="none"
+                                             data-whitespace="nowrap"
+                                             data-type="image"
+                                             data-responsive_offset="on"
+                                             data-frames='[{"delay":2300,"speed":1000,"frame":"0","from":"opacity:0;","to":"o:0.5;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                                             data-textAlign="['inherit','inherit','inherit','inherit']"
+                                             data-paddingtop="[0,0,0,0]"
+                                             data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]"
+                                             data-paddingleft="[0,0,0,0]"
+                                             style="z-index: 5;">
+                                            <div class="rs-looped rs-pulse" data-easing="" data-speed="10" data-zoomstart="1" data-zoomend="1.3"><img src="https://slider.salehcars.com/media/830bf-L-clouds.png" alt="" data-ww="['714px','714px','714px','407px']" data-hh="['301px','301px','301px','171px']" data-no-retina> </div>
+                                        </div>
+                                        <!-- LAYER NR. 94 -->
+                                        <div class="tp-caption   tp-resizeme"
+                                             id="slide-176-layer-5"
+                                             data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
+                                             data-y="['top','top','top','top']" data-voffset="['54','54','54','116']"
+                                             data-width="none"
+                                             data-height="none"
+                                             data-whitespace="nowrap"
+                                             data-type="image"
+                                             data-responsive_offset="on"
+                                             data-frames='[{"delay":500,"speed":6000,"frame":"0","from":"x:50px;opacity:0;","to":"o:1;","ease":"Circ.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                                             data-textAlign="['inherit','inherit','inherit','inherit']"
+                                             data-paddingtop="[0,0,0,0]"
+                                             data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]"
+                                             data-paddingleft="[0,0,0,0]"
+                                             style="z-index: 19;"><img src="https://i.imgur.com/EzIGLwk.png" alt="" data-ww="['500px','500px','500px','300px']" data-hh="['150px','150px','150px','90px']" data-no-retina> </div>
+                                        <div class="tp-caption   tp-resizeme"
+                                             id="slide-176-layer-5"
+                                             data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
+                                             data-y="['top','top','top','top']" data-voffset="['54','54','54','116']"
+                                             data-width="none"
+                                             data-height="none"
+                                             data-whitespace="nowrap"
+                                             data-type="image"
+                                             data-responsive_offset="on"
+                                             data-frames='[{"delay":500,"speed":3000,"frame":"0","from":"x:50px;opacity:0;","to":"o:1;","ease":"Circ.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                                             data-textAlign="['inherit','inherit','inherit','inherit']"
+                                             data-paddingtop="[0,0,0,0]"
+                                             data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]"
+                                             data-paddingleft="[0,0,0,0]"
+                                             style="z-index: 19;"><img src="https://i.imgur.com/GBzqAD1.png" alt="" data-ww="['650px','650px','650px','450px']" data-hh="['620px','620px','620px','480px']" data-no-retina> </div>
+                                    </li>
+                                }
+                        else if (item.FixedSliders == CMSCar.Areas.CPanel.Models.FixedSlider.Six)
+                                {
+                                    <li data-index="rs-@item.Id" data-transition="slidingoverlayright" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="default" data-thumb="/Images/Slider/transparent.png" data-delay="9010" data-rotate="0" data-saveperformance="off" data-mediafilter="perpetua" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                                        <!-- MAIN IMAGE -->
+                                        <img src="/Images/Slider/@item.Layer3 " data-bgcolor='#eaeef0' style='background:#eaeef0' alt="" data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="repeat" class="rev-slidebg" data-no-retina>
+
+                                        <!-- LAYER NR. 7 -->
+                                        <div class="tp-caption   tp-resizeme"
+                                             id="slide-153-layer-68"
+                                             data-x="['left','left','left','left']" data-hoffset="['-70','-70','-70','-15']"
+                                             data-y="['bottom','bottom','bottom','bottom']" data-voffset="['-30','-30','-30','150']"
+                                             data-width="none"
+                                             data-height="none"
+                                             data-whitespace="nowrap"
+                                             data-type="image"
+                                             data-responsive_offset="on"
+                                             data-frames='[{"delay":1100,"speed":1500,"frame":"0","from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Circ.easeOut"},{"delay":"3000","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                                             data-textAlign="['inherit','inherit','inherit','inherit']"
+                                             data-paddingtop="[0,0,0,0]"
+                                             data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]"
+                                             data-paddingleft="[0,0,0,0]"
+                                             style="z-index: 11;"><img src="/Images/Slider/@item.Layer4 " alt="" data-ww="['1100px','1100px','1100px','600px']" data-hh="['400px','400px','400px','200px']" data-no-retina> </div>
+                                        <div class="tp-caption   tp-resizeme"
+                                             id="slide-153-layer-68"
+                                             data-x="['right','right','right','center']" data-hoffset="['0','0','0','0']"
+                                             data-y="['bottom','bottom','bottom','bottom']" data-voffset="['50','50','50','40']"
+                                             data-width="none"
+                                             data-height="none"
+                                             data-whitespace="nowrap"
+                                             data-type="image"
+                                             data-responsive_offset="on"
+                                             data-frames='[{"delay":2000.93072509765625,"speed":800,"frame":"0","from":"x:right;","to":"o:1;","ease":"Circ.easeOut"},{"delay":"3000","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                                             data-textAlign="['inherit','inherit','inherit','inherit']"
+                                             data-paddingtop="[0,0,0,0]"
+                                             data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]"
+                                             data-paddingleft="[0,0,0,0]"
+                                             style="z-index: 11;"><img src="/Images/Slider/@item.Layer5" alt="" data-ww="['400px','400px','400px','400px']" data-hh="['70px','70px','70px','70px']" data-no-retina> </div>
+                                        <div class="tp-caption   tp-resizeme"
+                                             id="slide-153-layer-68"
+                                             data-x="['left','left','left','center']" data-hoffset="['270','270','270','0']"
+                                             data-y="['top','top','top','top']" data-voffset="['100','100','100','150']"
+                                             data-width="none"
+                                             data-height="none"
+                                             data-whitespace="nowrap"
+                                             data-type="image"
+                                             data-responsive_offset="on"
+                                             data-frames='[{"delay":1005,"speed":3700,"frame":"0","from":"x:top;","to":"o:1;","ease":"Circ.easeOut"},{"delay":"3000","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                                             data-textAlign="['inherit','inherit','inherit','inherit']"
+                                             data-paddingtop="[0,0,0,0]"
+                                             data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]"
+                                             data-paddingleft="[0,0,0,0]"
+                                             style="z-index: 11;"><img src="/Images/Slider/@item.Layer6" alt="" data-ww="['350px','350px','350px','350px']" data-hh="['240px','240px','240px','240px']" data-no-retina> </div>
+                                        <div class="tp-caption   tp-resizeme"
+                                             id="slide-153-layer-68"
+                                             data-x="['right','right','right','center']" data-hoffset="['150','150','150','0']"
+                                             data-y="['top','top','top','top']" data-voffset="['150','150','150','50']"
+                                             data-width="none"
+                                             data-height="none"
+                                             data-whitespace="nowrap"
+                                             data-type="image"
+                                             data-responsive_offset="on"
+                                             data-frames='[{"delay":1005,"speed":3700,"frame":"0","from":"x:right;","to":"o:1;","ease":"Circ.easeOut"},{"delay":"3000","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                                             data-textAlign="['inherit','inherit','inherit','inherit']"
+                                             data-paddingtop="[0,0,0,0]"
+                                             data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]"
+                                             data-paddingleft="[0,0,0,0]"
+                                             style="z-index: 11;"><img src="/Images/Slider/@item.Layer7" alt="" data-ww="['350px','350px','350px','350px']" data-hh="['150px','150px','150px','140px']" data-no-retina> </div>
+                                    </li>
+                                }
+                        else if (item.FixedSliders == CMSCar.Areas.CPanel.Models.FixedSlider.Seven)
+                                {
+                                    <li data-index="rs-@item.Id" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-thumb="/Images/Slider/transparent.png" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                                        <!-- MAIN IMAGE -->
+                                        <img src="/Images/Slider/transparent.png" data-bgcolor='#fac43e' style='background:#fac43e' alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
+                                        <!-- LAYERS -->
+                                        <!-- LAYER NR. 89 -->
+                                        <div class="tp-caption   tp-resizeme"
+                                             id="slide-176-layer-1"
+                                             data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
+                                             data-y="['top','top','top','middle']" data-voffset="['150','150','150','0']"
+                                             data-width="none"
+                                             data-height="none"
+                                             data-whitespace="nowrap"
+                                             data-type="image"
+                                             data-responsive_offset="on"
+                                             data-frames='[{"delay":1100,"speed":1500,"frame":"0","from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Circ.easeOut"},{"delay":"+4000","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                                             data-textAlign="['inherit','inherit','inherit','inherit']"
+                                             data-paddingtop="[0,0,0,0]"
+                                             data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]"
+                                             data-paddingleft="[0,0,0,0]"
+                                             style="z-index: 14;"><img src="/Images/Slider/@item.Layer3" alt="" data-ww="['572px','572px','572px','382px']" data-hh="['428px','428px','428px','260px']" data-no-retina> </div>
+                                        <div class="tp-caption   tp-resizeme"
+                                             id="slide-176-layer-1"
+                                             data-x="['left','left','left','left']" data-hoffset="['50','50','50','30']"
+                                             data-y="['bottom','bottom','bottom','bottom']" data-voffset="['50','50','50','50']"
+                                             data-width="none"
+                                             data-height="none"
+                                             data-whitespace="nowrap"
+                                             data-type="image"
+                                             data-responsive_offset="on"
+                                             data-frames='[{"delay":1000.93072509765625,"speed":3700,"frame":"0","from":"x:left;","to":"o:1;","ease":"Circ.easeOut"},{"delay":"+4000.9658203125","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                                             data-textAlign="['inherit','inherit','inherit','inherit']"
+                                             data-paddingtop="[0,0,0,0]"
+                                             data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]"
+                                             data-paddingleft="[0,0,0,0]"
+                                             style="z-index: 14;"><img src="/Images/Slider/@item.Layer4 " alt="" data-ww="['297px','297px','297px','200px']" data-hh="['200px','200px','200px','140px']" data-no-retina> </div>
+                                        <div class="tp-caption   tp-resizeme"
+                                             id="slide-176-layer-1"
+                                             data-x="['right','right','right','right']" data-hoffset="['50','50','50','30']"
+                                             data-y="['bottom','bottom','bottom','bottom']" data-voffset="['50','50','50','50']"
+                                             data-width="none"
+                                             data-height="none"
+                                             data-whitespace="nowrap"
+                                             data-type="image"
+                                             data-responsive_offset="on"
+                                             data-frames='[{"delay":1000.93072509765625,"speed":3700,"frame":"0","from":"x:right;","to":"o:1;","ease":"Circ.easeOut"},{"delay":"+4000.9658203125","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                                             data-textAlign="['inherit','inherit','inherit','inherit']"
+                                             data-paddingtop="[0,0,0,0]"
+                                             data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]"
+                                             data-paddingleft="[0,0,0,0]"
+                                             style="z-index: 14;"><img src="/Images/Slider/@item.Layer5 " alt="" data-ww="['297px','297px','297px','200px']" data-hh="['200px','200px','200px','140px']" data-no-retina> </div>
+                                        <div class="tp-caption   tp-resizeme"
+                                             id="slide-176-layer-1"
+                                             data-x="['left','left','left','left']" data-hoffset="['50','50','50','40']"
+                                             data-y="['top','top','top','top']" data-voffset="['150','150','150','100']"
+                                             data-width="none"
+                                             data-height="none"
+                                             data-whitespace="nowrap"
+                                             data-type="image"
+                                             data-responsive_offset="on"
+                                             data-frames='[{"delay":1000.93072509765625,"speed":3700,"frame":"0","from":"x:left;","to":"o:1;","ease":"Circ.easeOut"},{"delay":"+4000.9658203125","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                                             data-textAlign="['inherit','inherit','inherit','inherit']"
+                                             data-paddingtop="[0,0,0,0]"
+                                             data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]"
+                                             data-paddingleft="[0,0,0,0]"
+                                             style="z-index: 14;"><img src="/Images/Slider/@item.Layer6 " alt="" data-ww="['198px','198px','198px','120px']" data-hh="['173px','173px','173px','100px']" data-no-retina> </div>
+                                        <div class="tp-caption   tp-resizeme"
+                                             id="slide-176-layer-1"
+                                             data-x="['right','right','right','right']" data-hoffset="['50','50','50','40']"
+                                             data-y="['top','top','top','top']" data-voffset="['150','150','150','100']"
+                                             data-width="none"
+                                             data-height="none"
+                                             data-whitespace="nowrap"
+                                             data-type="image"
+                                             data-responsive_offset="on"
+                                             data-frames='[{"delay":1000.93072509765625,"speed":3700,"frame":"0","from":"x:right;","to":"o:1;","ease":"Circ.easeOut"},{"delay":"+4000.9658203125","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                                             data-textAlign="['inherit','inherit','inherit','inherit']"
+                                             data-paddingtop="[0,0,0,0]"
+                                             data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]"
+                                             data-paddingleft="[0,0,0,0]"
+                                             style="z-index: 14;"><img src="/Images/Slider/@item.Layer7" alt="" data-ww="['198px','198px','198px','120px']" data-hh="['173px','173px','173px','100px']" data-no-retina> </div>
+                                        <div class="tp-caption   tp-resizeme"
+                                             id="slide-176-layer-1"
+                                             data-x="['right','right','right','right']" data-hoffset="['220','220','220','-2000']"
+                                             data-y="['top','top','top','top']" data-voffset="['270','270','270','200']"
+                                             data-width="none"
+                                             data-height="none"
+                                             data-whitespace="nowrap"
+                                             data-type="image"
+                                             data-responsive_offset="on"
+                                             data-frames='[{"delay":500.93072509765625,"speed":3700,"frame":"0","from":"x:right;","to":"o:1;","ease":"Circ.easeOut"},{"delay":"+4000.9658203125","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                                             data-textAlign="['inherit','inherit','inherit','inherit']"
+                                             data-paddingtop="[0,0,0,0]"
+                                             data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]"
+                                             data-paddingleft="[0,0,0,0]"
+                                             style="z-index: 14;"><img src="/Images/Slider/@item.Layer8" alt="" data-ww="['150px','150px','150px','120px']" data-hh="['120px','120px','120px','100px']" data-no-retina> </div>
+                                        <div class="tp-caption   tp-resizeme"
+                                             id="slide-176-layer-1"
+                                             data-x="['left','left','left','left']" data-hoffset="['220','220','220','-2000']"
+                                             data-y="['top','top','top','top']" data-voffset="['270','270','270','200']"
+                                             data-width="none"
+                                             data-height="none"
+                                             data-whitespace="nowrap"
+                                             data-type="image"
+                                             data-responsive_offset="on"
+                                             data-frames='[{"delay":500.93072509765625,"speed":3700,"frame":"0","from":"x:left;","to":"o:1;","ease":"Circ.easeOut"},{"delay":"+4000.9658203125","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                                             data-textAlign="['inherit','inherit','inherit','inherit']"
+                                             data-paddingtop="[0,0,0,0]"
+                                             data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]"
+                                             data-paddingleft="[0,0,0,0]"
+                                             style="z-index: 14;"><img src="/Images/Slider/@item.Layer9 " alt="" data-ww="['150px','150px','150px','120px']" data-hh="['120px','120px','120px','100px']" data-no-retina> </div>
+
+                                    </li>
+                                }
+                        else if (item.FixedSliders == CMSCar.Areas.CPanel.Models.FixedSlider.Eight)
+                                {
+                                    <li data-index="rs-@item.Id" data-transition="slidingoverlayright" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="default" data-thumb="https://slider.salehcars.com/revslider/admin/assets/images/transparent.png" data-delay="9010" data-rotate="0" data-saveperformance="off" data-mediafilter="perpetua" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                                        <!-- MAIN IMAGE -->
+                                        <img src="/Images/Slider/@item.Layer3 " data-bgcolor='#eaeef0' style='background:#eaeef0' alt="" data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="repeat" class="rev-slidebg" data-no-retina>
+
+                                        <!-- LAYER NR. 7 -->
+                                        <div class="tp-caption   tp-resizeme"
+                                             id="slide-153-layer-68"
+                                             data-x="['left','left','left','left']" data-hoffset="['102','102','102','50']"
+                                             data-y="['top','top','top','top']" data-voffset="['205','205','205','160']"
+                                             data-width="none"
+                                             data-height="none"
+                                             data-whitespace="nowrap"
+                                             data-type="image"
+                                             data-responsive_offset="on"
+                                             data-frames='[{"delay":1000.93072509765625,"speed":3700,"frame":"0","from":"x:left;","to":"o:1;","ease":"Circ.easeOut"},{"delay":"+4000.9658203125","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                                             data-textAlign="['inherit','inherit','inherit','inherit']"
+                                             data-paddingtop="[0,0,0,0]"
+                                             data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]"
+                                             data-paddingleft="[0,0,0,0]"
+                                             style="z-index: 11;"><img src="/Images/Slider/@item.Layer4" alt="" data-ww="['680px','680px','680px','390px']" data-hh="['350px','350px','350px','220px']" data-no-retina> </div>
+                                        <div class="tp-caption   tp-resizeme"
+                                             id="slide-153-layer-68"
+                                             data-x="['right','right','right','right']" data-hoffset="['-900','-900','-900','0']"
+                                             data-y="['bottom','bottom','bottom','bottom']" data-voffset="['0','0','0','0']"
+                                             data-width="none"
+                                             data-height="none"
+                                             data-whitespace="nowrap"
+                                             data-type="image"
+                                             data-responsive_offset="on"
+                                             data-frames='[{"delay":2000.93072509765625,"speed":800,"frame":"0","from":"x:right;","to":"o:1;","ease":"Circ.easeOut"},{"delay":"+4000.9658203125","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                                             data-textAlign="['inherit','inherit','inherit','inherit']"
+                                             data-paddingtop="[0,0,0,0]"
+                                             data-paddingright="[0,0,0,0]"
+                                             data-paddingbottom="[0,0,0,0]"
+                                             data-paddingleft="[0,0,0,0]"
+                                             style="z-index: 11;"><img src="/Images/Slider/@item.Layer5 " alt="" data-ww="['600px','600px','600px','180px']" data-hh="['280px','280px','280px','250px']" data-no-retina> </div>
+                                    </li>
+
+                                }
+                            }
+
                     @foreach (var item in Model.Sliders)
                     {
 
@@ -1712,7 +1951,7 @@
                                     <h3>@item.NameAr</h3>
                                     <hr>
                                     <ul class="shortDesc">
-                                        <li>@Html.Raw(item.DescriptionAr)</li>
+                                        <li>@Html.Raw(item.SubDescriptionAr)</li>
                                         <li class="car_placeHolder"></li>
                                     </ul>
                                     <div class="car_price ">
@@ -1738,7 +1977,7 @@
                                     <h3>@item.NameEn</h3>
                                     <hr>
                                     <ul class="shortDesc">
-                                        <li>@Html.Raw(item.DescriptionEn)</li>
+                                        <li>@Html.Raw(item.SubDescriptionEn)</li>
                                         <li class="car_placeHolder"></li>
                                     </ul>
                                     <div class="car_price ">

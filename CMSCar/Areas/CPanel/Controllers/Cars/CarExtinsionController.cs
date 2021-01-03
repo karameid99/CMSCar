@@ -201,6 +201,7 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
             if (ModelState.IsValid)
             {
                 var featureCar = _Mapper.Map<FeteureCreateDTO, FeatureCar>(featureCarDto);
+                featureCar.CarIdentfire = Guid.NewGuid().ToString();
                 _Context.FeatureCar.Add(featureCar);
                 _Context.SaveChanges();
                 return Content(ResultMessage.AddSuccessResult(), "application/json");
@@ -224,6 +225,7 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
                 var org = _Context.FeatureCar.AsNoTracking().SingleOrDefault(x => x.Id == featureCar.Id);
                 featureCar.CarId = org.CarId;
                 featureCar.CreatedAt = org.CreatedAt;
+                featureCar.CarIdentfire = org.CarIdentfire;
                 _Context.FeatureCar.Update(featureCar);
                 _Context.SaveChanges();
                 return Content(ResultMessage.StatusUpdateResult(), "application/json");
@@ -257,6 +259,7 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
             if (ModelState.IsValid)
             {
                 var specificationCar = _Mapper.Map<SpecificationCreateDTO, SpecificationCar>(specificationCarDto);
+                specificationCar.CarIdentfire = Guid.NewGuid().ToString();
                 _Context.SpecificationCar.Add(specificationCar);
                 _Context.SaveChanges();
                 return Content(ResultMessage.AddSuccessResult(), "application/json");
@@ -280,6 +283,7 @@ namespace CMSCar.Areas.CPanel.Controllers.Cars
                 var org = _Context.SpecificationCar.AsNoTracking().SingleOrDefault(x => x.Id == specificationCar.Id);
                 specificationCar.CarId = org.CarId;
                 specificationCar.CreatedAt = org.CreatedAt;
+                specificationCar.CarIdentfire = org.CarIdentfire;
                 _Context.SpecificationCar.Update(specificationCar);
                 _Context.SaveChanges();
                 return Content(ResultMessage.StatusUpdateResult(), "application/json");
