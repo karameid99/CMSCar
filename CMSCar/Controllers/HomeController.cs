@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using CMSCar.Areas.CPanel.Models.Cars;
 using CMSCar.Areas.CPanel.Models;
 using CMSCar.Areas.CPanel.Models.Notfication;
+using CMSCar.Areas.CPanel.Models.Mails;
 
 namespace CMSCar.Controllers
 {
@@ -34,7 +35,7 @@ namespace CMSCar.Controllers
         }
         public IActionResult Privacy()
         {
-            _Context.FixedSlider.Add(new Areas.CPanel.Models.Sliders.FixedSlider { FixedSliders = FixedSlider.Faive});
+            _Context.FixedSlider.Add(new Areas.CPanel.Models.Sliders.FixedSlider { FixedSliders = FixedSlider.Faive });
             _Context.SaveChanges();
             return View();
         }
@@ -55,7 +56,7 @@ namespace CMSCar.Controllers
             IndexVM index = new IndexVM();
             index.Cars = _Mapper.Map<List<CarShowVM>>(_Context.Car.ToList());
             index.Sliders = _Context.Slider.OrderByDescending(x => x.CreatedAt).ToList();
-            index.FixedSliders = _Context.FixedSlider.Where(x=> x.IsActive).OrderByDescending(x => x.CreatedAt).ToList();
+            index.FixedSliders = _Context.FixedSlider.Where(x => x.IsActive).OrderByDescending(x => x.CreatedAt).ToList();
             index.Cities = _Context.City.Include(x => x.Branches).ToList();
             return View(index);
         }
@@ -88,7 +89,8 @@ namespace CMSCar.Controllers
             if (ModelState.IsValid)
             {
                 _Context.CallUs.Add(call);
-                var not = new Notifications {
+                var not = new Notifications
+                {
                     Title = "هناك طلب تواصل جديد من " + call.Name,
                     Body = "يرجى الاطلاع على طلب التواصل في لوحة التحكم",
                     IsRead = false,
@@ -307,6 +309,14 @@ namespace CMSCar.Controllers
             return RedirectToAction("SuccessOrder");
 
         }
+        [HttpPost]
+        public IActionResult Email(Mail mail)
+        {
+            _Context.Mail.Add(mail);
+            _Context.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
 
         public IActionResult Search(SearchVM searchVM)
         {
@@ -328,7 +338,8 @@ namespace CMSCar.Controllers
         {
             var list = _Context.SubCarType.Where(x => x.CarTypeId == id && x.CategoryType == CategoryType.Second).ToList();
             return list;
-        }    public float GetPrice(int id)
+        }
+        public float GetPrice(int id)
         {
             var list = _Context.Service.Find(id);
             return list.PriceBeforeDiscount;
